@@ -7,9 +7,9 @@ class C_Manipulator;
 // Product 
 class C_Physical_State: public C_AbstractClass{
 	public:
-	vector<C_Propagator*> Propagators;
-	vector<C_AbstractKernel*> Kernels;
-	vector<C_BSE_Hadron_Base*>  BSEs;
+	std::vector<C_Propagator*> Propagators;
+	std::vector<C_AbstractKernel*> Kernels;
+	std::vector<C_BSE_Hadron_Base*>  BSEs;
 	
 	public:
 	C_Physical_State() {}
@@ -17,15 +17,15 @@ class C_Physical_State: public C_AbstractClass{
 	
 	friend class C_Manipulator;
 	
-	void SetPropagators(vector<C_Propagator*> _Propagators){
+	void SetPropagators(std::vector<C_Propagator*> _Propagators){
 		Propagators=_Propagators;
 	}
 	
-	void SetKernels(vector<C_AbstractKernel*> _Kernels){
+	void SetKernels(std::vector<C_AbstractKernel*> _Kernels){
 		Kernels=_Kernels;
 	}
 	
-	void SetBSEs(vector<C_BSE_Hadron_Base*> _BSEs){
+	void SetBSEs(std::vector<C_BSE_Hadron_Base*> _BSEs){
 		BSEs=_BSEs;
 	}
 	
@@ -73,9 +73,9 @@ class C_Meson: public C_BSE_Abstract_Builder{
 	Gluon_ID gluon_ID;
 	PS_type_ID exchange_type_ID;
 	
-	vector<C_Propagator*> Propagators;
-	vector<C_AbstractKernel*> Kernels;
-	vector<C_BSE_Hadron_Base*>  BSEs;
+	std::vector<C_Propagator*> Propagators;
+	std::vector<C_AbstractKernel*> Kernels;
+	std::vector<C_BSE_Hadron_Base*>  BSEs;
 	
 	C_Meson(Quark_ID Q1_id, Quark_ID Q2_id, Kernel_ID K1_id, Gluon_ID G1_id, PS_type_ID Ex_id){
 		quark_1_ID=Q1_id;
@@ -117,7 +117,7 @@ class C_Meson: public C_BSE_Abstract_Builder{
 		//vector<C_BSE_Hadron_Base*> BSEs(1);
 		for (int i = 0; i < Dirac_ID_End; i++){
 			BSEs[i]=C_BSE_Hadron_Meson::createMesonBSE((Dirac_ID)(i));
-			//cout << i << endl;
+			//std::cout << i << std::endl;
 		}
 		PhysicalState->SetBSEs(BSEs);
 	}	

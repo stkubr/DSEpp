@@ -89,7 +89,7 @@ class C_Charm_UP_Invoker: public C_Invoker{
 		
 		t_cmplxArray2D temp;
 		/*temp=charm_up->BSEs[0]->SetEVMatrix(dcx(0.0,2.0));
-		cout << temp[0][0] << "  " << temp[1][0] << endl;*/
+		std::cout << temp[0][0] << "  " << temp[1][0] << std::endl;*/
 		CharmManipulator.DressBSEs(0,t_cmplx(0.0,0.7),10);
 		//charm->BSEs[0]->flag_off_shell=true;
 		//CharmManipulator.DrawBSA_complex(16.5,path_draw);
@@ -135,7 +135,7 @@ class C_Pion_Invoker: public C_Invoker{
 		
 		up_upManipulator.SetPhysicalState(up_up);
 		//up_upManipulator.CalcChargeRadiusQuarkMassDependence(0.00048724,0.15,path_charge_radius_qmd);
-		//cout << up_upManipulator.getPionMass(0.0037) << endl;
+		//std::cout << up_upManipulator.getPionMass(0.0037) << std::endl;
 		//up_upManipulator.DressPropagators();
 		//up_upManipulator.CheckGroundStates(0.138,0.585,0.718,0.80);
 		//up_upManipulator.CalcFormFactor_PionCloud(28.7,path_formfactor);
@@ -151,9 +151,9 @@ class C_Pion_Invoker: public C_Invoker{
 		//up_upManipulator.NormalizeBSEs(0,dcx(0,0.138));
 		/*dcxArray2D temp;
 		temp=up_up->BSEs[2]->SetEVMatrix(dcx(0.0,0.677));
-		cout << temp[0][0] << "  " << temp[1][0] << endl;
-		cout << temp[0][1] << "  " << temp[1][1] << endl;
-		cout << temp[0][2] << "  " << temp[1][2] << endl;*/
+		std::cout << temp[0][0] << "  " << temp[1][0] << std::endl;
+		std::cout << temp[0][1] << "  " << temp[1][1] << std::endl;
+		std::cout << temp[0][2] << "  " << temp[1][2] << std::endl;*/
 		//up_up->BSEs[0]->flag_off_shell=true;
 		//up_upManipulator.ExportBSA_complex(path_store,path_draw);
 		//up_up->BSEs[0]->flag_off_shell=false;
@@ -173,8 +173,8 @@ class C_Pion_Invoker: public C_Invoker{
 		{
 			z_i=real(charm->Kernels[0]->Memory->VertexDressings[1][0][0][j]);
 			E_amp=real(charm->Kernels[0]->GetDressingAt(1,0,z_i));
-			temp_continuation << z_i << '\t' << E_amp << endl;
-			cout << z_i << '\t' << E_amp << endl;
+			temp_continuation << z_i << '\t' << E_amp << std::endl;
+			std::cout << z_i << '\t' << E_amp << std::endl;
 		}
 		temp_continuation.close();*/
 	}

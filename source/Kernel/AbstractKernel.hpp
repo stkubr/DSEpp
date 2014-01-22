@@ -12,7 +12,7 @@ class C_AbstractKernel: public C_AbsDiagram{
 	t_cmplx Z2;
 	C_Gluon * Gluon;
 	t_cmplx PseudoMesonMass;
-	vector<t_cmplxMatrix2D> K_Store;
+	std::vector<t_cmplxMatrix2D> K_Store;
 	Kernel_ID Kernel_type_ID;
 	PS_type_ID Exchange_type_ID;
 	//static C_Kernel * p_instance;
@@ -126,10 +126,10 @@ class C_AbstractKernel: public C_AbsDiagram{
 		ResizeKmatrix(&K_matrix);
 		
 		if (flag_reset_kernel){
-			vector<t_cmplxTensor> MediatorKernel;
+			std::vector<t_cmplxTensor> MediatorKernel;
 			SetMediators(k,p,P,&MediatorKernel);
 			SetKmatrix(&K_matrix,&MediatorKernel);
-			//cout << flag_reset_kernel << "  " << omp_get_thread_num() << "  " << K_Store.size() << endl;
+			//std::cout << flag_reset_kernel << "  " << omp_get_thread_num() << "  " << K_Store.size() << std::endl;
 			K_Store[omp_get_thread_num()]=K_matrix;	
 		}
 		else {
@@ -141,7 +141,7 @@ class C_AbstractKernel: public C_AbsDiagram{
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
 					for (int u = 0; u < 4; u++){
-						//cout << t << "  " << s << "  " << r << "  " << u << endl;
+						//std::cout << t << "  " << s << "  " << r << "  " << u << std::endl;
 						dummy=InnerTensorProduct(&((*Projector)(u,t)),&((*WaveFunc)(s,r)),rank)*K_matrix(t,s)(r,u);
 						result+=dummy;
 					}
@@ -177,9 +177,9 @@ class C_AbstractKernel: public C_AbsDiagram{
 		}
 	}
 	 
-	virtual void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, vector<t_cmplxTensor> (*Mediators))=0;
+	virtual void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, std::vector<t_cmplxTensor> (*Mediators))=0;
 // Set K matrix
-	virtual void SetKmatrix(t_cmplxMatrix2D (*K_matrix), vector<t_cmplxTensor> (*Mediators))=0;	
+	virtual void SetKmatrix(t_cmplxMatrix2D (*K_matrix), std::vector<t_cmplxTensor> (*Mediators))=0;	
 	
 	t_cmplxMatrix Check(t_cmplxMatrix2D (*K_matrix)){
 		t_cmplxMatrix temp(4,4);

@@ -27,17 +27,17 @@ typedef Matrix<Tensor<complex<double> > > t_cmplxDirac;
 typedef Matrix<double> t_dMatrix;
 typedef Tensor<complex<double> > t_cmplxTensor;
 typedef Tensor<double> t_dTensor;
-typedef vector < vector<t_cmplxTensor> > t_cmplx2DVecTen;
+typedef std::vector < std::vector<t_cmplxTensor> > t_cmplx2DVecTen;
 typedef Matrix< t_cmplxMatrix > t_cmplxMatrix2D;
 
-typedef vector<double> t_dArray1D;
-typedef vector<vector<double> > t_dArray2D;
-typedef vector<vector<vector<double> > > t_dArray3D;
+typedef std::vector<double> t_dArray1D;
+typedef std::vector<std::vector<double> > t_dArray2D;
+typedef std::vector<std::vector<std::vector<double> > > t_dArray3D;
 
-typedef vector<t_cmplx> t_cmplxArray1D;
-typedef vector<vector<t_cmplx> > t_cmplxArray2D;
-typedef vector<vector<vector<t_cmplx> > > t_cmplxArray3D;
-typedef vector<t_cmplxArray3D> t_cmplxArray4D;
+typedef std::vector<t_cmplx> t_cmplxArray1D;
+typedef std::vector<std::vector<t_cmplx> > t_cmplxArray2D;
+typedef std::vector<std::vector<std::vector<t_cmplx> > > t_cmplxArray3D;
+typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 
 #define NUM_PRECISION 7
 #define ORTH_CHECK 0
@@ -82,6 +82,6 @@ int main(int __argc,char *__argv[]){
 		*/
 	tstop = (double)clock()/CLOCKS_PER_SEC;
 ttime= (tstop-tstart)/omp_get_max_threads();
-cout << "\n\n" << "calculation time=" << "  " << ttime << "  " << "seconds" << endl;
+std::cout << "\n\n" << "calculation time=" << "  " << ttime << "  " << "seconds" << std::endl;
  return 0;
 }

@@ -7,9 +7,9 @@ ifneq ($(COVERAGE),)
   LDFLAGS += -fprofile-arcs
 endif
 
-#C_OBJS=DSE/Quark_parameters.cpp
+C_OBJS=DSE/Quark_parameters.cpp
 #C_OBJS+=Abs/AbsDiagram.cpp
-#C_OBJS+=DSE/Propagator.cpp
+C_OBJS+=DSE/Propagator.cpp
 #C_OBJS+=Kernel/Gluon.cpp  $(C_OBJS)
 
 SOURCES=main_test.cpp $(C_OBJS)

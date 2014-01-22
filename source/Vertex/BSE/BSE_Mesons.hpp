@@ -94,7 +94,7 @@ class C_BSE_Hadron_Meson: public C_BSE_Hadron_Base {
 		return result;
 	}
 	
-	virtual t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){t_cmplxMatrix dummy; cout << "Error virtual call" << endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
 	
 	
 	static C_BSE_Hadron_Meson * createMesonBSE(Dirac_ID id);
@@ -115,7 +115,7 @@ class C_Mesons_PseudoScalar: public C_BSE_Hadron_Meson {
 		SaveBSEPath="../Data_files/SaveBSE_PseudoScalar.dat";
 	}
 	
-	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){
+	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
 		#if BASIS_TYPE == 1
 		(*DiracStructure)[0]=ii*Y5;
 		(*DiracStructure)[1]=Y5*(_P*Z);
@@ -182,7 +182,7 @@ class C_Mesons_Scalar: public C_BSE_Hadron_Meson {
 		SaveBSEPath="../Data_files/SaveBSE_Scalar.dat";
 	}
 	
-	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){
+	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
 		#if BASIS_TYPE == 1
 		(*DiracStructure)[0]=ii*I;
 		(*DiracStructure)[1]=I*(_P*Z)*(_k*_P);
@@ -248,7 +248,7 @@ class C_Mesons_Vector: public C_BSE_Hadron_Meson {
 		SaveBSEPath="../Data_files/SaveBSE_Vector.dat";
 	}
 	
-	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){
+	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
 		Y_T=Momenta.TransIn(Y,_P);
 		t_cmplxVector _k_T;
 		_k_T=Momenta.TransIn(_k,_P);
@@ -316,7 +316,7 @@ class C_Mesons_AxialVector: public C_BSE_Hadron_Meson {
 		SaveBSEPath="../Data_files/SaveBSE_AxialVector.dat";
 	}
 	
-	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){
+	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
 		Y_T=Momenta.TransIn(Y,_P);
 		t_cmplxVector _k_T;
 		_k_T=Momenta.TransIn(_k,_P);
@@ -385,7 +385,7 @@ class C_Mesons_Tensor: public C_BSE_Hadron_Meson {
 		SaveBSEPath="../Data_files/SaveBSE_Tensor.dat";
 	}
 	
-	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){
+	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
 		Y_T=Momenta.TransIn(Y,_P);
 		t_cmplxVector _k_T;
 		_k_T=Momenta.TransIn(_k,_P);
@@ -408,11 +408,11 @@ class C_Mesons_Tensor: public C_BSE_Hadron_Meson {
 		
 		t_cmplx temp1,temp2;
 		//temp1=(M|g_T);
-		//cout << (M|g_T) << endl;
+		//std::cout << (M|g_T) << std::endl;
 		//temp2=(N|g_T);
 		
 		temp1=(g_T).Mag2();
-		//cout << temp1 << endl;
+		//std::cout << temp1 << std::endl;
 		M_T=M - g_T*(M|g_T)/temp1;
 		N_T=N - g_T*(M|g_T)/temp1;
 		

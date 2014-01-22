@@ -1,5 +1,6 @@
+#include "Propagator.hpp"
 #pragma once
-#include "DSE.h"
+
 class C_Quark: public C_Propagator{
 	
 	protected:
@@ -30,29 +31,32 @@ class C_Quark: public C_Propagator{
 		flag_normalized=false;
 	}
 	
-	void ReadParameters(ifstream * _ParamList){
+	//virtual ~C_Quark();
+
+	void ReadParameters(ifstream & _ParamList){
 			string line;
-			if ((*_ParamList).is_open())
+			if ((_ParamList).is_open())
 			{
-				while ( (*_ParamList).good() )
+				while ( (_ParamList).good() )
 				{
-					(*_ParamList) >> line >> num_amplitudes;
-					(*_ParamList) >> line >> params.num_prop_steps;
-					(*_ParamList) >> line >> params.num_angle_steps;
-					(*_ParamList) >> line >> params.m0;
-					(*_ParamList) >> line >> params.mu;
-					(*_ParamList) >> line >> params.M2_contour;
-					(*_ParamList) >> line >> params.LimDk;
-					(*_ParamList) >> line >> params.LimUk;
-					(*_ParamList) >> line >> params.EffectiveCutoff;
-					(*_ParamList) >> line >> params.Accuracy;
-					(*_ParamList) >> line >> params.ReCalcProp;
-					(*_ParamList) >> line >> params.HeavyLight;
+					(_ParamList) >> line >> num_amplitudes;
+					(_ParamList) >> line >> params.num_prop_steps;
+					(_ParamList) >> line >> params.num_angle_steps;
+					(_ParamList) >> line >> params.m0;
+					(_ParamList) >> line >> params.mu;
+					(_ParamList) >> line >> params.M2_contour;
+					(_ParamList) >> line >> params.LimDk;
+					(_ParamList) >> line >> params.LimUk;
+					(_ParamList) >> line >> params.EffectiveCutoff;
+					(_ParamList) >> line >> params.Accuracy;
+					(_ParamList) >> line >> params.ReCalcProp;
+					(_ParamList) >> line >> params.HeavyLight;
 				}
-				cout << "num_amplitudes - " << num_amplitudes << endl;
-				cout << params << endl;
+				std::cout << "num_amplitudes - " << num_amplitudes << std::endl;
+				//std::cout << params << std::endl;
+				params.Print();
 			}
-			else cout << "Cant open file!" << endl;
+			else std::cout << "Cant open file!" << std::endl;
 		}
 		
 	t_cmplx getDressingFactor(){
@@ -96,12 +100,11 @@ class C_Quark: public C_Propagator{
 	}
 	
 
-// Copier of "this" (used im parallel sections)
+// Copier of "this" (used in parallel sections)
 //----------------------------------------------------------------------	
 	virtual C_Quark * MakeCopy(){
 		return new C_Quark(*this);
 	}
-	
 	
 // Set Cauchy contour
 //----------------------------------------------------------------------
@@ -110,15 +113,14 @@ class C_Quark: public C_Propagator{
 		double M2=params.M2_contour;
 		int n,m;
 		t_cmplx Ku,Kd,dk,temp,temp2,t,weight;
-		
 		for (int i = 0; i <= params.num_prop_steps-1; i++)		
 		{
-			//cout << grid_k_cx[i] << "   ";
+			//std::cout << grid_k_cx[i] << "   ";
 			t=(zz_rad[i+1]);
 			weight=-1.0*w_rad[i+1];
 			temp=t*t - M2/4.0 + ii*t*sqrt(M2);
 			temp2=(2.0*t + ii*sqrt(M2))*weight;
-			//cout << t << "  " << temp << endl;
+			//std::cout << t << "  " << temp << std::endl;
 			//temp=t*t + ii*t*t;
 			//k_cont_1.push_back(temp);
 			Memory->S_cont[0][0][i]=(temp);
@@ -129,7 +131,7 @@ class C_Quark: public C_Propagator{
 		Kd=t*t - M2/4.0;
 		for (int i = 0; i <= params.num_prop_steps-1; i++)		
 		{
-			//cout << grid_k_cx[i] << "   ";
+			//std::cout << grid_k_cx[i] << "   ";
 			t=(zz_rad[i+1]);
 			weight=1.0*w_rad[i+1];
 			temp=Kd + ii*t*sqrt(M2) + params.LimUk*params.LimDk;
@@ -139,11 +141,11 @@ class C_Quark: public C_Propagator{
 			Memory->S_cont[1][1][i]=(temp2);
 			Memory->S_cont[1][2][i]=(InitStepA(temp));
 			Memory->S_cont[1][3][i]=(InitStepB(temp));
-			//cout << k_cont_2[i] << endl;
+			//std::cout << k_cont_2[i] << std::endl;
 		}
 		for (int i = 0; i <= params.num_prop_steps-1; i++)		
 		{
-			//cout << grid_k_cx[i] << "   ";
+			//std::cout << grid_k_cx[i] << "   ";
 			t=(zz_rad[i+1]);
 			weight=1.0*w_rad[i+1];
 			temp=t*t - M2/4.0 - ii*t*sqrt(M2);
@@ -154,11 +156,11 @@ class C_Quark: public C_Propagator{
 			Memory->S_cont[2][1][i]=(temp2);
 			Memory->S_cont[2][2][i]=(InitStepA(temp));
 			Memory->S_cont[2][3][i]=(InitStepB(temp));
-			//cout << k_cont_2[i] << endl;
+			//std::cout << k_cont_2[i] << std::endl;
 		}
 		for (int i = 0; i <= params.num_prop_steps-1; i++)		
 		{
-			//cout << grid_k_cx[i] << "   ";
+			//std::cout << grid_k_cx[i] << "   ";
 			t=(zz_rad[i+1]);
 			weight=-1.0*w_rad[i+1];
 			temp=Kd - ii*t*sqrt(M2) + params.LimUk*params.LimDk;
@@ -168,51 +170,39 @@ class C_Quark: public C_Propagator{
 			Memory->S_cont[3][1][i]=(temp2);
 			Memory->S_cont[3][2][i]=(InitStepA(temp));
 			Memory->S_cont[3][3][i]=(InitStepB(temp));
-			//cout << k_cont_2[i] << endl;
+			//std::cout << k_cont_2[i] << std::endl;
 		}
 		ofstream countur_data;
 		countur_data.open ("../Data_files/countur_data.dat");
 		for (int i = 0; i < Memory->S_cont.size(); i++)
 		{
 			for (int j = 0; j < Memory->S_cont[0][0].size(); j++){
-				countur_data << real(Memory->S_cont[i][0][j]) <<"  "<< imag(Memory->S_cont[i][0][j]) << endl;
-				//cout << real(Memory->S_cont[i][0][j]) << "  " << imag(Memory->S_cont[i][0][j]) << endl; 
+				countur_data << real(Memory->S_cont[i][0][j]) <<"  "<< imag(Memory->S_cont[i][0][j]) << std::endl;
 			}
 		}
 		countur_data.close();
-		cout << "Contour has been set! points - " << Memory->S_cont[0][0].size()*Memory->S_cont[0].size() << endl;
-		//cout << Memory->S_cont[0][0].size() << "  " << Memory->S_cont[0].size() << "  " << Memory->S_cont.size() << endl;
+		std::cout << "Contour has been set! points - " << Memory->S_cont[0][0].size()*Memory->S_cont[0].size() << std::endl;
+		//std::cout << Memory->S_cont[0][0].size() << "  " << Memory->S_cont[0].size() << "  " << Memory->S_cont.size() << std::endl;
 		//cin.get();
 // set (p - k)^2 grid
 		for (int num_part = 0; num_part < Memory->S_cont.size(); num_part++)
 		{
 			for (int i = 0; i < Memory->S_cont[num_part][0].size(); i++)
 			{
-				//int num_rad_steps=Memory->S_cont[num_part][0].size();
 				for (int j = 0; j < params.num_prop_steps; j++)
 				{
 					for (int k = 0; k < params.num_angle_steps; k++)
 					{
-						 Memory->S_grid[0][0][i+num_part*params.num_prop_steps][params.num_angle_steps*j + k]=(Memory->S_cont[num_part][0][i] + zz_rad[j+1]*zz_rad[j+1] - 2.0*sqrt(Memory->S_cont[num_part][0][i]*zz_rad[j+1]*zz_rad[j+1])*zz_angle[k+1] );
-						 //cout << Memory->S_cont[num_part][0][i] << "  " << zz_rad[j+1]*zz_rad[j+1] << "  " << 2.0*sqrt(Memory->S_cont[num_part][0][i]*zz_rad[j+1]*zz_rad[j+1])*zz_angle[k+1] << endl;
-						// cin.get();
+						 Memory->S_grid[0][0][i+num_part*params.num_prop_steps][params.num_angle_steps*j + k]=
+							 (Memory->S_cont[num_part][0][i]
+							 + zz_rad[j+1]*zz_rad[j+1]
+							 - 2.0*sqrt(Memory->S_cont[num_part][0][i]*zz_rad[j+1]*zz_rad[j+1])*zz_angle[k+1] );
 					}
-					//cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << j << endl;
+					//std::cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << j << std::endl;
 				}
-				//cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << Memory->S_cont[num_part][0][i] << "  " << Memory->S_grid[0][0][i+num_part*params.num_prop_steps][0] << endl;
+				//std::cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << Memory->S_cont[num_part][0][i] << "  " << Memory->S_grid[0][0][i+num_part*params.num_prop_steps][0] << std::endl;
 			}
 		}
-// set (p - k/2)^2 grid 
-	/*	for (int i = 0; i < Memory->S_cont[0][0].size(); i++)
-		{
-			for (int j = 0; j < params.num_prop_steps; j++)
-			{
-				for (int k = 0; k < params.num_angle_steps; k++)
-				{
-					 //S_grid2_storage[0][i][params.num_angle_steps*j + k]=(S_cont_storage[0][i] + zz_rad[j]*zz_rad[j]/4.0 - sqrt(S_cont_storage[0][i]*zz_rad[j]*zz_rad[j])*zz_angle[k] );
-				}
-			}
-		}*/
 	
 //check set p-k grid
 		ofstream grid_data;
@@ -220,11 +210,11 @@ class C_Quark: public C_Propagator{
 			int i=0;
 			for (int j = 0; j < Memory->S_grid[0][0][0].size(); j++)
 			{
-				grid_data << real(Memory->S_grid[0][0][i][j]) <<"  "<< imag(Memory->S_grid[0][0][i][j]) << endl;
-				//cout << real(Memory->S_grid[0][0][i][j]) << "  " << imag(Memory->S_grid[0][0][i][j]) << endl;
+				grid_data << real(Memory->S_grid[0][0][i][j]) <<"  "<< imag(Memory->S_grid[0][0][i][j]) << std::endl;
+				//std::cout << real(Memory->S_grid[0][0][i][j]) << "  " << imag(Memory->S_grid[0][0][i][j]) << std::endl;
 			}
 		grid_data.close();
-		cout << "Grid has been set! points - " << Memory->S_grid[0][0][0].size()*Memory->S_grid[0][0].size() << endl << endl;
+		std::cout << "Grid has been set! points - " << Memory->S_grid[0][0][0].size()*Memory->S_grid[0][0].size() << std::endl << std::endl;
 	}
 	
 // Initial guesses for A and B
@@ -256,38 +246,7 @@ class C_Quark: public C_Propagator{
 		return (this->*integrand)(integrand_args);
 	}
 	
-// Evaluate Cauchy integral on contour, at certain point 
-//----------------------------------------------------------------------
-	t_cmplxArray1D getCauchyAt(t_cmplx point){
-		t_cmplx coordin;
-		t_cmplxArray1D result;
-		t_cmplxArray2D Temp_return;
-		double sign;
-		t_cmplx tempN=t_cmplx(0.0,0.0);
-		result.resize(num_amplitudes);
-		Temp_return.resize(4,t_cmplxArray1D(num_amplitudes+1,0.0));
-		coordin=point;
-		for (int step = 0; step < 4; step++){
-			Temp_return[step]=Integ_cauchy_long->getResult(&(Memory->S_cont),step,&coordin);
-		}
-		
-		for (int i = 0; i < 4; i++){
-			if(i==0 || i == 3) sign=-1.0; else sign=1.0;
-			tempN+=sign*Temp_return[i][0];
-			//cout << tempN << endl;
-		}
-		
-		for (int i = 0; i < num_amplitudes; i++){
-			for (int j = 0; j < 4; j++){
-				if(j==0 || j == 3) sign=-1.0; else sign=1.0;
-				result[i]+=sign*Temp_return[j][i+1]/tempN;
-				//cout << i << "  " << result[i] << endl;
-			}
-		}
-		return result;
-	}
-	
-// Cauchy integration routine
+// Evaluate Cauchy integral on contour, at certain point
 //----------------------------------------------------------------------
 	t_cmplxArray1D getCauchyAt_embedded(t_cmplx coordin)
 	{
@@ -345,10 +304,10 @@ class C_Quark: public C_Propagator{
 		resN = sumN*zr;
 		resF1 = sumF1*zr;
 		resF2 = sumF2*zr;
-		//cout << sumF1*zr << "  " << sumF2*zr << "  " << sumN *zr<< endl;
+		//std::cout << sumF1*zr << "  " << sumF2*zr << "  " << sumN *zr<< std::endl;
 		result[0]=(resF1/resN);
 		result[1]=(resF2/resN);
-		//cout << resF1/resN << "  " << resF2/resN << endl;
+		//std::cout << resF1/resN << "  " << resF2/resN << std::endl;
 		return result;
 	}
 	
@@ -385,7 +344,7 @@ class C_Quark: public C_Propagator{
 			(*KernelQuarkStorage)[0][j-1 + 2*params.num_prop_steps]=(Memory->S_cont)[2][0][j-1];
 			(*KernelQuarkStorage)[1][j-1 + 2*params.num_prop_steps]=(Memory->S_cont)[2][1][j-1];
 			(*KernelQuarkStorage)[2][j-1 + 2*params.num_prop_steps]=(Memory->S_cont)[2][3][j-1];
-			//cout << -1.0*(Memory->S_cont)[2][3][j-1] << "  " << temp*(Memory->S_cont)[2][1][j-1] << endl;
+			//std::cout << -1.0*(Memory->S_cont)[2][3][j-1] << "  " << temp*(Memory->S_cont)[2][1][j-1] << std::endl;
 			
 			(*KernelQuarkStorage)[0][j-1 + 3*params.num_prop_steps]=(Memory->S_cont)[3][0][j-1];
 			(*KernelQuarkStorage)[1][j-1 + 3*params.num_prop_steps]=(Memory->S_cont)[3][1][j-1];
@@ -401,7 +360,7 @@ class C_Quark: public C_Propagator{
 		int num_threads=4;
 		//double L=LimUk*LimUk*EffectiveCutoff;
 		num_grid=Memory->S_grid[0][0][0].size();
-		cout << "Grid" << endl;
+		std::cout << "Grid" << std::endl;
 		
 		//Init_time=Get_Time();
 		
@@ -426,12 +385,12 @@ class C_Quark: public C_Propagator{
 					S_temp_storage=quark_copy->getCauchyAt_embedded(coordin);
 					Memory->S_grid[0][1][i+step*params.num_prop_steps][j]=(S_temp_storage[0]);
 					Memory->S_grid[0][2][i+step*params.num_prop_steps][j]=(S_temp_storage[1]);
-					//cout <<  coordin << "  " << getCauchyAt(coordin)[0] << endl;
+					//std::cout <<  coordin << "  " << getCauchyAt(coordin)[0] << std::endl;
 					//cin.get();
 				}
 				else
 				{
-					//cout << coordin << "  " << i+step*params.num_prop_steps << endl;
+					//std::cout << coordin << "  " << i+step*params.num_prop_steps << std::endl;
 					Memory->S_grid[0][1][i+step*params.num_prop_steps][j]=Z2*(1.0*params.HeavyLight -(params.HeavyLight-1.0)*real(coordin)) ;
 					Memory->S_grid[0][2][i+step*params.num_prop_steps][j]=Z2*(params.m0);
 				}
@@ -450,7 +409,7 @@ class C_Quark: public C_Propagator{
 	//Kernel->SetPionSign(-1.0);
 	//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
 	
-	//cout << "Z2 - " << "  " << Z2 << "  " << "m_renorm - " B_mu << endl;
+	//std::cout << "Z2 - " << "  " << Z2 << "  " << "m_renorm - " B_mu << std::endl;
 		
 	}
 		
@@ -459,7 +418,7 @@ class C_Quark: public C_Propagator{
 	void CalcPropCont()
 	{
 		t_cmplx temp;
-		cout << "Contour" << endl;
+		std::cout << "Contour" << std::endl;
 		int n;
 		n=Memory->S_cont[0][0].size();
 #pragma omp parallel 
@@ -500,7 +459,7 @@ class C_Quark: public C_Propagator{
 				Memory->S_cont[3][2][i]=Z2;
 				Memory->S_cont[3][3][i]=Z2*params.m0;
 			}
-			//cout << Memory->S_cont[0][0][i] << "  " << Memory->S_cont[0][2][index_p] << "  " << Memory->S_cont[0][3][index_p] << endl;
+			//std::cout << Memory->S_cont[0][0][i] << "  " << Memory->S_cont[0][2][index_p] << "  " << Memory->S_cont[0][3][index_p] << std::endl;
 			//cin.get();
 		}
 		delete quark_copy;
@@ -526,7 +485,7 @@ class C_Quark: public C_Propagator{
 		//if(abs(epsilon)>100.0) epsilon=0.0;
 		result(0,0)=Z2*Z2*2.0/(8.0*pi*pi*pi)*(_A*y*y*y*epsilon)*4.0/3.0*Gluon->GetGluonAt(&y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z);
 		result(1,0)=Z2*Z2*2.0*3.0/(8.0*pi*pi*pi)*(_B*y*y*y*epsilon*4.0/3.0*Gluon->GetGluonAt(&y2));
-		//cout << y2 << "  " << pk << "  " << (_A*y*y*y*epsilon)*Gluon->GetGluonAt(&y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z) << endl;
+		//std::cout << y2 << "  " << pk << "  " << (_A*y*y*y*epsilon)*Gluon->GetGluonAt(&y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z) << std::endl;
 		//cin.get();
 		//- PionContrib*Flavor_factor*Z2*2.0/(8.0*pi*pi*pi)*(1.0 - sqrt(y*y/(x))*z)*(_A*y*y*y*epsilon)*_B2/f_pion*(1.0/(y*y  + M_pion*M_pion));
 		return result;
@@ -575,7 +534,7 @@ class C_Quark: public C_Propagator{
 		
 	/*	#pragma omp master
 		{
-		cout << result(0,0) << "  " << temp << "  " << getCauchyAt_embedded(1.0)[1] << "  " << pk << endl;
+		std::cout << result(0,0) << "  " << temp << "  " << getCauchyAt_embedded(1.0)[1] << "  " << pk << std::endl;
 		cin.get();
 		}
 	*/	//- PionContrib*Flavor_factor*Z2*2.0/(8.0*pi*pi*pi)*(1.0 - sqrt(y*y/(x))*z)*(_A*y*y*y*epsilon)*_B2/f_pion*(1.0/(y*y  + M_pion*M_pion));
@@ -657,7 +616,7 @@ class C_Quark: public C_Propagator{
 		Pd=0.01;
 		Pu=params.LimUk*0.8;
 		dp=pow(10,(log10(Pu/Pd)/scale));
-		vector<double> A_check(scale),B_check(scale);
+		std::vector<double> A_check(scale),B_check(scale);
 			
 		x=Pd;
 		for (int i = 0; i < scale; i++)
@@ -670,8 +629,8 @@ class C_Quark: public C_Propagator{
 		}
 		
 		eps=fabs(res - check_res)/fabs(res);
-		cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(getCauchyAt_embedded(params.mu*params.mu)[0]) <<"  "<<
-				"m_renorm - " <<"  "<< B_mu /*_ "Z4 - " << "  " << Z4*/ <<"  "<< "Accuracy - " <<"  "<< eps << endl;
+		std::cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(getCauchyAt_embedded(params.mu*params.mu)[0]) <<"  "<<
+				"m_renorm - " <<"  "<< B_mu /*_ "Z4 - " << "  " << Z4*/ <<"  "<< "Accuracy - " <<"  "<< eps << std::endl;
 		check_res=res;
 	}
 	
@@ -682,7 +641,7 @@ class C_Quark: public C_Propagator{
 		if (flag_dressed==false)
 		{
 			PrintLine('-');
-			cout << "Start Dressing for " << name << " with quark mass -" <<"  "<< params.m0 <<"  "<< "and contour -" <<"  "<< params.M2_contour << endl;
+			std::cout << "Start Dressing for " << name << " with quark mass -" <<"  "<< params.m0 <<"  "<< "and contour -" <<"  "<< params.M2_contour << std::endl;
 			PrintLine('-');
 			setContourAndGrid();
 			LoadPropCountour();
@@ -720,9 +679,9 @@ class C_Quark: public C_Propagator{
 		for (int i = 0; i <= scale; i++)
 		{
 			storage=getCauchyAt_embedded(x*x);
-			data_Prop_re << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << endl;
+			data_Prop_re << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 			x*=dp;
-			//cout << "computing real part...  " << 100.0/(scale+1)*(i+1) << "%\n";
+			//std::cout << "computing real part...  " << 100.0/(scale+1)*(i+1) << "%\n";
 		}
 		data_Prop_re.close();
 	}
@@ -733,15 +692,15 @@ class C_Quark: public C_Propagator{
 	{
 		ofstream SavePropStream;
 		SavePropStream.open(SavePropPath);
-		(SavePropStream) << "Z2" << '\t' << Z2 << endl;
+		(SavePropStream) << "Z2" << '\t' << Z2 << std::endl;
 		for (int i = 0; i < 4; i++){
 			for (int j=1;j<=params.num_prop_steps;j++) 
 			{
-				(SavePropStream) << Memory->S_cont[i][0][j-1] << '\t' << Memory->S_cont[i][2][j-1] << '\t' << Memory->S_cont[i][3][j-1]  << endl;
+				(SavePropStream) << Memory->S_cont[i][0][j-1] << '\t' << Memory->S_cont[i][2][j-1] << '\t' << Memory->S_cont[i][3][j-1]  << std::endl;
 			}
 		}
 		SavePropStream.close();
-		cout << "Propagator was saved." << endl;	
+		std::cout << "Propagator was saved." << std::endl;	
 	}
 	
 // Read Propagator from file
@@ -749,26 +708,19 @@ class C_Quark: public C_Propagator{
 	void LoadPropCountour()
 	{
 		string dummy;
-		if (!params.ReCalcProp)
-		{
+		if (!params.ReCalcProp){
 			ifstream PropContourStream;
 			PropContourStream.open(SavePropPath); 
 			PropContourStream >> dummy >> Z2;
-			if (PropContourStream.is_open())
-			{
+			if (PropContourStream.is_open()){
 				for (int i = 0; i < 4; i++){
-					for (int j=1;j<=params.num_prop_steps;j++) 
-					{
-						
-						PropContourStream >> Memory->S_cont[i][0][j-1] >> Memory->S_cont[i][2][j-1] >> Memory->S_cont[i][3][j-1];
-						//cout << i << "  " << j << "  " << Memory->S_cont[i][0][j-1] << "  " << Memory->S_cont[i][2][j-1] << "  " << Memory->S_cont[i][3][j-1] << endl;
+					for (int j=1;j<=params.num_prop_steps;j++) {
+						PropContourStream >> dummy >> Memory->S_cont[i][2][j-1] >> Memory->S_cont[i][3][j-1];
 					}
-				}
-				cout << "Propagator was loaded. And WILL NOT be recalculated" << endl;
-			}
-			else cout << "Cant open file!" << endl;
+				} std::cout << "Propagator was loaded. And WILL NOT be recalculated" << std::endl;
+			} else std::cout << "Cant open file!" << std::endl;
 			PropContourStream.close();
-		} else cout << "Propagator was NOT loaded. But WILL be recalculated." << endl;
+		} else std::cout << "Propagator was NOT loaded. But WILL be recalculated." << std::endl;
 	}
 	
 	void ExportPropagator()
@@ -777,48 +729,48 @@ class C_Quark: public C_Propagator{
 		t_cmplx z_i,dz_i,temp;
 		ofstream PropContourStream;
 		PropContourStream.open ("../Data_files/PropContourExportData_new.dat");
-		cout << "Writing to file - \"Data_files/PropContourExportData_new.dat\"  " << endl;
+		std::cout << "Writing to file - \"Data_files/PropContourExportData_new.dat\"  " << std::endl;
 		PropContourStream << fixed;
 		PropContourStream << setprecision (10);
-		PropContourStream << 0.0001 << '\t' << 2000 << '\t' << Z2  << '\t' << endl;
+		PropContourStream << 0.0001 << '\t' << 2000 << '\t' << Z2  << '\t' << std::endl;
 		for (int i = 0; i < 4; i++){
 			for (j=1;j<=params.num_prop_steps;j++) 
 			{
 				t_cmplx temp=1.0;
 				z_i=(Memory->S_cont)[i][0][j-1];
 				dz_i=temp*(Memory->S_cont)[i][1][j-1];
-				PropContourStream << real(z_i) << '\t' << imag(z_i) << '\t' << real(dz_i) << '\t' << imag(dz_i)  << '\t' << real(temp) << '\t' << real((Memory->S_cont)[i][2][j-1]) << '\t' << imag((Memory->S_cont)[i][2][j-1]) << '\t' << real((Memory->S_cont)[i][3][j-1]) << '\t' << imag((Memory->S_cont)[i][3][j-1]) << endl;
+				PropContourStream << real(z_i) << '\t' << imag(z_i) << '\t' << real(dz_i) << '\t' << imag(dz_i)  << '\t' << real(temp) << '\t' << real((Memory->S_cont)[i][2][j-1]) << '\t' << imag((Memory->S_cont)[i][2][j-1]) << '\t' << real((Memory->S_cont)[i][3][j-1]) << '\t' << imag((Memory->S_cont)[i][3][j-1]) << std::endl;
 			}
 		}	
 		PropContourStream.close();
 		
-		cout << "The quark propagator has beed exported" << endl;
+		std::cout << "The quark propagator has beed exported" << std::endl;
 	}
 	
-	void SetQuarkonPath(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path))
+	void SetQuarkonPath(std::vector<t_cmplxMatrix> (*Amplitudes),t_cmplxArray1D (*Path))
 	{
-		cout << endl;
-		cout << "Quark on Path calculation..." << endl;
+		std::cout << std::endl;
+		std::cout << "Quark on Path calculation..." << std::endl;
 		int num_points;
 		num_points=(*Path).size();
-		(*AmplitudePath).resize(num_points);
+		(*Amplitudes).resize(num_points);
 		t_cmplxArray1D temp_quark(5);
 		t_cmplxMatrix Temp(2,1);
-		cout << "Initialized" << endl;
-		cout << "points on the path - " << num_points << endl;
+		std::cout << "Initialized" << std::endl;
+		std::cout << "points on the path - " << num_points << std::endl;
 		for (int i = 0; i < num_points; i++)
 		{
 			temp_quark=getPropAt((*Path)[i]);
 			Temp(0,0)=temp_quark[3];
 			Temp(1,0)=temp_quark[4];
-			//cout << i << "  " << (*Path)[i] << "  " << Temp(0,0) << "  " << Temp(1,0) << endl;
-			(*AmplitudePath)[i]=Temp;
+			//std::cout << i << "  " << (*Path)[i] << "  " << Temp(0,0) << "  " << Temp(1,0) << std::endl;
+			(*Amplitudes)[i]=Temp;
 		}
-		cout << "Quark on Path calculation finished." << endl;
+		std::cout << "Quark on Path calculation finished." << std::endl;
 	}
 	
-	t_dArray1D GetResult()
-		{
+	t_dArray1D GetTotalSum()
+	{
 			double Pu,Pd,x,scale,dp;
 			t_cmplxArray1D storage;
 			scale = 100;
@@ -836,8 +788,8 @@ class C_Quark: public C_Propagator{
 				temp_result[1]+=real(storage[1]);
 				x*=dp;
 			}
-			cout.precision(12);
-			cout << temp_result[0] <<" "<< temp_result[1] <<endl;
+			std::cout.precision(12);
+			std::cout << temp_result[0] <<" "<< temp_result[1] <<std::endl;
 			return temp_result;
 		}
 

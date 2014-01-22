@@ -73,7 +73,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 		Q_value=_Q;
 		Int_counter_total=0;
 		Int_counter_1=0;
-		vector<int> counter(7);
+		std::vector<int> counter(7);
 		for (counter[0] = 1; counter[0] < zz_vector[0].size(); counter[0]++){
 			for (counter[1] = 1; counter[1] < zz_vector[1].size(); counter[1]++){
 				for (counter[2] = 1; counter[2] < zz_vector[2].size(); counter[2]++){
@@ -85,7 +85,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 								for (counter[6] = 1; counter[6] < zz_vector[6].size(); counter[6]++){
 									SetTotalKinematics(Memory_Loop->PointsAndWieghts[0][Int_counter_total]);
 									//Memory->Pathes[6].push_back((k1+k2+P)*(k1+k2+P)/4.0);
-									//cout << Memory->Pathes[6][Int_counter_total] << endl;
+									//std::cout << Memory->Pathes[6][Int_counter_total] << std::endl;
 									Int_counter_2++;
 									Int_counter_total++;
 								}
@@ -101,7 +101,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 		Q_value=_Q;
 		SetExternalKinematics(Q_value,M2_bs,M2_bs);
 		Int_counter_1=0;
-		vector<int> ctr(3);
+		std::vector<int> ctr(3);
 		for (ctr[0] = 1; ctr[0] < zz_vector[0].size(); ctr[0]++){
 			for (ctr[1] = 1; ctr[1] < zz_vector[1].size(); ctr[1]++){
 				for (ctr[2] = 1; ctr[2] < zz_vector[2].size(); ctr[2]++){
@@ -109,7 +109,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 					Memory->Pathes[0].push_back(q_m_m*q_m_m);
 					Memory->Pathes[1].push_back(q_p_p*q_p_p);
 					Memory->Pathes[2].push_back(k1*k1);
-					//cout << Memory->Pathes[0][Int_counter_1] << "  " << Memory->Pathes[1][Int_counter_1] << "  " << Memory->Pathes[2][Int_counter_1] << endl;
+					//std::cout << Memory->Pathes[0][Int_counter_1] << "  " << Memory->Pathes[1][Int_counter_1] << "  " << Memory->Pathes[2][Int_counter_1] << std::endl;
 					Int_counter_1++;	
 				}
 			}
@@ -120,7 +120,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 		Q_value=_Q;
 		SetExternalKinematics(Q_value,M2_bs,M2_bs);
 		Int_counter_2=0;
-		vector<int> ctr(7);
+		std::vector<int> ctr(7);
 		for (ctr[3] = 1; ctr[3]< zz_vector[3].size(); ctr[3]++){
 			for (ctr[4] = 1; ctr[4] < zz_vector[4].size(); ctr[4]++){
 				for (ctr[5] = 1; ctr[5] < zz_vector[5].size(); ctr[5]++){
@@ -129,7 +129,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 						Memory->Pathes[3].push_back(q_p_m*q_p_m);
 						Memory->Pathes[4].push_back(q_m_p*q_m_p);
 						Memory->Pathes[5].push_back(k2*k2);
-						//cout << Memory->Pathes[3][Int_counter_2] << "  " << Memory->Pathes[4][Int_counter_2] << "  " << Memory->Pathes[5][Int_counter_2] << endl;
+						//std::cout << Memory->Pathes[3][Int_counter_2] << "  " << Memory->Pathes[4][Int_counter_2] << "  " << Memory->Pathes[5][Int_counter_2] << std::endl;
 						Int_counter_2++;
 					}
 				}
@@ -145,23 +145,23 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 		Set1LoopPathes(_Q);
 		Set2LoopPathes(_Q);
 		
-		cout << "Pathes are set."<< endl;
+		std::cout << "Pathes are set."<< std::endl;
 		
 		Vertexes[0]->flag_amp_desciption=true;
-		//cout << Memory->Pathes[2].size() << endl;
+		//std::cout << Memory->Pathes[2].size() << std::endl;
 		Vertexes[0]->SetBSAonPath(&Memory->Storages[2],&Memory->Pathes[2],M_in,true);
 		Vertexes[1]->SetBSAonPath(&Memory->Storages[5],&Memory->Pathes[5],M_out,true);
 		
-		cout << "Quarks" << endl;
+		std::cout << "Quarks" << std::endl;
 		
 		Propagators[0]->SetQuarkonPath(&Memory->Storages[0],&Memory->Pathes[0]);
 		Propagators[0]->SetQuarkonPath(&Memory->Storages[1],&Memory->Pathes[1]);
 		Propagators[0]->SetQuarkonPath(&Memory->Storages[3],&Memory->Pathes[3]);
 		Propagators[0]->SetQuarkonPath(&Memory->Storages[4],&Memory->Pathes[4]);
 				
-		cout << endl;
-		cout << "Storages at " << _Q << " have been precalculated" << endl;
-		cout << "We are ready for calculation of FormFactor at " << _Q << endl;
+		std::cout << std::endl;
+		std::cout << "Storages at " << _Q << " have been precalculated" << std::endl;
+		std::cout << "We are ready for calculation of FormFactor at " << _Q << std::endl;
 	}
 		
 	t_cmplxMatrix Integrand(t_dArray1D args,int Int_counter_total) {
@@ -172,7 +172,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 		SetTotalKinematics(args);
 		Int_counter_1=Memory_Loop->Counters[0][Int_counter_total];
 		Int_counter_2=Memory_Loop->Counters[1][Int_counter_total];
-		//cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
+		//std::cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
 		//cin.get();
 		
 		S_m_m=-1.0*ii*(q_m_m*Z)*Memory->Storages[0][Int_counter_1](0,0) + I*Memory->Storages[0][Int_counter_1](1,0);
@@ -234,7 +234,7 @@ class C_FF_Seagull: public C_2_LoopDiagram{
 	t_cmplx GetResultAtPoint(t_cmplx _Q){
 		t_cmplx res;
 		//res=quad7d()(0,0);
-		//cout << res/10.0/10.0/2.0/pi/pi << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
+		//std::cout << res/10.0/10.0/2.0/pi/pi << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
 		Q_value=_Q;
 		SetIntegrationVectors(NumPointsTotal);
 		

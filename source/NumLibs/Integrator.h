@@ -19,7 +19,7 @@ class C_Integrator: public C_AbstractClass{
 		x.resize(NumPoints+1);
 		w.resize(NumPoints+1);
 		setNodes(id);
-		//cout << "Creating Integrator with ID - " << id << endl;
+		//std::cout << "Creating Integrator with ID - " << id << std::endl;
 	}
 	
 	//Given the lower and upper limits of integration x1 and x2, and given n, this routine returns
@@ -57,7 +57,7 @@ class C_Integrator: public C_AbstractClass{
 			//Newton’s method.
 			} while (fabs(z-z1) > 3.0e-11);
 			(*x)[i]=xm-xl*z;
-			//cout << (*x)[i] << endl;
+			//std::cout << (*x)[i] << std::endl;
 			//Scale the root to the desired interval,
 			(*x)[n+1-i]=xm+xl*z;
 			//and put in its symmetric counterpart.
@@ -139,7 +139,7 @@ class C_Integrator: public C_AbstractClass{
 					dz=zr*zz[j];
 					x[j]=(zm+dz);
 					w[j]=w[j]*zr;
-					//cout <<x[j] << "  " <<  w[j] << "  " << x[j]*w[j] <<endl;
+					//std::cout <<x[j] << "  " <<  w[j] << "  " << x[j]*w[j] <<std::endl;
 					//cin.get();
 				}
 	            break;
@@ -199,7 +199,7 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 	            //p->Integrator_ref=&C_Integrator_Line::qgauscheb;
 	            break;        
 	        default:
-				cout << "Integrator_ID Error" << endl;
+				std::cout << "Integrator_ID Error" << std::endl;
 	            assert( false);
 	    }*/
 	    p->Integrator_ref=&C_Integrator_Line::qgaus;
@@ -243,7 +243,7 @@ template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_C
 	            p->Integrator_ref=&C_Integrator_Cauchy::qcauchyleg_lin;
 	            break;       
 	        default:
-				cout << "Integrator_ID Error" << endl;
+				std::cout << "Integrator_ID Error" << std::endl;
 	            assert( false);
 	    }
 	    return p;
@@ -278,7 +278,7 @@ template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_C
 			for (int i = 0; i < NumAps ; i++){sumF[i] += temp*F[i];}
 			sumN += temp*N;
 			}
-			//cout << coordin << "  " << z_i << "  " << dz_i << "  " << sumN << "  " << sumF[0] << "  " << (*Contour)[num_part][2][j-1]  << endl;
+			//std::cout << coordin << "  " << z_i << "  " << dz_i << "  " << sumN << "  " << sumF[0] << "  " << (*Contour)[num_part][2][j-1]  << std::endl;
 		}			
 }		
 		result[0]=(sumN);

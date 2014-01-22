@@ -14,7 +14,7 @@ template <typename x_type, typename y_type> class Linear: public C_AbstractClass
 
 //! Class constructor
 
-Linear(int n, vector<x_type> (*x), vector<y_type> (*y))
+Linear(int n, std::vector<x_type> (*x), std::vector<y_type> (*y))
 {
             m_x.clear();
             m_y.clear();
@@ -53,8 +53,8 @@ y_type getValue(x_type x)
 
 
 	private:
-	vector<x_type> m_x;
-	vector<y_type> m_y;
+	std::vector<x_type> m_x;
+	std::vector<y_type> m_y;
 };
 
 }

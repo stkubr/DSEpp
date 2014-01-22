@@ -11,29 +11,35 @@ class C_Up_Quark: public C_Quark{
 			//const char * PathToSave;
 			SavePropPath=("../Data_files/SaveQuarkContour_Chiral.dat");
 			//SavePropPath=&_SaveProp;
-			ReadParameters(&ParamsList);
+			ReadParameters(ParamsList);
 			InitialState();
 			InitializateIntegrators();
 			//DressPropagator();
 		}
 		
+		//virtual ~C_Up_Quark();
+
 		C_Up_Quark * MakeCopy(){
 			return new C_Up_Quark(*this);
 		}
 		
 		
-		void info() { cout << "UP_Quark initialization..." << endl; }  
+		void info() { std::cout << "UP_Quark initialization..." << std::endl; }  
 		
 };
   
 class C_Down_Quark: public C_Quark{
 	public:
-    void info() { cout << "Down_Quark" << endl; }    
+    void info() { std::cout << "Down_Quark" << std::endl; }
+
+    //virtual ~C_Down_Quark();
 };
   
 class C_Strange_Quark: public C_Quark{
 	public:   
-    void info() { cout << "Strange_Quark" << endl; }    
+    void info() { std::cout << "Strange_Quark" << std::endl; }    
+
+    //virtual ~C_Strange_Quark();
 };
 
 class C_Charm_Quark: public C_Quark{
@@ -45,18 +51,20 @@ class C_Charm_Quark: public C_Quark{
 			//const char * PathToSave;
 			SavePropPath=("../Data_files/SaveQuarkContour_CHARM.dat");
 			//SavePropPath=&_SaveProp;
-			ReadParameters(&ParamsList);
+			ReadParameters(ParamsList);
 			InitialState();
 			InitializateIntegrators();
 			//DressPropagator();
 		}
+
+	//virtual ~C_Charm_Quark();
 		
 		C_Charm_Quark * MakeCopy(){
 			return new C_Charm_Quark(*this);
 		}
 	
 	
-    void info() { cout << "Charm_Quark" << endl; }    
+    void info() { std::cout << "Charm_Quark" << std::endl; }    
 };
   
   

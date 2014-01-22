@@ -37,7 +37,7 @@ class C_Integration_Mockup
 				break;
 			default:
 				TestingFunction=&C_Integration_Mockup::FunctionLine;
-				cout << "Function Line selected" << endl;
+				std::cout << "Function Line selected" << std::endl;
 		}
 	}
 	

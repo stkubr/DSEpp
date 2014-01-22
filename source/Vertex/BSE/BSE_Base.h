@@ -34,28 +34,28 @@ class C_BSE_Hadron_parameters{
 	double LimUk,LimDk,zetta_part;
 	bool OffShell;
 	
-	void Print(std::ostream &__os = std::cout) const {
+	void Print(std::ostream &__os = std::std::cout) const {
 		__os << 
-		"LimDk" << " - " << LimDk << endl <<
-		"LimUk" << " - " << LimUk << endl <<
-		"zetta_part" << " - " << zetta_part << endl <<
-		"OffShell" << " - " << OffShell << endl <<
+		"LimDk" << " - " << LimDk << std::endl <<
+		"LimUk" << " - " << LimUk << std::endl <<
+		"zetta_part" << " - " << zetta_part << std::endl <<
+		"OffShell" << " - " << OffShell << std::endl <<
 		
-		"NumRadial" << " - " << NumRadial << endl <<
-		"Cheb_order" << " - " << Cheb_order << endl <<
-		"NumCheb_nod1" << " - " << NumCheb_nod1 << endl <<
-		"NumCheb_nod2" << " - " << NumCheb_nod2 << endl <<
-		"NumAngleY" << " - " << NumAngleY << endl <<
+		"NumRadial" << " - " << NumRadial << std::endl <<
+		"Cheb_order" << " - " << Cheb_order << std::endl <<
+		"NumCheb_nod1" << " - " << NumCheb_nod1 << std::endl <<
+		"NumCheb_nod2" << " - " << NumCheb_nod2 << std::endl <<
+		"NumAngleY" << " - " << NumAngleY << std::endl <<
 		
-		"NumRadial_Contour" << " - " << NumRadial_Contour << endl <<
-		"NumCheb_Contour" << " - " << NumCheb_Contour << endl <<
-		"NumAngleY_Contour" << " - " << NumAngleY_Contour << endl <<
+		"NumRadial_Contour" << " - " << NumRadial_Contour << std::endl <<
+		"NumCheb_Contour" << " - " << NumCheb_Contour << std::endl <<
+		"NumAngleY_Contour" << " - " << NumAngleY_Contour << std::endl <<
 		
-		"NumRadial_Matrix" << " - " << NumRadial_Matrix << endl <<
-		"NumCheb_Matrix" << " - " << NumCheb_Matrix << endl <<
-		"NumAngleY_Matrix" << " - " << NumAngleY_Matrix << endl <<
+		"NumRadial_Matrix" << " - " << NumRadial_Matrix << std::endl <<
+		"NumCheb_Matrix" << " - " << NumCheb_Matrix << std::endl <<
+		"NumAngleY_Matrix" << " - " << NumAngleY_Matrix << std::endl <<
 		
-		endl;	
+		std::endl;	
 	}
 	
 	void setParams(std::ifstream * _ParamList){
@@ -85,7 +85,7 @@ class C_BSE_Hadron_parameters{
 					
 				}
 			}
-			else cout << "Cant open file!" << endl;
+			else std::cout << "Cant open file!" << std::endl;
 		}
 };
 
@@ -99,7 +99,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	protected:
 	int /*Int_counter,*/Complex_Int_counter,index_zp,index_p;
 	
-	vector<t_cmplxDirac> Amplitudes,Projectors,WaveFunctions;
+	std::vector<t_cmplxDirac> Amplitudes,Projectors,WaveFunctions;
 	t_cmplxDirac FullWaveFunction,FullAmplitude;
 	
 	ifstream * ParamList;
@@ -134,7 +134,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	C_BSE_Hadron_Base(){
 		ifstream ParamList("../Parameters_files/Mesons/Scalar_symmetric.txt");
 		params.setParams(&ParamList);
-		cout << params << endl;
+		std::cout << params << std::endl;
 		flag_off_shell=false;
 		flag_amp_desciption=false;
 		flag_precalculation=false;
@@ -155,13 +155,13 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		S_m=(-1.0*ii*((*K_minus)*Z)*(quark_temp_sigma[3]) + SHIFT*I*(quark_temp_sigma[4]));
 	}
 	
-	//virtual void SetProjectors(dcxVector _p, dcxVector _P){cout << "Error - virtual call" << endl; StopLine();};
-	//virtual void SetAmplitudes(dcxVector _k, dcxVector _P){cout << "Error - virtual call" << endl; StopLine();};
-	virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, vector<t_cmplxDirac> * DiracStructure){cout << "Error - virtual call" << endl; StopLine();};
-	virtual void SetWaveFunctions(){cout << "Error - virtual call" << endl; StopLine();};
-	virtual t_cmplxMatrix GetBSA(){t_cmplxMatrix dummy; cout << "Error - virtual call" << endl; StopLine(); return dummy;};
-	virtual t_cmplxMatrix GetBSA_matrix(){t_cmplxMatrix dummy; cout << "Error - virtual call" << endl; StopLine(); return dummy;};
-	virtual t_cmplxMatrix GetBSA_norm(){t_cmplxMatrix dummy; cout << "Error - virtual call" << endl; StopLine(); return dummy;};
+	//virtual void SetProjectors(dcxVector _p, dcxVector _P){std::cout << "Error - virtual call" << std::endl; StopLine();};
+	//virtual void SetAmplitudes(dcxVector _k, dcxVector _P){std::cout << "Error - virtual call" << std::endl; StopLine();};
+	virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){std::cout << "Error - virtual call" << std::endl; StopLine();};
+	virtual void SetWaveFunctions(){std::cout << "Error - virtual call" << std::endl; StopLine();};
+	virtual t_cmplxMatrix GetBSA(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
+	virtual t_cmplxMatrix GetBSA_matrix(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
+	virtual t_cmplxMatrix GetBSA_norm(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
 	
 	void SetWeightCoeff(){
 		for (int i = 0; i < num_amplitudes; i++) { WeightCoeff[i]=(Projectors[i]|Projectors[i]).Tr(); }
@@ -174,9 +174,9 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 				t_cmplx dummy;
 				dummy=(Projectors[i]|Projectors[j]).Tr();
 				res=real(dummy);
-				cout << i+1 << "  " << j+1 << "  " << res << "  || ";
+				std::cout << i+1 << "  " << j+1 << "  " << res << "  || ";
 			}	
-			cout << endl << endl;
+			std::cout << std::endl << std::endl;
 		}
 		cin.get();
 	}
@@ -251,7 +251,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 					BSA_Stream << AMP(j,i + params.Cheb_order*(k-1)) << '\t' ;
 				}
 			}
-			BSA_Stream << endl;
+			BSA_Stream << std::endl;
 		}
 		BSA_Stream.close();
 	}	
@@ -268,9 +268,9 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 					BSA_Stream >> AMP(i,j);
 				}
 			}
-			cout << "Initial AMP has been set!" << endl; 
+			std::cout << "Initial AMP has been set!" << std::endl; 
 		}
-		else {cout << "Cant open file!" << endl; setInitialAMP();}
+		else {std::cout << "Cant open file!" << std::endl; setInitialAMP();}
 	}
 	
 	void setProj(int k){
@@ -324,7 +324,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	
 	void CalcEVMatrix(Eigen::ComplexEigenSolver<Eigen::MatrixXcf> * ces){
 		Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
-		//cout << "Memory->EVMatrix call" << endl;
+		//std::cout << "Memory->EVMatrix call" << std::endl;
 		#pragma omp parallel 
 		{//start of pragma	
 			C_BSE_Hadron_Base * bsa_copy_omp;
@@ -362,12 +362,12 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 							for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
 								for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
 									
-									//cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << endl;
-									//cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << endl;
+									//std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
+									//std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
 									Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
 								}
 							}
-							//cout << Temp_Matrix(0,0) << endl;
+							//std::cout << Temp_Matrix(0,0) << std::endl;
 							//cin.get();
 						}
 						bsa_copy_omp->k_col++;
@@ -378,7 +378,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			}
 			delete bsa_copy_omp;
 		}// end of pragma
-		//cout << "EVMatrix is full. EigenValues computation engaged..." << endl;
+		//std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
 		ces->compute(Memory->EVMatrix);
 	}
 	
@@ -394,7 +394,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
 		
 		Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
-		//cout << "Memory->EVMatrix call" << endl;
+		//std::cout << "Memory->EVMatrix call" << std::endl;
 		#pragma omp parallel 
 		{//start of pragma	
 			C_BSE_Hadron_Base * bsa_copy_omp;
@@ -432,12 +432,12 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 							for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
 								for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
 									
-									//cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << endl;
-									//cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << endl;
+									//std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
+									//std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
 									Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
 								}
 							}
-							//cout << Temp_Matrix(0,0) << endl;
+							//std::cout << Temp_Matrix(0,0) << std::endl;
 							//cin.get();
 						}
 						bsa_copy_omp->k_col++;
@@ -448,7 +448,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			}
 			delete bsa_copy_omp;
 		}// end of pragma
-		//cout << "EVMatrix is full. EigenValues computation engaged..." << endl;
+		//std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
 		ces.compute(Memory->EVMatrix);
 		flag_precalculation=false;
 		//CalcEVMatrix(&ces);
@@ -476,18 +476,18 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			return parity;
 		};
 		
-		//cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << endl;
+		//std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
 		int i= EV.size()-1;
 		t_cmplxArray2D Dominant_EV_and_parity(2);
 		while( i > EV.size()-10)
 		{
-			//cout << EV[i] << "  " << i << endl;
+			//std::cout << EV[i] << "  " << i << std::endl;
 			Dominant_EV_and_parity[0].push_back(EV[i]);
 			Dominant_EV_and_parity[1].push_back(Parity(i));
-			//cout << i << "  " << EV[i] << "  " << Parity(i)<< endl;
+			//std::cout << i << "  " << EV[i] << "  " << Parity(i)<< std::endl;
 			i--;
 		}
-		//cout << ces.eigenvectors().col(EV.size()-1) << endl;
+		//std::cout << ces.eigenvectors().col(EV.size()-1) << std::endl;
 		return Dominant_EV_and_parity;
 	}
 	
@@ -513,7 +513,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		
 		while(i > EV.size()-6)
 		{
-			//cout << EV[i] << "  " << i << endl;
+			//std::cout << EV[i] << "  " << i << std::endl;
 			i--;
 		}
 		
@@ -526,16 +526,16 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 				element=ces.eigenvectors().col(num_state)(j-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*amp_num);
 				z_v=zz_cheb[j];	
 				result[p_ctr-1] += w_cheb[j]*Cheb_polinoms(z_v,0)*real(element);
-				//cout << w_cheb[j] << "  " << U_ex(z_v) << "  " << real(element) << endl;
+				//std::cout << w_cheb[j] << "  " << U_ex(z_v) << "  " << real(element) << std::endl;
 			}	
-			DrawBSA_matrix << zz_rad[p_ctr] << "  " << real(result[p_ctr-1]) << endl;
-			//cout << zz_rad[p_ctr] << "  " << result[p_ctr-1] << endl;
+			DrawBSA_matrix << zz_rad[p_ctr] << "  " << real(result[p_ctr-1]) << std::endl;
+			//std::cout << zz_rad[p_ctr] << "  " << result[p_ctr-1] << std::endl;
 			//cin.get();	
 		}
 		DrawBSA_matrix.close();
 	}
 		
-	virtual t_cmplxMatrix setResultBSA(){t_cmplxMatrix dummy; cout << "Error virtual call" << endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix setResultBSA(){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
 
 	void SetDressing_normal(t_cmplx z){
 		if (flag_sigma == true){ 
@@ -578,7 +578,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		
 		/*#pragma omp master
 		{
-			cout << flag_sigma << endl;
+			std::cout << flag_sigma << std::endl;
 
 		}
 		cin.get();*/
@@ -614,7 +614,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 				#if ORTH_CHECK
 				#pragma omp master
 				{
-					cout << "Orthogonality Check - " << endl;
+					std::cout << "Orthogonality Check - " << std::endl;
 					OrthogonalityCheck();
 				}
 				cin.get();
@@ -645,7 +645,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 				t_cmplx z_v;
 				z_v=zz_cheb[j];	
 				result(i,0) += w_cheb[j]*BUFFER_dataAmp_ex(i,j)*U_ex(z_v);
-				//cout << BUFFER_dataAmp_ex(0,j) << "  " << z_v << "  " << j << "  " << w_cheb[j] << "  " << U_ex(z_v) << endl;
+				//std::cout << BUFFER_dataAmp_ex(0,j) << "  " << z_v << "  " << j << "  " << w_cheb[j] << "  " << U_ex(z_v) << std::endl;
 			}	
 		}
 		return result;
@@ -671,40 +671,40 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 					{
 						for (int ampl = 0; ampl < num_amplitudes ; ampl++)
 						{
-						//cout << "more Chebychevs !! ";
+						//std::cout << "more Chebychevs !! ";
 							for (int w = 1; w <=params.NumCheb_nod2; w++)
 							{
 							bsa_copy_omp->BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
-							//cout << bsa_copy_omp.F_buffer[w] << "  ";
+							//std::cout << bsa_copy_omp.F_buffer[w] << "  ";
 							}
-						//cout << endl;
+						//std::cout << std::endl;
 						}
 					}
 							
 					bsa_copy_omp->index_p=i;
 					p2=zz_rad[i];
 					BUFFER_AMP(i,0)=p2;
-					//cout << "Hi, I`m Debug Line" << "   Before Integr!" << endl;
+					//std::cout << "Hi, I`m Debug Line" << "   Before Integr!" << std::endl;
 					
 					Temp_matrix=bsa_copy_omp->CalcBSA(sqrt(p2),P,proj_cheb);
 					
-					//cout << "Hi, I`m Debug Line" << "   After Integr!" << endl;
+					//std::cout << "Hi, I`m Debug Line" << "   After Integr!" << std::endl;
 					for (int ampl = 0; ampl < num_amplitudes ; ampl++)
 					{
 						
 						BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
-						//cout << BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl)) << "  " << i << "  " << proj_cheb+params.Cheb_order*(ampl) << endl;
+						//std::cout << BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl)) << "  " << i << "  " << proj_cheb+params.Cheb_order*(ampl) << std::endl;
 					}
-					//cout << "Blah blah, I`m debug line!" << "  " << i << "  " << proj_cheb << "  " << BUFFER_AMP(i,0) << "  " << BUFFER_AMP(i,proj_cheb) << "  " << p2  << endl;
+					//std::cout << "Blah blah, I`m debug line!" << "  " << i << "  " << proj_cheb << "  " << BUFFER_AMP(i,0) << "  " << BUFFER_AMP(i,proj_cheb) << "  " << p2  << std::endl;
 					if(proj_cheb==1)
 					{
-						//cout << " The first Chebychevs !! "<< endl;
+						//std::cout << " The first Chebychevs !! "<< std::endl;
 						for (int ampl = 0; ampl < num_amplitudes ; ampl++)
 						{
 							for (int w = 1; w <= params.NumCheb_nod2 ; w++)
 							{
 							BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=bsa_copy_omp->BUFFER_dataAmp_ex(ampl,w);
-							//cout << BUFFER_F_ex(i,w + num_cheb_nod2*(ampl)) << "  " << w << "  " << ampl << endl;
+							//std::cout << BUFFER_F_ex(i,w + num_cheb_nod2*(ampl)) << "  " << w << "  " << ampl << std::endl;
 							}
 						}
 					}
@@ -725,20 +725,20 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		PreCalculation();
 		SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
 		GetBSA_ref=&C_BSE_Hadron_Base::GetBSA;
-		cout << "Dressing BSA... " << endl << endl;
-		cout << fixed;
-		cout << setprecision (NUM_PRECISION);
+		std::cout << "Dressing BSA... " << std::endl << std::endl;
+		std::cout << fixed;
+		std::cout << setprecision (NUM_PRECISION);
 	
 		//if(flag_load_AMP) 
 		set_BSA_on_grid();
 	
 		for (int kk = 1; kk <= steps; kk++)
 		{
-			cout << "Step number - " << kk << endl;
+			std::cout << "Step number - " << kk << std::endl;
 			
 			BSA_step(P);
 			
-			//cout << "Time now - " << (Get_Time() - Init_time)/NumThreadsUse << endl;
+			//std::cout << "Time now - " << (Get_Time() - Init_time)/NumThreadsUse << std::endl;
 			
 			for (int k = 1; k <=1; k++)
 			{
@@ -751,7 +751,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			
 			Lambda_EV=(ff1/ff2);
 			PrintLine('-');
-			cout  << "Eigenvalue.v1 - " << ff1/ff2 << "  at P = " << "  " << P << endl;
+			std::cout  << "Eigenvalue.v1 - " << ff1/ff2 << "  at P = " << "  " << P << std::endl;
 			PrintLine('-');
 			ff1=0;ff2=0;ff3=0;
 			
@@ -760,7 +760,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			
 			PrintLine('#');
 		}
-		//cout << "Time now - " << (Get_Time() - Init_time) << endl;
+		//std::cout << "Time now - " << (Get_Time() - Init_time) << std::endl;
 		//DrawBSA(P);
 
 		writeBSA();
@@ -785,31 +785,31 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	
 	void WriteAmplitudeDescyption()
 	{
-		cout << fixed;
-		cout << setprecision (NUM_PRECISION);
-		cout << "Dirac Amplitudes" << endl;
+		std::cout << fixed;
+		std::cout << setprecision (NUM_PRECISION);
+		std::cout << "Dirac Amplitudes" << std::endl;
 		PrintSpaces((NUM_PRECISION+2)*2+3+2);
 		for (int i = 0; i < num_amplitudes; i++)
 		{
-			cout << i;
+			std::cout << i;
 			for (int j = 1; j <= params.Cheb_order; j++)
 			{
 				PrintSpaces((NUM_PRECISION+2)*2+3);
 			}
-			cout << "";
+			std::cout << "";
 		}
-		cout << endl;
-		cout << "Chebyshev Projections" << endl << "    p^2";
+		std::cout << std::endl;
+		std::cout << "Chebyshev Projections" << std::endl << "    p^2";
 		PrintSpaces((NUM_PRECISION+2)*2+3-5);
 		for (int j = 0; j <num_amplitudes; j++)
 		{
 			for (int i = 1; i <=params.Cheb_order ; i++)
 			{
-			cout << (i-1)*2; 
+			std::cout << (i-1)*2; 
 			PrintSpaces((NUM_PRECISION+2)*2+3);
 			}
 		}
-		cout << endl << AMP << endl;
+		std::cout << std::endl << AMP << std::endl;
 	}
 	
 	void DrawBSA(t_cmplx _P){
@@ -821,31 +821,31 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			TempArray=CalcBSA(sqrt(zz_rad[i]),_P,1);
 			temp_continuation << (zz_rad[i]);
 			for (int amp = 0; amp < num_amplitudes; amp++) temp_continuation  << '	' <<  real(TempArray(amp,0));
-			temp_continuation << endl;
+			temp_continuation << std::endl;
 		}
 		temp_continuation.close();
 	}
 	
 	
 	double NormalizeBSA(t_cmplx _K){
-		cout << endl;
+		std::cout << std::endl;
 		PrintLine('=');
-		cout << endl;
-		cout << "Calculation Norm Factor..." << endl;
-		cout << endl;
+		std::cout << std::endl;
+		std::cout << "Calculation Norm Factor..." << std::endl;
+		std::cout << std::endl;
 		double BSE_Norm_factor;
 		t_cmplx h=_K/5.0;
 		t_cmplx res_int,N,Lambda_EV;
 		flag_amp_desciption=false;
-		vector <t_cmplx> deriv_step_norm(4);
+		std::vector <t_cmplx> deriv_step_norm(4);
 		for (int i = 1; i <= 2; i++)
 		{
 			double i_count;
 			i_count=i;
-			cout << "Derivative at point " << _K+(i_count)*h << endl;
+			std::cout << "Derivative at point " << _K+(i_count)*h << std::endl;
 			deriv_step_norm[(i-1)]=DressBSA(_K+(i_count)*h,10);
 			
-			cout << "Derivative at point " << _K-(i_count)*h << endl;
+			std::cout << "Derivative at point " << _K-(i_count)*h << std::endl;
 			deriv_step_norm[(i-1)+2]=DressBSA(_K-(i_count)*h,10);
 		}
 		//flag_normalization=true;
@@ -858,22 +858,22 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		res_int=quad3d()(0,0);
 		//flag_normalization=false;
 		N=(-deriv_step_norm[1] + 8.0*deriv_step_norm[0] - 8.0*deriv_step_norm[2] + deriv_step_norm[3])/(12.0*imag(h));
-		cout << deriv_step_norm[0] << "  " << deriv_step_norm[1] << "  " << deriv_step_norm[2] << "  " << deriv_step_norm[3] << endl;
-		cout << N << "  " << res_int << endl;
+		std::cout << deriv_step_norm[0] << "  " << deriv_step_norm[1] << "  " << deriv_step_norm[2] << "  " << deriv_step_norm[3] << std::endl;
+		std::cout << N << "  " << res_int << std::endl;
 		//NORM=sqrt(1.0/fabs(real(N))/3.0/fabs(real(res_int))/Lambda_EV)/sqrt(2.0*imag(_K))*0.5;
 		//NORM=sqrt(fabs(real(N))/fabs(real(res_int)))/sqrt(2.0*imag(K_v));
 		
 		BSE_Norm_factor=real(sqrt(Lambda_EV/fabs(real(N))/fabs(real(res_int)))*sqrt(2.0*imag(_K)));
 		
-		cout << "NormFactor = "<< BSE_Norm_factor << endl;
+		std::cout << "NormFactor = "<< BSE_Norm_factor << std::endl;
 		
 		return BSE_Norm_factor;
 	}
 	
 	void SetBSAonPath(t_cmplxArray1D (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q)
 	{
-		cout << endl;
-		cout << "On Path calculation..." << endl;
+		std::cout << std::endl;
+		std::cout << "On Path calculation..." << std::endl;
 		flag_amp_desciption=true;
 		DressBSA(Q,1);
 		int num_points;
@@ -881,8 +881,8 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		num_points=(*Path).size();
 		(*AmplitudePath).resize(num_points);
 		t_cmplxMatrix Temp(num_amplitudes,1);
-		cout << "Initialized" << endl;
-		cout << "points on the path - " << num_points << endl;
+		std::cout << "Initialized" << std::endl;
+		std::cout << "points on the path - " << num_points << std::endl;
 		Time=Get_Time();
 	#pragma omp parallel 
 	{//start of pragma		
@@ -896,15 +896,15 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 			}
 			delete bsa_copy_omp;
 	}//end of pragma
-		cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << endl;
-		cout << "On Path calculation finished." << endl;
+		std::cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << std::endl;
+		std::cout << "On Path calculation finished." << std::endl;
 	}
 	
 	
-void SetBSAonPath(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q, bool Interpolate_flag)
+void SetBSAonPath(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q, bool Interpolate_flag)
 {
-	cout << endl;
-	cout << "On Path calculation..." << endl;
+	std::cout << std::endl;
+	std::cout << "On Path calculation..." << std::endl;
 	flag_amp_desciption=false;
 	if(!Interpolate_flag) DressBSA(Q, 12); else DressBSA(Q, 8);
 	int num_points;
@@ -913,8 +913,8 @@ void SetBSAonPath(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) 
 	(*AmplitudePath).clear();
 	(*AmplitudePath).resize(num_points);
 	t_cmplxMatrix Temp(num_amplitudes+1,1);
-	cout << "Initialized" << endl;
-	cout << "points on the path - " << num_points << endl;
+	std::cout << "Initialized" << std::endl;
+	std::cout << "points on the path - " << num_points << std::endl;
 	if(!Interpolate_flag)
 	{
 		Time=Get_Time();
@@ -930,27 +930,27 @@ void SetBSAonPath(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) 
 		}
 		delete bsa_copy_omp;
 }//end of pragma
-	cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << endl;
+	std::cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << std::endl;
 	} 
 	else {
 		t_cmplxArray2D Amplitude(num_amplitudes+1, t_cmplxArray1D(params.NumRadial));
-		cout << "Enter Interpolation routine..." << endl;
+		std::cout << "Enter Interpolation routine..." << std::endl;
 		for (int i = 0; i <num_amplitudes+1 ; i++)
 		{
 			for (int j = 0; j < params.NumRadial; j++)
 			{
 				Amplitude[i][j]=AMP(j+1,i);
-				//cout << i << "  " << j << "  " << Amplitude[i][j] << endl;
+				//std::cout << i << "  " << j << "  " << Amplitude[i][j] << std::endl;
 			}
 			//cin.get();
 		}
-		cout << "Temp Amplitute matrix has been set." << endl;
+		std::cout << "Temp Amplitute matrix has been set." << std::endl;
 		for (int j = 0; j < num_points; j++)
 		{
 			(*AmplitudePath)[j].Resize(num_amplitudes,1);
-				//cout << i << "  " << j << "  " << Amplitude[i][j] << endl;
+				//std::cout << i << "  " << j << "  " << Amplitude[i][j] << std::endl;
 		}
-		cout << "Passed storage has been resized." << endl;
+		std::cout << "Passed storage has been resized." << std::endl;
 		for (int i = 1; i < num_amplitudes+1; i++)
 		{
 			Interpolation::Linear<t_cmplx,t_cmplx> FuncToInterpolate(params.NumRadial, &Amplitude[0], &Amplitude[i]);
@@ -959,19 +959,19 @@ void SetBSAonPath(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) 
 				if(real((*Path)[j])<real(Amplitude[0][params.NumRadial-1]))
 				{
 				(*AmplitudePath)[j](i-1,0)=FuncToInterpolate.getValue((*Path)[j]);
-				//cout << i << "  " << j << "  " << (*Path)[j] << "  " << (*AmplitudePath)[j](i,0) << endl;
+				//std::cout << i << "  " << j << "  " << (*Path)[j] << "  " << (*AmplitudePath)[j](i,0) << std::endl;
 				}
 			}
 			//cin.get();
 		}
 	}
-cout << "On Path calculation finished." << endl;
+std::cout << "On Path calculation finished." << std::endl;
 }
 
-void SetBSAonPath_Cauchy(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q, double M_contour)
+void SetBSAonPath_Cauchy(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q, double M_contour)
 {
-	cout << endl;
-	cout << "On Path calculation..." << endl;
+	std::cout << std::endl;
+	std::cout << "On Path calculation..." << std::endl;
 	//flag_amp_desciption=false;
 	DressBSA_complex(Q, 8, M_contour);
 	int num_points;
@@ -980,8 +980,8 @@ void SetBSAonPath_Cauchy(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (
 	(*AmplitudePath).clear();
 	(*AmplitudePath).resize(num_points);
 	t_cmplxMatrix Temp(num_amplitudes+1,1);
-	cout << "Initialized" << endl;
-	cout << "points on the path - " << num_points << endl;
+	std::cout << "Initialized" << std::endl;
+	std::cout << "points on the path - " << num_points << std::endl;
 		Time=Get_Time();
 #pragma omp parallel 
 {//start of pragma		
@@ -1000,9 +1000,9 @@ void SetBSAonPath_Cauchy(vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (
 		}
 		delete bsa_copy_omp;
 }//end of pragma
-	cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << endl;
+	std::cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << std::endl;
 	
-cout << "On Path calculation finished." << endl;
+std::cout << "On Path calculation finished." << std::endl;
 }	
 	void setContourAndGrid(double M_contour);
 	t_cmplxArray1D getCauchyAt_embedded(t_cmplx coordin);

@@ -5,7 +5,7 @@ template <typename T_out, typename F, typename T_in> class C_MultiDimInt{
 	double y_cx;
 	T_out (F::*cxfunc) (T_in);
 	T_out (C_MultiDimInt::*MultiInt) (T_in);
-	vector<C_Integrator_Line<T_out,C_MultiDimInt,double> *>  IntArray;
+	std::vector<C_Integrator_Line<T_out,C_MultiDimInt,double> *>  IntArray;
 	F * obj_ref;
 	int D,current_dim;
 	T_in temp_vector;
@@ -18,20 +18,20 @@ template <typename T_out, typename F, typename T_in> class C_MultiDimInt{
 		temp_vector.resize(_D);
 	}
 	
-	void setIntegrators(vector<C_Integrator_Line<T_out,F,double> *>  __IntArray, int _D){
+	void setIntegrators(std::vector<C_Integrator_Line<T_out,F,double> *>  __IntArray, int _D){
 		IntArray=__IntArray;
 		temp_vector.resize(_D);
 	}	
 	
 	T_out getResult(T_out (F::*func2) (T_in), F * obj )
 	{
-		cout << "GetResult in...1" << endl;
+		std::cout << "GetResult in...1" << std::endl;
 		cxfunc=func2;
-		cout << "GetResult in...2" << endl;
+		std::cout << "GetResult in...2" << std::endl;
 		obj_ref=obj;
-		cout << "GetResult in...3" << endl;
+		std::cout << "GetResult in...3" << std::endl;
 		T_out temp(1,0);
-		//cout << cxfunc << "  " << func2 << "  " << obj_ref <<endl;
+		//std::cout << cxfunc << "  " << func2 << "  " << obj_ref <<std::endl;
 		
 		temp = Multi_INT_cx(cxfunc);
 
@@ -83,12 +83,12 @@ class C_Temp{
 	}
 	
 	void getResult(){
-		cout << "GetResult" << endl;
+		std::cout << "GetResult" << std::endl;
 		//integ=C_Integrator<dcxMatrix,C_Temp,double>::createIntegrator(40, 0.0001, 1.0, 1, qgauscheb_ID);
-		//cout << integ_line->getResult(&C_Temp::func, this) << endl;
-		//cout << integ_cauchy->getResult(&Contour,&point)[0] << endl;
-		cout << multi_int->getResult(&C_Temp::func,this) << endl;
-		//cout << ololo->getResult(&C_Temp::func,this) << endl;
+		//std::cout << integ_line->getResult(&C_Temp::func, this) << std::endl;
+		//std::cout << integ_cauchy->getResult(&Contour,&point)[0] << std::endl;
+		std::cout << multi_int->getResult(&C_Temp::func,this) << std::endl;
+		//std::cout << ololo->getResult(&C_Temp::func,this) << std::endl;
 	}
 	
 	void setContour(){
@@ -96,7 +96,7 @@ class C_Temp{
 		t_cmplx M2(0.0,1.0);
 		t_dArray1D x,w;
 		//integ_cauchy->getNodes(&x,&w);
-		cout << x.size() << "  " << w.size() << endl;
+		std::cout << x.size() << "  " << w.size() << std::endl;
 		Contour.resize(3,t_cmplxArray1D());
 		for (int i = 0; i < x.size(); i++){
 			double t = x[i];

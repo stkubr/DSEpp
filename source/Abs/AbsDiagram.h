@@ -1,6 +1,7 @@
 #pragma once
+class C_DedicMem_Abs;
 
-class C_AbsDiagram: public C_AbstractClass{	
+class C_AbsDiagram{
 	protected:
 	string name;
 	int ID;
@@ -24,10 +25,10 @@ class C_AbsDiagram: public C_AbstractClass{
 	void SetNameID(string _name, int _ID){
 		name=_name;
 		ID=_ID;
-		//cout << "Object -" << "  " << name << "  " << "with ID -" << "  " << ID << "  " << "has been created." << endl;
+		//std::cout << "Object -" << "  " << name << "  " << "with ID -" << "  " << ID << "  " << "has been created." << std::endl;
 	}
 	
 	void GetNameID(){
-		cout << "This is object -" <<"  "<< name <<"  "<< "with ID -" <<"  "<< ID  << endl;
+		std::cout << "This is object -" <<"  "<< name <<"  "<< "with ID -" <<"  "<< ID  << std::endl;
 	}
 };

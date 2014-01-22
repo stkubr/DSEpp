@@ -42,7 +42,7 @@ class C_1_Loop_Int: public C_Loop_Integrator{
 		return (this->Integrand)(integrand_args);
 	}
 	
-	virtual t_cmplxMatrix Integrand(t_cmplxArray1D args) {t_cmplxMatrix dummy; cout << "Error virtual call" << endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix Integrand(t_cmplxArray1D args) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
 };
 
 class C_2_Loop_Int: public C_Loop_Integrator{
@@ -126,11 +126,11 @@ class C_2_Loop_Int: public C_Loop_Integrator{
 	}
 	
 	void SetIntegrationVectors(int NumPointsTotal){
-		cout << NumPointsTotal << endl;
+		std::cout << NumPointsTotal << std::endl;
 		Memory_Loop->ResizePointsAndWieghts(NumPointsTotal,7);
 		Int_counter_total=0;
 		Int_counter_1=0;
-		vector<int> counter(7);
+		std::vector<int> counter(7);
 		for (counter[0] = 1; counter[0] < zz_vector[0].size(); counter[0]++){
 			for (counter[1] = 1; counter[1] < zz_vector[1].size(); counter[1]++){
 				for (counter[2] = 1; counter[2] < zz_vector[2].size(); counter[2]++){
@@ -145,7 +145,7 @@ class C_2_Loop_Int: public C_Loop_Integrator{
 										Memory_Loop->Counters[0][Int_counter_total]=Int_counter_1;
 										Memory_Loop->Counters[1][Int_counter_total]=Int_counter_2;
 										Memory_Loop->Counters[2][Int_counter_total]=Int_counter_total;
-										//cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
+										//std::cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
 									}
 									Int_counter_2++;
 									Int_counter_total++;
@@ -158,8 +158,8 @@ class C_2_Loop_Int: public C_Loop_Integrator{
 			}
 		}
 		
-		cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
-		cout << Memory_Loop->PointsAndWieghts[0][0].size() << endl;
+		std::cout << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
+		std::cout << Memory_Loop->PointsAndWieghts[0][0].size() << std::endl;
 	}
 	
 	t_cmplxMatrix quad7d_vector(){
@@ -199,5 +199,5 @@ class C_2_Loop_Int: public C_Loop_Integrator{
 		return new C_2_Loop_Int(*this);
 	}
 	
-	virtual t_cmplxMatrix Integrand(t_dArray1D args, int ctr) {t_cmplxMatrix dummy; cout << "Error virtual call" << endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix Integrand(t_dArray1D args, int ctr) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
 };

@@ -10,9 +10,9 @@ class C_Kernel_RL: public C_AbstractKernel{
 		//Memory->VertexDressings[0].resize(1);
 	}
 	
-    void info() { cout << "Kernel RainbowLadder" << endl; } 
+    void info() { std::cout << "Kernel RainbowLadder" << std::endl; } 
     
-    void SetKmatrix(t_cmplxMatrix2D (*K_matrix), vector<t_cmplxTensor> (*Mediators)){
+    void SetKmatrix(t_cmplxMatrix2D (*K_matrix), std::vector<t_cmplxTensor> (*Mediators)){
 		for (int t = 0; t < 4; t++){
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
@@ -30,7 +30,7 @@ class C_Kernel_RL: public C_AbstractKernel{
 		}
 	}
 	
-	void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, vector<t_cmplxTensor> (*Mediators)){
+	void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, std::vector<t_cmplxTensor> (*Mediators)){
 		t_cmplx k2_product;
 		k2_product=(*k)*(*k);
 		t_cmplx Gluon_factor=1.0;
@@ -57,9 +57,9 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 		//Memory->VertexDressings[0].resize(1);
 	}
 	
-    void info() { cout << "Kernel RainbowLadder + PseudoScalar exchange" << endl; }     
+    void info() { std::cout << "Kernel RainbowLadder + PseudoScalar exchange" << std::endl; }     
     
-    void SetKmatrix(t_cmplxMatrix2D (*K_matrix), vector<t_cmplxTensor> (*Mediators)){
+    void SetKmatrix(t_cmplxMatrix2D (*K_matrix), std::vector<t_cmplxTensor> (*Mediators)){
 		for (int t = 0; t < 4; t++){
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
@@ -79,7 +79,7 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 		}
 	}
 	
-	void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, vector<t_cmplxTensor> (*Mediators)){
+	void SetMediators(t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *P, std::vector<t_cmplxTensor> (*Mediators)){
 		t_cmplx k2_product;
 		k2_product=(*k)*(*k);
 		t_cmplx Gluon_factor=1.0;
@@ -112,7 +112,7 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 		bool interpol_exit=false;
 		
 		end = Memory->VertexDressings[1].size()-1;
-		//cout << end << "  " << real(Memory->VertexDressings[1][end][0][0]) << endl;
+		//std::cout << end << "  " << real(Memory->VertexDressings[1][end][0][0]) << std::endl;
 		//cin.get();
 				
 		if(re_prop_mom < real(Memory->VertexDressings[1][0][0][0])){ res = (GetDressingAt(1,0,0,vertex_momenta));}
@@ -130,9 +130,9 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 				i++;
 			}
 			res = GetDressingAt(1,up,0,vertex_momenta)*C1/L + GetDressingAt(1,down,0,vertex_momenta)*C2/L;
-			}//cout << real(Memory->VertexDressings[1][up][0][0]) << "  " << C1/L << "  " << real(Memory->VertexDressings[1][down][0][0]) << "  " << C2/L << endl;
+			}//std::cout << real(Memory->VertexDressings[1][up][0][0]) << "  " << C1/L << "  " << real(Memory->VertexDressings[1][down][0][0]) << "  " << C2/L << std::endl;
 		}
-		//cout << real(res) << "  " << real(prop_momenta) << endl;
+		//std::cout << real(res) << "  " << real(prop_momenta) << std::endl;
 		return res;
 	}
 	

@@ -2,7 +2,7 @@
 
 class C_Memory_Manager;
 
-class C_DedicMem_Abs: public C_AbstractClass{
+class C_DedicMem_Abs{
 	
 	public:
 	virtual void info() = 0;
@@ -25,23 +25,23 @@ class C_DedicMem_Quark: public C_DedicMem_Abs {
 	
 	void RemoveGrid(){
 		S_grid.clear();
-		cout << "Grid storage has been erased."<< endl;
+		std::cout << "Grid storage has been erased."<< std::endl;
 	}
 
 	void info(){
-		cout << "Dedicated Memory for Quark" << endl;
+		std::cout << "Dedicated Memory for Quark" << std::endl;
 	}	
 };
 
 class C_DedicMem_Kernel: public C_DedicMem_Abs {
 	
 	private:
-	vector<t_cmplxMatrix2D > K_Matrix_Storage;
+	std::vector<t_cmplxMatrix2D > K_Matrix_Storage;
 	
 	public:
 	t_cmplxArray4D VertexDressings;
 	void info(){
-		cout << "Dedicated Memory for Kernel" << endl;
+		std::cout << "Dedicated Memory for Kernel" << std::endl;
 	}
 
 	void ResizeKstorage(int i){
@@ -66,7 +66,7 @@ class C_DedicMem_Kernel: public C_DedicMem_Abs {
 class C_DedicMem_BSA: public C_DedicMem_Abs {
 	
 	public:
-	vector< vector <t_cmplxDirac> > AmpStorage;
+	std::vector< std::vector <t_cmplxDirac> > AmpStorage;
 	Eigen::MatrixXcf EVMatrix;
 	t_cmplxArray2D CauchyContour;
 	t_cmplxArray3D CauchyGrid;
@@ -76,7 +76,7 @@ class C_DedicMem_BSA: public C_DedicMem_Abs {
 	// AmpStorage Manipulation
 //----------------------------------------------------------------------
 	void resizeAmpStorage(int amps, int points){
-		AmpStorage.resize(amps,vector <t_cmplxDirac>(points));
+		AmpStorage.resize(amps,std::vector <t_cmplxDirac>(points));
 	}
 	
 	void setAmpStorage(int amp, int point, t_cmplxDirac * Amp){
@@ -118,14 +118,14 @@ class C_DedicMem_BSA: public C_DedicMem_Abs {
 //----------------------------------------------------------------------
 	
 	void info(){
-		cout << "Dedicated Memory for BSE" << endl;
+		std::cout << "Dedicated Memory for BSE" << std::endl;
 	}
 };
 
 class C_DedicMem_1_LoopDiagram: public C_DedicMem_Abs{
 	public:
 	t_cmplxArray1D Path_Photon,Path_Pion_p,Path_Pion_m,Path_Quark_p_m,Path_Quark_p_p,Path_Quark_m_m;
-	vector <t_cmplxMatrix> Photon_Stg,Pion_p_Stg,Pion_m_Stg,Quark_p_p_Stg,Quark_m_m_Stg,Quark_p_m_Stg;
+	std::vector <t_cmplxMatrix> Photon_Stg,Pion_p_Stg,Pion_m_Stg,Quark_p_p_Stg,Quark_m_m_Stg,Quark_p_m_Stg;
 	
 	void ErasePathes()
 	{
@@ -138,14 +138,14 @@ class C_DedicMem_1_LoopDiagram: public C_DedicMem_Abs{
 	}
 	
 	void info(){
-		cout << "Dedicated Memory for 1 Loop Diagram" << endl;
+		std::cout << "Dedicated Memory for 1 Loop Diagram" << std::endl;
 	}
 };
 
 class C_DedicMem_2_LoopDiagram: public C_DedicMem_Abs{
 	public:
 	t_cmplxArray2D Pathes;
-	vector< vector<t_cmplxMatrix> > Storages;
+	std::vector< std::vector<t_cmplxMatrix> > Storages;
 	
 	void SetNumPathesAndStorages(int num_pathes, int num_storages){
 		Pathes.resize(num_pathes);
@@ -159,18 +159,18 @@ class C_DedicMem_2_LoopDiagram: public C_DedicMem_Abs{
 	}
 	
 	void info(){
-		cout << "Dedicated Memory for 1 Loop Diagram" << endl;
+		std::cout << "Dedicated Memory for 1 Loop Diagram" << std::endl;
 	}
 };
 
 class C_DedicMem_2_Loop_Int: public C_DedicMem_Abs{
 	public:
 	t_dArray3D PointsAndWieghts;
-	vector<vector<int> > Counters;
+	std::vector<std::vector<int> > Counters;
 	
 	void ResizePointsAndWieghts(int total_points, int dim){
 		PointsAndWieghts.resize(2,t_dArray2D(total_points,t_dArray1D(dim)));
-		Counters.resize(3,vector<int>(total_points));
+		Counters.resize(3,std::vector<int>(total_points));
 	}
 	
 	void ErasePointsAndWieghts(){
@@ -178,11 +178,11 @@ class C_DedicMem_2_Loop_Int: public C_DedicMem_Abs{
 	}
 	
 	void info(){
-		cout << "Dedicated Memory for 1 Loop Diagram" << endl;
+		std::cout << "Dedicated Memory for 1 Loop Diagram" << std::endl;
 	}
 };
 
-class C_Memory_Manager: public C_AbstractClass{
+class C_Memory_Manager{
 	public:
 	void CopyMemoryFrom(C_DedicMem_Quark * quark_memory, C_DedicMem_Kernel * kernel_memory){
 		int j,num_steps;//,sumj;sumj=0;
@@ -190,7 +190,7 @@ class C_Memory_Manager: public C_AbstractClass{
 		num_steps=(quark_memory->S_cont)[0][0].size();
 		t_cmplxArray2D * KernelQuarkStorage;
 		KernelQuarkStorage=&(kernel_memory->VertexDressings[0][0]);
-		//cout << "after copy" << "  " << (kernel_memory->VertexDressings.size()) << endl;
+		//std::cout << "after copy" << "  " << (kernel_memory->VertexDressings.size()) << std::endl;
 		(*KernelQuarkStorage).resize(4,t_cmplxArray1D(4*num_steps));
 		for (j=1;j<=num_steps;j++) 
 		{
@@ -208,7 +208,7 @@ class C_Memory_Manager: public C_AbstractClass{
 			(*KernelQuarkStorage)[1][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][0][j-1];
 			(*KernelQuarkStorage)[2][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][1][j-1];
 			(*KernelQuarkStorage)[3][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][3][j-1];
-			//cout << -1.0*(quark_memory->S_cont)[2][3][j-1] << "  " << temp*(quark_memory->S_cont)[2][1][j-1] << endl;
+			//std::cout << -1.0*(quark_memory->S_cont)[2][3][j-1] << "  " << temp*(quark_memory->S_cont)[2][1][j-1] << std::endl;
 			
 			(*KernelQuarkStorage)[0][j-1 + 3*num_steps]=0.0;
 			(*KernelQuarkStorage)[1][j-1 + 3*num_steps]=(quark_memory->S_cont)[3][0][j-1];
@@ -224,7 +224,7 @@ class C_Memory_Manager: public C_AbstractClass{
 		t_cmplxArray2D * KernelQuarkStorage;
 		
 		//KernelQuarkStorage=&(kernel_memory->VertexDressings[1][0]);
-		//cout << "after copy" << "  " << (kernel_memory->VertexDressings.size()) << endl;
+		//std::cout << "after copy" << "  " << (kernel_memory->VertexDressings.size()) << std::endl;
 		//(*KernelQuarkStorage).resize(3,dcxArray1D(num_steps));
 		
 		int num_P, num_p;
@@ -232,23 +232,23 @@ class C_Memory_Manager: public C_AbstractClass{
 			(*DressingStream) >> num_P >> num_p;
 			//kernel_memory->VertexDressings[1].resize(num_P,dcxArray2D(7,dcxArray1D(num_P*num_p)));
 			kernel_memory->VertexDressings[1].resize(num_P+1);//,dcxArray2D(7,dcxArray1D(10*10)));
-			cout << num_P <<"  "<< num_p <<"  "<< kernel_memory->VertexDressings[1].size() << endl;
+			std::cout << num_P <<"  "<< num_p <<"  "<< kernel_memory->VertexDressings[1].size() << std::endl;
 			for (int i = 0; i < num_P+1; i++){
 				KernelQuarkStorage=&(kernel_memory->VertexDressings[1][i]);
 				(*KernelQuarkStorage).resize(7,t_cmplxArray1D(num_p));
-				//cout << kernel_memory->VertexDressings.size() << "  " << kernel_memory->VertexDressings[1].size() << "  " << kernel_memory->VertexDressings[1][0].size() << "  " << kernel_memory->VertexDressings[1][0][0].size() << endl;
+				//std::cout << kernel_memory->VertexDressings.size() << "  " << kernel_memory->VertexDressings[1].size() << "  " << kernel_memory->VertexDressings[1][0].size() << "  " << kernel_memory->VertexDressings[1][0][0].size() << std::endl;
 				for (j=0;j<num_p;j++) 
 				{
 					for (int k = 0; k < 7; k++) (*DressingStream) >> (*KernelQuarkStorage)[k][j];
-					//for (int k = 0; k < 7; k++) cout << (*KernelQuarkStorage)[k][j];
-					//cout << endl;
+					//for (int k = 0; k < 7; k++) std::cout << (*KernelQuarkStorage)[k][j];
+					//std::cout << std::endl;
 					//(*DressingStream) >> (*KernelQuarkStorage)[0][j] >> (*KernelQuarkStorage)[1][j] >> (*KernelQuarkStorage)[2][j];
-					//cout << num_steps << "  " << (*KernelQuarkStorage)[0][j] << "  " << (*KernelQuarkStorage)[1][j] << "  " << (*KernelQuarkStorage)[2][j] << "  " << j << endl;
+					//std::cout << num_steps << "  " << (*KernelQuarkStorage)[0][j] << "  " << (*KernelQuarkStorage)[1][j] << "  " << (*KernelQuarkStorage)[2][j] << "  " << j << std::endl;
 				}
 				//cin.get();
 			}
 		}
-		else cout << "Cant open file!" << endl;
+		else std::cout << "Cant open file!" << std::endl;
 	}
 };
 
@@ -308,6 +308,7 @@ C_MemoryFactory_1_LoopDiagram * DedicMemFactory_1_LoopDiagram = new C_MemoryFact
 C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
 C_MemoryFactory_2_Loop_Int * DedicMemFactory_2_Loop_Int = new C_MemoryFactory_2_Loop_Int;
 C_Memory_Manager * MemoryManager= new C_Memory_Manager;
+
 /*
 template <typename T> class C_DedicMem_Abs{
 	
@@ -320,7 +321,7 @@ class C_DedicMem_Pion: public C_DedicMem_Abs {
 	
 	public:
 	void info(){
-		cout << "Dedicated Memory for Pion" << endl;
+		std::cout << "Dedicated Memory for Pion" << std::endl;
 	}	
 };
 
@@ -330,7 +331,7 @@ class C_DedicMem_Kernel: public C_DedicMem_Abs {
 	vector<dcxMatrix2D > K_Matrix_Storage;
 	
 	void info(){
-		cout << "Dedicated Memory for Kernel" << endl;
+		std::cout << "Dedicated Memory for Kernel" << std::endl;
 	}
 
 	void StoreKmatrix(dcxMatrix2D _K){

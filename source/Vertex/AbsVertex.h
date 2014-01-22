@@ -7,7 +7,7 @@ class C_AbsVertex: public C_AbsDiagram{
 	
 	public:
 	void info(){
-		cout << "AbsVertex" << endl;
+		std::cout << "AbsVertex" << std::endl;
 	}
 	
 	virtual void Initialization() = 0;

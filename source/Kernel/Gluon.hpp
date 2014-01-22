@@ -36,7 +36,7 @@ class C_Gluon: protected C_AbsDiagram
 					Gluon_ref=&C_Gluon::GluonMT;
 				} break;
 				case 2:{
-					//cout << "Special case  " << GluonType << endl;
+					//std::cout << "Special case  " << GluonType << std::endl;
 					SetInterpolator_for_ChristianGluon();
 					Gluon_ref=&C_Gluon::GluonFischer;
 				} break;
@@ -58,10 +58,10 @@ class C_Gluon: protected C_AbsDiagram
 				GlounTempStorage[0].push_back(p2);
 				GlounTempStorage[1].push_back(dressing);
 				GluonInterpStream >> p2 >> dressing;
-				//cout << GlounTempStorage[0][i] << GlounTempStorage[1][i] << endl;
+				//std::cout << GlounTempStorage[0][i] << GlounTempStorage[1][i] << std::endl;
 				i++;
 			}
-			//else cout << "Cant open file!" << endl;
+			//else std::cout << "Cant open file!" << std::endl;
 			GluonInterpStream.close();
 		
 		
@@ -83,9 +83,9 @@ class C_Gluon: protected C_AbsDiagram
 				ParamList >> line >> LogTail;
 				ParamList >> line >> GluonType;
 			}
-			cout << "D -" <<"  "<< D <<"  "<< "w2 -" <<"  "<< w2 <<"  "<< "LogTail -" <<"  "<< LogTail <<"  "<< "GluonType -" <<"  "<< GluonType << endl;
+			std::cout << "D -" <<"  "<< D <<"  "<< "w2 -" <<"  "<< w2 <<"  "<< "LogTail -" <<"  "<< LogTail <<"  "<< "GluonType -" <<"  "<< GluonType << std::endl;
 		}
-		else cout << "Cant open file!" << endl;
+		else std::cout << "Cant open file!" << std::endl;
 	}
 	
 // Get value of Gluon at k
@@ -108,10 +108,10 @@ class C_Gluon: protected C_AbsDiagram
 		for (int i = 0; i <= scale; i++)
 		{		
 			t_cmplx point = x*x; 
-			Gluon << real(point) <<"  "<< real(GetGluonAt(&point)) << endl;
+			Gluon << real(point) <<"  "<< real(GetGluonAt(&point)) << std::endl;
 			
 			x*=dp;
-			//cout << "Computing Gluon of type ...  " << GluonType << "  " << 100.0/(scale+1)*(i+1) << "%\n";
+			//std::cout << "Computing Gluon of type ...  " << GluonType << "  " << 100.0/(scale+1)*(i+1) << "%\n";
 		}
 		
 		Gluon.close();

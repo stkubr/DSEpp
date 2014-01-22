@@ -28,7 +28,7 @@ class C_1_LoopDiagram: public C_AbsDiagram,public C_1_Loop_Int{
 	
 	void ReadParameters()
 	{
-		cout << "Parameters initialization..."  << endl;
+		std::cout << "Parameters initialization..."  << std::endl;
 		string line;
 		ifstream ParamList("../Parameters_files/1LoopDiagram.txt");
 		if (ParamList.is_open())
@@ -39,9 +39,9 @@ class C_1_LoopDiagram: public C_AbsDiagram,public C_1_Loop_Int{
 				ParamList >> line >> NumChebPoints;
 				ParamList >> line >> NumAngleY;
 			}
-			cout << NumRadialPoints << "  " << NumChebPoints << "  " << NumAngleY << endl;
+			std::cout << NumRadialPoints << "  " << NumChebPoints << "  " << NumAngleY << std::endl;
 		}
-		else cout << "Cant open file!" << endl;
+		else std::cout << "Cant open file!" << std::endl;
 	}
 	
 	void Initialization(){

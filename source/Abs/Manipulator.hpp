@@ -64,10 +64,10 @@ class C_Manipulator: public C_AbstractClass{
 		ofstream SaveDressingStream;
 		SaveDressingStream.open(SaveDressingPath);
 		for (int i = 0; i < E_amplitute.size(); i++){
-			SaveDressingStream << PhysState->Kernels[0]->Memory->VertexDressings[0][0][0][i] << '\t' << PhysState->Kernels[0]->Memory->VertexDressings[0][0][1][i] << '\t' << E_amplitute[i] << endl;
+			SaveDressingStream << PhysState->Kernels[0]->Memory->VertexDressings[0][0][0][i] << '\t' << PhysState->Kernels[0]->Memory->VertexDressings[0][0][1][i] << '\t' << E_amplitute[i] << std::endl;
 		}
 		SaveDressingStream.close();
-		cout << "Dressing was saved to file " << (*SaveDressingPath) << endl;		
+		std::cout << "Dressing was saved to file " << (*SaveDressingPath) << std::endl;		
 	}
 	
 	void LoadDressingFiles(){
@@ -78,8 +78,8 @@ class C_Manipulator: public C_AbstractClass{
 		{
 			z_i=real(PhysState->Kernels[0]->Memory->VertexDressings[1][0][0][j]);
 			E_amp=real(PhysState->Kernels[0]->GetDressingAt(1,0,z_i));
-			temp_continuation << z_i << '\t' << E_amp << endl;
-			cout << z_i << '\t' << E_amp << endl;
+			temp_continuation << z_i << '\t' << E_amp << std::endl;
+			std::cout << z_i << '\t' << E_amp << std::endl;
 		}*/
 		temp_continuation.close();
 	}
@@ -109,7 +109,7 @@ class C_Manipulator: public C_AbstractClass{
 						if (k==0) DrawBSA << "  " << real(amps[k]) - 1.0;
 						else DrawBSA << "  " << real(amps[k]);
 					}
-					DrawBSA << endl;
+					DrawBSA << std::endl;
 				}				
 				x*=dp;
 			}
@@ -122,7 +122,7 @@ class C_Manipulator: public C_AbstractClass{
 			{		
 				t_cmplx point = x; 
 				this->DressBSEs_complex(0,point,13,1.0);
-				DrawBSA << real(point*point) << "  " << Norm*real(PhysState->BSEs[0]->getCauchyAt_embedded(0.001)[0]) << endl;
+				DrawBSA << real(point*point) << "  " << Norm*real(PhysState->BSEs[0]->getCauchyAt_embedded(0.001)[0]) << std::endl;
 				x*=dp;
 			}
 			DrawBSA.close();
@@ -146,7 +146,7 @@ class C_Manipulator: public C_AbstractClass{
 			ofstream DrawBSA;
 			DrawBSA.open (path_to_draw);
 			
-			StoreBSA << scale  << '	' <<  PhysState->BSEs[0]->Memory->CauchyContour[0].size() << endl;
+			StoreBSA << scale  << '	' <<  PhysState->BSEs[0]->Memory->CauchyContour[0].size() << std::endl;
 			for (int i = 0; i <= scale; i++)
 			{		
 				t_cmplx point = x; 
@@ -162,7 +162,7 @@ class C_Manipulator: public C_AbstractClass{
 						if (k==0) DrawBSA << "  " << real(amps[k]) - 1.0;
 						else DrawBSA << "  " << real(amps[k]);
 					}
-					DrawBSA << endl;
+					DrawBSA << std::endl;
 				}
 				
 				for (int j = 0; j < PhysState->BSEs[0]->Memory->CauchyContour[0].size(); j++){					
@@ -171,7 +171,7 @@ class C_Manipulator: public C_AbstractClass{
 						if (k==0) StoreBSA  << '	' <<  (PhysState->BSEs[0]->Memory->CauchyContour[k+2][j]) - 1.0;
 						else StoreBSA  << '	' <<  (PhysState->BSEs[0]->Memory->CauchyContour[k+2][j]);
 					}
-					StoreBSA << endl;
+					StoreBSA << std::endl;
 				}				
 				x*=dp;
 			}
@@ -188,11 +188,11 @@ class C_Manipulator: public C_AbstractClass{
 		for (int i = 0; i < 5; i++){
 			int num_exited=0;
 			IfSpurious=false;
-			cout << "Now doing - " << "  " << i << endl;
+			std::cout << "Now doing - " << "  " << i << std::endl;
 			while (!IfSpurious){
 				t_cmplxArray1D state = RootFind(i,num_exited,down_limit,up_limit);
 				if (!IfSpurious){
-					cout << num_exited << "  " << state[0] << "  " << state[1] << endl;
+					std::cout << num_exited << "  " << state[0] << "  " << state[1] << std::endl;
 					Spectra[i][0].push_back(state[0]);
 					Spectra[i][1].push_back(state[1]);
 					num_exited++;
@@ -200,8 +200,8 @@ class C_Manipulator: public C_AbstractClass{
 			}
 			
 			for (int j = 0; j < Spectra[i][0].size(); j++){
-				CharmSpectra << 2*i + (real(Spectra[i][1][j])+1.0)/2.0 << "  " << imag(Spectra[i][0][j])  << endl;
-				cout << 2*i + (real(Spectra[i][1][j])+1.0)/2.0 << "  " << imag(Spectra[i][0][j]) << "  " << (real(Spectra[i][1][j]))<< endl;
+				CharmSpectra << 2*i + (real(Spectra[i][1][j])+1.0)/2.0 << "  " << imag(Spectra[i][0][j])  << std::endl;
+				std::cout << 2*i + (real(Spectra[i][1][j])+1.0)/2.0 << "  " << imag(Spectra[i][0][j]) << "  " << (real(Spectra[i][1][j]))<< std::endl;
 			}
 		}
 		CharmSpectra.close();
@@ -222,7 +222,7 @@ class C_Manipulator: public C_AbstractClass{
 			mid=temp_EV_parity[0][num_state];
 			parity=temp_EV_parity[1][num_state];
 			eps = fabs(real(mid) - 1.0);
-			cout << mid << "  " << m_P << "  " << eps << endl;
+			std::cout << mid << "  " << m_P << "  " << eps << std::endl;
 			if(fabs(imag(mid))>0.1 || real(mid)<0.001 || ctr>30 || fabs(imag(t_cmplx(0.0,up_limit) - m_P)) < 0.1  ) {IfSpurious=true; break;}
 			if(real(mid)>1.0) e_P=m_P; 
 			if(real(mid)<1.0) s_P=m_P; 
@@ -240,27 +240,27 @@ class C_Manipulator: public C_AbstractClass{
 	
 	void CheckGroundStates(double M_PS, double M_S, double M_V, double M_AV){
 		t_cmplxArray3D temp(4);
-		cout << "PseudoScalar EV calculation" << endl;
+		std::cout << "PseudoScalar EV calculation" << std::endl;
 		temp[0]=CalcEVBSEs(0,t_cmplx(0.0,M_PS));
-		cout << "Scalar EV calculation" << endl;
+		std::cout << "Scalar EV calculation" << std::endl;
 		temp[1]=CalcEVBSEs(1,t_cmplx(0.0,M_S));
-		cout << "Vector EV calculation" << endl;
+		std::cout << "Vector EV calculation" << std::endl;
 		temp[2]=CalcEVBSEs(2,t_cmplx(0.0,M_V));
-		cout << "AxialVector EV calculation" << endl;
+		std::cout << "AxialVector EV calculation" << std::endl;
 		temp[3]=CalcEVBSEs(3,t_cmplx(0.0,M_AV));
 		
-		vector <string> names(4);
+		std::vector <string> names(4);
 		names[0]="PS-";
 		names[1]="S-";
 		names[2]="V-";
 		names[3]="AV-";
-		cout << fixed;
-		cout << setprecision (NUM_PRECISION);
+		std::cout << fixed;
+		std::cout << setprecision (NUM_PRECISION);
 		for (int i = 0; i < 5; i++){
 			for (int j = 0; j < 4; j++){
-				cout << names[j] << "  " << real(temp[j][0][i]) << "  " << real(temp[j][1][i]) << "||   ";
+				std::cout << names[j] << "  " << real(temp[j][0][i]) << "  " << real(temp[j][1][i]) << "||   ";
 			}
-			cout << endl;
+			std::cout << std::endl;
 		}
 	}
 	
@@ -297,9 +297,9 @@ class C_Manipulator: public C_AbstractClass{
 		//start=obj->SetEVMatrix(s_P)[0];
 		//end=obj->SetEVMatrix(e_P)[0];
 		start=obj->SetEVMatrix(s_P)[0][num_state];
-		cout << start << "  " << s_P << endl;
+		std::cout << start << "  " << s_P << std::endl;
 		end=obj->SetEVMatrix(e_P)[0][num_state];
-		cout << end << "  " << e_P << endl;
+		std::cout << end << "  " << e_P << std::endl;
 		while (eps>accuracy){
 			
 			double gamma=(real(end)-real(start))/(imag(e_P) - imag(s_P));
@@ -307,7 +307,7 @@ class C_Manipulator: public C_AbstractClass{
 			
 			mid=obj->SetEVMatrix(m_P)[0][num_state];
 			eps = fabs(real(mid) - 1.0);
-			cout << mid << "  " << m_P << "  " << eps << endl;
+			std::cout << mid << "  " << m_P << "  " << eps << std::endl;
 			if(real(mid)>1.0) e_P=m_P; 
 			if(real(mid)<1.0) s_P=m_P; 
 		}
@@ -332,8 +332,8 @@ class C_Manipulator: public C_AbstractClass{
 			PhysState->BSEs[0]->flag_amp_desciption=false;
 			MassAndParity=RootFind(0,0,0.0,1.2);
 			
-			cout << m_quark  << '	' <<  imag(MassAndParity[0]) << endl;
-			MassDependenceStream << m_quark  << '	' <<  imag(MassAndParity[0]) << endl;
+			std::cout << m_quark  << '	' <<  imag(MassAndParity[0]) << std::endl;
+			MassDependenceStream << m_quark  << '	' <<  imag(MassAndParity[0]) << std::endl;
 			
 			m_quark=1.5*m_quark;
 		}
@@ -364,8 +364,8 @@ class C_Manipulator: public C_AbstractClass{
 				ChargeRad_bs=CalcChargeRadius_PionCloud(Norm_bs,Mass_bs);
 			}
 		
-			cout << m_quark  << '	' <<  Mass_bs  << '	' <<  Norm_bs  << '	' <<  ChargeRad_bs << endl;
-			ChargeMassDepStream << m_quark  << '	' <<  Mass_bs  << '	' <<  Norm_bs  << '	' <<  ChargeRad_bs << endl;
+			std::cout << m_quark  << '	' <<  Mass_bs  << '	' <<  Norm_bs  << '	' <<  ChargeRad_bs << std::endl;
+			ChargeMassDepStream << m_quark  << '	' <<  Mass_bs  << '	' <<  Norm_bs  << '	' <<  ChargeRad_bs << std::endl;
 			
 			m_quark=1.5*m_quark;
 		}
@@ -396,10 +396,10 @@ class C_Manipulator: public C_AbstractClass{
 		for (int i = 0; i <= scale; i++)
 		{		
 			FF_1_res=FF_1.GetResultAtPoint(x);
-			//cout << x*x << "  " << FF_1_res+FF_2_res-FF_3_res << "  " << x*x*(FF_1_res+FF_2_res-FF_3_res) << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << endl;	
-			//FormFactorStream << x*x << "  " << FF_1_res+FF_2_res+FF_3_res << "  " << x*x*(FF_1_res+FF_2_res+FF_3_res) << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << endl;		
-			cout << x*x << "  " << FF_1_res << endl;	
-			FormFactorStream << x*x << "  " << real(FF_1_res) << endl;		
+			//std::cout << x*x << "  " << FF_1_res+FF_2_res-FF_3_res << "  " << x*x*(FF_1_res+FF_2_res-FF_3_res) << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << std::endl;	
+			//FormFactorStream << x*x << "  " << FF_1_res+FF_2_res+FF_3_res << "  " << x*x*(FF_1_res+FF_2_res+FF_3_res) << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << std::endl;		
+			std::cout << x*x << "  " << FF_1_res << std::endl;	
+			FormFactorStream << x*x << "  " << real(FF_1_res) << std::endl;		
 			x+=dp;
 		}
 		FormFactorStream.close();
@@ -426,16 +426,16 @@ class C_Manipulator: public C_AbstractClass{
 			double i_count;
 			i_count=i;
 			deriv_FF[(i-1)]=FF_1.GetResultAtPoint(Q+i_count*h);
-			cout << "FormFactor at point " << "  " << Q+i_count*h << "  " << real(deriv_FF[(i-1)]) << endl;
+			std::cout << "FormFactor at point " << "  " << Q+i_count*h << "  " << real(deriv_FF[(i-1)]) << std::endl;
 
 			deriv_FF[(i-1)+2]=FF_1.GetResultAtPoint(Q-i_count*h);
-			cout << "FormFactor at point " << "  " << Q-i_count*h << "  " << real(deriv_FF[(i-1)+2]) << endl;
+			std::cout << "FormFactor at point " << "  " << Q-i_count*h << "  " << real(deriv_FF[(i-1)+2]) << std::endl;
 		}
 		
 		
 		Deriv_total=real(-deriv_FF[1] + 8.0*deriv_FF[0] - 8.0*deriv_FF[2] + deriv_FF[3])/(12.0*(h))/(2.0*Q)*0.197*0.197*6.0;
 		
-		cout << "Charge Radius is -" << "  " << Deriv_total << endl;
+		std::cout << "Charge Radius is -" << "  " << Deriv_total << std::endl;
 		return Deriv_total;	
 	}
 	
@@ -476,8 +476,8 @@ class C_Manipulator: public C_AbstractClass{
 			FF_1_res=FF_1.GetResultAtPoint(x);
 			FF_2_res=FF_2.GetResultAtPoint(x);
 			FF_3_res=FF_3.GetResultAtPoint(x);
-			cout << x*x << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << endl;	
-			FormFactorStream << x*x << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res) << endl;			
+			std::cout << x*x << "  " << FF_1_res << "  " << FF_2_res << "  " << FF_3_res << std::endl;	
+			FormFactorStream << x*x << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res) << std::endl;			
 			x+=dp;
 		}
 		FormFactorStream.close();
@@ -522,19 +522,19 @@ class C_Manipulator: public C_AbstractClass{
 			FF_3_res=FF_3.GetResultAtPoint(Q+i_count*h);
 			
 			deriv_FF[(i-1)]=FF_1_res + FF_2_res + FF_3_res;
-			cout << "FormFactor at point " << "  " << Q+i_count*h << "  " << real(deriv_FF[(i-1)]) << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res)  << endl;
+			std::cout << "FormFactor at point " << "  " << Q+i_count*h << "  " << real(deriv_FF[(i-1)]) << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res)  << std::endl;
 			
 			FF_1_res=FF_1.GetResultAtPoint(Q+i_count*h);
 			FF_2_res=FF_2.GetResultAtPoint(Q+i_count*h);
 			FF_3_res=FF_3.GetResultAtPoint(Q+i_count*h);
 			
 			deriv_FF[(i-1)+2]=FF_1_res + FF_2_res + FF_3_res;
-			cout << "FormFactor at point " << "  " << Q-i_count*h << "  " << real(deriv_FF[(i-1)+2]) << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res) << endl;
+			std::cout << "FormFactor at point " << "  " << Q-i_count*h << "  " << real(deriv_FF[(i-1)+2]) << "  " << real(FF_1_res) << "  " << real(FF_2_res) << "  " << real(FF_3_res) << std::endl;
 		}
 		
 		Deriv_total=real(-deriv_FF[1] + 8.0*deriv_FF[0] - 8.0*deriv_FF[2] + deriv_FF[3])/(12.0*(h))/(2.0*Q)*0.197*0.197*6.0;
 		
-		cout << "Charge Radius is -" << "  " << Deriv_total << endl;
+		std::cout << "Charge Radius is -" << "  " << Deriv_total << std::endl;
 		return Deriv_total;	
 	}
 	
@@ -551,6 +551,6 @@ class C_Manipulator: public C_AbstractClass{
 						
 		FF_1_res=FF_1.GetResultAtPoint(Q);
 
-		cout << FF_1_res << endl;	
+		std::cout << FF_1_res << std::endl;	
 	}
 };

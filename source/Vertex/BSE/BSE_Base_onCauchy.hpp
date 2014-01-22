@@ -51,10 +51,10 @@
 		n=Memory->CauchyContour[0].size();
 		for (int i = 0; i < n; i++)
 		{
-			countur_data << real(Memory->CauchyContour[0][i]) << "  " << imag(Memory->CauchyContour[0][i]) << endl; 
+			countur_data << real(Memory->CauchyContour[0][i]) << "  " << imag(Memory->CauchyContour[0][i]) << std::endl; 
 		}
 		countur_data.close();
-		cout << "Contour has been set! points - "<< n << endl;
+		std::cout << "Contour has been set! points - "<< n << std::endl;
 		
 		
 		// set (p - k)^2 grid 
@@ -80,7 +80,7 @@
 							_y=zz_angleY[y_ctr];
 							k_temp.SetP4(0.0, sqrt((1.0-_z*_z)*_k2*(1.0-_y*_y)), _y*sqrt((1.0-_z*_z)*_k2), sqrt(_k2)*_z );
 							Memory->CauchyGrid[0][i][z_and_Int_ctr]=((p_temp-k_temp)*(p_temp-k_temp));
-							//cout << i << "  " << zp_ctr << "  " << k_ctr << "  " << z_ctr << "  " << y_ctr << "  " << z_and_Int_ctr << endl;
+							//std::cout << i << "  " << zp_ctr << "  " << k_ctr << "  " << z_ctr << "  " << y_ctr << "  " << z_and_Int_ctr << std::endl;
 							z_and_Int_ctr++;
 						}
 					}
@@ -94,10 +94,10 @@
 			int i=0;
 			for (int j = 0; j < m; j++)
 			{
-				grid_data << real(Memory->CauchyGrid[0][i][j]) << "  " << imag(Memory->CauchyGrid[0][i][j]) << endl;
+				grid_data << real(Memory->CauchyGrid[0][i][j]) << "  " << imag(Memory->CauchyGrid[0][i][j]) << std::endl;
 			}
 		grid_data.close();
-		cout << "Grid has been set! points - " << m*n << endl << endl;
+		std::cout << "Grid has been set! points - " << m*n << std::endl << std::endl;
 	}
 	
 	t_cmplxArray1D C_BSE_Hadron_Base::getCauchyAt_embedded(t_cmplx coordin){
@@ -108,7 +108,7 @@
 		for (int i = 0; i < num_amplitudes; i++){F[i]=0.0;}
 		N=t_cmplx(0.0,0.0);
 		
-		//cout << Memory->VertexDressings[0][0][0].size() << endl;
+		//std::cout << Memory->VertexDressings[0][0][0].size() << std::endl;
 		
 		for (int j=1;j<= Memory->CauchyContour[0].size();j++) 
 		{
@@ -124,7 +124,7 @@
 	
 	
 	void C_BSE_Hadron_Base::CalcVectorGrid(){
-		cout << "Vector Grid" << endl;
+		std::cout << "Vector Grid" << std::endl;
 #pragma omp parallel //num_threads(1)
 {//begin of pragma
 		t_cmplx coordin;
@@ -153,7 +153,7 @@
 	void C_BSE_Hadron_Base::CalcVectorCont(t_cmplx _P){
 		double temp_time;
 		temp_time=Get_Time();
-		cout << "Vector Contour" << endl;
+		std::cout << "Vector Contour" << std::endl;
 #pragma omp parallel //num_threads(1)
 {//start of pragma
 		C_BSE_Hadron_Base * temp_copy;
@@ -184,7 +184,7 @@
 		delete temp_copy;
 }//end of pragma
 
-	cout << "Time spent - " << (Get_Time()-temp_time)/omp_get_max_threads() << endl;
+	std::cout << "Time spent - " << (Get_Time()-temp_time)/omp_get_max_threads() << std::endl;
 	t_cmplxArray1D TempArray(num_amplitudes);
 	ofstream temp_continuation;
 	temp_continuation.open ("../Data_files/BSEs_onCauchy.dat");
@@ -194,11 +194,11 @@
 			
 			temp_continuation << (zz_rad[i]);
 			for (int amp = 0; amp < num_amplitudes; amp++) temp_continuation  << '	' <<  real(TempArray[amp]);
-			temp_continuation << endl;
+			temp_continuation << std::endl;
 			
-			cout << (zz_rad[i]);
-			for (int amp = 0; amp < num_amplitudes; amp++) cout << "  " << (TempArray[amp]);
-			cout << endl;
+			std::cout << (zz_rad[i]);
+			for (int amp = 0; amp < num_amplitudes; amp++) std::cout << "  " << (TempArray[amp]);
+			std::cout << std::endl;
 		}
 	temp_continuation.close();
 	}	
@@ -220,7 +220,7 @@
 			OldAmp=getCauchyAt_embedded(zz_rad[1])[0];
 			
 			PreNormBSA_complex();
-			cout << "Interation Step - " << dummy_ctr << endl;
+			std::cout << "Interation Step - " << dummy_ctr << std::endl;
 			dummy_ctr++;
 		}
 			CalcVectorGrid();
@@ -234,11 +234,11 @@
 			
 			temp_continuation << (zz_rad[i]);
 			for (int amp = 0; amp < num_amplitudes; amp++) temp_continuation  << '	' <<  real(TempArray[amp]);
-			temp_continuation << endl;
+			temp_continuation << std::endl;
 			
-			cout << (zz_rad[i]);
-			for (int amp = 0; amp < num_amplitudes; amp++) cout << "  " << (TempArray[amp]);
-			cout << endl;
+			std::cout << (zz_rad[i]);
+			for (int amp = 0; amp < num_amplitudes; amp++) std::cout << "  " << (TempArray[amp]);
+			std::cout << std::endl;
 		}
 		temp_continuation.close();
 		DrawBSA_complex();
@@ -270,7 +270,7 @@
 			z_i=Memory->CauchyContour[0][j-1];
 			dz_i=Memory->CauchyContour[1][j-1];
 			E_amp=Memory->CauchyContour[2][j-1];
-			temp_continuation << z_i << '\t' << dz_i << '\t' << E_amp << endl;
+			temp_continuation << z_i << '\t' << dz_i << '\t' << E_amp << std::endl;
 		}
 		temp_continuation.close();
 	}

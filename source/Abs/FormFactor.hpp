@@ -40,7 +40,7 @@ class C_FormFactor_RL: public C_1_LoopDiagram{
 	
 	void SetIntegrationPathes(t_cmplx _Q){
 		Memory->ErasePathes();
-		cout << "Setting Pathes...     ";
+		std::cout << "Setting Pathes...     ";
 		for (unsigned int i = 1; i < zz_rad.size(); i++){
 			for (unsigned int j = 1; j < zz_cheb.size() ; j++) {
 				for (unsigned int k = 1; k < zz_angleY.size() ; k++) {
@@ -54,7 +54,7 @@ class C_FormFactor_RL: public C_1_LoopDiagram{
 				Memory->Path_Quark_m_m.push_back(q_m*q_m);
 			}
 		}
-		cout << "Pathes have been set." << endl;
+		std::cout << "Pathes have been set." << std::endl;
 	}
 	
 	void FillStorages(t_cmplx _Q, t_cmplx M_in, t_cmplx M_out)
@@ -66,20 +66,20 @@ class C_FormFactor_RL: public C_1_LoopDiagram{
 		TransmitingBS->flag_amp_desciption=true;
 		TransmitingBS->SetBSAonPath_Cauchy(&Memory->Photon_Stg, &Memory->Path_Photon,_Q,real(sqrt(M2_bs+_Q*_Q/4.0)));
 		//TransmitingBS->SetBSAonPath(&Memory->Photon_Stg, &Memory->Path_Photon,_Q,false);
-		cout << "Quarks" << endl;
+		std::cout << "Quarks" << std::endl;
 		
 		Quark->SetQuarkonPath(&Memory->Quark_m_m_Stg,&Memory->Path_Quark_m_m);
 		Quark->SetQuarkonPath(&Memory->Quark_p_p_Stg,&Memory->Path_Quark_p_p);
 		Quark->SetQuarkonPath(&Memory->Quark_p_m_Stg,&Memory->Path_Quark_p_m);
-		cout << endl;
-		cout << "Storages at " << _Q << " have been precalculated" << endl;
-		cout << "We are ready for calculation of FormFactor at " << _Q << endl;
+		std::cout << std::endl;
+		std::cout << "Storages at " << _Q << " have been precalculated" << std::endl;
+		std::cout << "We are ready for calculation of FormFactor at " << _Q << std::endl;
 	}
 	
 	t_cmplxMatrix Integrand(t_cmplxArray1D args) {
 		t_cmplxMatrix result;
 		result.Resize(num_amplitudes,1);
-		vector<t_cmplxDirac> Photon_DS(8);
+		std::vector<t_cmplxDirac> Photon_DS(8);
 		t_cmplx Kinematic_factor;
 		t_cmplx x,y,z;
 		x=(args[0]);
@@ -115,7 +115,7 @@ class C_FormFactor_RL: public C_1_LoopDiagram{
 		FillStorages(_Q,ii*sqrt(M2_bs),ii*sqrt(M2_bs));
 		Int_counter=0;
 		Sub_Int_counter=0;
-		cout << "Integration started..." << endl;
+		std::cout << "Integration started..." << std::endl;
 		result = quad3d();
 		return result(0,0);
 	}	

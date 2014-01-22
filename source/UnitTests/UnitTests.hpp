@@ -15,8 +15,8 @@ class C_IntegrationUnitTest{
 																										  IntegrationUnitTester.getDownLimit(),
 																							              IntegrationUnitTester.getUpLimit(), 1, integrator_id);
 		dUnitTestResult = IntegratorGaussLegendre->getResult(&C_Integration_Mockup::IntegrandMockup, &IntegrationUnitTester)(0,0);
-		cout.precision(16);
-		//cout << dUnitTestResult << endl;
+		std::cout.precision(16);
+		//std::cout << dUnitTestResult << std::endl;
 		//BOOST_CHECK_CLOSE(dRefResult,dUnitTestResult,Precision);
 		delete IntegratorGaussLegendre;
 		return dUnitTestResult;
@@ -47,7 +47,7 @@ class C_PathesUnitTest{
 				ReturnPoints = getPathOnVector(SamplePoints, &LineInstance);
 			}break;
 			default:
-				cout << "Error: PathTest got wrong PathType!" << endl;
+				std::cout << "Error: PathTest got wrong PathType!" << std::endl;
 				assert(false);
 		}
 		
@@ -70,7 +70,7 @@ class C_PathesUnitTest{
 				TestValue = getPathAtPoint(t_paramtr, &LineInstance);
 			}break;
 			default:
-				cout << "Error: PathTest got wrong PathType!" << endl;
+				std::cout << "Error: PathTest got wrong PathType!" << std::endl;
 				assert(false);
 		}
 		

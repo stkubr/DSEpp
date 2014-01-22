@@ -1,87 +1,70 @@
+/*
+ * Support_functions.hpp
+ *
+ *  Created on: Jan 21, 2014
+ *      Author: stkubr
+ */
+
+#ifndef SUPPORT_FUNCTIONS_HPP_
+#define SUPPORT_FUNCTIONS_HPP_
 
 
 /// Prints a line accross the screen
-void PrintLine(char __c){ 
-  for(int i = 0; i < 80; i++) cout << __c; 
-  cout << endl;
+void PrintLine(char __c) {
+	for (int i = 0; i < 80; i++)
+		std::cout << __c;
+	std::cout << std::endl;
 }
 
-/// Prints "h" spaces 
-void PrintSpaces(int h){ 
-  for(int i = 0; i < h; i++) cout << " "; 
+/// Prints "h" spaces
+void PrintSpaces(int h) {
+	for (int i = 0; i < h; i++)
+		std::cout << " ";
 }
 
+t_cmplx Cheb_polinoms(t_cmplx x, int order) {
+	t_cmplx U[order + 10];
 
-t_cmplx Cheb_polinoms(t_cmplx x, int order)
-{
-	t_cmplx U[order+10];
-	
-	U[0]=1.0;
-	U[1]=2.0*x;
-	U[2]=4.0*x*x - 1.0;
-	
-	if(order==0)
-	{
+	U[0] = 1.0;
+	U[1] = 2.0 * x;
+	U[2] = 4.0 * x * x - 1.0;
+
+	if (order == 0) {
 		return U[0];
 	}
-	
-	if(order==1)
-	{
+
+	if (order == 1) {
 		return U[1];
 	}
-		
-	if(order==2)
-	{
+
+	if (order == 2) {
 		return U[2];
 	}
-		
-	if(order>2)
-	{
-		for (int i = 3; i <= order; i++)
-		{
-			U[i]=2.0*x*U[i-1] - U[i-2];
+
+	if (order > 2) {
+		for (int i = 3; i <= order; i++) {
+			U[i] = 2.0 * x * U[i - 1] - U[i - 2];
 		}
 		return U[order];
 	}
-	
-	cout << "Chebys Error!" << endl;
+
+	std::cout << "Chebys Error!" << std::endl;
 	return 0;
 }
-/*
-double SignFlap(int k)
-{
-	dcx I,res;
-	res=dcx(0.0,0.0);
-	I=dcx(0.0,1.0);
-	
-	if(k==0) return 1;
-	if(k>0)
-	{
-		for (int i = 1; i < k; i++)
-		{
-			res
-		}
-		
-	}
-	
-	
-}*/
 
-
-double Get_Time()
-{
-	return (double)clock()/CLOCKS_PER_SEC;
+double Get_Time() {
+	return (double) clock() / CLOCKS_PER_SEC;
 }
 
-void DebugLine(string _word)
-{
+void DebugLine(string _word) {
 //#if DEBUG_MODE==1
-	cout <<" Debug Line at place - "<< _word << endl;
+	std::cout << " Debug Line at place - " << _word << std::endl;
 //#endif
 }
 
-void StopLine()
-{
+void StopLine() {
 	exit(1);
 }
 
+
+#endif /* SUPPORT_FUNCTIONS_HPP_ */

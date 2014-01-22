@@ -4,8 +4,8 @@ class C_2_LoopDiagram: public C_AbsDiagram,public C_2_Loop_Int{
 	public:
 	C_DedicMem_2_LoopDiagram * Memory;
 	
-	vector<C_BSE_Hadron_Base *> Vertexes;
-	vector<C_Propagator *> Propagators;
+	std::vector<C_BSE_Hadron_Base *> Vertexes;
+	std::vector<C_Propagator *> Propagators;
 	
 	int num_amplitudes,NumRadialPoints_1,NumChebPoints_1,NumAngleY_1,Sub_Int_counter,NumPointsTotal;
 	int NumRadialPoints_2,NumChebPoints_2,NumAngleY_2, NumAnglePhi_2;
@@ -28,7 +28,7 @@ class C_2_LoopDiagram: public C_AbsDiagram,public C_2_Loop_Int{
 	
 	void ReadParameters()
 	{
-		cout << "Parameters initialization..."  << endl;
+		std::cout << "Parameters initialization..."  << std::endl;
 		string line;
 		ifstream ParamList("../Parameters_files/2LoopDiagram.txt");
 		if (ParamList.is_open())
@@ -44,9 +44,9 @@ class C_2_LoopDiagram: public C_AbsDiagram,public C_2_Loop_Int{
 				ParamList >> line >> NumAngleY_2;
 				ParamList >> line >> NumAnglePhi_2;
 			}
-			cout << NumRadialPoints_1 << "  " << NumChebPoints_1 << "  " << NumAngleY_1 << "  " << NumRadialPoints_2 << "  " << NumChebPoints_2 << "  " << NumAngleY_2 << "  " << NumAnglePhi_2 << endl;
+			std::cout << NumRadialPoints_1 << "  " << NumChebPoints_1 << "  " << NumAngleY_1 << "  " << NumRadialPoints_2 << "  " << NumChebPoints_2 << "  " << NumAngleY_2 << "  " << NumAnglePhi_2 << std::endl;
 		}
-		else cout << "Cant open file!" << endl;
+		else std::cout << "Cant open file!" << std::endl;
 	}
 	
 	void Initialization(){
@@ -96,12 +96,12 @@ class C_2_LoopDiagram: public C_AbsDiagram,public C_2_Loop_Int{
 	void GetResult(){
 		dcx res;
 		//res=quad7d()(0,0);
-		//cout << res/10.0/10.0/2.0/pi/pi << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
+		//std::cout << res/10.0/10.0/2.0/pi/pi << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
 		
 		SetIntegrationVectors(NumPointsTotal);
 		
 		res=quad7d_vector()(0,0);
-		cout << res << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << endl;
+		std::cout << res << "  " << Int_counter_total << "  " << Int_counter_1 << "  " << Int_counter_2 << std::endl;
 		//cin.get();
 	}*/
 	
