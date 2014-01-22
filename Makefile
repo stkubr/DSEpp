@@ -1,24 +1,29 @@
 CC=g++
-CFLAGS=-fopenmp -O3 -std=gnu++0x -I./../../boost/ -I./../qft++/include -I ./../../eigen/
+CFLAGS=-fopenmp -g -O3 -std=gnu++0x -I./../../boost/ -I./../qft++/include -I ./../eigen/
 LDFLAGS=-fopenmp
 COVERAGE=
+DEBUG=
 ifneq ($(COVERAGE),)
   CFLAGS += --coverage -fprofile-arcs -ftest-coverage
   LDFLAGS += -fprofile-arcs
 endif
+ifneq ($(DEBUG),)
+  CFLAGS += -g
+endif
 
-C_OBJS=DSE/Quark_parameters.cpp
+
+C_OBJS=source/DSE/Quark_parameters.cpp
 #C_OBJS+=Abs/AbsDiagram.cpp
-C_OBJS+=DSE/Propagator.cpp
+C_OBJS+=source/DSE/Propagator.cpp
 #C_OBJS+=Kernel/Gluon.cpp  $(C_OBJS)
 
-SOURCES=main_test.cpp $(C_OBJS)
+SOURCES=source/main_test.cpp# $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=main_test 
+EXECUTABLE=bin/main_test 
 
-SOURCES_T=Integration_test.cpp $(C_OBJS)
+SOURCES_T=UnitTests/Integration_test.cpp $(C_OBJS)
 OBJECTS_T=$(SOURCES_T:.cpp=.o)
-EXECUTABLE_T=Integration_test
+EXECUTABLE_T=bin/Integration_test
 
 
 all: $(EXECUTABLE) $(EXECUTABLE_T)
@@ -35,13 +40,13 @@ $(EXECUTABLE): $(OBJECTS)
 
 
 Integration_Test: $(EXECUTABLE_T)
-	./Integration_test --run_test=IntegrationTest
+	./bin/Integration_test --run_test=IntegrationTest
 #--report_level=detailed
 Unit_Test: $(EXECUTABLE_T)
-	./Integration_test --run_test=Gau*
+	./bin/Integration_test --run_test=Gau*
 
 Path_Unit_Test: $(EXECUTABLE_T)
-	./Integration_test --run_test=Geom*
+	./bin/Integration_test --run_test=Geom*
 
 clean:
 	$(RM) $(EXECUTABLE) $(EXECUTABLE_T)

@@ -132,7 +132,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	
 	public:
 	C_BSE_Hadron_Base(){
-		ifstream ParamList("../Parameters_files/Mesons/Scalar_symmetric.txt");
+		ifstream ParamList("Parameters_files/Mesons/Scalar_symmetric.txt");
 		params.setParams(&ParamList);
 		std::cout << params << std::endl;
 		flag_off_shell=false;
@@ -507,7 +507,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		num_state = EV.size()- _state;
 		
 		ofstream DrawBSA_matrix;
-		DrawBSA_matrix.open ("../Data_files/BSEs_matrix.dat");
+		DrawBSA_matrix.open ("Data_files/BSEs_matrix.dat");
 		
 		int i=EV.size()-1;
 		
@@ -815,7 +815,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	void DrawBSA(t_cmplx _P){
 		t_cmplxMatrix TempArray(num_amplitudes,1);
 		ofstream temp_continuation;
-		temp_continuation.open ("../Data_files/BSEs.dat");
+		temp_continuation.open ("Data_files/BSEs.dat");
 		for (int i = 1; i < zz_rad.size(); i++)
 		{
 			TempArray=CalcBSA(sqrt(zz_rad[i]),_P,1);

@@ -7,9 +7,9 @@ class C_Up_Quark: public C_Quark{
 	
 		C_Up_Quark(){
 			SetNameID("UP_Quark",1);
-			ifstream ParamsList("../Parameters_files/Propagators/UP_quark.txt");
+			ifstream ParamsList("Parameters_files/Propagators/UP_quark.txt");
 			//const char * PathToSave;
-			SavePropPath=("../Data_files/SaveQuarkContour_Chiral.dat");
+			SavePropPath=("Data_files/SaveQuarkContour_Chiral.dat");
 			//SavePropPath=&_SaveProp;
 			ReadParameters(ParamsList);
 			InitialState();
@@ -47,9 +47,9 @@ class C_Charm_Quark: public C_Quark{
 	
 	C_Charm_Quark(){
 			SetNameID("CHARM_Quark",1);
-			ifstream ParamsList("../Parameters_files/Propagators/CHARM_quark.txt");
+			ifstream ParamsList("Parameters_files/Propagators/CHARM_quark.txt");
 			//const char * PathToSave;
-			SavePropPath=("../Data_files/SaveQuarkContour_CHARM.dat");
+			SavePropPath=("Data_files/SaveQuarkContour_CHARM.dat");
 			//SavePropPath=&_SaveProp;
 			ReadParameters(ParamsList);
 			InitialState();

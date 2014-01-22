@@ -73,7 +73,7 @@ class C_Manipulator: public C_AbstractClass{
 	void LoadDressingFiles(){
 		t_cmplx z_i,E_amp;
 		ofstream temp_continuation;
-		temp_continuation.open ("../Data_files/E_amp_onCauchy.dat");
+		temp_continuation.open ("Data_files/E_amp_onCauchy.dat");
 		/*for (int j=0;j<= PhysState->Kernels[0]->Memory->VertexDressings[1][0][0].size()/4;j++) 
 		{
 			z_i=real(PhysState->Kernels[0]->Memory->VertexDressings[1][0][0][j]);
@@ -117,7 +117,7 @@ class C_Manipulator: public C_AbstractClass{
 		}
 		else{
 			ofstream DrawBSA;
-			DrawBSA.open ("../Data_files/DrawBSA_ONshell.dat");
+			DrawBSA.open ("Data_files/DrawBSA_ONshell.dat");
 			for (int i = 0; i <= scale; i++)
 			{		
 				t_cmplx point = x; 
@@ -269,7 +269,7 @@ class C_Manipulator: public C_AbstractClass{
 		double m_q, M_pi;
 		
 		ifstream QuarkAndPionMassesStream;
-		QuarkAndPionMassesStream.open("../Data_files/QuarkMassDependence_RL.dat"); 
+		QuarkAndPionMassesStream.open("Data_files/QuarkMassDependence_RL.dat"); 
 		QuarkAndPionMassesStream >> m_q >> M_pi;
 		int i=0;
 		while(QuarkAndPionMassesStream.good())

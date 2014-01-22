@@ -34,16 +34,16 @@ class C_AbstractKernel: public C_AbsDiagram{
 	void SpecifyGluon(Gluon_ID gluon_id){
 		switch (gluon_id){
 			case RL_MT_Light_ID:
-				Gluon=C_Gluon::getInstance("../Parameters_files/Gluons/RL_MT_Light_List.txt");
+				Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Light_List.txt");
 				break;
 			case PS_Light_ID:
-				Gluon=C_Gluon::getInstance("../Parameters_files/Gluons/PS_Light_List.txt");
+				Gluon=C_Gluon::getInstance("Parameters_files/Gluons/PS_Light_List.txt");
 				break;
 			case RL_MT_Heavy_ID:
-				Gluon=C_Gluon::getInstance("../Parameters_files/Gluons/RL_MT_Heavy_List.txt");
+				Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
 				break;
 			case RL_MT_Heavy_DD_ID:
-				Gluon=C_Gluon::getInstance("../Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+				Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
 				break;
 			default:
 				assert( false);

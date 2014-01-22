@@ -30,7 +30,7 @@ class C_2_LoopDiagram: public C_AbsDiagram,public C_2_Loop_Int{
 	{
 		std::cout << "Parameters initialization..."  << std::endl;
 		string line;
-		ifstream ParamList("../Parameters_files/2LoopDiagram.txt");
+		ifstream ParamList("Parameters_files/2LoopDiagram.txt");
 		if (ParamList.is_open())
 		{
 			while ( ParamList.good() )

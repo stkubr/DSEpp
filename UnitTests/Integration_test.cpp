@@ -50,19 +50,19 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 
 
 
-#include "Abs/AbstractClass.hpp"
-#include "NumLibs/Linear_interpolation.h"
-#include "NumLibs/Integrator.h"
-#include "NumLibs/Support_functions.h"
-#include "NumLibs/Pathes.hpp"
-#include "DedicMem/DedicMem.h"
-#include "Abs/AbsDiagram.h"
-#include "Kernel/Gluon.hpp"
-#include "Kernel/AbstractKernel.hpp"
-#include "Kernel/Kernels.hpp"
-#include "DSE/Quark_id.h"
-#include "Mockups/IntegrationMockups.hpp"
-#include "UnitTests/UnitTests.hpp"
+#include "../source/Abs/AbstractClass.hpp"
+#include "../source/NumLibs/Linear_interpolation.h"
+#include "../source/NumLibs/Integrator.h"
+#include "../source/NumLibs/Support_functions.h"
+#include "../source/NumLibs/Pathes.hpp"
+#include "../source/DedicMem/DedicMem.h"
+#include "../source/Abs/AbsDiagram.h"
+#include "../source/Kernel/Gluon.hpp"
+#include "../source/Kernel/AbstractKernel.hpp"
+#include "../source/Kernel/Kernels.hpp"
+#include "../source/DSE/Quark_id.h"
+#include "../source/Mockups/IntegrationMockups.hpp"
+#include "UnitTests.hpp"
 
 
 

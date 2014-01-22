@@ -33,10 +33,10 @@ class C_Charm_Invoker: public C_Invoker{
 		const char * path_store;
 		const char * path_spectra;
 		const char * path_formfactor;
-		path_draw=("../Data_files/DrawBSA_OFFshell_etta.dat");
-		path_store=("../Data_files/DrawBSA_OFFshell_etta_STORAGE.dat");
-		path_spectra=("../Data_files/CharmSpectra_FWC_November_PS_2.dat");
-		path_formfactor=("../Data_files/FormFactor_Charm_PS.dat");
+		path_draw=("Data_files/DrawBSA_OFFshell_etta.dat");
+		path_store=("Data_files/DrawBSA_OFFshell_etta_STORAGE.dat");
+		path_spectra=("Data_files/CharmSpectra_FWC_November_PS_2.dat");
+		path_formfactor=("Data_files/FormFactor_Charm_PS.dat");
 
 		ifstream charmstream(path_store);
 		
@@ -77,9 +77,9 @@ class C_Charm_UP_Invoker: public C_Invoker{
 		const char * path_draw;
 		const char * path_store;
 		const char * path_spectra;
-		//path_draw=("../Data_files/DrawBSA_OFFshell_etta.dat");
-		//path_store=("../Data_files/DrawBSA_OFFshell_etta_STORAGE.dat");
-		path_spectra=("../Data_files/Charm_Up_Spectra.dat");
+		//path_draw=("Data_files/DrawBSA_OFFshell_etta.dat");
+		//path_store=("Data_files/DrawBSA_OFFshell_etta_STORAGE.dat");
+		path_spectra=("Data_files/Charm_Up_Spectra.dat");
 
 		ifstream charmstream(path_store);
 		
@@ -124,12 +124,12 @@ class C_Pion_Invoker: public C_Invoker{
 		const char * path_formfactor;
 		const char * path_quark_mass_dependence;
 		const char * path_charge_radius_qmd;
-		path_draw=("../Data_files/DrawBSA_OFFshell_pion_extra.dat");
-		path_store=("../Data_files/DrawBSA_OFFshell_pion_STORAGE.dat");
-		path_formfactor=("../Data_files/FormFactor_PION_Pion_Cloud_long.dat");
-		path_quark_mass_dependence=("../Data_files/QuarkMassDependence_PionCloud.dat");
-		path_charge_radius_qmd=("../Data_files/ChargeRadiusQMD_PionCloud_reduced.dat");
-		//ifstream charmstream("../Data_files/Charm_E_amp_onCauchy.dat");
+		path_draw=("Data_files/DrawBSA_OFFshell_pion_extra.dat");
+		path_store=("Data_files/DrawBSA_OFFshell_pion_STORAGE.dat");
+		path_formfactor=("Data_files/FormFactor_PION_Pion_Cloud_long.dat");
+		path_quark_mass_dependence=("Data_files/QuarkMassDependence_PionCloud.dat");
+		path_charge_radius_qmd=("Data_files/ChargeRadiusQMD_PionCloud_reduced.dat");
+		//ifstream charmstream("Data_files/Charm_E_amp_onCauchy.dat");
 		
 		
 		
@@ -168,7 +168,7 @@ class C_Pion_Invoker: public C_Invoker{
 		
 		dcx z_i,E_amp;
 		ofstream temp_continuation;
-		temp_continuation.open ("../Data_files/E_amp_onCauchy.dat");
+		temp_continuation.open ("Data_files/E_amp_onCauchy.dat");
 		for (int j=0;j<= charm->Kernels[0]->Memory->VertexDressings[1][0][0].size()/4;j++) 
 		{
 			z_i=real(charm->Kernels[0]->Memory->VertexDressings[1][0][0][j]);

@@ -47,7 +47,7 @@
 			for (int j = 0; j < num_amplitudes ; j++){Memory->CauchyContour[j+2][i-1+params.NumRadial_Contour*3]=exp(-real(temp));}
 		}
 		ofstream countur_data;
-		countur_data.open ("../Data_files/Vector_Contour.dat");
+		countur_data.open ("Data_files/Vector_Contour.dat");
 		n=Memory->CauchyContour[0].size();
 		for (int i = 0; i < n; i++)
 		{
@@ -90,7 +90,7 @@
 		
 		m=Memory->CauchyGrid[0][0].size();
 		ofstream grid_data;
-		grid_data.open ("../Data_files/Vector_Grid.dat");
+		grid_data.open ("Data_files/Vector_Grid.dat");
 			int i=0;
 			for (int j = 0; j < m; j++)
 			{
@@ -187,7 +187,7 @@
 	std::cout << "Time spent - " << (Get_Time()-temp_time)/omp_get_max_threads() << std::endl;
 	t_cmplxArray1D TempArray(num_amplitudes);
 	ofstream temp_continuation;
-	temp_continuation.open ("../Data_files/BSEs_onCauchy.dat");
+	temp_continuation.open ("Data_files/BSEs_onCauchy.dat");
 	for (int i = 1; i < zz_rad.size(); i++)
 		{
 			TempArray=getCauchyAt_embedded(zz_rad[i]);
@@ -227,7 +227,7 @@
 			CalcVectorCont(_P);
 		t_cmplxArray1D TempArray(num_amplitudes);
 		ofstream temp_continuation;
-		temp_continuation.open ("../Data_files/BSEs_onCauchy.dat");
+		temp_continuation.open ("Data_files/BSEs_onCauchy.dat");
 		for (int i = 1; i < zz_rad.size(); i++)
 		{
 			TempArray=getCauchyAt_embedded(zz_rad[i]);
@@ -264,7 +264,7 @@
 	void C_BSE_Hadron_Base::DrawBSA_complex(){
 		t_cmplx z_i,dz_i,E_amp;
 		ofstream temp_continuation;
-		temp_continuation.open ("../Data_files/E_amp_onCauchy.dat");
+		temp_continuation.open ("Data_files/E_amp_onCauchy.dat");
 		for (int j=1;j<= Memory->CauchyContour[0].size();j++) 
 		{
 			z_i=Memory->CauchyContour[0][j-1];

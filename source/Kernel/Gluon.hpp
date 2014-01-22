@@ -49,7 +49,7 @@ class C_Gluon: protected C_AbsDiagram
 		
 		t_cmplxArray2D GlounTempStorage(2);
 		ifstream GluonInterpStream;
-			GluonInterpStream.open("../Data_files/FWC_Nov_1.dat"); 
+			GluonInterpStream.open("Data_files/FWC_Nov_1.dat"); 
 			int i=0;
 			t_cmplx p2, dressing;
 			GluonInterpStream >> p2 >> dressing;
@@ -72,7 +72,7 @@ class C_Gluon: protected C_AbsDiagram
 // Read parameters from file
 	void ReadParameters(){
 		string line;
-		//ifstream ParamList("../Parameters_files/GluonParamList.txt");
+		//ifstream ParamList("Parameters_files/GluonParamList.txt");
 		ifstream ParamList(GluonParamPath);
 		if (ParamList.is_open())
 		{
@@ -103,7 +103,7 @@ class C_Gluon: protected C_AbsDiagram
 		
 		x=Pd;
 		ofstream Gluon;
-		Gluon.open ("../Data_files/Gluon.dat");
+		Gluon.open ("Data_files/Gluon.dat");
 		
 		for (int i = 0; i <= scale; i++)
 		{		

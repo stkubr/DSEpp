@@ -4,11 +4,11 @@
 class C_Quark: public C_Propagator{
 	
 	protected:
-	ifstream * ParamList;
 	const char * SavePropPath;
-	char * LoadPropPath;
 	C_Gluon * Gluon;
+
 	t_cmplxMatrix (C_Quark::*integrand) (t_cmplxArray1D);
+
 	C_Integrator_Line<t_cmplxMatrix,C_Quark,double> * Integ_radial_leg;
 	C_Integrator_Line<t_cmplxMatrix,C_Quark,double> * Integ_angle_cheb;
 	C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx> * Integ_cauchy_long;
@@ -29,35 +29,12 @@ class C_Quark: public C_Propagator{
 		
 		flag_dressed=false;
 		flag_normalized=false;
+		num_amplitudes=2;
 	}
 	
-	//virtual ~C_Quark();
-
 	void ReadParameters(ifstream & _ParamList){
-			string line;
-			if ((_ParamList).is_open())
-			{
-				while ( (_ParamList).good() )
-				{
-					(_ParamList) >> line >> num_amplitudes;
-					(_ParamList) >> line >> params.num_prop_steps;
-					(_ParamList) >> line >> params.num_angle_steps;
-					(_ParamList) >> line >> params.m0;
-					(_ParamList) >> line >> params.mu;
-					(_ParamList) >> line >> params.M2_contour;
-					(_ParamList) >> line >> params.LimDk;
-					(_ParamList) >> line >> params.LimUk;
-					(_ParamList) >> line >> params.EffectiveCutoff;
-					(_ParamList) >> line >> params.Accuracy;
-					(_ParamList) >> line >> params.ReCalcProp;
-					(_ParamList) >> line >> params.HeavyLight;
-				}
-				std::cout << "num_amplitudes - " << num_amplitudes << std::endl;
-				//std::cout << params << std::endl;
-				params.Print();
-			}
-			else std::cout << "Cant open file!" << std::endl;
-		}
+		params.ReadParameters(_ParamList);
+	}
 		
 	t_cmplx getDressingFactor(){
 		return Z2;
@@ -173,7 +150,7 @@ class C_Quark: public C_Propagator{
 			//std::cout << k_cont_2[i] << std::endl;
 		}
 		ofstream countur_data;
-		countur_data.open ("../Data_files/countur_data.dat");
+		countur_data.open ("Data_files/countur_data.dat");
 		for (int i = 0; i < Memory->S_cont.size(); i++)
 		{
 			for (int j = 0; j < Memory->S_cont[0][0].size(); j++){
@@ -206,7 +183,7 @@ class C_Quark: public C_Propagator{
 	
 //check set p-k grid
 		ofstream grid_data;
-		grid_data.open ("../Data_files/grid_data.dat");
+		grid_data.open ("Data_files/grid_data.dat");
 			int i=0;
 			for (int j = 0; j < Memory->S_grid[0][0][0].size(); j++)
 			{
@@ -674,7 +651,7 @@ class C_Quark: public C_Propagator{
 			
 		x=Pd;
 		ofstream data_Prop_re;
-		data_Prop_re.open ("../Data_files/data_Prop_re_new.dat");
+		data_Prop_re.open ("Data_files/data_Prop_re_new.dat");
 		
 		for (int i = 0; i <= scale; i++)
 		{
@@ -728,7 +705,7 @@ class C_Quark: public C_Propagator{
 		int j;//,sumj;sumj=0;
 		t_cmplx z_i,dz_i,temp;
 		ofstream PropContourStream;
-		PropContourStream.open ("../Data_files/PropContourExportData_new.dat");
+		PropContourStream.open ("Data_files/PropContourExportData_new.dat");
 		std::cout << "Writing to file - \"Data_files/PropContourExportData_new.dat\"  " << std::endl;
 		PropContourStream << fixed;
 		PropContourStream << setprecision (10);

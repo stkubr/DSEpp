@@ -112,7 +112,7 @@ class C_Mesons_PseudoScalar: public C_BSE_Hadron_Meson {
 		Projectors.resize(4);
 		WaveFunctions.resize(4);
 		WeightCoeff.resize(4);
-		SaveBSEPath="../Data_files/SaveBSE_PseudoScalar.dat";
+		SaveBSEPath="Data_files/SaveBSE_PseudoScalar.dat";
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
@@ -179,7 +179,7 @@ class C_Mesons_Scalar: public C_BSE_Hadron_Meson {
 		Projectors.resize(4);
 		WaveFunctions.resize(4);
 		WeightCoeff.resize(4);
-		SaveBSEPath="../Data_files/SaveBSE_Scalar.dat";
+		SaveBSEPath="Data_files/SaveBSE_Scalar.dat";
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
@@ -245,7 +245,7 @@ class C_Mesons_Vector: public C_BSE_Hadron_Meson {
 		Projectors.resize(8);
 		WaveFunctions.resize(8);
 		WeightCoeff.resize(8);
-		SaveBSEPath="../Data_files/SaveBSE_Vector.dat";
+		SaveBSEPath="Data_files/SaveBSE_Vector.dat";
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
@@ -313,7 +313,7 @@ class C_Mesons_AxialVector: public C_BSE_Hadron_Meson {
 		Projectors.resize(8);
 		WaveFunctions.resize(8);
 		WeightCoeff.resize(8);
-		SaveBSEPath="../Data_files/SaveBSE_AxialVector.dat";
+		SaveBSEPath="Data_files/SaveBSE_AxialVector.dat";
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
@@ -382,7 +382,7 @@ class C_Mesons_Tensor: public C_BSE_Hadron_Meson {
 		Projectors.resize(num_amplitudes);
 		WaveFunctions.resize(num_amplitudes);
 		WeightCoeff.resize(num_amplitudes);
-		SaveBSEPath="../Data_files/SaveBSE_Tensor.dat";
+		SaveBSEPath="Data_files/SaveBSE_Tensor.dat";
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
