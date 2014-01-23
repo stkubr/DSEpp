@@ -54,7 +54,6 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/NumLibs/Linear_interpolation.h"
 #include "../source/NumLibs/Integrator.h"
 #include "../source/NumLibs/Support_functions.h"
-#include "../source/NumLibs/Paths.hpp"
 #include "../source/DedicMem/DedicMem.h"
 #include "../source/Abs/AbsDiagram.h"
 #include "../source/Kernel/Gluon.hpp"
@@ -64,11 +63,10 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/Mockups/IntegrationMockups.hpp"
 #include "IntegrationUnitTest.hpp"
 #include "GeometryTests/PathsUnitTest.hpp"
-//#include "UnitTests.hpp"
 
 
 
-BOOST_AUTO_TEST_SUITE(GeomertyTest)
+BOOST_AUTO_TEST_SUITE(GeometryTest)
 BOOST_AUTO_TEST_CASE(SinglePointTest)
 {
 	C_PathsUnitTest ParabolaTest;

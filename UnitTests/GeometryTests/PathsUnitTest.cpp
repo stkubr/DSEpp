@@ -7,7 +7,6 @@
 
 
 #include "PathsUnitTest.hpp"
-#include "../../source/NumLibs/Paths.hpp"
 
 // PathTest
 t_cmplxArray1D C_PathsUnitTest::PathTest(int PathType) {

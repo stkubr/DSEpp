@@ -1,5 +1,7 @@
-#include "Propagator.hpp"
 #pragma once
+
+#include "Propagator.hpp"
+#include "../NumLibs/Geometry/ParabolaContour.hpp"
 
 class C_Quark: public C_Propagator{
 	

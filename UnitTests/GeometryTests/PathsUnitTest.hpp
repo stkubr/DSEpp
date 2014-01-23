@@ -8,7 +8,10 @@
 #ifndef PATHESUNITTEST_HPP_
 #define PATHESUNITTEST_HPP_
 
-#include "../../source/NumLibs/Paths.hpp"
+#include "../../source/types.h"
+#include "../../source/NumLibs/Geometry/Path.hpp"
+#include "../../source/NumLibs/Geometry/Line.hpp"
+#include "../../source/NumLibs/Geometry/Parabola.hpp"
 
 
 class C_PathsUnitTest{

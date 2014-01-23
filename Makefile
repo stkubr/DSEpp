@@ -15,6 +15,10 @@ endif
 C_OBJS=source/DSE/Quark_parameters.cpp
 #C_OBJS+=Abs/AbsDiagram.cpp
 C_OBJS+=source/DSE/Propagator.cpp
+C_OBJS+=source/NumLibs/Geometry/Path.cpp
+C_OBJS+=source/NumLibs/Geometry/Line.cpp
+C_OBJS+=source/NumLibs/Geometry/Parabola.cpp
+C_OBJS+=source/NumLibs/Geometry/ParabolaContour.cpp
 #C_OBJS+=Kernel/Gluon.cpp  $(C_OBJS)
 
 C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
