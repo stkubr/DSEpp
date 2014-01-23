@@ -22,7 +22,7 @@
 #include "../qft++/include/relativistic-quantum-mechanics.h"
 
 
-using namespace std;
+//using namespace std;
 
 typedef complex<double> t_cmplx;
 typedef Vector4<complex<double> > t_cmplxVector;
@@ -62,6 +62,7 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/Kernel/Kernels.hpp"
 #include "../source/DSE/Quark_id.h"
 #include "../source/Mockups/IntegrationMockups.hpp"
+#include "IntegrationUnitTest.hpp"
 #include "UnitTests.hpp"
 
 

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "../types.h"
+
 enum Integrator_ID { qgausleg_log_ID=0, qgausleg_lin_ID, qgauscheb_ID, qgausleg_sym_ID, qcauchyleg_lin_ID };
 
-class C_Integrator: public C_AbstractClass{
+class C_Integrator{
 	protected:
 	double pi,LimUp,LimDown;
 	int NumPoints,NumAps;

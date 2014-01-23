@@ -17,11 +17,13 @@ C_OBJS=source/DSE/Quark_parameters.cpp
 C_OBJS+=source/DSE/Propagator.cpp
 #C_OBJS+=Kernel/Gluon.cpp  $(C_OBJS)
 
+C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
+
 SOURCES=source/main_test.cpp# $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=bin/main_test 
 
-SOURCES_T=UnitTests/Integration_test.cpp $(C_OBJS)
+SOURCES_T=UnitTests/Integration_test.cpp $(C_OBJS) $(C_OBJS_T)
 OBJECTS_T=$(SOURCES_T:.cpp=.o)
 EXECUTABLE_T=bin/Integration_test
 

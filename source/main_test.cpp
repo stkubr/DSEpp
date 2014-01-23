@@ -18,7 +18,7 @@
 #include "../qft++/include/tensor.h"
 #include "../qft++/include/relativistic-quantum-mechanics.h"
 
-using namespace std;
+//using namespace std;
 
 typedef complex<double> t_cmplx;
 typedef Vector4<complex<double> > t_cmplxVector;

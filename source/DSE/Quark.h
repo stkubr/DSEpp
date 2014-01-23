@@ -10,6 +10,7 @@ class C_Quark: public C_Propagator{
 	t_cmplxMatrix (C_Quark::*integrand) (t_cmplxArray1D);
 
 	C_Integrator_Line<t_cmplxMatrix,C_Quark,double> * Integ_radial_leg;
+	C_Integrator_Line<t_cmplxMatrix,C_Quark,double> * Integ_radial_short_leg;
 	C_Integrator_Line<t_cmplxMatrix,C_Quark,double> * Integ_angle_cheb;
 	C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx> * Integ_cauchy_long;
 	//C_Integrator_Cauchy<dcxArray1D,dcxArray2D,dcx> * Integ_cauchy_short;
@@ -26,7 +27,6 @@ class C_Quark: public C_Propagator{
 	C_Quark(){
 		Memory_abs=DedicMemFactory_Quark->CreateMemory();
 		Memory=(C_DedicMem_Quark*)Memory_abs;
-		
 		flag_dressed=false;
 		flag_normalized=false;
 		num_amplitudes=2;
@@ -399,7 +399,7 @@ class C_Quark: public C_Propagator{
 		int n;
 		n=Memory->S_cont[0][0].size();
 #pragma omp parallel 
-{
+{// start of paralell
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
 		//quark_copy->ResetIntegrators();
@@ -436,35 +436,31 @@ class C_Quark: public C_Propagator{
 				Memory->S_cont[3][2][i]=Z2;
 				Memory->S_cont[3][3][i]=Z2*params.m0;
 			}
-			//std::cout << Memory->S_cont[0][0][i] << "  " << Memory->S_cont[0][2][index_p] << "  " << Memory->S_cont[0][3][index_p] << std::endl;
-			//cin.get();
 		}
 		delete quark_copy;
-}
+}// end of paralell
 	}
 
 // Analitic form of the Integrand (avaible only for RL or Pion Contribution)
 //----------------------------------------------------------------------
 	t_cmplxMatrix Integrand_analitic (t_cmplxArray1D values)
 	{
-		grid1_num++;
 		t_cmplx y,z;
 		y=values[0];
 		z=values[1];
 		t_cmplxMatrix result(num_amplitudes,1);
 		t_cmplx _A,_B,_B2,y2,pk,epsilon;
+
 		y2=y*y;
-		pk=Memory->S_grid[0][0][index_p][grid1_num-1];
-		_A=Memory->S_grid[0][1][index_p][grid1_num-1];
-		_B=Memory->S_grid[0][2][index_p][grid1_num-1];
-		//_B2=Memory->S_grid[0][2][index_p][grid1_num-1];
+		pk=Memory->S_grid[0][0][index_p][grid1_num];
+		_A=Memory->S_grid[0][1][index_p][grid1_num];
+		_B=Memory->S_grid[0][2][index_p][grid1_num];
+
 		epsilon=1.0/(pk*_A*_A+_B*_B);
-		//if(abs(epsilon)>100.0) epsilon=0.0;
-		result(0,0)=Z2*Z2*2.0/(8.0*pi*pi*pi)*(_A*y*y*y*epsilon)*4.0/3.0*Gluon->GetGluonAt(&y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z);
+		result(0,0)=Z2*Z2*2.0/(8.0*pi*pi*pi)*(_A*y*y*y*epsilon)*4.0/3.0*Gluon->GetGluonAt(&y2)*
+					(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z);
 		result(1,0)=Z2*Z2*2.0*3.0/(8.0*pi*pi*pi)*(_B*y*y*y*epsilon*4.0/3.0*Gluon->GetGluonAt(&y2));
-		//std::cout << y2 << "  " << pk << "  " << (_A*y*y*y*epsilon)*Gluon->GetGluonAt(&y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z) << std::endl;
-		//cin.get();
-		//- PionContrib*Flavor_factor*Z2*2.0/(8.0*pi*pi*pi)*(1.0 - sqrt(y*y/(x))*z)*(_A*y*y*y*epsilon)*_B2/f_pion*(1.0/(y*y  + M_pion*M_pion));
+		grid1_num++;
 		return result;
 	}
 	
@@ -479,7 +475,6 @@ class C_Quark: public C_Propagator{
 //----------------------------------------------------------------------
 	t_cmplxMatrix Integrand_numerical (t_cmplxArray1D values)
 	{
-		grid1_num++;
 		t_cmplx y,z,kinematic_factor,temp;
 		y=values[0];
 		z=values[1];
@@ -490,11 +485,9 @@ class C_Quark: public C_Propagator{
 		pion_momenta=(p-k/2.0);
 		t_cmplx _A,_B,_B2,y2,pk,epsilon;
 		y2=y*y;
-		pk=Memory->S_grid[0][0][index_p][grid1_num-1];
-		
-		_A=Memory->S_grid[0][1][index_p][grid1_num-1];
-		_B=Memory->S_grid[0][2][index_p][grid1_num-1];
-		//_B2=Memory->S_grid[0][2][index_p][grid1_num-1];
+		pk=Memory->S_grid[0][0][index_p][grid1_num];
+		_A=Memory->S_grid[0][1][index_p][grid1_num];
+		_B=Memory->S_grid[0][2][index_p][grid1_num];
 		epsilon=1.0/(pk*_A*_A+_B*_B);
 		
 		kinematic_factor=1.0/(16.0*pi*pi*pi);
@@ -515,6 +508,7 @@ class C_Quark: public C_Propagator{
 		cin.get();
 		}
 	*/	//- PionContrib*Flavor_factor*Z2*2.0/(8.0*pi*pi*pi)*(1.0 - sqrt(y*y/(x))*z)*(_A*y*y*y*epsilon)*_B2/f_pion*(1.0/(y*y  + M_pion*M_pion));
+		grid1_num++;
 		return result;
 	}
 	
