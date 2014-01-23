@@ -253,7 +253,7 @@ class C_Memory_Manager{
 };
 
 
-class C_MemoryFactory: public C_AbstractClass{
+class C_MemoryFactory{
 	public:
 	virtual C_DedicMem_Abs* CreateMemory()=0;
 	virtual ~C_MemoryFactory() {}
@@ -308,34 +308,3 @@ C_MemoryFactory_1_LoopDiagram * DedicMemFactory_1_LoopDiagram = new C_MemoryFact
 C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
 C_MemoryFactory_2_Loop_Int * DedicMemFactory_2_Loop_Int = new C_MemoryFactory_2_Loop_Int;
 C_Memory_Manager * MemoryManager= new C_Memory_Manager;
-
-/*
-template <typename T> class C_DedicMem_Abs{
-	
-	public:
-	T * Memory;
-    
-};
-
-class C_DedicMem_Pion: public C_DedicMem_Abs {
-	
-	public:
-	void info(){
-		std::cout << "Dedicated Memory for Pion" << std::endl;
-	}	
-};
-
-class C_DedicMem_Kernel: public C_DedicMem_Abs {
-	
-	public:
-	vector<dcxMatrix2D > K_Matrix_Storage;
-	
-	void info(){
-		std::cout << "Dedicated Memory for Kernel" << std::endl;
-	}
-
-	void StoreKmatrix(dcxMatrix2D _K){
-		K_Matrix_Storage.push_back(_K);
-	}
-	
-};*/

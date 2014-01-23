@@ -50,11 +50,11 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 
 
 
-#include "../source/Abs/AbstractClass.hpp"
+
 #include "../source/NumLibs/Linear_interpolation.h"
 #include "../source/NumLibs/Integrator.h"
 #include "../source/NumLibs/Support_functions.h"
-#include "../source/NumLibs/Pathes.hpp"
+#include "../source/NumLibs/Paths.hpp"
 #include "../source/DedicMem/DedicMem.h"
 #include "../source/Abs/AbsDiagram.h"
 #include "../source/Kernel/Gluon.hpp"
@@ -63,20 +63,21 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/DSE/Quark_id.h"
 #include "../source/Mockups/IntegrationMockups.hpp"
 #include "IntegrationUnitTest.hpp"
-#include "UnitTests.hpp"
+#include "GeometryTests/PathsUnitTest.hpp"
+//#include "UnitTests.hpp"
 
 
 
 BOOST_AUTO_TEST_SUITE(GeomertyTest)
 BOOST_AUTO_TEST_CASE(SinglePointTest)
 {
-	C_PathesUnitTest ParabolaTest;
+	C_PathsUnitTest ParabolaTest;
 	t_cmplx ReturnValue=ParabolaTest.SinglePointTest(0.0,0);
 	
 	BOOST_CHECK_CLOSE(real(ReturnValue),-1.0,1.e-8);
 	BOOST_CHECK_EQUAL(imag(ReturnValue),0.0);
 	
-	C_PathesUnitTest LineTest;
+	C_PathsUnitTest LineTest;
 	ReturnValue=LineTest.SinglePointTest(0.0,1);
 
 	BOOST_CHECK_CLOSE(real(ReturnValue),1.0,1.e-8);
@@ -86,7 +87,7 @@ BOOST_AUTO_TEST_CASE(SinglePointTest)
 
 BOOST_AUTO_TEST_CASE(PathTest)
 {
-	C_PathesUnitTest ParabolaTest;
+	C_PathsUnitTest ParabolaTest;
 	t_cmplxArray1D ReturnPoints;
 	ReturnPoints = ParabolaTest.PathTest(0);
 	
@@ -100,7 +101,7 @@ BOOST_AUTO_TEST_CASE(PathTest)
 	BOOST_CHECK_CLOSE(imag(ReturnPoints[2]),2,1.e-8);
 
 
-	C_PathesUnitTest LineTest;
+	C_PathsUnitTest LineTest;
 	ReturnPoints = LineTest.PathTest(1);
 
 	BOOST_CHECK_CLOSE(real(ReturnPoints[0]),1.0,1.e-8);

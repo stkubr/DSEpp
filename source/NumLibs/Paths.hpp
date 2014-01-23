@@ -1,7 +1,9 @@
 #pragma once
 
+#include "../types.h"
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 namespace Geometry {
 

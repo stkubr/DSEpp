@@ -18,14 +18,15 @@ C_OBJS+=source/DSE/Propagator.cpp
 #C_OBJS+=Kernel/Gluon.cpp  $(C_OBJS)
 
 C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
+C_OBJS_T+=UnitTests/GeometryTests/PathsUnitTest.cpp
 
-SOURCES=source/main_test.cpp# $(C_OBJS)
+SOURCES=source/main_test.cpp $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=bin/main_test 
 
-SOURCES_T=UnitTests/Integration_test.cpp $(C_OBJS) $(C_OBJS_T)
+SOURCES_T=UnitTests/UnitTestSuites.cpp $(C_OBJS) $(C_OBJS_T)
 OBJECTS_T=$(SOURCES_T:.cpp=.o)
-EXECUTABLE_T=bin/Integration_test
+EXECUTABLE_T=bin/UnitTestSuites
 
 
 all: $(EXECUTABLE) $(EXECUTABLE_T)
@@ -42,13 +43,13 @@ $(EXECUTABLE): $(OBJECTS)
 
 
 Integration_Test: $(EXECUTABLE_T)
-	./bin/Integration_test --run_test=IntegrationTest
+	./bin/UnitTestSuites --run_test=IntegrationTest
 #--report_level=detailed
 Unit_Test: $(EXECUTABLE_T)
-	./bin/Integration_test --run_test=Gau*
+	./bin/UnitTestSuites --run_test=Gau*
 
 Path_Unit_Test: $(EXECUTABLE_T)
-	./bin/Integration_test --run_test=Geom*
+	./bin/UnitTestSuites --run_test=Geom*
 
 clean:
 	$(RM) $(EXECUTABLE) $(EXECUTABLE_T)

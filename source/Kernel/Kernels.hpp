@@ -210,7 +210,7 @@ C_AbstractKernel* C_AbstractKernel::createKernel(Kernel_ID * id){
     return p;
 }
  
-class C_Kernel_Factory: public C_AbstractClass{
+class C_Kernel_Factory{
 	public:
 	C_AbstractKernel* Create(Kernel_ID * _id) {
 		return C_AbstractKernel::createKernel( _id );

@@ -7,6 +7,7 @@
 
 #ifndef INTEGRATIONUNITTEST_HPP_
 #define INTEGRATIONUNITTEST_HPP_
+
 #include "../source/NumLibs/Integrator.h"
 
 class C_IntegrationUnitTest{
