@@ -5,8 +5,6 @@
  *      Author: stkubr
  */
 
-#include "Quark_parameters.hpp"
-#include "../types.h"
 #include "Propagator.hpp"
 
 t_cmplxArray1D C_Propagator::getPropAt(t_cmplx q) {

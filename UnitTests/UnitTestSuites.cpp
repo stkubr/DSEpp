@@ -15,6 +15,7 @@
 #include <memory>
 #include "omp.h"
 
+
 #include "../eigen/Eigen/Eigenvalues"
 
 #include "../qft++/include/matrix.h"
@@ -50,14 +51,14 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 
 
 
-
+/*
 #include "../source/NumLibs/Linear_interpolation.h"
 #include "../source/NumLibs/Integrator.h"
 #include "../source/NumLibs/Support_functions.h"
 #include "../source/DedicMem/DedicMem.h"
 #include "../source/Abs/AbsDiagram.h"
 #include "../source/Kernel/Gluon.hpp"
-#include "../source/Kernel/AbstractKernel.hpp"
+#include "../source/Kernel/AbstractKernel.hpp"*/
 #include "../source/Kernel/Kernels.hpp"
 #include "../source/DSE/Quark_id.h"
 #include "../source/Mockups/IntegrationMockups.hpp"

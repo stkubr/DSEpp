@@ -1,5 +1,5 @@
 #pragma once
-#include "Quark.h"
+#include "Quark.hpp"
 class C_Up_Quark: public C_Quark{
 	
 	

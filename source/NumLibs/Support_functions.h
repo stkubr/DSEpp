@@ -1,28 +1,28 @@
 /*
- * Support_functions.hpp
+ * Support_functions.h
  *
  *  Created on: Jan 21, 2014
  *      Author: stkubr
  */
 
-#ifndef SUPPORT_FUNCTIONS_HPP_
-#define SUPPORT_FUNCTIONS_HPP_
+#ifndef SUPPORT_FUNCTIONS_H_
+#define SUPPORT_FUNCTIONS_H_
 
 
 /// Prints a line accross the screen
-void PrintLine(char __c) {
+inline void PrintLine(char __c) {
 	for (int i = 0; i < 80; i++)
 		std::cout << __c;
 	std::cout << std::endl;
 }
 
 /// Prints "h" spaces
-void PrintSpaces(int h) {
+inline void PrintSpaces(int h) {
 	for (int i = 0; i < h; i++)
 		std::cout << " ";
 }
 
-t_cmplx Cheb_polinoms(t_cmplx x, int order) {
+inline t_cmplx Cheb_polinoms(t_cmplx x, int order) {
 	t_cmplx U[order + 10];
 
 	U[0] = 1.0;
@@ -52,19 +52,14 @@ t_cmplx Cheb_polinoms(t_cmplx x, int order) {
 	return 0;
 }
 
-double Get_Time() {
+inline double Get_Time() {
 	return (double) clock() / CLOCKS_PER_SEC;
 }
 
-void DebugLine(string _word) {
+inline void DebugLine(string _word) {
 //#if DEBUG_MODE==1
 	std::cout << " Debug Line at place - " << _word << std::endl;
 //#endif
 }
 
-void StopLine() {
-	exit(1);
-}
-
-
-#endif /* SUPPORT_FUNCTIONS_HPP_ */
+#endif /* SUPPORT_FUNCTIONS_H_ */

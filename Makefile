@@ -13,8 +13,10 @@ endif
 
 
 C_OBJS=source/DSE/Quark_parameters.cpp
+C_OBJS+=source/DedicMem/DedicMem.cpp
 #C_OBJS+=Abs/AbsDiagram.cpp
 C_OBJS+=source/DSE/Propagator.cpp
+C_OBJS+=source/DSE/Quark.cpp
 C_OBJS+=source/NumLibs/Geometry/Path.cpp
 C_OBJS+=source/NumLibs/Geometry/Line.cpp
 C_OBJS+=source/NumLibs/Geometry/Parabola.cpp
@@ -28,7 +30,7 @@ SOURCES=source/main_test.cpp $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=bin/main_test 
 
-SOURCES_T=UnitTests/UnitTestSuites.cpp $(C_OBJS) $(C_OBJS_T)
+SOURCES_T=$(C_OBJS) UnitTests/UnitTestSuites.cpp $(C_OBJS_T)
 OBJECTS_T=$(SOURCES_T:.cpp=.o)
 EXECUTABLE_T=bin/UnitTestSuites
 

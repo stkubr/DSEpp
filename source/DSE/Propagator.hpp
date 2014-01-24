@@ -11,7 +11,7 @@
 #include "Quark_parameters.hpp"
 #include "../types.h"
 #include "../Abs/AbsDiagram.h"
-class C_AbstractKernel;
+#include "../Kernel/AbstractKernel.hpp"
 
 enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Quark_ID_End };
 

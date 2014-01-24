@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AbstractKernel.hpp"
+
 class C_Kernel_RL: public C_AbstractKernel{
 	public:
 	

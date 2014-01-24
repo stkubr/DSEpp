@@ -1,5 +1,6 @@
 #pragma once
-class C_DedicMem_Abs;
+#include "../DedicMem/DedicMem.hpp"
+
 
 class C_AbsDiagram{
 	protected:

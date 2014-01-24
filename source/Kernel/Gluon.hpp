@@ -1,5 +1,8 @@
 #pragma once
 
+#include "../NumLibs/Linear_interpolation.h"
+#include "../Abs/AbsDiagram.h"
+
 class C_Gluon: protected C_AbsDiagram
 {
 	private:

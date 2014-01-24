@@ -1,6 +1,8 @@
 #ifndef MATHS_INTERPOLATION_LINEAR_H
 #define MATHS_INTERPOLATION_LINEAR_H
 
+#include "../types.h"
+
 namespace Interpolation {
 
 //! Linearly interpolates a given set of points.

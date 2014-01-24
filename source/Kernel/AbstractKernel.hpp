@@ -6,6 +6,9 @@ enum Gluon_ID {RL_MT_Light_ID=0, RL_MT_Heavy_ID, PS_Light_ID, RL_MT_Heavy_DD_ID,
 
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
+#include "Gluon.hpp"
+#include "../Abs/AbsDiagram.h"
+
 class C_AbstractKernel: public C_AbsDiagram{
 	
 	protected:
