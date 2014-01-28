@@ -10,7 +10,7 @@ class C_Gluon: protected C_AbsDiagram
 	double D,w2;
 	int LogTail,GluonType;
 	bool Init_flag;
-	t_cmplx (C_Gluon::*Gluon_ref)(t_cmplx*);
+	t_cmplx (C_Gluon::*Gluon_ref)(t_cmplx&);
 	const char * GluonParamPath;
 	Interpolation::Linear<t_cmplx,t_cmplx> * FuncToInterpolate;
 	
@@ -92,7 +92,7 @@ class C_Gluon: protected C_AbsDiagram
 	}
 	
 // Get value of Gluon at k
-	t_cmplx GetGluonAt(t_cmplx * k){
+	t_cmplx GetGluonAt(t_cmplx & k){
 		return (this->*Gluon_ref)(k);
 	}
 	
@@ -111,7 +111,7 @@ class C_Gluon: protected C_AbsDiagram
 		for (int i = 0; i <= scale; i++)
 		{		
 			t_cmplx point = x*x; 
-			Gluon << real(point) <<"  "<< real(GetGluonAt(&point)) << std::endl;
+			Gluon << real(point) <<"  "<< real(GetGluonAt(point)) << std::endl;
 			
 			x*=dp;
 			//std::cout << "Computing Gluon of type ...  " << GluonType << "  " << 100.0/(scale+1)*(i+1) << "%\n";
@@ -121,7 +121,7 @@ class C_Gluon: protected C_AbsDiagram
 	}
 
 // Maris-Tandy gluon model	
-	t_cmplx GluonMT(t_cmplx * k){
+	t_cmplx GluonMT(t_cmplx & k){
 		const double gamma_m=12.0/(33.0 - 2.0*4.0);
 		const double m_t=0.5;
 		const double tau=7.389056 - 1.0;
@@ -129,11 +129,11 @@ class C_Gluon: protected C_AbsDiagram
 		//const double D_w=0.372;
 		const double D_w=D;
 		const double pi=3.14159265358979;
-		return 4.0*pi*pi*D_w*(*k)*exp(-1.0*(*k)/w2)/w2/w2/w2  + LogTail*4.0*pi*pi*(gamma_m*(1.0-1.0*exp(-(*k)/4.0/m_t/m_t))/(*k))/(0.5*log(tau+(1.0+(*k)/LambdaQCD/LambdaQCD)*(1.0+(*k)/LambdaQCD/LambdaQCD)));
+		return 4.0*pi*pi*D_w*(k)*exp(-1.0*(k)/w2)/w2/w2/w2  + LogTail*4.0*pi*pi*(gamma_m*(1.0-1.0*exp(-(k)/4.0/m_t/m_t))/(k))/(0.5*log(tau+(1.0+(k)/LambdaQCD/LambdaQCD)*(1.0+(k)/LambdaQCD/LambdaQCD)));
 	}
 	
-	t_cmplx	GluonFischer(t_cmplx * k){
-		return 4.0*pi*FuncToInterpolate->getValue((*k)/5.0)/(*k)/1.0;
+	t_cmplx	GluonFischer(t_cmplx & k){
+		return 4.0*pi*FuncToInterpolate->getValue(k)/k;
 	}
 	
 };

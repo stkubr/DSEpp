@@ -59,7 +59,9 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/Abs/AbsDiagram.h"
 #include "../source/Kernel/Gluon.hpp"
 #include "../source/Kernel/AbstractKernel.hpp"*/
-#include "../source/Kernel/Kernels.hpp"
+#include "../source/Kernel/RainbowLadderKernel.hpp"
+#include "../source/Kernel/KernelFactory.hpp"
+//#include "../source/Kernel/Kernels.hpp"
 #include "../source/DSE/Quark_id.h"
 #include "../source/Mockups/IntegrationMockups.hpp"
 #include "IntegrationUnitTest.hpp"
@@ -134,7 +136,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 	
 	up_quark=QuarkFactory->Create(&quark_type);
-	kernel=KernelFactory->Create(&kernel_type);
+	kernel=KernelFactory->Create(kernel_type);
 	kernel->SpecifyGluon(RL_MT_Light_ID);
 	up_quark->LinkToKernel(kernel);
 	
