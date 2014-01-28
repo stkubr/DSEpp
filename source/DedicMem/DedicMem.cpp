@@ -8,11 +8,11 @@
 #include "DedicMem.hpp"
 
 
-	void C_DedicMem_Quark::resizeGrid(int num_storages, int amps_num, int exter_num, int inter_num){
-		S_grid.resize(num_storages,t_cmplxArray3D(amps_num,t_cmplxArray2D(exter_num,t_cmplxArray1D(inter_num))));
+	void C_DedicMem_Quark::resizeGrid(int amps_num, int exter_num, int inter_num){
+		S_grid.resize(amps_num,t_cmplxArray2D(exter_num,t_cmplxArray1D(inter_num)));
 	}
-	void C_DedicMem_Quark::resizeContour(int num_storages, int amps_num, int cont_num){
-		S_cont.resize(num_storages, t_cmplxArray2D(amps_num, t_cmplxArray1D(cont_num)));
+	void C_DedicMem_Quark::resizeContour(int amps_num, int cont_num){
+		S_cont.resize(amps_num, t_cmplxArray1D(cont_num));
 	}
 
 	void C_DedicMem_Quark::RemoveGrid(){
@@ -149,7 +149,7 @@
 	void C_Memory_Manager::CopyMemoryFrom(C_DedicMem_Quark * quark_memory, C_DedicMem_Kernel * kernel_memory){
 		int j,num_steps;//,sumj;sumj=0;
 		t_cmplx temp;
-		num_steps=(quark_memory->S_cont)[0][0].size();
+		num_steps=(quark_memory->S_cont)[0].size();
 		t_cmplxArray2D * KernelQuarkStorage;
 		KernelQuarkStorage=&(kernel_memory->VertexDressings[0][0]);
 		//std::cout << "after copy" << "  " << (kernel_memory->VertexDressings.size()) << std::endl;
@@ -157,25 +157,9 @@
 		for (j=1;j<=num_steps;j++)
 		{
 			(*KernelQuarkStorage)[0][j-1]=0.0;
-			(*KernelQuarkStorage)[1][j-1]=(quark_memory->S_cont)[0][0][j-1];
-			(*KernelQuarkStorage)[2][j-1]=(quark_memory->S_cont)[0][1][j-1];
-			(*KernelQuarkStorage)[3][j-1]=(quark_memory->S_cont)[0][3][j-1];
-
-			(*KernelQuarkStorage)[0][j-1 + num_steps]=0.0;
-			(*KernelQuarkStorage)[1][j-1 + num_steps]=(quark_memory->S_cont)[1][0][j-1];
-			(*KernelQuarkStorage)[2][j-1 + num_steps]=(quark_memory->S_cont)[1][1][j-1];
-			(*KernelQuarkStorage)[3][j-1 + num_steps]=(quark_memory->S_cont)[1][3][j-1];
-
-			(*KernelQuarkStorage)[0][j-1 + 2*num_steps]=0.0;
-			(*KernelQuarkStorage)[1][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][0][j-1];
-			(*KernelQuarkStorage)[2][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][1][j-1];
-			(*KernelQuarkStorage)[3][j-1 + 2*num_steps]=(quark_memory->S_cont)[2][3][j-1];
-			//std::cout << -1.0*(quark_memory->S_cont)[2][3][j-1] << "  " << temp*(quark_memory->S_cont)[2][1][j-1] << std::endl;
-
-			(*KernelQuarkStorage)[0][j-1 + 3*num_steps]=0.0;
-			(*KernelQuarkStorage)[1][j-1 + 3*num_steps]=(quark_memory->S_cont)[3][0][j-1];
-			(*KernelQuarkStorage)[2][j-1 + 3*num_steps]=(quark_memory->S_cont)[3][1][j-1];
-			(*KernelQuarkStorage)[3][j-1 + 3*num_steps]=(quark_memory->S_cont)[3][3][j-1];
+			(*KernelQuarkStorage)[1][j-1]=(quark_memory->S_cont)[0][j-1];
+			(*KernelQuarkStorage)[2][j-1]=(quark_memory->S_cont)[1][j-1];
+			(*KernelQuarkStorage)[3][j-1]=(quark_memory->S_cont)[3][j-1];
 		}
 	}
 

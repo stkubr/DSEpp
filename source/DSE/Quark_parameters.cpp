@@ -11,7 +11,8 @@
 #include <string.h>
 
 void C_Quark_parameters::Print() {
-	std::cout << "num_prop_steps" << " - " << num_prop_steps << std::endl <<
+	std::cout << "Points on Parabola" << " - " << num_prop_steps << std::endl <<
+			"Points on Cutoff-line" << " - " << num_cutoff_steps << std::endl <<
 			"num_angle_steps" << " - " << num_angle_steps <<std::endl <<
 			"m0" << " - " << m0 <<std::endl <<
 			"mu" << " - " << mu <<std::endl <<
@@ -29,6 +30,7 @@ void C_Quark_parameters::ReadParameters(std::ifstream & _ParamList) {
 	if ((_ParamList).is_open()) {
 		while ((_ParamList).good()) {
 			(_ParamList) >> line >> num_prop_steps;
+			(_ParamList) >> line >> num_cutoff_steps;
 			(_ParamList) >> line >> num_angle_steps;
 			(_ParamList) >> line >> m0;
 			(_ParamList) >> line >> mu;

@@ -23,12 +23,12 @@ class C_DedicMem_Abs{
 
 class C_DedicMem_Quark: public C_DedicMem_Abs {
 	public:
-	t_cmplxArray4D S_grid;
-	t_cmplxArray3D S_cont;
+	t_cmplxArray3D S_grid;
+	t_cmplxArray2D S_cont;
 	
 	public:
-	void resizeGrid(int num_storages, int amps_num, int exter_num, int inter_num);
-	void resizeContour(int num_storages, int amps_num, int cont_num);
+	void resizeGrid(int amps_num, int exter_num, int inter_num);
+	void resizeContour(int amps_num, int cont_num);
 	
 	void RemoveGrid();
 

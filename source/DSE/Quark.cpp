@@ -49,18 +49,21 @@
 				params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_lin_ID);
 		Integ_angle_cheb=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
 				params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
+		Integ_radial_short_leg=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
+				params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_sym_ID);
 		Integ_cauchy_long=C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx>::createIntegrator(
 				params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qcauchyleg_lin_ID);
 
 		Integ_radial_leg->getNodes(&zz_rad,&w_rad);
+		Integ_radial_short_leg->getNodes(&zz_line,&w_line);
 		Integ_angle_cheb->getNodes(&zz_angle,&w_angle);
 		integrand_args.resize(2);
 	}
 
 
 	void C_Quark::ResizeMemory(){
-		Memory->resizeContour(4, num_amplitudes+2, params.num_prop_steps);
-		Memory->resizeGrid(1,num_amplitudes+1, 4*params.num_prop_steps, params.num_prop_steps*params.num_angle_steps);
+		Memory->resizeContour(num_amplitudes+2, 2*params.num_prop_steps + 2*params.num_cutoff_steps);
+		Memory->resizeGrid(num_amplitudes+1, 2*params.num_prop_steps + 2*params.num_cutoff_steps, params.num_prop_steps*params.num_angle_steps);
 	}
 
 
@@ -76,109 +79,61 @@
 	{
 		double M2=params.M2_contour;
 		int n,m;
-		t_cmplx Ku,Kd,dk,temp,temp2,t,weight;
-		for (int i = 0; i <= params.num_prop_steps-1; i++)
+		t_cmplx Ku,Kd,dk,temp,temp2,t,weight,last_point;
+		t_cmplxArray2D tempContour;
+		last_point = zz_rad[zz_rad.size()-1]*zz_rad[zz_rad.size()-1] - M2/4.0 + params.LimUk*params.LimDk;
+
+		Geometry::C_ParabolaContour contour(ii*sqrt(M2)/2.0,ii*sqrt(M2),last_point);
+		contour.setParabolaContour(zz_rad,w_rad,zz_line,w_line);
+		tempContour = contour.getParabolaContour();
+
+		Memory->S_cont[0]=tempContour[0];
+		Memory->S_cont[1]=tempContour[1];
+
+		for (int i = 0; i < Memory->S_cont[0].size(); i++)
 		{
-			//std::cout << grid_k_cx[i] << "   ";
-			t=(zz_rad[i+1]);
-			weight=-1.0*w_rad[i+1];
-			temp=t*t - M2/4.0 + ii*t*sqrt(M2);
-			temp2=(2.0*t + ii*sqrt(M2))*weight;
-			//std::cout << t << "  " << temp << std::endl;
-			//temp=t*t + ii*t*t;
-			//k_cont_1.push_back(temp);
-			Memory->S_cont[0][0][i]=(temp);
-			Memory->S_cont[0][1][i]=(temp2);
-			Memory->S_cont[0][2][i]=(InitStepA(temp));
-			Memory->S_cont[0][3][i]=(InitStepB(temp));
+			Memory->S_cont[2][i]=(InitStepA(Memory->S_cont[0][1]));
+			Memory->S_cont[3][i]=(InitStepB(Memory->S_cont[0][1]));
 		}
-		Kd=t*t - M2/4.0;
-		for (int i = 0; i <= params.num_prop_steps-1; i++)
-		{
-			//std::cout << grid_k_cx[i] << "   ";
-			t=(zz_rad[i+1]);
-			weight=1.0*w_rad[i+1];
-			temp=Kd + ii*t*sqrt(M2) + params.LimUk*params.LimDk;
-			temp2=ii*sqrt(M2)*weight;
-			//k_cont_1.push_back(temp);
-			Memory->S_cont[1][0][i]=(temp);
-			Memory->S_cont[1][1][i]=(temp2);
-			Memory->S_cont[1][2][i]=(InitStepA(temp));
-			Memory->S_cont[1][3][i]=(InitStepB(temp));
-			//std::cout << k_cont_2[i] << std::endl;
-		}
-		for (int i = 0; i <= params.num_prop_steps-1; i++)
-		{
-			//std::cout << grid_k_cx[i] << "   ";
-			t=(zz_rad[i+1]);
-			weight=1.0*w_rad[i+1];
-			temp=t*t - M2/4.0 - ii*t*sqrt(M2);
-			temp2=(2.0*t - ii*sqrt(M2))*weight;
-			//temp=t*t - ii*t*t;
-			//k_cont_1.push_back(temp);
-			Memory->S_cont[2][0][i]=(temp);
-			Memory->S_cont[2][1][i]=(temp2);
-			Memory->S_cont[2][2][i]=(InitStepA(temp));
-			Memory->S_cont[2][3][i]=(InitStepB(temp));
-			//std::cout << k_cont_2[i] << std::endl;
-		}
-		for (int i = 0; i <= params.num_prop_steps-1; i++)
-		{
-			//std::cout << grid_k_cx[i] << "   ";
-			t=(zz_rad[i+1]);
-			weight=-1.0*w_rad[i+1];
-			temp=Kd - ii*t*sqrt(M2) + params.LimUk*params.LimDk;
-			temp2=-ii*sqrt(M2)*weight;
-			//k_cont_1.push_back(temp);
-			Memory->S_cont[3][0][i]=(temp);
-			Memory->S_cont[3][1][i]=(temp2);
-			Memory->S_cont[3][2][i]=(InitStepA(temp));
-			Memory->S_cont[3][3][i]=(InitStepB(temp));
-			//std::cout << k_cont_2[i] << std::endl;
-		}
+
 		ofstream countur_data;
 		countur_data.open ("Data_files/countur_data.dat");
-		for (int i = 0; i < Memory->S_cont.size(); i++)
-		{
-			for (int j = 0; j < Memory->S_cont[0][0].size(); j++){
-				countur_data << real(Memory->S_cont[i][0][j]) <<"  "<< imag(Memory->S_cont[i][0][j]) << std::endl;
-			}
+
+		for (int j = 0; j < Memory->S_cont[0].size(); j++){
+			countur_data << real(Memory->S_cont[0][j]) <<"  "<< imag(Memory->S_cont[0][j]) << std::endl;
 		}
+
 		countur_data.close();
-		std::cout << "Contour has been set! points - " << Memory->S_cont[0][0].size()*Memory->S_cont[0].size() << std::endl;
+		std::cout << "Contour has been set! points - " << Memory->S_cont[0].size() << std::endl;
 		//std::cout << Memory->S_cont[0][0].size() << "  " << Memory->S_cont[0].size() << "  " << Memory->S_cont.size() << std::endl;
 		//cin.get();
 // set (p - k)^2 grid
-		for (int num_part = 0; num_part < Memory->S_cont.size(); num_part++)
-		{
-			for (int i = 0; i < Memory->S_cont[num_part][0].size(); i++)
+			for (int i = 0; i < Memory->S_cont[0].size(); i++)
 			{
 				for (int j = 0; j < params.num_prop_steps; j++)
 				{
 					for (int k = 0; k < params.num_angle_steps; k++)
 					{
-						 Memory->S_grid[0][0][i+num_part*params.num_prop_steps][params.num_angle_steps*j + k]=
-							 (Memory->S_cont[num_part][0][i]
+						 Memory->S_grid[0][i][params.num_angle_steps*j + k]=
+							(Memory->S_cont[0][i]
 							 + zz_rad[j+1]*zz_rad[j+1]
-							 - 2.0*sqrt(Memory->S_cont[num_part][0][i]*zz_rad[j+1]*zz_rad[j+1])*zz_angle[k+1] );
+							 - 2.0*sqrt(Memory->S_cont[0][i]*zz_rad[j+1]*zz_rad[j+1])*zz_angle[k+1] );
 					}
 					//std::cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << j << std::endl;
 				}
 				//std::cout << num_part << "  " << i+num_part*params.num_prop_steps << "  " << Memory->S_cont[num_part][0][i] << "  " << Memory->S_grid[0][0][i+num_part*params.num_prop_steps][0] << std::endl;
 			}
-		}
-
 //check set p-k grid
 		ofstream grid_data;
 		grid_data.open ("Data_files/grid_data.dat");
 			int i=0;
-			for (int j = 0; j < Memory->S_grid[0][0][0].size(); j++)
+			for (int j = 0; j < Memory->S_grid[0][0].size(); j++)
 			{
-				grid_data << real(Memory->S_grid[0][0][i][j]) <<"  "<< imag(Memory->S_grid[0][0][i][j]) << std::endl;
+				grid_data << real(Memory->S_grid[0][i][j]) <<"  "<< imag(Memory->S_grid[0][i][j]) << std::endl;
 				//std::cout << real(Memory->S_grid[0][0][i][j]) << "  " << imag(Memory->S_grid[0][0][i][j]) << std::endl;
 			}
 		grid_data.close();
-		std::cout << "Grid has been set! points - " << Memory->S_grid[0][0][0].size()*Memory->S_grid[0][0].size() << std::endl << std::endl;
+		std::cout << "Grid has been set! points - " << Memory->S_grid[0][0].size()*Memory->S_grid[0].size() << std::endl << std::endl;
 	}
 
 // Initial guesses for A and B
@@ -197,7 +152,7 @@
 	t_cmplxMatrix C_Quark::Multi_INT_cx(t_cmplxMatrix (C_Quark::*func_to_int) (t_cmplxArray1D) )
 	{
 		integrand=func_to_int;
-		return C_Quark::Integ_radial_leg->getResult(&C_Quark::f1,this);
+		return Integ_radial_leg->getResult(&C_Quark::f1,this);
 	}
 	t_cmplxMatrix C_Quark::f1 (double y)
 	{
@@ -218,59 +173,24 @@
 		double zr,zm,dz,t;
 		t_cmplxArray1D result(2);
 		t_cmplx F1,F2,N,temp,sumF1,sumF2,sumN;
-		double aa=params.LimDk, bb=params.LimUk;
 		t_cmplx z_i,dz_i;
-		t_cmplx resF1,resF2,resN;
-
 		sumF1=t_cmplx(0.0,0.0);
 		sumF2=t_cmplx(0.0,0.0);
 		sumN=t_cmplx(0.0,0.0);
-		resF1=t_cmplx(0.0,0.0);
-		resF2=t_cmplx(0.0,0.0);
-		resN=t_cmplx(0.0,0.0);
-        zm=aa;
-		zr=(bb-aa);
-
-		for (j=1;j<=params.num_prop_steps;j++)
+		for (j=0;j< Memory->S_cont[0].size();j++)
 		{
-			temp = 1.0;
-
-			z_i=(Memory->S_cont)[0][0][j-1];
-			dz_i=temp*(Memory->S_cont)[0][1][j-1];
-			F1=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[0][2][j-1];
-			F2=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[0][3][j-1];
+			z_i=(Memory->S_cont)[0][j];
+			dz_i=(Memory->S_cont)[1][j];
+			F1=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[2][j];
+			F2=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[3][j];
 			N=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-
-			z_i=(Memory->S_cont)[1][0][j-1];
-			dz_i=temp*(Memory->S_cont)[1][1][j-1];
-			F1+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[1][2][j-1];
-			F2+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[1][3][j-1];
-			N+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-
-			z_i=(Memory->S_cont)[2][0][j-1];
-			dz_i=temp*(Memory->S_cont)[2][1][j-1];
-			F1+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[2][2][j-1];
-			F2+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[2][3][j-1];
-			N+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-
-			z_i=(Memory->S_cont)[3][0][j-1];
-			dz_i=temp*(Memory->S_cont)[3][1][j-1];
-			F1+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[3][2][j-1];
-			F2+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(Memory->S_cont)[3][3][j-1];
-			N+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-
 			sumF1 += F1;
 			sumF2 += F2;
 			sumN += N;
-
 		}
-
-		resN = sumN*zr;
-		resF1 = sumF1*zr;
-		resF2 = sumF2*zr;
 		//std::cout << sumF1*zr << "  " << sumF2*zr << "  " << sumN *zr<< std::endl;
-		result[0]=(resF1/resN);
-		result[1]=(resF2/resN);
+		result[0]=(sumF1/sumN);
+		result[1]=(sumF2/sumN);
 		//std::cout << resF1/resN << "  " << resF2/resN << std::endl;
 		return result;
 	}
@@ -282,12 +202,12 @@
 		int num_grid;
 		int num_threads=4;
 		//double L=LimUk*LimUk*EffectiveCutoff;
-		num_grid=Memory->S_grid[0][0][0].size();
+		num_grid=Memory->S_grid[0][0].size();
 		std::cout << "Grid" << std::endl;
 
 		//Init_time=Get_Time();
 
-#pragma omp parallel num_threads(4)
+#pragma omp parallel
 {//begin of pragma
 		t_cmplx coordin;
 		C_Quark * quark_copy;
@@ -296,29 +216,27 @@
 		//C_Integrator_Cauchy<dcxArray1D,dcxArray3D,dcx> * copy_Integ_Cauchy
 		t_cmplxArray1D S_temp_storage(num_amplitudes);
 		#pragma omp for// ordered
-		for (int step = 0; step < 4 ; step++)
-		{
-		for (int i = 0; i < params.num_prop_steps; i++)
+		for (int i = 0; i < Memory->S_cont[0].size(); i++)
 		{
 			for (int j = 0; j < num_grid; j++)
 			{
-				coordin=Memory->S_grid[0][0][i+step*params.num_prop_steps][j];
+				coordin=Memory->S_grid[0][i][j];
 				if (real(coordin)<params.LimUk*params.LimUk*params.EffectiveCutoff)//LimUk*LimUk*EffectiveCutoff
 				{
 					S_temp_storage=quark_copy->getCauchyAt_embedded(coordin);
-					Memory->S_grid[0][1][i+step*params.num_prop_steps][j]=(S_temp_storage[0]);
-					Memory->S_grid[0][2][i+step*params.num_prop_steps][j]=(S_temp_storage[1]);
+					Memory->S_grid[1][i][j]=(S_temp_storage[0]);
+					Memory->S_grid[2][i][j]=(S_temp_storage[1]);
 					//std::cout <<  coordin << "  " << getCauchyAt(coordin)[0] << std::endl;
 					//cin.get();
 				}
 				else
 				{
 					//std::cout << coordin << "  " << i+step*params.num_prop_steps << std::endl;
-					Memory->S_grid[0][1][i+step*params.num_prop_steps][j]=Z2*(1.0*params.HeavyLight -(params.HeavyLight-1.0)*real(coordin)) ;
-					Memory->S_grid[0][2][i+step*params.num_prop_steps][j]=Z2*(params.m0);
+					Memory->S_grid[1][i][j]=Z2*(1.0*params.HeavyLight -(params.HeavyLight-1.0)*real(coordin)) ;
+					Memory->S_grid[2][i][j]=Z2*(params.m0);
 				}
 			}
-		}
+
 		}
 		delete quark_copy;
 }//end of pragma
@@ -343,48 +261,34 @@
 		t_cmplx temp;
 		std::cout << "Contour" << std::endl;
 		int n;
-		n=Memory->S_cont[0][0].size();
+		n=Memory->S_cont[0].size();
 #pragma omp parallel
 {// start of paralell
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
 		//quark_copy->ResetIntegrators();
-		t_cmplxMatrix Temp_return(num_amplitudes,1),Temp_bare(num_amplitudes,1),Temp_return2(num_amplitudes,1);
+		t_cmplxMatrix Temp_return(num_amplitudes,1),Temp_bare(num_amplitudes,1);
 		#pragma omp for
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < n/2; i++)
 		{
 			quark_copy->index_p=i;
-			quark_copy->x=Memory->S_cont[0][0][i];
+			quark_copy->x=Memory->S_cont[0][i];
+			quark_copy->grid1_num=0;
 
 			Temp_bare(0,0)=Z2;
 			Temp_bare(1,0)=params.m0 - B_renorm + params.HeavyLight;
 
-			quark_copy->grid1_num=0;
-
-			if(real(quark_copy->x)<params.LimUk*params.LimUk*1.1){
-			Temp_return=Temp_bare + quark_copy->Multi_INT_cx(&C_Quark::Integrand_numerical);quark_copy->grid1_num=0;
-			Memory->S_cont[0][2][i]=Temp_return(0,0);
-			Memory->S_cont[0][3][i]=Temp_return(1,0);
-			Memory->S_cont[1][2][i]=Z2;
-			Memory->S_cont[1][3][i]=Z2*params.m0;
-			Memory->S_cont[2][2][i]=conj(Temp_return(0,0));
-			Memory->S_cont[2][3][i]=conj(Temp_return(1,0));
-			Memory->S_cont[3][2][i]=Z2;
-			Memory->S_cont[3][3][i]=Z2*params.m0;
-			}
-			else{
-				Memory->S_cont[0][2][i]=Z2;
-				Memory->S_cont[0][3][i]=Z2*params.m0;
-				Memory->S_cont[1][2][i]=Z2;
-				Memory->S_cont[1][3][i]=Z2*params.m0;
-				Memory->S_cont[2][2][i]=Z2;
-				Memory->S_cont[2][3][i]=Z2*params.m0;
-				Memory->S_cont[3][2][i]=Z2;
-				Memory->S_cont[3][3][i]=Z2*params.m0;
-			}
+			Temp_return=Temp_bare + quark_copy->Multi_INT_cx(&C_Quark::Integrand_numerical);
+			Memory->S_cont[2][i]=Temp_return(0,0);
+			Memory->S_cont[3][i]=Temp_return(1,0);
+			Memory->S_cont[2][n-1-i]=conj(Temp_return(0,0));
+			Memory->S_cont[3][n-1-i]=conj(Temp_return(1,0));
+			//std::cout << i << "  " <<  Memory->S_cont[2][i] << "  " << n-1-i << "  " << Memory->S_cont[2][n-1-i] << std::endl;
 		}
 		delete quark_copy;
 }// end of paralell
+
+
 	}
 
 // Analitic form of the Integrand (avaible only for RL or Pion Contribution)
@@ -398,9 +302,9 @@
 		t_cmplx _A,_B,_B2,y2,pk,epsilon;
 
 		y2=y*y;
-		pk=Memory->S_grid[0][0][index_p][grid1_num];
-		_A=Memory->S_grid[0][1][index_p][grid1_num];
-		_B=Memory->S_grid[0][2][index_p][grid1_num];
+		pk=Memory->S_grid[0][index_p][grid1_num];
+		_A=Memory->S_grid[1][index_p][grid1_num];
+		_B=Memory->S_grid[2][index_p][grid1_num];
 
 		epsilon=1.0/(pk*_A*_A+_B*_B);
 		result(0,0)=Z2*Z2*2.0/(8.0*pi*pi*pi)*(_A*y*y*y*epsilon)*4.0/3.0*Gluon->GetGluonAt(&y2)*
@@ -431,9 +335,9 @@
 		pion_momenta=(p-k/2.0);
 		t_cmplx _A,_B,_B2,y2,pk,epsilon;
 		y2=y*y;
-		pk=Memory->S_grid[0][0][index_p][grid1_num];
-		_A=Memory->S_grid[0][1][index_p][grid1_num];
-		_B=Memory->S_grid[0][2][index_p][grid1_num];
+		pk=Memory->S_grid[0][index_p][grid1_num];
+		_A=Memory->S_grid[1][index_p][grid1_num];
+		_B=Memory->S_grid[2][index_p][grid1_num];
 		epsilon=1.0/(pk*_A*_A+_B*_B);
 
 		kinematic_factor=1.0/(16.0*pi*pi*pi);
@@ -462,22 +366,12 @@
 //----------------------------------------------------------------------
 	t_cmplxArray1D C_Quark::getPropAt(t_cmplx q)
 	{
-		t_cmplx temp,t;
 		t_cmplxArray1D tempvector;
 		t_cmplxArray1D storage(5);
 
 		DressPropagator();
 
-		//if (real(q)<params.LimUk*params.LimUk){
-			tempvector=getCauchyAt_embedded(q);
-		/*}
-		else{
-			dcxArray1D asymptotics(2);
-			asymptotics[0]=Z2;
-			asymptotics[0]=Z2*params.m0;
-			tempvector=asymptotics;
-		}*/
-
+		tempvector=getCauchyAt_embedded(q);
 
 		// A
 		storage[0]=tempvector[0];
@@ -610,12 +504,12 @@
 		ofstream SavePropStream;
 		SavePropStream.open(SavePropPath);
 		(SavePropStream) << "Z2" << '\t' << Z2 << std::endl;
-		for (int i = 0; i < 4; i++){
-			for (int j=1;j<=params.num_prop_steps;j++)
+
+			for (int j=1;j<=Memory->S_cont[0].size();j++)
 			{
-				(SavePropStream) << Memory->S_cont[i][0][j-1] << '\t' << Memory->S_cont[i][2][j-1] << '\t' << Memory->S_cont[i][3][j-1]  << std::endl;
+				(SavePropStream) << Memory->S_cont[0][j-1] << '\t' << Memory->S_cont[2][j-1] << '\t' << Memory->S_cont[3][j-1]  << std::endl;
 			}
-		}
+
 		SavePropStream.close();
 		std::cout << "Propagator was saved." << std::endl;
 	}
@@ -630,10 +524,10 @@
 			PropContourStream.open(SavePropPath);
 			PropContourStream >> dummy >> Z2;
 			if (PropContourStream.is_open()){
-				for (int i = 0; i < 4; i++){
-					for (int j=1;j<=params.num_prop_steps;j++) {
-						PropContourStream >> dummy >> Memory->S_cont[i][2][j-1] >> Memory->S_cont[i][3][j-1];
-					}
+
+					for (int j=1;j<=Memory->S_cont[0].size();j++) {
+						PropContourStream >> dummy >> Memory->S_cont[2][j-1] >> Memory->S_cont[3][j-1];
+
 				} std::cout << "Propagator was loaded. And WILL NOT be recalculated" << std::endl;
 			} else std::cout << "Cant open file!" << std::endl;
 			PropContourStream.close();
@@ -649,15 +543,14 @@
 		std::cout << "Writing to file - \"Data_files/PropContourExportData_new.dat\"  " << std::endl;
 		PropContourStream.precision(10);
 		PropContourStream << 0.0001 << '\t' << 2000 << '\t' << Z2  << '\t' << std::endl;
-		for (int i = 0; i < 4; i++){
-			for (j=1;j<=params.num_prop_steps;j++)
+			for (j=1;j<= Memory->S_cont[0].size() ;j++)
 			{
 				t_cmplx temp=1.0;
-				z_i=(Memory->S_cont)[i][0][j-1];
-				dz_i=temp*(Memory->S_cont)[i][1][j-1];
-				PropContourStream << real(z_i) << '\t' << imag(z_i) << '\t' << real(dz_i) << '\t' << imag(dz_i)  << '\t' << real(temp) << '\t' << real((Memory->S_cont)[i][2][j-1]) << '\t' << imag((Memory->S_cont)[i][2][j-1]) << '\t' << real((Memory->S_cont)[i][3][j-1]) << '\t' << imag((Memory->S_cont)[i][3][j-1]) << std::endl;
+				z_i=(Memory->S_cont)[0][j-1];
+				dz_i=temp*(Memory->S_cont)[1][j-1];
+				PropContourStream << real(z_i) << '\t' << imag(z_i) << '\t' << real(dz_i) << '\t' << imag(dz_i)  << '\t' << real(temp) << '\t' << real((Memory->S_cont)[2][j-1]) << '\t' << imag((Memory->S_cont)[2][j-1]) << '\t' << real((Memory->S_cont)[3][j-1]) << '\t' << imag((Memory->S_cont)[3][j-1]) << std::endl;
 			}
-		}
+
 		PropContourStream.close();
 
 		std::cout << "The quark propagator has beed exported" << std::endl;

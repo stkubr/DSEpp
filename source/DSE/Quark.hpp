@@ -20,7 +20,7 @@ protected:
 	C_Integrator_Cauchy<t_cmplxArray1D, t_cmplxArray3D, t_cmplx> * Integ_cauchy_long;
 	int index_p, grid1_num;
 	t_cmplx x;
-	t_dArray1D zz_rad, w_rad, zz_angle, w_angle, z_circus, w_circus;
+	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
 	t_cmplxArray1D integrand_args;
 	double B_renorm, B_mu, A_renorm, Z2, check_res, eps;
 	bool flag_normalized;

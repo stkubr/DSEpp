@@ -11,7 +11,7 @@
 
 class C_Quark_parameters {
 public:
-	int num_prop_steps, num_angle_steps;
+	int num_prop_steps, num_cutoff_steps, num_angle_steps;
 	double m0, mu, LimUk, LimDk, M2_contour, EffectiveCutoff, HeavyLight, Accuracy;
 	bool ReCalcProp;
 

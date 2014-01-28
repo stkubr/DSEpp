@@ -142,8 +142,8 @@ BOOST_AUTO_TEST_CASE(int_test)
 
 	
 	t_dArray1D ref_value(2,0);
-	ref_value[0]=134.095477101;
-	ref_value[1]=38.513658633;
+	ref_value[0]=134.092697854;
+	ref_value[1]=38.5110544794;
 	
 	t_dArray1D value(2,0);
 	value=up_quark->GetTotalSum();

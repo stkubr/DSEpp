@@ -29,37 +29,41 @@ void C_ParabolaContour::setParabolaContour(const t_dArray1D& p_parabola,
 	 */
 
 	// Upper parabola of contour (clock-wise)
-	int i=0;
-	for_each(p_parabola.begin(), p_parabola.end(), [&](t_cmplx t_param) {
+	int i=1;
+	for_each(p_parabola.begin()+1, p_parabola.end(), [&](t_cmplx t_param) {
 		ContourPath[0].push_back(parabola->getPathAt(t_param));
 		ContourPath[1].push_back(parabola->getDerivativePathAt(t_param)*-1.0*w_parabola[i]);
 		i++;
 	});
 
 	// Upper line of contour
-	i=0;
-	for_each(p_line.begin(), p_line.end(), [&](t_cmplx t_param) {
+	i=1;
+	for_each(p_line.begin()+1, p_line.end(), [&](t_cmplx t_param) {
 		ContourPath[0].push_back(line->getPathAt(t_param));
 		ContourPath[1].push_back(line->getDerivativePathAt(t_param)*w_line[i]);
 		i++;
 	});
 
 	// Lower line of contour (clock-wise)
-	i=0;
-	for_each(p_line.begin(), p_line.end(), [&](t_cmplx t_param) {
+	i=1;
+	for_each(p_line.begin()+1, p_line.end(), [&](t_cmplx t_param) {
 		ContourPath[0].push_back(conj(line->getPathAt(t_param)));
 		ContourPath[1].push_back(conj(line->getDerivativePathAt(t_param))*-1.0*w_line[i]);
 		i++;
 	});
 
-	// Lower parabola of contour
-	i=0;
-	for_each(p_parabola.begin(), p_parabola.end(), [&](t_cmplx t_param) {
+	// Lower parabola of contour (reversed iteration)
+	i=w_parabola.size()-1;
+	for_each(p_parabola.rbegin(), p_parabola.rend()-1, [&](t_cmplx t_param) {
 		ContourPath[0].push_back(conj(parabola->getPathAt(t_param)));
 		ContourPath[1].push_back(conj(parabola->getDerivativePathAt(t_param))*w_parabola[i]);
-		i++;
+		--i;
 	});
 
+}
+
+t_cmplxArray2D C_ParabolaContour::getParabolaContour(){
+	return ContourPath;
 }
 
 }

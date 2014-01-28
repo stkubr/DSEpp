@@ -35,6 +35,8 @@ public:
 							const t_dArray1D& p_line,
 							const t_dArray1D& w_line);
 
+	t_cmplxArray2D getParabolaContour();
+
 };
 
 }
