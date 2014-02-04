@@ -37,6 +37,17 @@
 		return Gluon_contrib + Pion_contrib;
 	}
 
+	void C_Kernel_RL_PS::SpecifyGluon(Gluon_ID gluon_id){
+		switch (gluon_id){
+		case PS_Light_ID:
+			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/PS_Light_List.txt");
+			break;
+		default:
+			std::cout << "No such type of Gluon for given type of Kernel!" << std::endl;
+			assert(false);
+		}
+	}
+
     t_cmplx C_Kernel_RL_PS::SetInterpolation(t_cmplx vertex_momenta, t_cmplx prop_momenta){
 		double real_prop_momenta=real(prop_momenta);
 		t_cmplx P2,P1,C1,C2,L,res;

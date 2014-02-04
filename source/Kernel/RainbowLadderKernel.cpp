@@ -32,3 +32,19 @@ t_cmplx C_Kernel_RL::getElementKmatrix(int t, int s, int r, int u, std::vector<t
 	}
 	return Gluon_contrib;
 }
+
+void C_Kernel_RL::SpecifyGluon(Gluon_ID gluon_id){
+		switch (gluon_id){
+		case RL_MT_Light_ID:
+			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Light_List.txt");
+			break;
+		case RL_MT_Heavy_ID:
+			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
+			break;
+		case RL_MT_Heavy_DD_ID:
+			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+			break;
+		default:
+			assert(false);
+		}
+	}
