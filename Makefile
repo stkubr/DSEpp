@@ -44,8 +44,12 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -c -o $@
 
 
-Integration_Test: $(EXECUTABLE_T)
-	./bin/UnitTestSuites --run_test=IntegrationTest
+Integration_Test_RL: $(EXECUTABLE_T)
+	./bin/UnitTestSuites --run_test=IntegrationTest_Rainbow*
+	
+Integration_Test_PS: $(EXECUTABLE_T)
+	./bin/UnitTestSuites --run_test=IntegrationTest_Pseudo*
+	
 #--report_level=detailed
 Unit_Test: $(EXECUTABLE_T)
 	./bin/UnitTestSuites --run_test=Gau*

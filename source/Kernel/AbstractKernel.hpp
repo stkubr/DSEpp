@@ -118,7 +118,6 @@ class C_AbstractKernel: public C_AbsDiagram{
 				}
 			}
 		}	
-
 		return result;
 	}
 	

@@ -208,7 +208,7 @@ void C_Quark::CalcPropGrid(){
 		Z2=1.0 - (A_renorm);
 		Kernel->setZ2DressingFactor(getDressingFactor());
 	}
-	//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+	MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
 }
 
 // Evaluate DSE integral on grid, obtain quark propagator on contour

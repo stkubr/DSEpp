@@ -68,7 +68,7 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "GeometryTests/PathsUnitTest.hpp"
 
 
-
+//----------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(GeometryTest)
 BOOST_AUTO_TEST_CASE(SinglePointTest)
 {
@@ -85,6 +85,7 @@ BOOST_AUTO_TEST_CASE(SinglePointTest)
 	BOOST_CHECK_EQUAL(imag(ReturnValue),0.0);
 
 }
+
 
 BOOST_AUTO_TEST_CASE(PathTest)
 {
@@ -117,7 +118,54 @@ BOOST_AUTO_TEST_CASE(PathTest)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_AUTO_TEST_SUITE(IntegrationTest)
+//----------------------------------------------------------------------
+BOOST_AUTO_TEST_SUITE(IntegrationTest_RainbowLadder_RL)
+BOOST_AUTO_TEST_CASE(int_test)
+{
+	double tstart, tstop, ttime;
+	tstart = (double)clock()/CLOCKS_PER_SEC;
+
+	C_Propagator * up_quark;
+	C_AbstractKernel * kernel;
+
+	Quark_ID quark_type;
+	Kernel_ID kernel_type;
+
+	quark_type=Up_ID;
+	kernel_type=RL_ID;
+
+	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
+	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
+
+	up_quark=QuarkFactory->Create(&quark_type);
+	kernel=KernelFactory->Create(kernel_type);
+	kernel->SpecifyGluon(RL_MT_Light_ID);
+	up_quark->LinkToKernel(kernel);
+
+	up_quark->DressPropagator();
+
+
+	t_dArray1D ref_value(2,0);
+	ref_value[0]=134.092697854;
+	ref_value[1]=38.5110544794;
+
+	t_dArray1D value(2,0);
+	value=up_quark->GetTotalSum();
+
+	BOOST_CHECK_CLOSE(ref_value[0],value[0],1.e-4);
+	BOOST_CHECK_CLOSE(ref_value[1],value[1],1.e-4);
+
+
+	tstop = (double)clock()/CLOCKS_PER_SEC;
+	ttime= (tstop-tstart)/omp_get_max_threads();
+	std::cout << "\n\n" << "calculation time=" <<" "<< ttime <<" "<< "seconds" << std::endl;
+
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+//----------------------------------------------------------------------
+BOOST_AUTO_TEST_SUITE(IntegrationTest_PseudoScalar_PS)
 BOOST_AUTO_TEST_CASE(int_test)
 {
 	double tstart, tstop, ttime;
@@ -130,22 +178,24 @@ BOOST_AUTO_TEST_CASE(int_test)
 	Kernel_ID kernel_type;
 
 	quark_type=Up_ID;
-	kernel_type=RL_ID;
+	kernel_type=RL_PS_ID;
 	
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 	
 	up_quark=QuarkFactory->Create(&quark_type);
 	kernel=KernelFactory->Create(kernel_type);
-	kernel->SpecifyGluon(RL_MT_Light_ID);
+	kernel->SpecifyGluon(PS_Light_ID);
 	up_quark->LinkToKernel(kernel);
+	kernel->SetExchangeID(Pion_exchange_ID);
+	kernel->SetConvolutionType(0);
 	
 	up_quark->DressPropagator();
 
 	
 	t_dArray1D ref_value(2,0);
-	ref_value[0]=134.092697854;
-	ref_value[1]=38.5110544794;
+	ref_value[0]=150.4107870459;
+	ref_value[1]=59.1966105390;
 	
 	t_dArray1D value(2,0);
 	value=up_quark->GetTotalSum();
