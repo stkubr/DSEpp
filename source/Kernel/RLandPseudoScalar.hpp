@@ -23,9 +23,10 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 
     void info() { std::cout << "Kernel RainbowLadder + PseudoScalar exchange" << std::endl; }
 
-    void SetKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators);
-
 	void SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, std::vector<t_cmplxTensor>& Mediators);
+
+	t_cmplx getElementKmatrix(int t, int s, int r, int u,
+								  std::vector<t_cmplxTensor>& Mediators);
 
     t_cmplx SetInterpolation(t_cmplx vertex_momenta, t_cmplx prop_momenta);
 
@@ -39,7 +40,5 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 
 	void SetConvolutionType(int type);
 };
-
-
 
 #endif /* RLANDPSEUDOSCALAR_HPP_ */

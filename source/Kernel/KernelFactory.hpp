@@ -39,6 +39,4 @@ class C_Kernel_Factory{
 
 C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 
-
-
 #endif /* KERNELFACTORY_HPP_ */

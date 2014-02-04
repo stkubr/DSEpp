@@ -22,16 +22,13 @@ class C_AbstractKernel: public C_AbsDiagram{
 	
 	C_AbstractKernel(){
 		SetNameID("Kernel",1);	
-		Memory_abs=DedicMemFactory_Kernel->CreateMemory();
-		Memory=(C_DedicMem_Kernel*)Memory_abs;
+		Memory=(C_DedicMem_Kernel*)DedicMemFactory_Kernel->CreateMemory();
 		Z2=1.0;
-		Pion_switcher=1.0;
 		K_Store.resize(omp_get_max_threads());
 	}
 
 	public:
 	virtual void info()=0;
-	double Pion_switcher;
 	C_DedicMem_Kernel* Memory;
 	
 	void SpecifyGluon(Gluon_ID gluon_id){
@@ -68,17 +65,11 @@ class C_AbstractKernel: public C_AbsDiagram{
 	virtual void SetConvolutionType(int type){}
 	
 	static C_AbstractKernel* createKernel( Kernel_ID id );
-
-// Allocate Memory for K_Matrix_storage
-	void AllocateMemFor(int _K_ctr){
-		Memory->ResizeKstorage(_K_ctr);
-	}
 	
 	void setZ2DressingFactor(t_cmplx _Z2){
 		Z2=_Z2;
 	}
 	
-
 	t_cmplx GetDressingAt(int kernel_type, int num_P, int num_amp, t_cmplx coordin){
 		t_cmplx result;
 		t_cmplx F1,N,temp;
@@ -95,24 +86,6 @@ class C_AbstractKernel: public C_AbsDiagram{
 		return result;
 	}
 	
-// Set K storage at (k,p,q) 	
-	/*void SetKstorage(int K_ctr,t_cmplxVector *k, t_cmplxVector *p, t_cmplxVector *q){
-		t_cmplx k2_product;
-		k2_product=(*k)*(*k);
-		t_cmplxMatrix2D K_matrix;
-		t_cmplx Gluon_factor;
-		ResizeKmatrix(&K_matrix);
-		t_cmplxTensor Gluon_Matrix(2);
-		Gluon_factor=Gluon->GetGluonAt(&k2_product);
-		Gluon_Matrix=Gluon_factor*(g-((*k)%(*k))/(k2_product));
-		//SetKmatrix(&K_matrix,&Gluon_Matrix);
-		Memory->SetKmatrixAt(K_ctr,&K_matrix);
-	}
-	
-	t_cmplxMatrix2D * GetKmatrixAt(int i){
-		return Memory->GetKmatrixAt(i);
-	}*/
-	
 	t_cmplx TraceKernelWithoutStoring(t_cmplxDirac& Projector,
 									  t_cmplxDirac& WaveFunc,
 									  t_cmplxVector& k,
@@ -121,13 +94,10 @@ class C_AbstractKernel: public C_AbsDiagram{
 		t_cmplx k2_product,result,dummy;
 		int rank=0;
 		result=0.0;
-		//k2_product=(*k)*(*k);
-		//dcx Gluon_factor=1.0;
-		//dcx Pion_factor=1.0;
 		t_cmplxMatrix2D K_matrix;
-		ResizeKmatrix(K_matrix);
 		
 		if (flag_reset_kernel){
+			ResizeKmatrix(K_matrix);
 			std::vector<t_cmplxTensor> MediatorKernel;
 			SetMediators(k,p,P,MediatorKernel);
 			SetKmatrix(K_matrix,MediatorKernel);
@@ -148,8 +118,7 @@ class C_AbstractKernel: public C_AbsDiagram{
 				}
 			}
 		}	
-		
-		
+
 		return result;
 	}
 	
@@ -177,9 +146,24 @@ class C_AbstractKernel: public C_AbsDiagram{
 		}
 	}
 	 
-	virtual void SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, std::vector<t_cmplxTensor>& Mediators)=0;
+	virtual void SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P,
+							  std::vector<t_cmplxTensor>& Mediators)=0;
 // Set K matrix
-	virtual void SetKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators)=0;
+	virtual t_cmplx getElementKmatrix(int t, int s, int r, int u,
+									  std::vector<t_cmplxTensor>& Mediators)=0;
+
+
+	void SetKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators){
+		for (int t = 0; t < 4; t++){
+			for (int s = 0; s < 4; s++){
+				for (int r = 0; r < 4; r++){
+					for (int u = 0; u < 4; u++){
+						K_matrix(t,s)(r,u)=getElementKmatrix(t, s, r, u, Mediators);
+					}
+				}
+			}
+		}
+	}
 
 };
 

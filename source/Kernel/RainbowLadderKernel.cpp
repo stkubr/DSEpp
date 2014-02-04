@@ -12,24 +12,6 @@ C_Kernel_RL::C_Kernel_RL(){
 	Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
 }
 
-void C_Kernel_RL::SetKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators){
-	for (int t = 0; t < 4; t++){
-		for (int s = 0; s < 4; s++){
-			for (int r = 0; r < 4; r++){
-				for (int u = 0; u < 4; u++){
-					t_cmplx Gluon_contrib=0.0;
-					for (int i = 0; i < 4; i++){
-						for (int j = 0; j < 4; j++){
-							Gluon_contrib+=(Y.Element(t,s).Element(i) * Mediators[0].Element(i,j) * Y.Element(r,u).Element(j) );
-						}
-					}
-					K_matrix(t,s)(r,u)=Gluon_contrib;
-				}
-			}
-		}
-	}
-}
-
 void C_Kernel_RL::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, std::vector<t_cmplxTensor>& Mediators){
 	t_cmplx k2_product;
 	t_cmplxTensor Gluon_Matrix(2);
@@ -41,4 +23,12 @@ void C_Kernel_RL::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector
 	(Mediators)[0]=Gluon_Matrix;
 }
 
-
+t_cmplx C_Kernel_RL::getElementKmatrix(int t, int s, int r, int u, std::vector<t_cmplxTensor>& Mediators){
+	t_cmplx Gluon_contrib=0.0;
+	for (int mu = 0; mu < 4; mu++){
+		for (int nu = 0; nu < 4; nu++){
+			Gluon_contrib+=(Y.Element(t,s).Element(mu) * Mediators[0].Element(mu,nu) * Y.Element(r,u).Element(nu) );
+		}
+	}
+	return Gluon_contrib;
+}

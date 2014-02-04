@@ -68,7 +68,7 @@
 	}
 
 
-// Copier of "this" (used in parallel sections)
+// Allocator copy of "this" (used in parallel sections)
 //----------------------------------------------------------------------
 	C_Quark * C_Quark::MakeCopy(){
 		return new C_Quark(*this);
@@ -219,15 +219,15 @@ void C_Quark::CalcPropCont(){
 {// start of paralell
 	C_Quark * quark_copy;
 	quark_copy=MakeCopy();
+
 	t_cmplxMatrix Temp_return(num_amplitudes,1),Bare_term(num_amplitudes,1);
+	Bare_term(0, 0) = Z2;
+	Bare_term(1, 0) = params.m0 - B_renorm + params.HeavyLight;
 	#pragma omp for
 	for (int i = 0; i < num_contour/2; i++){ // Iterating over upper part only
 		quark_copy->index_p = i;
 		quark_copy->x = Memory->S_cont[0][i];
 		quark_copy->grid1_num = 0;
-
-		Bare_term(0, 0) = Z2;
-		Bare_term(1, 0) = params.m0 - B_renorm + params.HeavyLight;
 
 		Temp_return = Bare_term + quark_copy->MultiDimInt(&C_Quark::Integrand_numerical);
 		Memory->S_cont[2][i] = Temp_return(0, 0);
