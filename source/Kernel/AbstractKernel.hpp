@@ -9,11 +9,18 @@ enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 #include "Gluon.hpp"
 #include "../Abs/AbsDiagram.h"
 
+class C_AbstractKernel;
+class C_Propagator;
+#include "../DSE/Propagator.hpp"
+
+
+
 class C_AbstractKernel: public C_AbsDiagram{
 
 protected:
 	t_cmplx Z2;
 	C_Gluon * Gluon;
+	std::vector<C_Propagator*> Propagators;
 	t_cmplx PseudoMesonMass;
 	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
 	Kernel_ID Kernel_type_ID;
@@ -43,6 +50,13 @@ public:
 
 	Kernel_ID GetKernelID(){
 		return Kernel_type_ID;
+	}
+
+	void setPropagators(std::vector<C_Propagator*> __Propagators){
+		/*int num_props = __Propagators.size();
+		Propagators.resize(num_props);
+		Propagators[0]=__Propagators;*/
+		Propagators=__Propagators;
 	}
 
 	virtual void SetConvolutionType(int type){}

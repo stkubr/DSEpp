@@ -103,7 +103,8 @@
 		t_cmplx PS_factor;
 		double PionDecayConst = 0.093;
 		t_cmplxTensor PS_Matrix(0);
-		PS_factor=GetDressingAt(0,0,0,vertex_momenta);
+		//PS_factor=GetDressingAt(0,0,0,vertex_momenta);
+		PS_factor=Propagators[0]->getPropAt(vertex_momenta)[1];
 		PS_Matrix=-3.0*PS_factor*Z2/(prop_momenta + PseudoMesonMass*PseudoMesonMass)/PionDecayConst/(1.0 + (real(vertex_momenta))/100.0);
 		return PS_Matrix;
 	}
@@ -112,7 +113,8 @@
 		t_cmplx PS_factor;
 		double PionDecayConst = 0.093;
 		t_cmplxTensor PS_Matrix(0);
-		PS_factor=GetDressingAt(0,0,0,vertex_momenta);
+		//PS_factor=GetDressingAt(0,0,0,vertex_momenta);
+		PS_factor=Propagators[0]->getPropAt(vertex_momenta)[1];
 		PS_Matrix=3.0*real(PS_factor)*Z2/(prop_momenta + PseudoMesonMass*PseudoMesonMass)/PionDecayConst/(1.0 + (real(vertex_momenta))/100.0);
 		return PS_Matrix;
 	}

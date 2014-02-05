@@ -45,6 +45,7 @@ void C_Kernel_RL::SpecifyGluon(Gluon_ID gluon_id){
 			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
 			break;
 		default:
+			std::cout << "No such type of Gluon for given type of Kernel!" << std::endl;
 			assert(false);
 		}
 	}

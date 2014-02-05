@@ -209,7 +209,7 @@ void C_Quark::CalcPropGrid(){
 		Z2=1.0 - (A_renorm);
 		Kernel->setZ2DressingFactor(getDressingFactor());
 	}
-	MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+	//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
 }
 
 // Evaluate DSE integral on grid, obtain quark propagator on contour
@@ -307,7 +307,6 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 t_cmplxArray1D C_Quark::getPropAt(t_cmplx q){
 	t_cmplxArray1D tempvector;
 	t_cmplxArray1D storage(5);
-	DressPropagator();
 	tempvector=getCauchyAt_embedded(q);
 
 	// A
@@ -385,11 +384,11 @@ void C_Quark::DressPropagator(){
 		setContour();
 		setGrid();
 		LoadPropCountour();
-		MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+		//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
 		PropSetAndCheck();
 		flag_dressed=true;
 		Kernel->setZ2DressingFactor(this->getDressingFactor());
-		MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+		//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
 		//SavePropCountour();
 		//ExportPropagator();
 		Memory->RemoveGrid();

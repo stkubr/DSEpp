@@ -13,6 +13,7 @@
 #include "../Abs/AbsDiagram.h"
 #include "../Kernel/AbstractKernel.hpp"
 
+
 enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Quark_ID_End };
 
 class C_Propagator: public C_AbsDiagram{

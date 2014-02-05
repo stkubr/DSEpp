@@ -171,7 +171,8 @@ BOOST_AUTO_TEST_CASE(int_test)
 	double tstart, tstop, ttime;
 	tstart = (double)clock()/CLOCKS_PER_SEC;
 		
-	C_Propagator * up_quark;
+	std::vector<C_Propagator *> up_quark;
+	up_quark.resize(1);
 	C_AbstractKernel * kernel;
 	
 	Quark_ID quark_type;
@@ -183,25 +184,26 @@ BOOST_AUTO_TEST_CASE(int_test)
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 	
-	up_quark=QuarkFactory->Create(&quark_type);
+	up_quark[0]=QuarkFactory->Create(&quark_type);
 	kernel=KernelFactory->Create(kernel_type);
 	kernel->SpecifyGluon(PS_Light_ID);
-	up_quark->LinkToKernel(kernel);
+	up_quark[0]->LinkToKernel(kernel);
 	kernel->SetExchangeID(Pion_exchange_ID);
 	kernel->SetConvolutionType(0);
+	kernel->setPropagators(up_quark);
 	
-	up_quark->DressPropagator();
+	up_quark[0]->DressPropagator();
 
 	
 	t_dArray1D ref_value(2,0);
-	ref_value[0]=150.4107870459;
-	ref_value[1]=59.1966105390;
+	ref_value[0]=150.409840449456;
+	ref_value[1]= 59.201116296409;
 	
 	t_dArray1D value(2,0);
-	value=up_quark->GetTotalSum();
+	value=up_quark[0]->GetTotalSum();
 	
-	BOOST_CHECK_CLOSE(ref_value[0],value[0],1.e-4);
-	BOOST_CHECK_CLOSE(ref_value[1],value[1],1.e-4);
+	BOOST_CHECK_CLOSE(ref_value[0],value[0],1.e-3);
+	BOOST_CHECK_CLOSE(ref_value[1],value[1],1.e-3);
 	
 		
 	tstop = (double)clock()/CLOCKS_PER_SEC;
