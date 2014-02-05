@@ -68,7 +68,7 @@ class C_Charm_Quark: public C_Quark{
 };
   
   
-// Realization parametrized Factory Method function
+// Realization parameterized Factory Method function
 C_Quark* C_Quark::createQuark( Quark_ID id ){
     C_Quark * p;
     switch (id)
@@ -94,9 +94,9 @@ C_Quark* C_Quark::createQuark( Quark_ID id ){
 
 class C_Quark_Factory: public C_Propagator_Factory{
 	public:
-	C_Propagator* Create(void * _id) {
-		Quark_ID * id=(Quark_ID *)_id;
-		return C_Quark::createQuark( (*id) );
+	C_Propagator* Create(int _id) {
+		Quark_ID id=(Quark_ID)_id;
+		return C_Quark::createQuark( (id) );
     }
 };
 

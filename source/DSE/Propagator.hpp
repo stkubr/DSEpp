@@ -28,6 +28,7 @@ class C_Propagator: public C_AbsDiagram{
 	virtual void DressPropagator()=0;
 	virtual void InitialState()=0;
 	virtual t_cmplxArray1D getPropAt(t_cmplx q);
+	//virtual t_cmplxDirac getTensorExpression(t_cmplxVector& p);
 	virtual void SetQuarkonPath(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path));
 	virtual t_cmplx getDressingFactor();
 	virtual void setContourApex(double M2);
@@ -40,7 +41,7 @@ class C_Propagator: public C_AbsDiagram{
 
 class C_Propagator_Factory{
 	public:
-	virtual C_Propagator * Create(void *)=0;
+	virtual C_Propagator * Create(int)=0;
 	virtual ~C_Propagator_Factory() {}
 };
 

@@ -16,6 +16,10 @@ C_Quark::C_Quark(){
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
 }
 
+/*t_cmplx getTensorExpression(t_cmplxVector& p){
+	return p*p;
+}*/
+
 void C_Quark::ReadParameters(ifstream & _ParamList){
 	params.ReadParameters(_ParamList);
 }

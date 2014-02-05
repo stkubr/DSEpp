@@ -137,7 +137,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 
-	up_quark=QuarkFactory->Create(&quark_type);
+	up_quark=QuarkFactory->Create((int)quark_type);
 	kernel=KernelFactory->Create(kernel_type);
 	kernel->SpecifyGluon(RL_MT_Light_ID);
 	up_quark->LinkToKernel(kernel);
@@ -184,7 +184,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 	
-	up_quark[0]=QuarkFactory->Create(&quark_type);
+	up_quark[0]=QuarkFactory->Create((int)quark_type);
 	kernel=KernelFactory->Create(kernel_type);
 	kernel->SpecifyGluon(PS_Light_ID);
 	up_quark[0]->LinkToKernel(kernel);

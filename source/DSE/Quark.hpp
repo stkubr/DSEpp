@@ -27,6 +27,7 @@ protected:
 
 	// Constructor
 	C_Quark();
+	//t_cmplx getTensorExpression(t_cmplxVector& p);
 
 	void ReadParameters(ifstream & _ParamList);
 

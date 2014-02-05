@@ -84,7 +84,7 @@
 			PS_factor=SetInterpolation(vertex_momenta,prop_momenta);
 		}
 		else PS_factor=0.0;
-		PS_Matrix=-1.0*PS_factor*Z2/(1.0 + (real(vertex_momenta) + 13.0)/10.0);
+		PS_Matrix=-1.0*PS_factor*Z2/(1.0 + (real(vertex_momenta) + 13.0)/100.0);
 		return PS_Matrix;
 	}
 

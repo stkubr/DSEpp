@@ -137,5 +137,3 @@ class C_Gluon: protected C_AbsDiagram
 	}
 	
 };
-
-//C_Gluon * C_Gluon::p_instance=0;

@@ -21,6 +21,7 @@ protected:
 	t_cmplx Z2;
 	C_Gluon * Gluon;
 	std::vector<C_Propagator*> Propagators;
+	/// TODO to include vector of general vertexes
 	t_cmplx PseudoMesonMass;
 	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
 	Kernel_ID Kernel_type_ID;
@@ -53,9 +54,6 @@ public:
 	}
 
 	void setPropagators(std::vector<C_Propagator*> __Propagators){
-		/*int num_props = __Propagators.size();
-		Propagators.resize(num_props);
-		Propagators[0]=__Propagators;*/
 		Propagators=__Propagators;
 	}
 

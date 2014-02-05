@@ -12,6 +12,12 @@ t_cmplxArray1D C_Propagator::getPropAt(t_cmplx q) {
 	std::cout << "Error virtual call" << std::endl;
 	return dummy;
 }
+/*
+t_cmplxDirac getTensorExpression(t_cmplxVector& p){
+	t_cmplxDirac dummy;
+	return dummy;
+}
+*/
 void C_Propagator::SetQuarkonPath(std::vector<t_cmplxMatrix> (*AmplitudePath),
 								 t_cmplxArray1D (*Path)) {
 	std::cout << "Error virtual call" << std::endl;
