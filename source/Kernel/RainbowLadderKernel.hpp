@@ -25,7 +25,6 @@ class C_Kernel_RL: public C_AbstractKernel{
 	t_cmplx getElementKmatrix(int t, int s, int r, int u,
 							  std::vector<t_cmplxTensor>& Mediators);
 
-	void SpecifyGluon(Gluon_ID gluon_id);
 };
 
 

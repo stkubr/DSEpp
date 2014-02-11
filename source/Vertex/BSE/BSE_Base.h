@@ -34,7 +34,7 @@ class C_BSE_Hadron_parameters{
 	double LimUk,LimDk,zetta_part;
 	bool OffShell;
 	
-	void Print(std::ostream &__os = std::std::cout) const {
+	void Print(std::ostream &__os = std::cout) const {
 		__os << 
 		"LimDk" << " - " << LimDk << std::endl <<
 		"LimUk" << " - " << LimUk << std::endl <<
@@ -222,12 +222,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 		U_amp.resize(num_amplitudes);
 		proj_amp.resize(params.Cheb_order+1);
 	}
-	
-	void ResetPointers(){
-		Integ_radial=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumRadial, params.LimDk, params.LimUk, num_amplitudes, qgausleg_log_ID);
-		Integ_angle_cheb=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumCheb_nod1, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
-		Integ_angle_Y=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumAngleY, -1.0, 1.0, num_amplitudes, qgausleg_sym_ID);
-	}
+
 	
 	void setInitialAMP(){
 		for (int i = 1; i <= params.NumRadial; i++){
@@ -527,7 +522,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 				z_v=zz_cheb[j];	
 				result[p_ctr-1] += w_cheb[j]*Cheb_polinoms(z_v,0)*real(element);
 				//std::cout << w_cheb[j] << "  " << U_ex(z_v) << "  " << real(element) << std::endl;
-			}	
+			}
 			DrawBSA_matrix << zz_rad[p_ctr] << "  " << real(result[p_ctr-1]) << std::endl;
 			//std::cout << zz_rad[p_ctr] << "  " << result[p_ctr-1] << std::endl;
 			//cin.get();	

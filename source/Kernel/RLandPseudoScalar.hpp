@@ -28,8 +28,6 @@ class C_Kernel_RL_PS: public C_AbstractKernel{
 	t_cmplx getElementKmatrix(int t, int s, int r, int u,
 							  std::vector<t_cmplxTensor>& Mediators);
 
-	void SpecifyGluon(Gluon_ID gluon_id);
-
     t_cmplx SetInterpolation(t_cmplx vertex_momenta, t_cmplx prop_momenta);
 
 	t_cmplxTensor SetPSMatrix_etta_quark(t_cmplx& vertex_momenta, t_cmplx& prop_momenta);

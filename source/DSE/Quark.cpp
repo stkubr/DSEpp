@@ -248,7 +248,7 @@ void C_Quark::CalcPropCont(){
 
 // Analytic form of the Integrand (available only for RL or Pion Contribution)
 //----------------------------------------------------------------------
-t_cmplxMatrix C_Quark::Integrand_analitic (t_cmplxArray1D integVariables){
+/*t_cmplxMatrix C_Quark::Integrand_analitic (t_cmplxArray1D integVariables){
 	t_cmplx y,z;
 	y=integVariables[0];
 	z=integVariables[1];
@@ -265,7 +265,7 @@ t_cmplxMatrix C_Quark::Integrand_analitic (t_cmplxArray1D integVariables){
 	result(1,0)=Z2*Z2*2.0*3.0/(8.0*pi*pi*pi)*(_B*epsilon*4.0/3.0*Gluon->GetGluonAt(y2));
 	grid1_num++;
 	return result;
-}
+}*/
 
 // Set k and p vectors for the Numerical Integrand
 //----------------------------------------------------------------------

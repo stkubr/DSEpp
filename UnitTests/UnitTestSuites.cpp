@@ -59,7 +59,8 @@ typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 #include "../source/Abs/AbsDiagram.h"
 #include "../source/Kernel/Gluon.hpp"
 #include "../source/Kernel/AbstractKernel.hpp"*/
-#include "../source/Kernel/RainbowLadderKernel.hpp"
+//#include "../source/Kernel/RainbowLadderKernel.hpp"
+#include "../source/DSE/Gluon.hpp"
 #include "../source/Kernel/KernelFactory.hpp"
 //#include "../source/Kernel/Kernels.hpp"
 #include "../source/DSE/Quark_id.h"
@@ -126,22 +127,33 @@ BOOST_AUTO_TEST_CASE(int_test)
 	tstart = (double)clock()/CLOCKS_PER_SEC;
 
 	C_Propagator * up_quark;
+	C_Propagator * gluon;
 	C_AbstractKernel * kernel;
 
 	Quark_ID quark_type;
 	Kernel_ID kernel_type;
+	Gluon_ID gluon_type;
+
 
 	quark_type=Up_ID;
 	kernel_type=RL_ID;
+	gluon_type=RL_MT_Light_ID;
 
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
+	C_Gluon_Factory * GluonFactory = new C_Gluon_Factory;
 
 	up_quark=QuarkFactory->Create((int)quark_type);
 	kernel=KernelFactory->Create(kernel_type);
-	kernel->SpecifyGluon(RL_MT_Light_ID);
-	up_quark->LinkToKernel(kernel);
+	gluon=GluonFactory->Create((int)gluon_type);
 
+	std::vector<C_Propagator *> Props;
+	Props.push_back(gluon);
+	Props.push_back(up_quark);
+
+	kernel->setPropagators(Props);
+
+	up_quark->LinkToKernel(kernel);
 	up_quark->DressPropagator();
 
 
@@ -171,28 +183,37 @@ BOOST_AUTO_TEST_CASE(int_test)
 	double tstart, tstop, ttime;
 	tstart = (double)clock()/CLOCKS_PER_SEC;
 		
-	std::vector<C_Propagator *> up_quark;
-	up_quark.resize(1);
+	C_Propagator * up_quark;
+	C_Propagator * gluon;
 	C_AbstractKernel * kernel;
 	
 	Quark_ID quark_type;
 	Kernel_ID kernel_type;
+	Gluon_ID gluon_type;
 
 	quark_type=Up_ID;
 	kernel_type=RL_PS_ID;
+	gluon_type=RL_MT_Light_ID;
 	
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
+	C_Gluon_Factory * GluonFactory = new C_Gluon_Factory;
 	
-	up_quark[0]=QuarkFactory->Create((int)quark_type);
+	up_quark=QuarkFactory->Create((int)quark_type);
 	kernel=KernelFactory->Create(kernel_type);
-	kernel->SpecifyGluon(PS_Light_ID);
-	up_quark[0]->LinkToKernel(kernel);
+	gluon=GluonFactory->Create((int)gluon_type);
+
+	std::vector<C_Propagator *> Props;
+	Props.push_back(gluon);
+	Props.push_back(up_quark);
+
+
 	kernel->SetExchangeID(Pion_exchange_ID);
 	kernel->SetConvolutionType(0);
-	kernel->setPropagators(up_quark);
+	kernel->setPropagators(Props);
 	
-	up_quark[0]->DressPropagator();
+	up_quark->LinkToKernel(kernel);
+	up_quark->DressPropagator();
 
 	
 	t_dArray1D ref_value(2,0);
@@ -200,7 +221,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	ref_value[1]= 59.201116296409;
 	
 	t_dArray1D value(2,0);
-	value=up_quark[0]->GetTotalSum();
+	value=up_quark->GetTotalSum();
 	
 	BOOST_CHECK_CLOSE(ref_value[0],value[0],1.e-3);
 	BOOST_CHECK_CLOSE(ref_value[1],value[1],1.e-3);

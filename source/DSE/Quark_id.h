@@ -63,7 +63,6 @@ class C_Charm_Quark: public C_Quark{
 			return new C_Charm_Quark(*this);
 		}
 	
-	
     void info() { std::cout << "Charm_Quark" << std::endl; }    
 };
   
@@ -99,6 +98,4 @@ class C_Quark_Factory: public C_Propagator_Factory{
 		return C_Quark::createQuark( (id) );
     }
 };
-
-C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
 

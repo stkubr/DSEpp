@@ -3,14 +3,12 @@
 #include "Propagator.hpp"
 #include "../NumLibs/Geometry/ParabolaContour.hpp"
 #include "../NumLibs/Integrator.h"
-#include "../Kernel/Gluon.hpp"
 #include "../NumLibs/Support_functions.h"
 
 class C_Quark: public C_Propagator {
 
 protected:
 	const char * SavePropPath;
-	C_Gluon * Gluon;
 	t_cmplxMatrix (C_Quark::*integrand)(t_cmplxArray1D);
 
 	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_leg;
@@ -70,7 +68,7 @@ protected:
 	void CalcPropCont();
 
 	// Analytic form of the Integrand (available only for RL or Pion Contribution)
-	t_cmplxMatrix Integrand_analitic(t_cmplxArray1D values);
+	//t_cmplxMatrix Integrand_analitic(t_cmplxArray1D values);
 
 	// Set k and p vectors for the Numerical Integrand
 	void setKinematic(t_cmplx x, t_cmplx y, t_cmplx z);

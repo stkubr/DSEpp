@@ -16,7 +16,7 @@ void C_Kernel_RL::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector
 	t_cmplx k2_product;
 	t_cmplxTensor Gluon_Matrix(2);
 	k2_product=(k*k);
-	t_cmplx Gluon_factor=Z2*Z2*4.0/3.0*Gluon->GetGluonAt(k2_product);
+	t_cmplx Gluon_factor=Z2*Z2*4.0/3.0*Propagators[0]->getPropAt(k2_product)[0];
 	Gluon_Matrix=Gluon_factor*(g-((k)%(k))/(k2_product));
 
 	(Mediators).resize(1);
@@ -32,20 +32,3 @@ t_cmplx C_Kernel_RL::getElementKmatrix(int t, int s, int r, int u, std::vector<t
 	}
 	return Gluon_contrib;
 }
-
-void C_Kernel_RL::SpecifyGluon(Gluon_ID gluon_id){
-		switch (gluon_id){
-		case RL_MT_Light_ID:
-			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Light_List.txt");
-			break;
-		case RL_MT_Heavy_ID:
-			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
-			break;
-		case RL_MT_Heavy_DD_ID:
-			Gluon=C_Gluon::getInstance("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
-			break;
-		default:
-			std::cout << "No such type of Gluon for given type of Kernel!" << std::endl;
-			assert(false);
-		}
-	}

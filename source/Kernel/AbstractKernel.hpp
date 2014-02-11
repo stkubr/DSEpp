@@ -2,11 +2,9 @@
 
 enum Kernel_ID {RL_ID=0, RL_PS_ID, Kernel_ID_End};
 
-enum Gluon_ID {RL_MT_Light_ID=0, RL_MT_Heavy_ID, PS_Light_ID, RL_MT_Heavy_DD_ID, Gluon_ID_End};
-
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
-#include "Gluon.hpp"
+
 #include "../Abs/AbsDiagram.h"
 
 class C_AbstractKernel;
@@ -19,7 +17,6 @@ class C_AbstractKernel: public C_AbsDiagram{
 
 protected:
 	t_cmplx Z2;
-	C_Gluon * Gluon;
 	std::vector<C_Propagator*> Propagators;
 	/// TODO to include vector of general vertexes
 	t_cmplx PseudoMesonMass;
@@ -39,7 +36,6 @@ public:
 
 	virtual void info()=0;
 
-	virtual void SpecifyGluon(Gluon_ID gluon_id)=0;
 
 	void SetMesonExchangeMass(t_cmplx _M){
 		PseudoMesonMass=_M;
