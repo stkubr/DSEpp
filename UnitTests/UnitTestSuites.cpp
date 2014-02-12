@@ -1,67 +1,19 @@
 #define BOOST_TEST_MODULE Test
 #include <boost/test/included/unit_test.hpp>
 
-#include <math.h>
 #include <complex>
-#include <stdio.h>
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <getopt.h>
 #include <time.h>
-#include <sstream>
-#include <vector>
-#include <memory>
 #include "omp.h"
-
-
-#include "../eigen/Eigen/Eigenvalues"
-
-#include "../qft++/include/matrix.h"
-#include "../qft++/include/tensor.h"
-#include "../qft++/include/relativistic-quantum-mechanics.h"
-
-
-typedef complex<double> t_cmplx;
-typedef Vector4<complex<double> > t_cmplxVector;
-typedef Matrix<complex<double> > t_cmplxMatrix;
-typedef Matrix<Tensor<complex<double> > > t_cmplxDirac;
-typedef Matrix<double> t_dMatrix;
-typedef Tensor<complex<double> > t_cmplxTensor;
-typedef Tensor<double> t_dTensor;
-typedef std::vector < std::vector<t_cmplxTensor> > t_cmplx2DVecTen;
-typedef Matrix< t_cmplxMatrix > t_cmplxMatrix2D;
-
-typedef std::vector<double> t_dArray1D;
-typedef std::vector<std::vector<double> > t_dArray2D;
-typedef std::vector<std::vector<std::vector<double> > > t_dArray3D;
-
-typedef std::vector<t_cmplx> t_cmplxArray1D;
-typedef std::vector<std::vector<t_cmplx> > t_cmplxArray2D;
-typedef std::vector<std::vector<std::vector<t_cmplx> > > t_cmplxArray3D;
-typedef std::vector<t_cmplxArray3D> t_cmplxArray4D;
 
 #define NUM_PRECISION 7
 #define ORTH_CHECK 0
 #define BASIS_TYPE 1
-#define DEBUGLEVEL 0
 
-
-
-/*
-#include "../source/NumLibs/Linear_interpolation.h"
-#include "../source/NumLibs/Integrator.h"
-#include "../source/NumLibs/Support_functions.h"
-#include "../source/DedicMem/DedicMem.h"
-#include "../source/Abs/AbsDiagram.h"
-#include "../source/Kernel/Gluon.hpp"
-#include "../source/Kernel/AbstractKernel.hpp"*/
-//#include "../source/Kernel/RainbowLadderKernel.hpp"
+#include "../source/types.h"
 #include "../source/DSE/Gluon.hpp"
 #include "../source/Kernel/KernelFactory.hpp"
-//#include "../source/Kernel/Kernels.hpp"
 #include "../source/DSE/Quark_id.h"
+
 #include "../source/Mockups/IntegrationMockups.hpp"
 #include "IntegrationUnitTest.hpp"
 #include "GeometryTests/PathsUnitTest.hpp"
