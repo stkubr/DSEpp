@@ -8,6 +8,9 @@
 #ifndef QUARK_PARAMETERS_HPP_
 #define QUARK_PARAMETERS_HPP_
 #include <fstream>
+#include <iostream>
+#include <string>
+#include <assert.h>
 
 class C_Quark_parameters {
 public:
@@ -17,7 +20,8 @@ public:
 
 public:
 	void Print();
-	void ReadParameters(std::ifstream & _ParamList);
+	void ReadParameters(std::string & _ParamPath);
+	void setDefault();
 
 };
 

@@ -23,8 +23,6 @@
 #include "../qft++/include/relativistic-quantum-mechanics.h"
 
 
-//using namespace std;
-
 typedef complex<double> t_cmplx;
 typedef Vector4<complex<double> > t_cmplxVector;
 typedef Matrix<complex<double> > t_cmplxMatrix;
@@ -135,7 +133,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	Gluon_ID gluon_type;
 
 
-	quark_type=Up_ID;
+	quark_type=Test_ID;
 	kernel_type=RL_ID;
 	gluon_type=RL_MT_Light_ID;
 
@@ -191,7 +189,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	Kernel_ID kernel_type;
 	Gluon_ID gluon_type;
 
-	quark_type=Up_ID;
+	quark_type=Test_ID;
 	kernel_type=RL_PS_ID;
 	gluon_type=PS_Light_ID;
 	
@@ -218,7 +216,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	
 	t_dArray1D ref_value(2,0);
 	ref_value[0]=150.409840449456;
-	ref_value[1]= 59.201116296409;
+	ref_value[1]= 59.196786422953;
 	
 	t_dArray1D value(2,0);
 	value=up_quark->GetTotalSum();

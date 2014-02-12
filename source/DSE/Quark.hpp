@@ -5,6 +5,8 @@
 #include "../NumLibs/Integrator.h"
 #include "../NumLibs/Support_functions.h"
 
+enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
+
 class C_Quark: public C_Propagator {
 
 protected:
@@ -27,7 +29,7 @@ protected:
 	C_Quark();
 	//t_cmplx getTensorExpression(t_cmplxVector& p);
 
-	void ReadParameters(ifstream & _ParamList);
+	void ReadParameters(string & _ParamPath);
 
 	t_cmplx getDressingFactor();
 

@@ -20,8 +20,8 @@ C_Quark::C_Quark(){
 	return p*p;
 }*/
 
-void C_Quark::ReadParameters(ifstream & _ParamList){
-	params.ReadParameters(_ParamList);
+void C_Quark::ReadParameters(string & _ParamPath){
+	params.ReadParameters(_ParamPath);
 }
 
 t_cmplx C_Quark::getDressingFactor(){

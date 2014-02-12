@@ -6,9 +6,7 @@
  */
 
 #include "Quark_parameters.hpp"
-#include <fstream>
-#include <iostream>
-#include <string.h>
+
 
 void C_Quark_parameters::Print() {
 	std::cout << "Points on Parabola" << " - " << num_prop_steps << std::endl <<
@@ -25,8 +23,9 @@ void C_Quark_parameters::Print() {
 			"HeavyLight" << " - " << HeavyLight << std::endl;
 }
 
-void C_Quark_parameters::ReadParameters(std::ifstream & _ParamList) {
+void C_Quark_parameters::ReadParameters(std::string& _ParamPath) {
 	std::string line;
+	std::ifstream _ParamList(_ParamPath);
 	if ((_ParamList).is_open()) {
 		while ((_ParamList).good()) {
 			(_ParamList) >> line >> num_prop_steps;
@@ -43,6 +42,24 @@ void C_Quark_parameters::ReadParameters(std::ifstream & _ParamList) {
 			(_ParamList) >> line >> HeavyLight;
 		}
 		Print();
-	} else
+	} else {
 		std::cout << "Cant open Quark parameters file!" << std::endl;
+		assert(false);
+	}
+}
+
+void C_Quark_parameters::setDefault(){
+	std::cout << "Default Quark parameters!" << std::endl;
+	num_prop_steps = 64;
+	num_cutoff_steps = 10;
+	num_angle_steps = 8;
+	m0 = 0.0037;
+	mu = 19.0;
+	M2_contour = 1.0;
+	LimDk = 0.0001;
+	LimUk = 50.0;
+	EffectiveCutoff = 0.8;
+	Accuracy = 0.0001;
+	ReCalcProp = 1;
+	HeavyLight = 0;
 }

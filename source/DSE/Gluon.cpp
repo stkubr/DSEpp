@@ -9,29 +9,54 @@
 
 // Constructor
 //----------------------------------------------------------------------
-C_Gluon::C_Gluon(const char * __GluonParamPath){
+C_Gluon::C_Gluon(std::string& __GluonParamPath){
 	SetNameID("Gluon", 1);
 	GluonParamPath=__GluonParamPath;
-	InitialState();
+	Gluon_ref=&C_Gluon::GluonMT;
+	ReadParameters();
 	GluonCheck();
 }
 
+C_Gluon::C_Gluon(){
+	SetNameID("Gluon", 1);
+	Gluon_ref=&C_Gluon::GluonByInterpolation;
+}
+
+
 // Parameterized Factory Method function
 //----------------------------------------------------------------------
-C_Gluon* C_Gluon::createGluon( Gluon_ID id ){
+C_Gluon* C_Gluon::createGluon(Gluon_ID id ){
 	C_Gluon * p;
+	std::string __GluonParamPath;
 	switch (id){
 	case RL_MT_Light_ID:
-		p = new C_Gluon("Parameters_files/Gluons/RL_MT_Light_List.txt");
+		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Light_List.txt");
 		break;
 	case RL_MT_Heavy_ID:
-		p = new C_Gluon("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
+		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
 		break;
 	case RL_MT_Heavy_DD_ID:
-		p = new C_Gluon("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
 		break;
 	case PS_Light_ID:
-		p = new C_Gluon("Parameters_files/Gluons/PS_Light_List.txt");
+		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+		break;
+	default:
+		std::cout << "No such type of Maris-Tandy-like Gluon!" << std::endl;
+		assert(false);
+	}
+	p = new C_Gluon(__GluonParamPath);
+	return p;
+};
+
+// Parameterized Factory Method function
+//----------------------------------------------------------------------
+C_Gluon* C_Gluon::createGluon( Gluon_ID id, std::string& _InterpolationPointsPath){
+	C_Gluon * p;
+	switch (id){
+	case Arbitrary_Gluon_ID:
+		p = new C_Gluon();
+		p -> SetInterpolatorPoints(_InterpolationPointsPath);
 		break;
 	default:
 		std::cout << "No such type of RainbowLadder Gluon!" << std::endl;
@@ -44,50 +69,35 @@ C_Gluon* C_Gluon::createGluon( Gluon_ID id ){
 //----------------------------------------------------------------------
 void C_Gluon::InitialState(){
 	ReadParameters();
-	switch(GluonType){
-	case 1:{
-		Gluon_ref=&C_Gluon::GluonMT;
-	} break;
-	case 2:{
-		SetInterpolatorPoints();
-		Gluon_ref=&C_Gluon::GluonFischer;
-	} break;
-	default:
-		std::cout << "No such model of Gluon!" << std::endl;
-		assert(false);
-	}
+	GluonCheck();
 }
 
 // Load interpolation points for gluon
 //----------------------------------------------------------------------
-void C_Gluon::SetInterpolatorPoints(){
+void C_Gluon::SetInterpolatorPoints(std::string& _InterpolationPointsPath){
 
-	t_cmplxArray2D GlounTempStorage(2);
-	ifstream GluonInterpStream;
-	GluonInterpStream.open("Data_files/FWC_Nov_1.dat");
-	int i=0;
-	t_cmplx p2, dressing;
+	t_cmplxArray2D GluonTempStorage(2);
+	std::ifstream GluonInterpStream;
+	t_cmplx coordinate, value;
+	GluonInterpStream.open(_InterpolationPointsPath);
 	if (GluonInterpStream.is_open()){
-		GluonInterpStream >> p2 >> dressing;
+		GluonInterpStream >> coordinate >> value;
 		while(GluonInterpStream.good()){
-			GlounTempStorage[0].push_back(p2);
-			GlounTempStorage[1].push_back(dressing);
-			GluonInterpStream >> p2 >> dressing;
-			i++;
+			GluonTempStorage[0].push_back(coordinate);
+			GluonTempStorage[1].push_back(value);
+			GluonInterpStream >> coordinate >> value;
 		}
 	}
 	else {std::cout << "Cant open file!" << std::endl; assert(false);}
 	GluonInterpStream.close();
-	FuncToInterpolate = new Interpolation::Linear<t_cmplx,t_cmplx>(GlounTempStorage[0].size(), &GlounTempStorage[0], &GlounTempStorage[1]);
+	FuncToInterpolate = new Interpolation::Linear<t_cmplx,t_cmplx>(GluonTempStorage[0].size(), &GluonTempStorage[0], &GluonTempStorage[1]);
 }
-
 
 // Read parameters from file
 //----------------------------------------------------------------------
 void C_Gluon::ReadParameters(){
-	string line;
-	//ifstream ParamList("Parameters_files/GluonParamList.txt");
-	ifstream ParamList(GluonParamPath);
+	std::string line;
+	std::ifstream ParamList(GluonParamPath);
 	if (ParamList.is_open()){
 		while (ParamList.good()){
 			ParamList >> line >> D;
@@ -139,9 +149,9 @@ t_cmplx C_Gluon::GluonMT(t_cmplx k){
 	return 4.0*pi*pi*D*(k)*exp(-1.0*(k)/w2)/w2/w2/w2  + LogTail*4.0*pi*pi*(gamma_m*(1.0-1.0*exp(-(k)/4.0/m_t/m_t))/(k))/(0.5*log(tau+(1.0+(k)/LambdaQCD/LambdaQCD)*(1.0+(k)/LambdaQCD/LambdaQCD)));
 }
 
-// Fischer-Watson-Cassing model
+// Model given by interpolation over provided points set
 //----------------------------------------------------------------------
-t_cmplx	C_Gluon::GluonFischer(t_cmplx k){
+t_cmplx	C_Gluon::GluonByInterpolation(t_cmplx k){
 	return 4.0*pi*FuncToInterpolate->getValue(k)/k;
 }
 

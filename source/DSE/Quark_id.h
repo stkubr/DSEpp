@@ -1,12 +1,14 @@
 #pragma once
 #include "Quark.hpp"
+#include <string>
+
 class C_Up_Quark: public C_Quark{
 public:
 	C_Up_Quark(){
 		SetNameID("UP_Quark",1);
-		ifstream ParamsList("Parameters_files/Propagators/UP_quark.txt");
+		std::string ParamsPath=("Parameters_files/Propagators/UP_quark.txt");
 		SavePropPath=("Data_files/SaveQuarkContour_Chiral.dat");
-		ReadParameters(ParamsList);
+		ReadParameters(ParamsPath);
 		InitialState();
 		InitializateIntegrators();
 	}
@@ -37,15 +39,32 @@ class C_Charm_Quark: public C_Quark{
 public:
 	C_Charm_Quark(){
 		SetNameID("CHARM_Quark",1);
-		ifstream ParamsList("Parameters_files/Propagators/CHARM_quark.txt");
+		std::string ParamsPath=("Parameters_files/Propagators/CHARM_quark.txt");
 		SavePropPath=("Data_files/SaveQuarkContour_CHARM.dat");
-		ReadParameters(ParamsList);
+		ReadParameters(ParamsPath);
 		InitialState();
 		InitializateIntegrators();
 	}
 
 	C_Charm_Quark * MakeCopy(){
 		return new C_Charm_Quark(*this);
+	}
+
+	void info() { std::cout << "Charm_Quark initialization..." << std::endl; }
+};
+
+class C_Test_Quark: public C_Quark{
+public:
+	C_Test_Quark(){
+		SetNameID("TEST_Quark",1);
+		SavePropPath=("Data_files/SaveQuarkContour_TEST.dat");
+		params.setDefault();
+		InitialState();
+		InitializateIntegrators();
+	}
+
+	C_Test_Quark * MakeCopy(){
+		return new C_Test_Quark(*this);
 	}
 
 	void info() { std::cout << "Charm_Quark initialization..." << std::endl; }
@@ -67,6 +86,9 @@ C_Quark* C_Quark::createQuark( Quark_ID id ){
 		break;
 	case Charm_ID:
 		p = new C_Charm_Quark();
+		break;
+	case Test_ID:
+		p = new C_Test_Quark();
 		break;
 	default:
 		assert( false);
