@@ -19,7 +19,7 @@ t_cmplxDirac getTensorExpression(t_cmplxVector& p){
 	return dummy;
 }
 */
-void C_Propagator::SetQuarkonPath(std::vector<t_cmplxMatrix> (*AmplitudePath),
+void C_Propagator::SetPropagatorOnPath(std::vector<t_cmplxMatrix> (*AmplitudePath),
 								 t_cmplxArray1D (*Path)) {
 	std::cout << "Error virtual call:C_Propagator::SetQuarkonPath" << std::endl;
 	assert(false);

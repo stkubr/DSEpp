@@ -479,7 +479,7 @@ void C_Quark::ExportPropagator(){
 
 // Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
 //----------------------------------------------------------------------
-void C_Quark::setQuarkonPath(std::vector<t_cmplxMatrix> (*AmplutudeStorage),t_cmplxArray1D (*Path)){
+void C_Quark::setPropagatorOnPath(std::vector<t_cmplxMatrix> (*AmplutudeStorage),t_cmplxArray1D (*Path)){
 	std::cout << std::endl;
 	std::cout << "Quark on Path extraction..." << std::endl;
 	int num_points=(*Path).size();

@@ -22,12 +22,12 @@ class C_Manipulator: public C_AbstractClass{
 		C_Quark * quark_pointer;
 		quark_pointer=(C_Quark*)(PhysState->Propagators[0]);
 		//MemoryManager->CopyMemoryFrom(quark_pointer->Memory,PhysState->Kernels[0]->Memory);
-		PhysState->Kernels[0]->SetConvolutionType(0);
+		PhysState->Kernels[0]->setConvolutionType(0);
 		
 		PhysState->Propagators[0]->DressPropagator();
 		PhysState->Propagators[1]->DressPropagator();
 		
-		PhysState->Kernels[0]->SetConvolutionType(1);
+		PhysState->Kernels[0]->setConvolutionType(1);
 	}
 	
 	void ReDressPropagators(double m1, double m2, double M2_contour){
@@ -326,7 +326,7 @@ class C_Manipulator: public C_AbstractClass{
 		
 		while (m_quark < final_mass ){
 			double M2_contour=0.5 + sqrt(m_quark)*2.0;
-			PhysState->Kernels[0]->SetMesonExchangeMass(getPionMass(m_quark));
+			PhysState->Kernels[0]->setMesonExchangeMass(getPionMass(m_quark));
 			
 			ReDressPropagators(m_quark,m_quark,M2_contour);
 			PhysState->BSEs[0]->flag_amp_desciption=false;
@@ -349,7 +349,7 @@ class C_Manipulator: public C_AbstractClass{
 		
 		while (m_quark < final_mass){
 			double M2_contour=0.6 + sqrt(m_quark)*2.0;
-			PhysState->Kernels[0]->SetMesonExchangeMass(getPionMass(m_quark));
+			PhysState->Kernels[0]->setMesonExchangeMass(getPionMass(m_quark));
 			
 			ReDressPropagators(m_quark,m_quark,M2_contour);
 			PhysState->BSEs[0]->flag_amp_desciption=false;
@@ -357,10 +357,10 @@ class C_Manipulator: public C_AbstractClass{
 			Mass_bs=imag(RootFind(0,0,0.0,1.2)[0]);
 			Norm_bs=NormalizeBSEs(0,t_cmplx(0.0,Mass_bs));
 			
-			if (PhysState->Kernels[0]->GetKernelID() == RL_ID){
+			if (PhysState->Kernels[0]->KernelID() == RL_ID){
 				ChargeRad_bs=CalcChargeRadius_RL(Norm_bs,Mass_bs);
 			}
-			if (PhysState->Kernels[0]->GetKernelID() == RL_PS_ID){
+			if (PhysState->Kernels[0]->KernelID() == RL_PS_ID){
 				ChargeRad_bs=CalcChargeRadius_PionCloud(Norm_bs,Mass_bs);
 			}
 		

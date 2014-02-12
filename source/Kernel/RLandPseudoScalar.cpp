@@ -7,7 +7,7 @@
 
 #include "RLandPseudoScalar.hpp"
 
-	void C_Kernel_RL_PS::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, 
+	void C_Kernel_RL_PS::setMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, 
 									  std::vector<t_cmplxTensor>& Mediators){
 		t_cmplx k2_product;
 		k2_product=(k*k);
@@ -25,7 +25,7 @@
 		(Mediators)[1]=PS_Matrix;
 	}
 
-	t_cmplx C_Kernel_RL_PS::getElementKmatrix(int t, int s, int r, int u, std::vector<t_cmplxTensor>& Mediators){
+	t_cmplx C_Kernel_RL_PS::ElementKmatrix(int t, int s, int r, int u, std::vector<t_cmplxTensor>& Mediators){
 		t_cmplx Gluon_contrib=0.0;
 		t_cmplx Pion_contrib=0.0;
 		for (int mu = 0; mu < 4; mu++){
@@ -46,7 +46,7 @@
 		end = Memory->VertexDressings[1].size()-1;
 
 		if(real_prop_momenta < real(Memory->VertexDressings[1][0][0][0])){
-			res = (GetDressingAt(1,0,0,vertex_momenta));
+			res = (VertexDressingAt(1,0,0,vertex_momenta));
 		} else {
 			int i = 0;
 			if(real_prop_momenta > real(Memory->VertexDressings[1][end][0][0])){
@@ -61,7 +61,7 @@
 				}
 				i++;
 			}
-			res = GetDressingAt(1,up,0,vertex_momenta)*C1/L + GetDressingAt(1,down,0,vertex_momenta)*C2/L;
+			res = VertexDressingAt(1,up,0,vertex_momenta)*C1/L + VertexDressingAt(1,down,0,vertex_momenta)*C2/L;
 			}
 		}
 		return res;
@@ -109,7 +109,7 @@
 		return PS_Matrix;
 	}
 
-	void C_Kernel_RL_PS::SetConvolutionType(int type){
+	void C_Kernel_RL_PS::setConvolutionType(int type){
 		if (Exchange_type_ID==Pion_exchange_ID) {
 			if (type == 0) SetPSMatrix=&C_Kernel_RL_PS::SetPSMatrix_pion_quark;
 			if (type == 1) SetPSMatrix=&C_Kernel_RL_PS::SetPSMatrix_pion_BSE;

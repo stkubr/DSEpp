@@ -17,12 +17,12 @@ class C_Kernel_RL: public C_AbstractKernel{
 
     void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
 
-	void SetMediators(t_cmplxVector& k,
+	void setMediators(t_cmplxVector& k,
 					  t_cmplxVector& p,
 					  t_cmplxVector& P,
 					  std::vector<t_cmplxTensor>& Mediators);
 
-	t_cmplx getElementKmatrix(int t, int s, int r, int u,
+	t_cmplx ElementKmatrix(int t, int s, int r, int u,
 							  std::vector<t_cmplxTensor>& Mediators);
 
 };

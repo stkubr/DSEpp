@@ -36,16 +36,15 @@ public:
 
 	virtual void info()=0;
 
-
-	void SetMesonExchangeMass(t_cmplx _M){
+	void setMesonExchangeMass(t_cmplx _M){
 		PseudoMesonMass=_M;
 	}
 
-	void SetExchangeID(PS_type_ID exchange_id){
+	void setExchangeID(PS_type_ID exchange_id){
 		Exchange_type_ID=exchange_id;
 	}
 
-	Kernel_ID GetKernelID(){
+	Kernel_ID KernelID(){
 		return Kernel_type_ID;
 	}
 
@@ -53,7 +52,7 @@ public:
 		Propagators=__Propagators;
 	}
 
-	virtual void SetConvolutionType(int type){}
+	virtual void setConvolutionType(int type){}
 
 	static C_AbstractKernel* createKernel( Kernel_ID id );
 
@@ -61,7 +60,7 @@ public:
 		Z2=_Z2;
 	}
 
-	t_cmplx GetDressingAt(int kernel_type, int num_P, int num_amp, t_cmplx coordin){
+	t_cmplx VertexDressingAt(int kernel_type, int num_P, int num_amp, t_cmplx coordin){
 		t_cmplx result;
 		t_cmplx F1,N,temp;
 		t_cmplx z_i,dz_i;
@@ -77,6 +76,7 @@ public:
 		return result;
 	}
 
+	// Take a trace of Tr(Projector * Kernel * WaveFunction) at provided momenta
 	t_cmplx TraceKernelWithoutStoring(t_cmplxDirac& Projector,
 									  t_cmplxDirac& WaveFunc,
 									  t_cmplxVector& k,
@@ -92,8 +92,8 @@ public:
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
 					for (int u = 0; u < 4; u++){
-						temp_result=InnerTensorProduct((Projector)(u,t), (WaveFunc)(s,r), rank)
-								   *KMatrixThreadStorage[omp_get_thread_num()](t,s)(r,u);
+						temp_result = takeInnerProduct((Projector)(u,t), (WaveFunc)(s,r), rank)
+								    * KMatrixThreadStorage[omp_get_thread_num()](t,s)(r,u);
 						result+=temp_result;
 					}
 				}
@@ -102,14 +102,16 @@ public:
 		return result;
 	}
 
+	// Sets K_matrix for each thread calling the trace
 	void setKMatrixThreadStorage(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P){
 		std::vector<t_cmplxTensor> MediatorKernel;
-		ResizeKmatrix(KMatrixThreadStorage[omp_get_thread_num()]);
-		SetMediators(k,p,P,MediatorKernel);
-		SetKmatrix(KMatrixThreadStorage[omp_get_thread_num()],MediatorKernel);
+		resizeKmatrix(KMatrixThreadStorage[omp_get_thread_num()]);
+		setMediators(k,p,P,MediatorKernel);
+		setKmatrix(KMatrixThreadStorage[omp_get_thread_num()],MediatorKernel);
 	}
 
-	t_cmplx InnerTensorProduct(t_cmplxTensor& A, t_cmplxTensor& B, int rank){
+	// Takes inner product of two provided tensors
+	t_cmplx takeInnerProduct(t_cmplxTensor& A, t_cmplxTensor& B, int rank){
 		t_cmplx result=0.0;
 		if(rank==2){
 			for (int i = 0; i < 4; i++){
@@ -124,7 +126,7 @@ public:
 	}
 
 	// K matrix resizing to (4,4,4,4)
-	void ResizeKmatrix(t_cmplxMatrix2D& K_matrix){
+	void resizeKmatrix(t_cmplxMatrix2D& K_matrix){
 		K_matrix.Resize(4,4);
 		for (int i = 0; i < 4; i++){
 			for (int j = 0; j < 4; j++){
@@ -133,18 +135,21 @@ public:
 		}
 	}
 
-	virtual void SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P,
-			std::vector<t_cmplxTensor>& Mediators)=0;
-	// Set K matrix
-	virtual t_cmplx getElementKmatrix(int t, int s, int r, int u,
+	// Sets particles propagating inside of Kernel (specified by inherited kernels classes)
+	virtual void setMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P,
 			std::vector<t_cmplxTensor>& Mediators)=0;
 
-	void SetKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators){
+	// Set a (t,s,r,u) element of the K_matrix (specified by inherited kernels classes)
+	virtual t_cmplx ElementKmatrix(int t, int s, int r, int u,
+			std::vector<t_cmplxTensor>& Mediators)=0;
+
+	// Composes K matrix for tracer
+	void setKmatrix(t_cmplxMatrix2D& K_matrix, std::vector<t_cmplxTensor>& Mediators){
 		for (int t = 0; t < 4; t++){
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
 					for (int u = 0; u < 4; u++){
-						K_matrix(t,s)(r,u)=getElementKmatrix(t, s, r, u, Mediators);
+						K_matrix(t,s)(r,u)=ElementKmatrix(t, s, r, u, Mediators);
 					}
 				}
 			}

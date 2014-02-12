@@ -26,14 +26,23 @@ class C_Propagator: public C_AbsDiagram{
 	C_Quark_parameters params;
 	//virtual void info() = 0;
 	virtual void DressPropagator()=0;
+
 	virtual void InitialState()=0;
+
 	virtual t_cmplxArray1D getPropAt(t_cmplx q);
-	//virtual t_cmplxDirac getTensorExpression(t_cmplxVector& p);
-	virtual void SetQuarkonPath(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path));
+
+	// TODO virtual t_cmplxDirac getTensorExpression(t_cmplxVector& p);
+
+	virtual void SetPropagatorOnPath(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path));
+
 	virtual t_cmplx getDressingFactor();
+
 	virtual void setContourApex(double M2);
+
 	virtual void ExportForKernel( t_cmplxArray2D * dummy);
+
 	virtual t_dArray1D GetTotalSum();
+
 	virtual ~C_Propagator();
 
 	void LinkToKernel(C_AbstractKernel * _K);

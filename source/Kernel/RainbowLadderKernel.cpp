@@ -12,7 +12,8 @@ C_Kernel_RL::C_Kernel_RL(){
 	Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
 }
 
-void C_Kernel_RL::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, std::vector<t_cmplxTensor>& Mediators){
+// Sets gluon propagating inside of Kernel
+void C_Kernel_RL::setMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, std::vector<t_cmplxTensor>& Mediators){
 	t_cmplx k2_product;
 	t_cmplxTensor Gluon_Matrix(2);
 	k2_product=(k*k);
@@ -23,7 +24,8 @@ void C_Kernel_RL::SetMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector
 	(Mediators)[0]=Gluon_Matrix;
 }
 
-t_cmplx C_Kernel_RL::getElementKmatrix(int t, int s, int r, int u, std::vector<t_cmplxTensor>& Mediators){
+// Set a (t,s,r,u) element of the K_matrix for a given class
+t_cmplx C_Kernel_RL::ElementKmatrix(int t, int s, int r, int u, std::vector<t_cmplxTensor>& Mediators){
 	t_cmplx Gluon_contrib=0.0;
 	for (int mu = 0; mu < 4; mu++){
 		for (int nu = 0; nu < 4; nu++){

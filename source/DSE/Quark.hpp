@@ -102,7 +102,7 @@ protected:
 	void ExportPropagator();
 
 	// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
-	void setQuarkonPath(std::vector<t_cmplxMatrix> (*Amplitudes), t_cmplxArray1D (*Path));
+	void setPropagatorOnPath(std::vector<t_cmplxMatrix> (*Amplitudes), t_cmplxArray1D (*Path));
 
 	// Gets sum A and B at 100 points. Used for Integration Test.
 	t_dArray1D GetTotalSum();

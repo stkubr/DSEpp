@@ -55,7 +55,7 @@ class C_Charm_Invoker: public C_Invoker{
 
 		MemoryManager->CopyMemoryFrom(&charmstream,charm_PS->Kernels[0]->Memory);
 		CharmManipulator.SetPhysicalState(charm_PS);
-		charm_PS->Kernels[0]->SetMesonExchangeMass(2.98);
+		charm_PS->Kernels[0]->setMesonExchangeMass(2.98);
 		CharmManipulator.DressPropagators();
 		CharmManipulator.CalcSpectra(2.5,4.5,path_spectra);
 		//CharmManipulator.CheckGroundStates();

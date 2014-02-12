@@ -193,7 +193,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 
 	quark_type=Up_ID;
 	kernel_type=RL_PS_ID;
-	gluon_type=RL_MT_Light_ID;
+	gluon_type=PS_Light_ID;
 	
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
@@ -208,8 +208,8 @@ BOOST_AUTO_TEST_CASE(int_test)
 	Props.push_back(up_quark);
 
 
-	kernel->SetExchangeID(Pion_exchange_ID);
-	kernel->SetConvolutionType(0);
+	kernel->setExchangeID(Pion_exchange_ID);
+	kernel->setConvolutionType(0);
 	kernel->setPropagators(Props);
 	
 	up_quark->LinkToKernel(kernel);
