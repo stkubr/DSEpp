@@ -95,7 +95,7 @@ ostream& operator<<(ostream &__os, const C_BSE_Hadron_parameters &__params){
 	}
 
 
-class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
+class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 	protected:
 	int /*Int_counter,*/Complex_Int_counter,index_zp,index_p;
 	
@@ -183,9 +183,9 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_1_Loop_Int{
 	
 	void Initialization(){
 		Int_counter=0;
-		Integ_radial=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumRadial, params.LimDk, params.LimUk, num_amplitudes, qgausleg_log_ID);
-		Integ_angle_cheb=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumCheb_nod1, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
-		Integ_angle_Y=C_Integrator_Line<t_cmplxMatrix,C_1_Loop_Int,double>::createIntegrator(params.NumAngleY, -1.0, 1.0, num_amplitudes, qgausleg_sym_ID);
+		Integ_radial=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(params.NumRadial, params.LimDk, params.LimUk, num_amplitudes, qgausleg_log_ID);
+		Integ_angle_cheb=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(params.NumCheb_nod1, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
+		Integ_angle_Y=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(params.NumAngleY, -1.0, 1.0, num_amplitudes, qgausleg_sym_ID);
 		Integ_cauchy_long=C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx>::createIntegrator(params.NumRadial_Contour, sqrt(params.LimDk), sqrt(params.LimUk), num_amplitudes, qcauchyleg_lin_ID);
 		integrand_args.resize(3);
 		
