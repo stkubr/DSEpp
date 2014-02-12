@@ -1,0 +1,16 @@
+LimKd			0.0001	
+LimKu			2000.0	
+zetta_part		0.5
+OffShell		0
+Number_of_radial_points		32	
+Chebycheb_expand_order		1	
+Chebycheb_internal_points	8	
+Chebycheb_external_points	8	
+Y_angle_points			8	
+NumRadial_Contour		64		
+Chebycheb_external_points	8	
+Y_angle_points			8
+NumRadial_Matrix		48		
+Chebycheb_external_points	8	
+Y_angle_points			8	
+

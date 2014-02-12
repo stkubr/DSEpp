@@ -1,0 +1,4 @@
+D		0.93	
+w2		0.16	
+LogTail		1	
+GluonType	1	

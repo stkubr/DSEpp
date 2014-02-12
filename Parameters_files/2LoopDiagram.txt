@@ -1,0 +1,7 @@
+Number_of_radial_points		32	
+Chebycheb_internal_points	8	
+Y_angle_points			8	
+Number_of_radial_points		32	
+Chebycheb_internal_points	8	
+Y_angle_points			8
+Phi_angle_points		8

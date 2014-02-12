@@ -1,0 +1,12 @@
+num_prop_steps		64
+num_cutoff_steps	10	
+num_angle_steps		8	
+m0		0.0037
+mu		19.0	
+M2_contour		1.0	
+LimDk		0.0001	
+LimUk		50.0	
+EffectiveCutoff		0.8	
+Accuracy		0.00001	
+ReLoadProp		1		
+HeavyLightSwitcher	0	

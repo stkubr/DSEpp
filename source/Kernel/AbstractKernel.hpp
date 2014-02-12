@@ -4,7 +4,6 @@ enum Kernel_ID {RL_ID=0, RL_PS_ID, Kernel_ID_End};
 
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
-
 #include "../Abs/AbsDiagram.h"
 
 class C_AbstractKernel;
