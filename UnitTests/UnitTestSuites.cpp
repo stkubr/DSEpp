@@ -15,7 +15,7 @@
 #include "../source/DSE/Quark_id.h"
 
 #include "../source/Mockups/IntegrationMockups.hpp"
-#include "IntegrationUnitTest.hpp"
+#include "IntegrationTests/IntegrationUnitTest.hpp"
 #include "GeometryTests/PathsUnitTest.hpp"
 
 
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 
 	quark_type=Test_ID;
 	kernel_type=RL_ID;
-	gluon_type=RL_MT_Light_ID;
+	gluon_type=Test_Gluon_ID;
 
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
@@ -143,7 +143,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 
 	quark_type=Test_ID;
 	kernel_type=RL_PS_ID;
-	gluon_type=PS_Light_ID;
+	gluon_type=Test_Gluon_ID;
 	
 	C_Kernel_Factory * KernelFactory = new C_Kernel_Factory;
 	C_Quark_Factory * QuarkFactory = new C_Quark_Factory;
@@ -167,8 +167,8 @@ BOOST_AUTO_TEST_CASE(int_test)
 
 	
 	t_dArray1D ref_value(2,0);
-	ref_value[0]=150.409840449456;
-	ref_value[1]= 59.196786422953;
+	ref_value[0]=129.66153264449591;
+	ref_value[1]= 34.55210436280955;
 	
 	t_dArray1D value(2,0);
 	value=up_quark->GetTotalSum();
