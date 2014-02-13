@@ -13,14 +13,11 @@ ifeq ($(DEBUG),1)
   CFLAGS += -g
 endif
 
-ifeq ($(DEBUG),1)
-  CFLAGS += -g
-endif
+C_OBJS := $(shell find source/*/ -name '*.cpp')
 
-C_OBJS := $(shell find source/* -name '*.cpp')
-
-C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
-C_OBJS_T+=UnitTests/GeometryTests/PathsUnitTest.cpp
+C_OBJS_T := $(shell find UnitTests/*/ -name '*.cpp')
+#C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
+#C_OBJS_T+=UnitTests/GeometryTests/PathsUnitTest.cpp
 
 SOURCES=source/main_test.cpp $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
