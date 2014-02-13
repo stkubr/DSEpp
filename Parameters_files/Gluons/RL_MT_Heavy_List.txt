@@ -1,4 +1,3 @@
 D		0.65034	
 w2		0.3271	
 LogTail		1	
-GluonType	2	
