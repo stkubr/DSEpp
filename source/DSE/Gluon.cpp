@@ -19,33 +19,39 @@ C_Gluon::C_Gluon(std::string& __GluonParamPath){
 
 C_Gluon::C_Gluon(){
 	SetNameID("Gluon", 1);
-	Gluon_ref=&C_Gluon::GluonByInterpolation;
 }
 
 
 // Parameterized Factory Method function
 //----------------------------------------------------------------------
-C_Gluon* C_Gluon::createGluon(Gluon_ID id ){
+C_Gluon* C_Gluon::createGluon(Gluon_ID id){
 	C_Gluon * p;
 	std::string __GluonParamPath;
 	switch (id){
 	case RL_MT_Light_ID:
 		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Light_List.txt");
+		p = new C_Gluon(__GluonParamPath);
 		break;
 	case RL_MT_Heavy_ID:
 		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_List.txt");
+		p = new C_Gluon(__GluonParamPath);
 		break;
 	case RL_MT_Heavy_DD_ID:
 		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+		p = new C_Gluon(__GluonParamPath);
 		break;
 	case PS_Light_ID:
 		__GluonParamPath=("Parameters_files/Gluons/RL_MT_Heavy_DD_List.txt");
+		p = new C_Gluon(__GluonParamPath);
+		break;
+	case Test_Gluon_ID:
+		p = new C_Gluon();
+		p -> setGluonDefaultParameters();
 		break;
 	default:
 		std::cout << "No such type of Maris-Tandy-like Gluon!" << std::endl;
 		assert(false);
 	}
-	p = new C_Gluon(__GluonParamPath);
 	return p;
 };
 
@@ -72,10 +78,18 @@ void C_Gluon::InitialState(){
 	GluonCheck();
 }
 
+// Sets Maris-Tandy-like Gluon with
+void C_Gluon::setGluonDefaultParameters(){
+	Gluon_ref=&C_Gluon::GluonMT;
+	D=0.93;
+	w2=0.16;
+    LogTail=1;
+}
+
 // Load interpolation points for gluon
 //----------------------------------------------------------------------
 void C_Gluon::SetInterpolatorPoints(std::string& _InterpolationPointsPath){
-
+	Gluon_ref=&C_Gluon::GluonByInterpolation;
 	t_cmplxArray2D GluonTempStorage(2);
 	std::ifstream GluonInterpStream;
 	t_cmplx coordinate, value;
@@ -103,9 +117,8 @@ void C_Gluon::ReadParameters(){
 			ParamList >> line >> D;
 			ParamList >> line >> w2;
 			ParamList >> line >> LogTail;
-			ParamList >> line >> GluonType;
 		}
-		std::cout << "D -" <<"  "<< D <<"  "<< "w2 -" <<"  "<< w2 <<"  "<< "LogTail -" <<"  "<< LogTail <<"  "<< "GluonType -" <<"  "<< GluonType << std::endl;
+		std::cout << "D -" <<"  "<< D <<"  "<< "w2 -" <<"  "<< w2 <<"  "<< "LogTail -" <<"  "<< LogTail  << std::endl;
 	}
 	else {std::cout << "Cant open file!" << std::endl; assert(false);}
 }

@@ -4,12 +4,12 @@
 #include "Propagator.hpp"
 #include <string>
 
-enum Gluon_ID {RL_MT_Light_ID=0, RL_MT_Heavy_ID, PS_Light_ID, RL_MT_Heavy_DD_ID, Arbitrary_Gluon_ID, Gluon_ID_End};
+enum Gluon_ID {RL_MT_Light_ID=0, RL_MT_Heavy_ID, PS_Light_ID, RL_MT_Heavy_DD_ID, Arbitrary_Gluon_ID, Test_Gluon_ID, Gluon_ID_End};
 
 class C_Gluon: public C_Propagator {
 private:
 	double D, w2;
-	int LogTail, GluonType;
+	int LogTail;
 	t_cmplx (C_Gluon::*Gluon_ref)(t_cmplx);
 	std::string GluonParamPath;
 	Interpolation::Linear<t_cmplx, t_cmplx> * FuncToInterpolate;
@@ -29,6 +29,8 @@ public:
 
 	// Initialization
 	void InitialState();
+
+	void setGluonDefaultParameters();
 
 	// Load interpolation points for gluon
 	void SetInterpolatorPoints(std::string& _InterpolationPointsPath);
