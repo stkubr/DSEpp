@@ -6,8 +6,6 @@
  *      Author: stkubr
  */
 
-#include "../source/NumLibs/Integrator.h"
-#include "../source/Mockups/IntegrationMockups.hpp"
 #include "IntegrationUnitTest.hpp"
 
 double C_IntegrationUnitTest::IntegrationUnitTest(Integrator_ID integrator_id, int selectFunctionType) {
