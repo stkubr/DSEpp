@@ -54,7 +54,7 @@ class C_DedicMem_Kernel: public C_DedicMem_Abs {
 	
 };
 
-class C_DedicMem_BSA: public C_DedicMem_Abs {
+class C_DedicMem_BSE: public C_DedicMem_Abs {
 	
 	public:
 	std::vector< std::vector <t_cmplxDirac> > AmpStorage;
@@ -158,10 +158,10 @@ class C_Memory_Manager{
 	    }
 	};
 
-	class C_MemoryFactory_BSA: public C_MemoryFactory{
+	class C_MemoryFactory_BSE: public C_MemoryFactory{
 		public:
 		C_DedicMem_Abs* CreateMemory() {
-			return new C_DedicMem_BSA;
+			return new C_DedicMem_BSE;
 	    }
 	};
 
@@ -188,10 +188,10 @@ class C_Memory_Manager{
 
 	extern C_MemoryFactory_Quark * DedicMemFactory_Quark;
 	extern C_MemoryFactory_Kernel * DedicMemFactory_Kernel;
-	/*C_MemoryFactory_BSA * DedicMemFactory_BSA = new C_MemoryFactory_BSA;
-	C_MemoryFactory_1_LoopDiagram * DedicMemFactory_1_LoopDiagram = new C_MemoryFactory_1_LoopDiagram;
-	C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
-	C_MemoryFactory_2_Loop_Int * DedicMemFactory_2_Loop_Int = new C_MemoryFactory_2_Loop_Int;*/
-	extern C_Memory_Manager * MemoryManager;
+	extern C_MemoryFactory_BSE * DedicMemFactory_BSE;
+	extern C_MemoryFactory_1_LoopDiagram * DedicMemFactory_1_LoopDiagram;
+	//C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
+	//C_MemoryFactory_2_Loop_Int * DedicMemFactory_2_Loop_Int = new C_MemoryFactory_2_Loop_Int;*/
+	//extern C_Memory_Manager * MemoryManager;
 
 #endif /* DEDICMEM_HPP_ */

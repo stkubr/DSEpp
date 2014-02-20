@@ -52,19 +52,19 @@
 
 	// AmpStorage Manipulation
 //----------------------------------------------------------------------
-	void C_DedicMem_BSA::resizeAmpStorage(int amps, int points){
+	void C_DedicMem_BSE::resizeAmpStorage(int amps, int points){
 		AmpStorage.resize(amps,std::vector <t_cmplxDirac>(points));
 	}
 
-	void C_DedicMem_BSA::setAmpStorage(int amp, int point, t_cmplxDirac * Amp){
+	void C_DedicMem_BSE::setAmpStorage(int amp, int point, t_cmplxDirac * Amp){
 		AmpStorage[amp][point]=(*Amp);
 	}
 
-	t_cmplxDirac C_DedicMem_BSA::getAmpStorage(int amp, int point){
+	t_cmplxDirac C_DedicMem_BSE::getAmpStorage(int amp, int point){
 		return AmpStorage[amp][point];
 	}
 
-	void C_DedicMem_BSA::clearAmpStorage(){
+	void C_DedicMem_BSE::clearAmpStorage(){
 		AmpStorage.clear();
 	}
 //----------------------------------------------------------------------
@@ -72,7 +72,7 @@
 
 	//EVMatrix Manipulation
 //----------------------------------------------------------------------
-	void C_DedicMem_BSA::ResizeEVMatrix(int num_rad, int num_angle, int num_amplitudes, int num_chebs)
+	void C_DedicMem_BSE::ResizeEVMatrix(int num_rad, int num_angle, int num_amplitudes, int num_chebs)
 	{
 		EVMatrix = Eigen::MatrixXcf::Ones(num_rad*num_angle*num_amplitudes*num_chebs,num_rad*num_angle*num_amplitudes*num_chebs);
 	}
@@ -80,21 +80,21 @@
 
 	//BSE_onCauchy Contour ang Grid Manipulation
 //----------------------------------------------------------------------
-	void C_DedicMem_BSA::resizeBSEContour(int num_amplitudes, int num_points){
+	void C_DedicMem_BSE::resizeBSEContour(int num_amplitudes, int num_points){
 		CauchyContour.resize(num_amplitudes,t_cmplxArray1D(num_points));
 	}
 
-	void C_DedicMem_BSA::resizeBSEGrid(int num_amplitudes, int num_ex, int num_in){
+	void C_DedicMem_BSE::resizeBSEGrid(int num_amplitudes, int num_ex, int num_in){
 		CauchyGrid.resize(num_amplitudes, t_cmplxArray2D(num_ex, t_cmplxArray1D(num_in)));
 	}
 
-	void C_DedicMem_BSA::clearCauchyGrid(){
+	void C_DedicMem_BSE::clearCauchyGrid(){
 		CauchyGrid.clear();
 	}
 
 //----------------------------------------------------------------------
 
-	void C_DedicMem_BSA::info(){
+	void C_DedicMem_BSE::info(){
 		std::cout << "Dedicated Memory for BSE" << std::endl;
 	}
 
@@ -200,9 +200,9 @@
 
 C_MemoryFactory_Quark * DedicMemFactory_Quark = new C_MemoryFactory_Quark;
 C_MemoryFactory_Kernel * DedicMemFactory_Kernel = new C_MemoryFactory_Kernel;
-/*C_MemoryFactory_BSA * DedicMemFactory_BSA = new C_MemoryFactory_BSA;
+C_MemoryFactory_BSE * DedicMemFactory_BSE = new C_MemoryFactory_BSE;
 C_MemoryFactory_1_LoopDiagram * DedicMemFactory_1_LoopDiagram = new C_MemoryFactory_1_LoopDiagram;
-C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
+/*C_MemoryFactory_2_LoopDiagram * DedicMemFactory_2_LoopDiagram = new C_MemoryFactory_2_LoopDiagram;
 C_MemoryFactory_2_Loop_Int * DedicMemFactory_2_Loop_Int = new C_MemoryFactory_2_Loop_Int;*/
-C_Memory_Manager * MemoryManager= new C_Memory_Manager;
+//C_Memory_Manager * MemoryManager= new C_Memory_Manager;
 
