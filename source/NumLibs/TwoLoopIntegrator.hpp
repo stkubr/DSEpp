@@ -162,7 +162,7 @@ class C_TwoLoopIntegrator{
 		return new C_TwoLoopIntegrator(*this);
 	}
 
-	virtual t_cmplxMatrix Integrand(t_dArray1D args, int ctr) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix Integrand(t_dArray1D args, int ctr) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; assert(false); return dummy;}
 };
 
 

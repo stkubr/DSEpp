@@ -46,7 +46,7 @@ class C_OneLoopIntegrator{
 		return (this->Integrand)(integrand_args);
 	}
 
-	virtual t_cmplxMatrix Integrand(t_cmplxArray1D args) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix Integrand(t_cmplxArray1D args) {t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; assert(false); return dummy;}
 };
 
 
