@@ -1,6 +1,6 @@
 #pragma once
 
-class C_Kinematics_1loop: public C_AbstractClass{
+class C_Kinematics_1loop{
 	private:
 	DiracGamma Z;
 	
