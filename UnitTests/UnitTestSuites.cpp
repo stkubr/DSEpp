@@ -18,7 +18,8 @@
 #include "IntegrationTests/IntegrationUnitTest.hpp"
 #include "GeometryTests/PathsUnitTest.hpp"
 
-
+#include "../source/Vertex/BSE/BSE_Mesons.hpp"
+#include "../source/Vertex/BSE/BSE_Builder.hpp"
 //----------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(GeometryTest)
 BOOST_AUTO_TEST_CASE(SinglePointTest)
