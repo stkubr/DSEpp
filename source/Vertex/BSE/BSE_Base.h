@@ -1,10 +1,15 @@
 #pragma once
 #include "../AbsVertex.h"
+#include "../../DSE/Propagator.hpp"
+#include "../../Kernel/AbstractKernel.hpp"
+#include "../../Abs/Kinematics.hpp"
+#include "../../NumLibs/OneLoopIntegrator.hpp"
+#include "../../DedicMem/DedicMem.hpp"
 
 class C_BSE_Base: public C_AbsVertex{
 	protected:
 	// 4-momenta vectors
-
+	C_AbstractKernel * Kernel;
 	
 	// Basic Dirac structure
 	t_cmplxDirac S_p,S_m,Y_T;
@@ -16,11 +21,11 @@ class C_BSE_Base: public C_AbsVertex{
 	// Constructor
 	C_BSE_Base()
 	{
-		Memory=(C_DedicMem_BSA*)DedicMemFactory_BSA->CreateMemory();
+		Memory=(C_DedicMem_BSE*)DedicMemFactory_BSE->CreateMemory();
 	}
 	
 	public:
-	C_DedicMem_BSA * Memory;
+	C_DedicMem_BSE * Memory;
 	void LinkToKernel(C_AbstractKernel * _K){
 		Kernel=_K;
 	}
@@ -111,9 +116,6 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 	t_cmplxArray1D /*integrand_args,*/U_amp,WeightCoeff;
 	t_dArray1D zz_rad, zz_cheb, zz_angleY , zz_cauchy, w_rad, w_cheb, w_angleY, w_cauchy, proj_amp;
 
-	/*C_Integrator_Line<dcxMatrix,C_BSE_Hadron_Base,double> * Integ_radial;
-	C_Integrator_Line<dcxMatrix,C_BSE_Hadron_Base,double> * Integ_angle_cheb;
-	C_Integrator_Line<dcxMatrix,C_BSE_Hadron_Base,double> * Integ_angle_Y;*/
 	C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx> * Integ_cauchy_long;
 	
 	t_cmplxMatrix Zero,dataAmp,AMP,BUFFER_AMP,BUFFER_F_ex,BUFFER_dataAmp_ex,NextDir;
@@ -149,19 +151,19 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 	{
 		t_cmplxArray1D quark_temp_sigma;
 		quark_temp_sigma=Parton_P->getPropAt((*K_plus)*(*K_plus));
-		S_p=(-1.0*ii*((*K_plus)*Z)*quark_temp_sigma[3] + SHIFT*I*quark_temp_sigma[4]);
+		S_p=(-1.0*ii*((*K_plus)*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
 		
 		quark_temp_sigma=Parton_M->getPropAt((*K_minus)*(*K_minus));
-		S_m=(-1.0*ii*((*K_minus)*Z)*(quark_temp_sigma[3]) + SHIFT*I*(quark_temp_sigma[4]));
+		S_m=(-1.0*ii*((*K_minus)*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
 	}
 	
-	//virtual void SetProjectors(dcxVector _p, dcxVector _P){std::cout << "Error - virtual call" << std::endl; StopLine();};
-	//virtual void SetAmplitudes(dcxVector _k, dcxVector _P){std::cout << "Error - virtual call" << std::endl; StopLine();};
-	virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){std::cout << "Error - virtual call" << std::endl; StopLine();};
-	virtual void SetWaveFunctions(){std::cout << "Error - virtual call" << std::endl; StopLine();};
-	virtual t_cmplxMatrix GetBSA(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
-	virtual t_cmplxMatrix GetBSA_matrix(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
-	virtual t_cmplxMatrix GetBSA_norm(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; StopLine(); return dummy;};
+	//virtual void SetProjectors(dcxVector _p, dcxVector _P){std::cout << "Error - virtual call" << std::endl; assert(false);};
+	//virtual void SetAmplitudes(dcxVector _k, dcxVector _P){std::cout << "Error - virtual call" << std::endl; assert(false);};
+	virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){std::cout << "Error - virtual call" << std::endl; assert(false);};
+	virtual void SetWaveFunctions(){std::cout << "Error - virtual call" << std::endl; assert(false);};
+	virtual t_cmplxMatrix GetBSA(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
+	virtual t_cmplxMatrix GetBSA_matrix(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
+	virtual t_cmplxMatrix GetBSA_norm(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
 	
 	void SetWeightCoeff(){
 		for (int i = 0; i < num_amplitudes; i++) { WeightCoeff[i]=(Projectors[i]|Projectors[i]).Tr(); }
@@ -530,7 +532,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 		DrawBSA_matrix.close();
 	}
 		
-	virtual t_cmplxMatrix setResultBSA(){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix setResultBSA(){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; assert(false); return dummy;}
 
 	void SetDressing_normal(t_cmplx z){
 		if (flag_sigma == true){ 
@@ -570,13 +572,6 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 		z=args[1];
 		y=args[2];
 		SetIntMomenta(x, y, z);
-		
-		/*#pragma omp master
-		{
-			std::cout << flag_sigma << std::endl;
-
-		}
-		cin.get();*/
 		
 		(this->*SetDressing_ref)(z);
 		
