@@ -1,11 +1,13 @@
 #pragma once
 
+//#include "../../DSE/Propagator.hpp"
+
 
 
 class C_Manipulator;
 
 // Product 
-class C_Physical_State: public C_AbstractClass{
+class C_Physical_State{
 	public:
 	std::vector<C_Propagator*> Propagators;
 	std::vector<C_AbstractKernel*> Kernels;
@@ -46,11 +48,19 @@ class C_Physical_State: public C_AbstractClass{
 
 
 // Abstract builder
-class C_BSE_Abstract_Builder: public C_AbstractClass{
+class C_BSE_Abstract_Builder{
 	public:
 	C_Physical_State * PhysicalState;
 	
-	C_BSE_Abstract_Builder() {}
+	C_Quark_Factory * QuarkFactory;
+	C_Gluon_Factory * GluonFactory;
+	C_Kernel_Factory * KernelFactory;
+
+	C_BSE_Abstract_Builder() {
+		QuarkFactory = new C_Quark_Factory;
+		GluonFactory = new C_Gluon_Factory;
+		KernelFactory = new C_Kernel_Factory;
+	}
 	~C_BSE_Abstract_Builder() {}
 	
 	C_Physical_State * GetPhysicalState() {return PhysicalState;} 
@@ -91,12 +101,12 @@ class C_Meson: public C_BSE_Abstract_Builder{
 	
 	void SymmetricQuarksDetector(){
 		if(quark_1_ID==quark_2_ID){
-			Propagators[0]=QuarkFactory->Create(&quark_1_ID);
+			Propagators[0]=QuarkFactory->Create(quark_1_ID);
 			Propagators[1]=Propagators[0];
 		}
 		else {
-			Propagators[0]=QuarkFactory->Create(&quark_1_ID);
-			Propagators[1]=QuarkFactory->Create(&quark_2_ID);
+			Propagators[0]=QuarkFactory->Create(quark_1_ID);
+			Propagators[1]=QuarkFactory->Create(quark_2_ID);
 		}
 	}
 	
@@ -107,9 +117,7 @@ class C_Meson: public C_BSE_Abstract_Builder{
 	
 	void buildKernels(){
 		//vector<C_AbstractKernel*> Kernels(1);
-		Kernels[0]=KernelFactory->Create(&kernel_ID);
-		
-		Kernels[0]->SpecifyGluon(gluon_ID);
+		Kernels[0]=KernelFactory->Create(kernel_ID);
 		PhysicalState->SetKernels(Kernels);
 	}
 	
@@ -133,7 +141,7 @@ class C_Meson: public C_BSE_Abstract_Builder{
 };
 
 // Director
-class C_BSE_Binder: public C_AbstractClass{
+class C_BSE_Binder{
 	private:
 	C_BSE_Abstract_Builder * BSE_Builder;
 	public:
