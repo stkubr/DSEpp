@@ -53,7 +53,13 @@ class C_BSE_Hadron_Meson: public C_BSE_Hadron_Base {
 		pre_result.Resize(num_amplitudes,1);
 		SetFullWaveFunction();
 		bool flag_reset_kernel=true;
-		for (int i = 0; i < num_amplitudes; i++) {pre_result(i,0)=Kernel->TraceKernelWithoutStoring(&(Projectors[i]),&FullWaveFunction,&Momenta.q,&Momenta.k,&k_p_P,flag_reset_kernel); flag_reset_kernel=false;}
+		for (int i = 0; i < num_amplitudes; i++) {
+			pre_result(i,0)=Kernel->TraceKernelWithoutStoring((Projectors[i]),
+															  FullWaveFunction,
+															  Momenta.q,Momenta.k,
+															  k_p_P,flag_reset_kernel);
+			flag_reset_kernel=false;
+		}
 		result=DisentangleAmps(&pre_result);
 		return result;
 	}
@@ -68,7 +74,10 @@ class C_BSE_Hadron_Meson: public C_BSE_Hadron_Base {
 		bool flag_reset_kernel=true;
 		for (int i = 0; i < num_amplitudes; i++){
 			for (int j = 0; j < num_amplitudes; j++){
-				pre_result(j,0)=Kernel->TraceKernelWithoutStoring(&(Projectors[j]),&(WaveFunctions[i]),&Momenta.q,&Momenta.k,&k_p_P,flag_reset_kernel); 
+				pre_result(j,0)=Kernel->TraceKernelWithoutStoring((Projectors[j]),
+																  (WaveFunctions[i]),
+																  Momenta.q,Momenta.k,
+																  k_p_P,flag_reset_kernel);
 				flag_reset_kernel=false;
 			}
 			result=DisentangleAmps(&pre_result);
@@ -94,7 +103,7 @@ class C_BSE_Hadron_Meson: public C_BSE_Hadron_Base {
 		return result;
 	}
 	
-	virtual t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; StopLine(); return dummy;}
+	virtual t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){t_cmplxMatrix dummy; std::cout << "Error virtual call" << std::endl; assert(false); return dummy;}
 	
 	
 	static C_BSE_Hadron_Meson * createMesonBSE(Dirac_ID id);
