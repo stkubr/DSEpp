@@ -21,7 +21,7 @@ protected:
 	t_cmplx x;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
 	t_cmplxArray1D integrand_args;
-	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, check_res, eps;
+	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, Z4, check_res, eps;
 	bool flag_normalized;
 	t_cmplxVector k, p;
 
@@ -84,6 +84,9 @@ protected:
 	// Calculate consequently Grid and Contour until converge
 	void PropSetAndCheck();
 
+	// Apply renormalization
+	void Renormalize();
+
 	// Check convergence
 	void PropCheck(int s);
 
@@ -108,6 +111,8 @@ protected:
 
 	// Gets sum A and B at 100 points. Used for Integration Test.
 	t_dArray1D GetTotalSum();
+
+	void CheckExtrapolation();
 
 public:
 	static C_Quark* createQuark(Quark_ID id);

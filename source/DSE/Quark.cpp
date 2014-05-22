@@ -65,12 +65,10 @@ void C_Quark::InitializateIntegrators(){
 	integrand_args.resize(2);
 }
 
-
 void C_Quark::ResizeMemory(){
 	Memory->resizeContour(num_amplitudes+2, 2*params.num_prop_steps + 2*params.num_cutoff_steps);
 	Memory->resizeGrid(num_amplitudes+1, 2*params.num_prop_steps + 2*params.num_cutoff_steps, params.num_prop_steps*params.num_angle_steps);
 }
-
 
 // Allocator copy of "this" (used in parallel sections)
 //----------------------------------------------------------------------
@@ -166,6 +164,7 @@ t_cmplxArray1D C_Quark::getCauchyAt_embedded(t_cmplx coordin){
 	sumF1=t_cmplx(0.0,0.0);
 	sumF2=t_cmplx(0.0,0.0);
 	sumN=t_cmplx(0.0,0.0);
+
 	for (int j=0;j< Memory->S_cont[0].size();j++){
 		z_i=(Memory->S_cont)[0][j];
 		t_cmplx denom = 1.0/(z_i-coordin);
@@ -182,19 +181,18 @@ t_cmplxArray1D C_Quark::getCauchyAt_embedded(t_cmplx coordin){
 	return result;
 }
 
-// Evaluate Cauchy integral on contour, obtain Propogator on grid
+// Evaluate Cauchy integral on contour, obtain Propagator on grid
 //----------------------------------------------------------------------
 void C_Quark::CalcPropGrid(){
-	int num_grid=Memory->S_grid[0][0].size();
 #pragma omp parallel
-	{//begin of parallel pragma
+{//begin of parallel pragma
 		t_cmplx coordin;
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
 		t_cmplxArray1D S_temp_storage(num_amplitudes);
 #pragma omp for
 		for (int i = 0; i < Memory->S_cont[0].size(); i++){
-			for (int j = 0; j < num_grid; j++){
+			for (int j = 0; j < Memory->S_grid[0][0].size(); j++){
 				coordin=Memory->S_grid[0][i][j];
 				if (real(coordin)<params.LimUk*params.LimUk*params.EffectiveCutoff){
 					S_temp_storage=quark_copy->getCauchyAt_embedded(coordin);
@@ -207,13 +205,7 @@ void C_Quark::CalcPropGrid(){
 			}
 		}
 		delete quark_copy;
-	}//end of parallel pragma
-	if (flag_normalized==true){
-		A_renorm=real(getCauchyAt_embedded(params.mu*params.mu)[0])-Z2*1.0;
-		Z2=1.0 - (A_renorm);
-		Kernel->setZ2DressingFactor(getDressingFactor());
-	}
-	//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+}//end of parallel pragma
 }
 
 // Evaluate DSE integral on grid, obtain quark propagator on contour
@@ -221,13 +213,13 @@ void C_Quark::CalcPropGrid(){
 void C_Quark::CalcPropCont(){
 	int num_contour=Memory->S_cont[0].size();
 #pragma omp parallel
-	{// start of paralell
+{// start of paralell
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
 
 		t_cmplxMatrix Temp_return(num_amplitudes,1),Bare_term(num_amplitudes,1);
 		Bare_term(0, 0) = Z2;
-		Bare_term(1, 0) = params.m0 - B_renorm + params.HeavyLight;
+		Bare_term(1, 0) = params.m0 - B_renorm;
 #pragma omp for
 		for (int i = 0; i < num_contour/2; i++){ // Iterating over upper part only
 			quark_copy->index_p = i;
@@ -243,7 +235,7 @@ void C_Quark::CalcPropCont(){
 			Memory->S_cont[3][num_contour - 1 - i] = conj(Temp_return(1, 0));
 		}
 		delete quark_copy;
-	}// end of parallel
+}// end of parallel
 }
 
 // Analytic form of the Integrand (available only for RL or Pion Contribution)
@@ -289,7 +281,6 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 	t_cmplxVector pion_momenta;
 
 	pion_momenta=(p-k/2.0);
-	y2=y*y;
 	pk=Memory->S_grid[0][index_p][grid1_num];
 	_A=Memory->S_grid[1][index_p][grid1_num];
 	_B=Memory->S_grid[2][index_p][grid1_num];
@@ -331,10 +322,10 @@ t_cmplxArray1D C_Quark::getPropAt(t_cmplx q){
 void C_Quark::PropSetAndCheck(){
 	if(params.ReCalcProp){
 		// First few steps without normalization to speed up convergence
-		for (int i = 0; i <2 ; i++){
+		for (int i = 0; i < 2 ; i++){
 			CalcPropGrid();
 			CalcPropCont();
-			write_Prop_re(100);
+			write_Prop_re(20);
 		}
 		// Switching on normalization
 		flag_normalized=true;
@@ -343,12 +334,21 @@ void C_Quark::PropSetAndCheck(){
 		while (eps>params.Accuracy){
 			CalcPropGrid();
 			CalcPropCont();
-			B_mu=real(getCauchyAt_embedded(params.mu*params.mu)[1]);
-			if (flag_normalized==true) B_renorm+=real(getCauchyAt_embedded(params.mu*params.mu)[1])-params.m0;
-			//Z4=2.0-B_renorm/m0;
+			Renormalize();
 			PropCheck(100);
-			write_Prop_re(100);
+			write_Prop_re(20);
 		}
+	}
+}
+
+void C_Quark::Renormalize(){
+	if (flag_normalized==true){
+		A_renorm=real(getCauchyAt_embedded(params.mu*params.mu)[0])-Z2*1.0;
+		Z2=1.0 - (A_renorm);
+		Kernel->setZ2DressingFactor(getDressingFactor());
+
+		B_mu=real(getCauchyAt_embedded(params.mu*params.mu)[1]);
+		B_renorm+=real(getCauchyAt_embedded(params.mu*params.mu)[1])-params.m0;
 	}
 }
 
@@ -387,16 +387,12 @@ void C_Quark::DressPropagator(){
 		PrintLine('-');
 		setContour();
 		setGrid();
-		LoadPropCountour();
-		//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
+		//LoadPropCountour();
 		PropSetAndCheck();
-		flag_dressed=true;
-		Kernel->setZ2DressingFactor(this->getDressingFactor());
-		//MemoryManager->CopyMemoryFrom(this->Memory,Kernel->Memory);
-		//SavePropCountour();
-		//ExportPropagator();
+		Kernel->setZ2DressingFactor(getDressingFactor());
 		Memory->RemoveGrid();
 		write_Prop_re(100);
+		//CheckExtrapolation();
 	}
 }
 
@@ -410,13 +406,18 @@ void C_Quark::write_Prop_re(int s){
 	Pu=params.LimUk;
 	dp=pow(10,(log10(Pu/Pd)/scale));
 	x=Pd;
+	std::cout.precision(7);
 	ofstream data_Prop_re;
 	data_Prop_re.open ("Data_files/data_Prop_re_new.dat");
-	for (int i = 0; i <= scale; i++){
+	std::cout << std::endl;
+	std::cout << "P^2" <<"         "<< "A(p)" <<"        "<< "B(p)"  << std::endl;
+	for (int i = 0; i < scale; i++){
 		storage=getCauchyAt_embedded(x*x);
 		data_Prop_re << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
+		std::cout << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 		x*=dp;
 	}
+	std::cout << std::endl;
 	data_Prop_re.close();
 }
 
@@ -517,9 +518,37 @@ t_dArray1D C_Quark::GetTotalSum(){
 		x*=dp;
 	}
 	std::cout.precision(12);
-	std::cout << temp_result[0] <<" "<< temp_result[1] <<std::endl;
+	std::cout << temp_result[0] <<" "<< temp_result[1] << std::endl;
 	return temp_result;
 }
 
+
+void C_Quark::CheckExtrapolation(){
+	t_cmplx last_point;
+		t_cmplxArray2D tempContour;
+		t_cmplxArray2D tempABStorage;
+		double M2=16.0;
+		last_point = zz_rad[zz_rad.size()-1]*zz_rad[zz_rad.size()-1] - M2/4.0 + params.LimUk*params.LimDk;
+		Geometry::C_ParabolaContour contour(ii*sqrt(M2)/2.0,
+											ii*sqrt(M2),
+											last_point);
+		contour.setParabolaContour(zz_rad,w_rad,zz_line,w_line);
+		tempContour = contour.getParabolaContour();
+
+		for (int i = 0; i < tempContour.size(); i++) {
+			tempABStorage.push_back(getCauchyAt_embedded(tempContour[0][i]));
+		}
+
+		std::cout << "Ready for Extrapolation?(enter)" << std::endl;
+		std::cin.get();
+		std::cout << "Yes Captain!" << std::endl;
+
+		Memory->S_cont[0] = tempContour[0];
+		Memory->S_cont[1] = tempContour[1];
+		Memory->S_cont[2] = tempABStorage[0];
+		Memory->S_cont[3] = tempABStorage[1];
+
+		write_Prop_re(100);
+}
 
 
