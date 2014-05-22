@@ -15,38 +15,42 @@ private:
 	Interpolation::Linear<t_cmplx, t_cmplx> * FuncToInterpolate;
 
 	// Constructor
-	C_Gluon(std::string& __GluonParamPath);
+	C_Gluon(std::string& _GluonParamPath);
 	C_Gluon();
-
-public:
-	void DressPropagator() {
-		// This type of gluon is given by function, so it is considered to be already dressed.
-	}
-
-	// Parameterized Factory Method function
-	static C_Gluon* createGluon(Gluon_ID id);
-	static C_Gluon* createGluon(Gluon_ID id, std::string& _InterpolationPointsPath);
 
 	// Initialization
 	void InitialState();
 
 	void setGluonDefaultParameters();
 
-	// Load interpolation points for gluon
-	void SetInterpolatorPoints(std::string& _InterpolationPointsPath);
-	
+	// Load interpolation points for Gluon
+	void setInterpolatorPoints(std::string& _InterpolationPointsPath);
+
 	// Read parameters from file
 	void ReadParameters();
-
-	// Get value of Gluon at k
-	t_cmplxArray1D getPropAt(t_cmplx k);
 
 	// Gluon check on the real line
 	void GluonCheck();
 
+
+public:
+	// Parameterized Factory Method function
+	static C_Gluon* createGluon(Gluon_ID id);
+	static C_Gluon* createGluon(Gluon_ID id, std::string& _InterpolationPointsPath);
+
+	void DressPropagator() {
+		// So far the Gluon is given by function, so it is considered to be already dressed.
+	}
+
+	// Get value of Gluon at k
+	t_cmplxArray1D getPropAt(t_cmplx k);
+
 	// Maris-Tandy gluon model
 	t_cmplx GluonMT(t_cmplx k);
 	
+	// Set manually Maris-Tandy gluon model parameters (redefined by Lambda and Etta)
+	void setMTParams(double Lambda, double Etta);
+
 	// Model given by interpolation over provided points set
 	t_cmplx GluonByInterpolation(t_cmplx k);
 

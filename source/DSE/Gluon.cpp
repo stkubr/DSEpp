@@ -62,7 +62,7 @@ C_Gluon* C_Gluon::createGluon( Gluon_ID id, std::string& _InterpolationPointsPat
 	switch (id){
 	case Arbitrary_Gluon_ID:
 		p = new C_Gluon();
-		p -> SetInterpolatorPoints(_InterpolationPointsPath);
+		p -> setInterpolatorPoints(_InterpolationPointsPath);
 		break;
 	default:
 		std::cout << "No such type of RainbowLadder Gluon!" << std::endl;
@@ -78,7 +78,7 @@ void C_Gluon::InitialState(){
 	GluonCheck();
 }
 
-// Sets Maris-Tandy-like Gluon with
+// Sets Maris-Tandy-like Gluon with default parameters
 void C_Gluon::setGluonDefaultParameters(){
 	Gluon_ref=&C_Gluon::GluonMT;
 	D=0.93;
@@ -88,7 +88,7 @@ void C_Gluon::setGluonDefaultParameters(){
 
 // Load interpolation points for gluon
 //----------------------------------------------------------------------
-void C_Gluon::SetInterpolatorPoints(std::string& _InterpolationPointsPath){
+void C_Gluon::setInterpolatorPoints(std::string& _InterpolationPointsPath){
 	Gluon_ref=&C_Gluon::GluonByInterpolation;
 	t_cmplxArray2D GluonTempStorage(2);
 	std::ifstream GluonInterpStream;
@@ -151,6 +151,13 @@ void C_Gluon::GluonCheck(){
 	Gluon.close();
 }
 
+// // Set manually Maris-Tandy gluon model parameters (redefined by Lambda and Etta)
+//----------------------------------------------------------------------
+void C_Gluon::setMTParams(double Lambda, double Etta){
+		D = Lambda*Lambda*Etta;
+		w2 = (Lambda/Etta)*(Lambda/Etta);
+	}
+
 // Maris-Tandy gluon model
 //----------------------------------------------------------------------
 t_cmplx C_Gluon::GluonMT(t_cmplx k){
@@ -158,7 +165,6 @@ t_cmplx C_Gluon::GluonMT(t_cmplx k){
 	const double m_t=0.5;
 	const double tau=7.389056 - 1.0;
 	const double LambdaQCD=0.234;
-	const double pi=3.14159265358979;
 	return 4.0*pi*pi*D*(k)*exp(-1.0*(k)/w2)/w2/w2/w2  + LogTail*4.0*pi*pi*(gamma_m*(1.0-1.0*exp(-(k)/4.0/m_t/m_t))/(k))/(0.5*log(tau+(1.0+(k)/LambdaQCD/LambdaQCD)*(1.0+(k)/LambdaQCD/LambdaQCD)));
 }
 
