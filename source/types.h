@@ -9,9 +9,9 @@
 #define TYPES_HPP_
 
 #include <complex>
-#include "../qft++/include/matrix.h"
-#include "../qft++/include/tensor.h"
-#include "../qft++/include/relativistic-quantum-mechanics.h"
+#include "matrix.h"
+#include "tensor.h"
+#include "relativistic-quantum-mechanics.h"
 #include <vector>
 
 
