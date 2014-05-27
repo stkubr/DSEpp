@@ -10,7 +10,7 @@
 
 #include <vector>
 #include <fstream>
-#include "../eigen/Eigen/Eigenvalues"
+#include "Eigen/Eigenvalues"
 #include "../types.h"
 
 class C_DedicMem_Abs{
