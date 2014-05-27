@@ -8,7 +8,6 @@
 #ifndef PARABOLA_HPP_
 #define PARABOLA_HPP_
 
-#include "../../types.h"
 #include "Path.hpp"
 
 namespace Geometry {

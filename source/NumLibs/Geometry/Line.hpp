@@ -8,7 +8,6 @@
 #ifndef LINE_HPP_
 #define LINE_HPP_
 
-#include "../../types.h"
 #include "Path.hpp"
 
 namespace Geometry {
