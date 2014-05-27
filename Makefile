@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-fopenmp -g -O3 -std=gnu++0x -I./../../boost/ -I./../qft++/include -I ./../eigen/
+CFLAGS=-fopenmp -O3 -std=gnu++0x -I./Libraries/boost/ -I./Libraries/qft++/include -I ./Libraries/eigen/
 LDFLAGS=-fopenmp
 COVERAGE=0
 DEBUG=0
@@ -16,20 +16,19 @@ endif
 C_OBJS := $(shell find source/*/ -name '*.cpp')
 
 C_OBJS_T := $(shell find UnitTests/*/ -name '*.cpp')
-#C_OBJS_T=UnitTests/IntegrationUnitTest.cpp
-#C_OBJS_T+=UnitTests/GeometryTests/PathsUnitTest.cpp
 
 SOURCES=source/main_test.cpp $(C_OBJS)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=bin/main_test 
 
-SOURCES_T=UnitTests/UnitTestSuites.cpp $(C_OBJS) $(C_OBJS_T)
-OBJECTS_T=$(SOURCES_T:.cpp=.o)
+SOURCES_T=$(C_OBJS) $(C_OBJS_T) UnitTests/UnitTestSuites.cpp
+OBJECTS_T=$(SOURCES_T:.cpp=.o) 
 EXECUTABLE_T=bin/UnitTestSuites
 
 
 all: $(EXECUTABLE) $(EXECUTABLE_T)
 
+UnitTests: $(EXECUTABLE_T)
 	
 $(EXECUTABLE_T): $(OBJECTS_T) 
 	$(CC) $(LDFLAGS) $(OBJECTS_T) -o $@
@@ -37,7 +36,7 @@ $(EXECUTABLE_T): $(OBJECTS_T)
 $(EXECUTABLE): $(OBJECTS) 
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-%.o: %.cpp
+%.o: %.cpp 
 	$(CC) $(CFLAGS) $< -c -o $@
 
 

@@ -18,8 +18,8 @@
 #include "IntegrationTests/IntegrationUnitTest.hpp"
 #include "GeometryTests/PathsUnitTest.hpp"
 
-#include "../source/Vertex/BSE/BSE_Mesons.hpp"
-#include "../source/Vertex/BSE/BSE_Builder.hpp"
+//#include "../source/Vertex/BSE/BSE_Mesons.hpp"
+//#include "../source/Vertex/BSE/BSE_Builder.hpp"
 //----------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(GeometryTest)
 BOOST_AUTO_TEST_CASE(SinglePointTest)
@@ -85,7 +85,6 @@ BOOST_AUTO_TEST_CASE(int_test)
 	Kernel_ID kernel_type;
 	Gluon_ID gluon_type;
 
-
 	quark_type=Test_ID;
 	kernel_type=RL_ID;
 	gluon_type=Test_Gluon_ID;
@@ -122,7 +121,6 @@ BOOST_AUTO_TEST_CASE(int_test)
 	tstop = (double)clock()/CLOCKS_PER_SEC;
 	ttime= (tstop-tstart)/omp_get_max_threads();
 	std::cout << "\n\n" << "calculation time=" <<" "<< ttime <<" "<< "seconds" << std::endl;
-
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -162,6 +160,7 @@ BOOST_AUTO_TEST_CASE(int_test)
 	kernel->setExchangeID(Pion_exchange_ID);
 	kernel->setConvolutionType(0);
 	kernel->setPropagators(Props);
+	kernel->setMesonExchangeMass(0.0);
 	
 	up_quark->LinkToKernel(kernel);
 	up_quark->DressPropagator();
