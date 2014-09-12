@@ -10,7 +10,7 @@
 
 #include "Quark_parameters.hpp"
 #include "../types.h"
-#include "../Abs/AbsDiagram.h"
+#include "../Abs/AbsDiagram.hpp"
 #include "../Kernel/AbstractKernel.hpp"
 
 

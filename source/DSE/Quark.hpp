@@ -22,7 +22,7 @@ protected:
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
 	t_cmplxArray1D integrand_args;
 	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, Z4, check_res, eps;
-	bool flag_normalized;
+	bool flag_renormalization;
 	t_cmplxVector k, p;
 
 	// Constructor

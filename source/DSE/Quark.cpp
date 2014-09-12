@@ -11,7 +11,7 @@ C_Quark::C_Quark(){
 	Memory_abs=DedicMemFactory_Quark->CreateMemory();
 	Memory=(C_DedicMem_Quark*)Memory_abs;
 	flag_dressed=false;
-	flag_normalized=false;
+	flag_renormalization =false;
 	num_amplitudes=2;
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
 }
@@ -42,7 +42,7 @@ void C_Quark::InitialState(){
 	eps=1.0;
 	check_res=0.0;
 	flag_dressed=false;
-	flag_normalized=false;
+	flag_renormalization =false;
 
 	ResizeMemory();
 }
@@ -328,7 +328,7 @@ void C_Quark::PropSetAndCheck(){
 			write_Prop_re(20);
 		}
 		// Switching on normalization
-		flag_normalized=true;
+		flag_renormalization =true;
 		check_res=1.0;
 		eps=1.0;
 		while (eps>params.Accuracy){
@@ -342,10 +342,9 @@ void C_Quark::PropSetAndCheck(){
 }
 
 void C_Quark::Renormalize(){
-	if (flag_normalized==true){
+	if (flag_renormalization){
 		A_renorm=real(getCauchyAt_embedded(params.mu*params.mu)[0])-Z2*1.0;
 		Z2=1.0 - (A_renorm);
-		Kernel->setZ2DressingFactor(getDressingFactor());
 
 		B_mu=real(getCauchyAt_embedded(params.mu*params.mu)[1]);
 		B_renorm+=real(getCauchyAt_embedded(params.mu*params.mu)[1])-params.m0;
@@ -389,7 +388,6 @@ void C_Quark::DressPropagator(){
 		setGrid();
 		//LoadPropCountour();
 		PropSetAndCheck();
-		Kernel->setZ2DressingFactor(getDressingFactor());
 		Memory->RemoveGrid();
 		write_Prop_re(100);
 		//CheckExtrapolation();
