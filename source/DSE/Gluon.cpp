@@ -55,7 +55,7 @@ C_Gluon* C_Gluon::createGluon(Gluon_ID id){
 	return p;
 };
 
-// Parameterized Factory Method function
+// Parametrized Factory Method function
 //----------------------------------------------------------------------
 C_Gluon* C_Gluon::createGluon( Gluon_ID id, std::string& _InterpolationPointsPath){
 	C_Gluon * p;
