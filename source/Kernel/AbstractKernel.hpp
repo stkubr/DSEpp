@@ -4,7 +4,7 @@ enum Kernel_ID {RL_ID=0, RL_PS_ID, Kernel_ID_End};
 
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
-#include "../Abs/AbsDiagram.h"
+#include "../Abs/AbsDiagram.hpp"
 
 class C_AbstractKernel;
 class C_Propagator;
@@ -15,10 +15,8 @@ class C_Propagator;
 class C_AbstractKernel: public C_AbsDiagram{
 
 protected:
-	t_cmplx Z2;
 	std::vector<C_Propagator*> Propagators;
 	/// TODO to include vector of general vertexes
-	t_cmplx PseudoMesonMass;
 	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
 	Kernel_ID Kernel_type_ID;
 	PS_type_ID Exchange_type_ID;
@@ -26,7 +24,6 @@ protected:
 	C_AbstractKernel(){
 		SetNameID("Kernel",1);	
 		Memory=(C_DedicMem_Kernel*)DedicMemFactory_Kernel->CreateMemory();
-		Z2=1.0;
 		KMatrixThreadStorage.resize(omp_get_max_threads());
 	}
 
@@ -34,10 +31,6 @@ public:
 	C_DedicMem_Kernel * Memory;
 
 	virtual void info()=0;
-
-	void setMesonExchangeMass(t_cmplx _M){
-		PseudoMesonMass=_M;
-	}
 
 	void setExchangeID(PS_type_ID exchange_id){
 		Exchange_type_ID=exchange_id;
@@ -54,26 +47,6 @@ public:
 	virtual void setConvolutionType(int type){}
 
 	static C_AbstractKernel* createKernel( Kernel_ID id );
-
-	void setZ2DressingFactor(t_cmplx _Z2){
-		Z2=_Z2;
-	}
-
-	t_cmplx VertexDressingAt(int kernel_type, int num_P, int num_amp, t_cmplx coordin){
-		t_cmplx result;
-		t_cmplx F1,N,temp;
-		t_cmplx z_i,dz_i;
-		F1=t_cmplx(0.0,0.0);
-		N=t_cmplx(0.0,0.0);
-		for (int j=1;j<= Memory->VertexDressings[kernel_type][num_P][1].size();j++){
-			z_i=Memory->VertexDressings[kernel_type][num_P][1][j-1];
-			dz_i=Memory->VertexDressings[kernel_type][num_P][2][j-1];
-			F1+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*Memory->VertexDressings[kernel_type][num_P][num_amp+3][j-1];
-			N+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-		}
-		result=(F1/N);	
-		return result;
-	}
 
 	// Take a trace of Tr(Projector * Kernel * WaveFunction) at provided momenta
 	t_cmplx TraceKernelWithoutStoring(t_cmplxDirac& Projector,

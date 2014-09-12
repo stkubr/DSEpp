@@ -12,8 +12,13 @@
 
 class C_Kernel_RL: public C_AbstractKernel{
 	public:
+    t_cmplx Z2;
 
-	C_Kernel_RL();
+    C_Kernel_RL(){
+        SetNameID("Kernel RainbowLadder",1);
+        Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
+        Z2=1.0;
+    }
 
     void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
 

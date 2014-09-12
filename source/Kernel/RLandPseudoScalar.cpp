@@ -7,12 +7,16 @@
 
 #include "RLandPseudoScalar.hpp"
 
+    void C_Kernel_RL_PS::setMesonExchangeMass(t_cmplx _M){
+        PseudoMesonMass=_M;
+    }
+
 	void C_Kernel_RL_PS::setMediators(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P, 
 									  std::vector<t_cmplxTensor>& Mediators){
 		t_cmplx k2_product;
 		k2_product=(k*k);
 		t_cmplx Gluon_factor=1.0;
-		t_cmplx Pion_factor=1.0;
+		t_cmplx Z2 = Propagators[1]->getDressingFactor();
 		t_cmplxTensor Gluon_Matrix(2),PS_Matrix(0);
 		Gluon_factor=Z2*Z2*4.0/3.0*Propagators[0]->getPropAt(k2_product)[0];
 		Gluon_Matrix=Gluon_factor*(g-((k)%(k))/(k2_product));
@@ -36,6 +40,22 @@
 		Pion_contrib=(Y5.Element(t,s)*Y5.Element(r,u)) * Mediators[1];
 		return Gluon_contrib + Pion_contrib;
 	}
+
+    t_cmplx C_Kernel_RL_PS::VertexDressingAt(int kernel_type, int num_P, int num_amp, t_cmplx coordin){
+        t_cmplx result;
+        t_cmplx F1,N,temp;
+        t_cmplx z_i,dz_i;
+        F1=t_cmplx(0.0,0.0);
+        N=t_cmplx(0.0,0.0);
+        for (int j=1;j<= Memory->VertexDressings[kernel_type][num_P][1].size();j++){
+            z_i=Memory->VertexDressings[kernel_type][num_P][1][j-1];
+            dz_i=Memory->VertexDressings[kernel_type][num_P][2][j-1];
+            F1+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*Memory->VertexDressings[kernel_type][num_P][num_amp+3][j-1];
+            N+=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
+        }
+        result=(F1/N);
+        return result;
+    }
 
 
     t_cmplx C_Kernel_RL_PS::SetInterpolation(t_cmplx vertex_momenta, t_cmplx prop_momenta){
