@@ -2,7 +2,7 @@
 
 #include "../types.h"
 
-enum Integrator_ID { qgausleg_log_ID=0, qgausleg_lin_ID, qgauscheb_ID, qgausleg_sym_ID, qcauchyleg_lin_ID };
+enum Integrator_ID { qgausleg_log_ID=0, qgausleg_lin_ID, qgauscheb_ID, qgausleg_sym_ID };
 
 class C_Integrator{
 	protected:
@@ -146,31 +146,16 @@ class C_Integrator{
 				}
 	            break;
 	            
-	        case qcauchyleg_lin_ID:
-	            this->gauleg(0.0,1.0,&zz,&w,NumPoints);
-	            aa=(LimDown);
-				bb=(LimUp);		
-				zm=(aa);
-				zr=(bb-aa);
-				for (int j=1;j<=NumPoints;j++) 
-				{
-					dz=zr*zz[j];
-					x[j]=(zm+dz - zr*zz[1]);
-					w[j]=w[j]*zr;
-				}
-	            break;
-	            
 	        default:
 	            assert( false);
 	    }
 	}
 	
 	public:
-	void getNodes(t_dArray1D * _x, t_dArray1D * _w){
-		(*_x)=x;
-		(*_w)=w;
-	}
-	
+	void getNodes(t_dArray1D * _x, t_dArray1D * _w) {
+        (*_x) = x;
+        (*_w) = w;
+    }
 };
 
 template <typename T_out, typename F, typename T_in> class C_Integrator_Line: public C_Integrator{
@@ -183,27 +168,7 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 	public:
 	static C_Integrator_Line * createIntegrator(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id ){
 		C_Integrator_Line * p = 0; 
-		p = new C_Integrator_Line(_NumPoints, _LimDown, _LimUp, _NumAps, _id); 
-	    /*switch (_id)
-	    {
-	        case qgausleg_log_ID:
-				p = new C_Integrator_Line(_NumPoints, _LimDown, _LimUp, _NumAps, _id); 
-				//p->Integrator_ref=&C_Integrator_Line::qgaus_log;
-	            break;  
-	            
-	        case qgausleg_lin_ID:
-				p = new C_Integrator_Line(_NumPoints, _LimDown, _LimUp, _NumAps, _id); 
-	            //p->Integrator_ref=&C_Integrator_Line::qgaus_lin;
-	            break;     
-	            
-	        case qgauscheb_ID:
-				p = new C_Integrator_Line(_NumPoints, _LimDown, _LimUp, _NumAps, _id); 
-	            //p->Integrator_ref=&C_Integrator_Line::qgauscheb;
-	            break;        
-	        default:
-				std::cout << "Integrator_ID Error" << std::endl;
-	            assert( false);
-	    }*/
+		p = new C_Integrator_Line(_NumPoints, _LimDown, _LimUp, _NumAps, _id);
 	    p->Integrator_ref=&C_Integrator_Line::qgaus;
 	    return p;
 	}
@@ -219,9 +184,11 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 		for (int j=1;j<=NumPoints;j++) 
 		{
 			Rplus=(obj_ref->*func)(x[j]);
-			num_row=Rplus.NumRows();
-			num_cols=Rplus.NumCols();
-			s.Resize(num_row,num_cols);
+            if (j==1){
+                num_row=Rplus.NumRows();
+                num_cols=Rplus.NumCols();
+                s.Resize(num_row,num_cols);
+            }
 			s += w[j]*(Rplus);
 		}
 		return s;
@@ -229,20 +196,21 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 
 };
 
-template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_Cauchy: public C_Integrator{
-	protected:		
-	T_out (C_Integrator_Cauchy::*Integrator_ref)(T_contour * Contour,int num_part ,T_in * Point);
-	
-	C_Integrator_Cauchy(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id):C_Integrator(_NumPoints, _LimDown, _LimUp, _NumAps, _id){}
+template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_Path{
+    protected:
+	//T_out (C_Integrator_Path::*Integrator_ref)(T_contour &Contour, T_in &Point);
+	int NumAmps;
+
+	C_Integrator_Path(int _NumAps):NumAmps(_NumAps){}
 	
 	public:
-	static C_Integrator_Cauchy * createIntegrator(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id ){
-		C_Integrator_Cauchy * p; 
+	/*static C_Integrator_Path * createIntegrator(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id ){
+		C_Integrator_Path * p;
 	    switch (_id)
 	    {
 	        case qcauchyleg_lin_ID:
-				p = new C_Integrator_Cauchy(_NumPoints, _LimDown, _LimUp, _NumAps, _id); 
-	            p->Integrator_ref=&C_Integrator_Cauchy::qcauchyleg_lin;
+				p = new C_Integrator_Path(_NumPoints, _LimDown, _LimUp, _NumAps, _id);
+	            p->Integrator_ref=&C_Integrator_Path::qcauchyleg_lin;
 	            break;       
 	        default:
 				std::cout << "Integrator_ID Error" << std::endl;
@@ -286,6 +254,6 @@ template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_C
 		result[0]=(sumN);
 		for (int i = 0; i < NumAps ; i++){	result[i+1]=(sumF[i]);  }
 		return result;
-	}
+	}*/
 };
 
