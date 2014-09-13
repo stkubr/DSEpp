@@ -14,6 +14,7 @@ C_Quark::C_Quark(){
 	flag_renormalization =false;
 	num_amplitudes=2;
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
+    integrand_args.resize(2);
 }
 
 /*t_cmplx getTensorExpression(t_cmplxVector& p){
@@ -50,19 +51,18 @@ void C_Quark::InitialState(){
 // Resize all storages (internal and external), also create side objects like (Integrators, Kernels and etc.)
 //----------------------------------------------------------------------
 void C_Quark::InitializateIntegrators(){
-	Integ_radial_leg=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
+    Integ_radial=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
 			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_lin_ID);
-	Integ_angle_cheb=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
+	Integ_angle_Z=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
 			params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
 	Integ_radial_short_leg=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
 			params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_sym_ID);
-	Integ_cauchy_long=C_Integrator_Cauchy<t_cmplxArray1D,t_cmplxArray3D,t_cmplx>::createIntegrator(
+	/*Integ_cauchy_long=C_Integrator_Path<t_cmplxArray1D,t_cmplxArray3D,t_cmplx>::createIntegrator(
 			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qcauchyleg_lin_ID);
-
-	Integ_radial_leg->getNodes(&zz_rad,&w_rad);
+*/
+	Integ_radial->getNodes(&zz_rad,&w_rad);
 	Integ_radial_short_leg->getNodes(&zz_line,&w_line);
-	Integ_angle_cheb->getNodes(&zz_angle,&w_angle);
-	integrand_args.resize(2);
+	Integ_angle_Z->getNodes(&zz_angle,&w_angle);
 }
 
 void C_Quark::ResizeMemory(){
@@ -140,42 +140,24 @@ void C_Quark::setInitialAandB(){
 	}
 }
 
-// Multidimensional integration on complex plane
-//----------------------------------------------------------------------
-t_cmplxMatrix C_Quark::MultiDimInt(t_cmplxMatrix (C_Quark::*func_to_int) (t_cmplxArray1D) ){
-	integrand=func_to_int;
-	return Integ_radial_leg->getResult(&C_Quark::f1,this);
-}
-t_cmplxMatrix C_Quark::f1 (double y){
-	integrand_args[0]=y;
-	return Integ_angle_cheb->getResult(&C_Quark::f2,this);
-}
-t_cmplxMatrix C_Quark::f2 (double z){
-	integrand_args[1]=z;
-	return (this->*integrand)(integrand_args);
-}
-
 // Evaluate Cauchy integral on contour, at certain point
 //----------------------------------------------------------------------
 t_cmplxArray1D C_Quark::getCauchyAt_embedded(t_cmplx coordin){
 	t_cmplxArray1D result(2);
-	t_cmplx F1,F2,N,sumF1,sumF2,sumN;
-	t_cmplx z_i,dz_i;
+	t_cmplx sumF1,sumF2,sumN;
+	t_cmplx denom;
 	sumF1=t_cmplx(0.0,0.0);
 	sumF2=t_cmplx(0.0,0.0);
 	sumN=t_cmplx(0.0,0.0);
 
 	for (int j=0;j< Memory->S_cont[0].size();j++){
-		z_i=(Memory->S_cont)[0][j];
-		t_cmplx denom = 1.0/(z_i-coordin);
-		dz_i=(Memory->S_cont)[1][j];
-		F1=denom*dz_i*(Memory->S_cont)[2][j];
-		F2=denom*dz_i*(Memory->S_cont)[3][j];
-		N=denom*dz_i;
-		sumF1 += F1;
-		sumF2 += F2;
-		sumN += N;
+		denom = 1.0/((Memory->S_cont)[0][j]-coordin)*(Memory->S_cont)[1][j];
+
+        sumF1 += denom*(Memory->S_cont)[2][j];
+        sumF2 += denom*(Memory->S_cont)[3][j];
+		sumN += denom;
 	}
+
 	result[0]=(sumF1/sumN);
 	result[1]=(sumF2/sumN);
 	return result;
@@ -216,6 +198,7 @@ void C_Quark::CalcPropCont(){
 {// start of paralell
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
+        std::function<t_cmplxMatrix(t_cmplxArray1D)>  bound_member_fn = std::bind(&C_Quark::Integrand_numerical, quark_copy,std::placeholders::_1);
 
 		t_cmplxMatrix Temp_return(num_amplitudes,1),Bare_term(num_amplitudes,1);
 		Bare_term(0, 0) = Z2;
@@ -226,7 +209,7 @@ void C_Quark::CalcPropCont(){
 			quark_copy->x = Memory->S_cont[0][i];
 			quark_copy->grid1_num = 0;
 
-			Temp_return = Bare_term + quark_copy->MultiDimInt(&C_Quark::Integrand_numerical);
+			Temp_return = Bare_term + quark_copy->MultiDimInt2D(&bound_member_fn);
 			Memory->S_cont[2][i] = Temp_return(0, 0);
 			Memory->S_cont[3][i] = Temp_return(1, 0);
 

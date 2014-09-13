@@ -4,23 +4,23 @@
 #include "../NumLibs/Geometry/ParabolaContour.hpp"
 #include "../NumLibs/Integrator.h"
 #include "../NumLibs/Support_functions.h"
+#include "../NumLibs/OneLoopIntegrator.hpp"
 
 enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
 
-class C_Quark: public C_Propagator {
+class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
 protected:
 	const char * SavePropPath;
-	t_cmplxMatrix (C_Quark::*integrand)(t_cmplxArray1D);
+	//t_cmplxMatrix (C_Quark::*integrand)(t_cmplxArray1D);
 
-	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_leg;
+	//C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_leg;
 	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_short_leg;
-	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_angle_cheb;
-	C_Integrator_Cauchy<t_cmplxArray1D, t_cmplxArray3D, t_cmplx> * Integ_cauchy_long;
+	//C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_angle_cheb;
+	//C_Integrator_Path<t_cmplxArray1D, t_cmplxArray3D, t_cmplx> * Integ_cauchy_long;
 	int index_p, grid1_num;
 	t_cmplx x;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
-	t_cmplxArray1D integrand_args;
 	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, Z4, check_res, eps;
 	bool flag_renormalization;
 	t_cmplxVector k, p;
@@ -56,9 +56,9 @@ protected:
 	void setInitialAandB();
 
 	// Multidimensional integration on complex plane. (Recursive call)
-	t_cmplxMatrix MultiDimInt(t_cmplxMatrix (C_Quark::*func_to_int)(t_cmplxArray1D));
-	t_cmplxMatrix f1(double y);
-	t_cmplxMatrix f2(double z);
+	/*t_cmplxMatrix MultiDimInt(t_cmplxMatrix (C_Quark::*func_to_int)(t_cmplxArray1D));
+	t_cmplxMatrix f1(double modul_momenta);
+	t_cmplxMatrix f2(double angle_z);*/
 
 	// Evaluate Cauchy integral on contour, at certain point
 	t_cmplxArray1D getCauchyAt_embedded(t_cmplx coordin);
