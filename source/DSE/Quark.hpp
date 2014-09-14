@@ -12,12 +12,11 @@ class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, do
 
 protected:
 	const char * SavePropPath;
-	//t_cmplxMatrix (C_Quark::*integrand)(t_cmplxArray1D);
 
-	//C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_leg;
-	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_radial_short_leg;
-	//C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integ_angle_cheb;
-	//C_Integrator_Path<t_cmplxArray1D, t_cmplxArray3D, t_cmplx> * Integ_cauchy_long;
+    std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
+
+	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integrator_momentum_short;
+	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
 	int index_p, grid1_num;
 	t_cmplx x;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
@@ -61,7 +60,7 @@ protected:
 	t_cmplxMatrix f2(double angle_z);*/
 
 	// Evaluate Cauchy integral on contour, at certain point
-	t_cmplxArray1D getCauchyAt_embedded(t_cmplx coordin);
+	t_cmplxArray1D getResultCauchyAt(t_cmplx coordin);
 
 	// Evaluate Cauchy integral on contour, obtain Propogator on grid
 	void CalcPropGrid();

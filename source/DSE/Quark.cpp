@@ -45,24 +45,25 @@ void C_Quark::InitialState(){
 	flag_dressed=false;
 	flag_renormalization =false;
 
+    CauchyIntegratonWeight_lambda = [](t_cmplx path_var, t_cmplx coordinate) { return 1.0/(path_var - coordinate); };
+
 	ResizeMemory();
 }
 
 // Resize all storages (internal and external), also create side objects like (Integrators, Kernels and etc.)
 //----------------------------------------------------------------------
 void C_Quark::InitializateIntegrators(){
-    Integ_radial=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
+    Integrator_momentum =C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
 			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_lin_ID);
-	Integ_angle_Z=C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
+	Integrator_angle_Z =C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
 			params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
-	Integ_radial_short_leg=C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
+	Integrator_momentum_short =C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
 			params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_sym_ID);
-	/*Integ_cauchy_long=C_Integrator_Path<t_cmplxArray1D,t_cmplxArray3D,t_cmplx>::createIntegrator(
-			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qcauchyleg_lin_ID);
-*/
-	Integ_radial->getNodes(&zz_rad,&w_rad);
-	Integ_radial_short_leg->getNodes(&zz_line,&w_line);
-	Integ_angle_Z->getNodes(&zz_angle,&w_angle);
+    Integrator_cauchy=C_Integrator_Path<t_cmplx,t_cmplxArray2D,t_cmplx>::createIntegrator(num_amplitudes, &CauchyIntegratonWeight_lambda);
+
+	Integrator_momentum->getNodes(&zz_rad,&w_rad);
+	Integrator_momentum_short->getNodes(&zz_line,&w_line);
+	Integrator_angle_Z->getNodes(&zz_angle,&w_angle);
 }
 
 void C_Quark::ResizeMemory(){
@@ -142,25 +143,8 @@ void C_Quark::setInitialAandB(){
 
 // Evaluate Cauchy integral on contour, at certain point
 //----------------------------------------------------------------------
-t_cmplxArray1D C_Quark::getCauchyAt_embedded(t_cmplx coordin){
-	t_cmplxArray1D result(2);
-	t_cmplx sumF1,sumF2,sumN;
-	t_cmplx denom;
-	sumF1=t_cmplx(0.0,0.0);
-	sumF2=t_cmplx(0.0,0.0);
-	sumN=t_cmplx(0.0,0.0);
-
-	for (int j=0;j< Memory->S_cont[0].size();j++){
-		denom = 1.0/((Memory->S_cont)[0][j]-coordin)*(Memory->S_cont)[1][j];
-
-        sumF1 += denom*(Memory->S_cont)[2][j];
-        sumF2 += denom*(Memory->S_cont)[3][j];
-		sumN += denom;
-	}
-
-	result[0]=(sumF1/sumN);
-	result[1]=(sumF2/sumN);
-	return result;
+t_cmplxArray1D C_Quark::getResultCauchyAt(t_cmplx coordin){
+    return Integrator_cauchy->getResult(Memory->S_cont, coordin);
 }
 
 // Evaluate Cauchy integral on contour, obtain Propagator on grid
@@ -177,7 +161,7 @@ void C_Quark::CalcPropGrid(){
 			for (int j = 0; j < Memory->S_grid[0][0].size(); j++){
 				coordin=Memory->S_grid[0][i][j];
 				if (real(coordin)<params.LimUk*params.LimUk*params.EffectiveCutoff){
-					S_temp_storage=quark_copy->getCauchyAt_embedded(coordin);
+					S_temp_storage= quark_copy->getResultCauchyAt(coordin);
 					Memory->S_grid[1][i][j]=(S_temp_storage[0]);
 					Memory->S_grid[2][i][j]=(S_temp_storage[1]);
 				} else {
@@ -195,7 +179,7 @@ void C_Quark::CalcPropGrid(){
 void C_Quark::CalcPropCont(){
 	int num_contour=Memory->S_cont[0].size();
 #pragma omp parallel
-{// start of paralell
+{// start of parallel
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
         std::function<t_cmplxMatrix(t_cmplxArray1D)>  bound_member_fn = std::bind(&C_Quark::Integrand_numerical, quark_copy,std::placeholders::_1);
@@ -221,27 +205,6 @@ void C_Quark::CalcPropCont(){
 }// end of parallel
 }
 
-// Analytic form of the Integrand (available only for RL or Pion Contribution)
-//----------------------------------------------------------------------
-/*t_cmplxMatrix C_Quark::Integrand_analitic (t_cmplxArray1D integVariables){
-	t_cmplx y,z;
-	y=integVariables[0];
-	z=integVariables[1];
-	t_cmplxMatrix result(num_amplitudes,1);
-	t_cmplx _A,_B,_B2,y2,pk,epsilon;
-
-	y2=y*y;
-	pk=Memory->S_grid[0][index_p][grid1_num];
-	_A=Memory->S_grid[1][index_p][grid1_num];
-	_B=Memory->S_grid[2][index_p][grid1_num];
-
-	epsilon=y*y*y/(pk*_A*_A+_B*_B);
-	result(0,0)=Z2*Z2*2.0/(8.0*pi*pi*pi)*(_A*epsilon)*4.0/3.0*Gluon->GetGluonAt(y2)*(1.0 + 2.0*z*z - 3.0*sqrt(y*y/(x))*z);
-	result(1,0)=Z2*Z2*2.0*3.0/(8.0*pi*pi*pi)*(_B*epsilon*4.0/3.0*Gluon->GetGluonAt(y2));
-	grid1_num++;
-	return result;
-}*/
-
 // Set k and p vectors for the Numerical Integrand
 //----------------------------------------------------------------------
 void C_Quark::setKinematic(t_cmplx x, t_cmplx y, t_cmplx z){
@@ -249,14 +212,13 @@ void C_Quark::setKinematic(t_cmplx x, t_cmplx y, t_cmplx z){
 	p.SetP4(0.0,0.0,0.0,sqrt(x));
 }
 
-// Numerical form of the Integrand (available for general Kernel)
+// Numerical form of the Integrand (suitable for general Kernel)
 //----------------------------------------------------------------------
 t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
-	t_cmplx y,z,kinematic_factor;
 	t_cmplx _A,_B,_B2,y2,pk,epsilon;
+	t_cmplx y = integVariables[0];
+	t_cmplx z = integVariables[1];
 
-	y=integVariables[0];
-	z=integVariables[1];
 	setKinematic(x,y,z);
 
 	t_cmplxMatrix result(num_amplitudes,1);
@@ -285,7 +247,7 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 t_cmplxArray1D C_Quark::getPropAt(t_cmplx q){
 	t_cmplxArray1D tempvector;
 	t_cmplxArray1D storage(5);
-	tempvector=getCauchyAt_embedded(q);
+	tempvector= getResultCauchyAt(q);
 
 	// A
 	storage[0]=tempvector[0];
@@ -326,11 +288,11 @@ void C_Quark::PropSetAndCheck(){
 
 void C_Quark::Renormalize(){
 	if (flag_renormalization){
-		A_renorm=real(getCauchyAt_embedded(params.mu*params.mu)[0])-Z2*1.0;
+		A_renorm=real(getResultCauchyAt(params.mu * params.mu)[0])-Z2*1.0;
 		Z2=1.0 - (A_renorm);
 
-		B_mu=real(getCauchyAt_embedded(params.mu*params.mu)[1]);
-		B_renorm+=real(getCauchyAt_embedded(params.mu*params.mu)[1])-params.m0;
+		B_mu=real(getResultCauchyAt(params.mu * params.mu)[1]);
+		B_renorm+=real(getResultCauchyAt(params.mu * params.mu)[1])-params.m0;
 	}
 }
 
@@ -347,14 +309,14 @@ void C_Quark::PropCheck(int s){
 	std::vector<double> A_check(scale),B_check(scale);
 	x=Pd;
 	for (int i = 0; i < scale; i++){
-		storage=getCauchyAt_embedded(x*x);
+		storage= getResultCauchyAt(x * x);
 		A_check[i]=real(storage[0]);
 		B_check[i]=real(storage[1]);
 		res+=A_check[i]*B_check[i];
 		x*=dp;
 	}
 	eps=fabs(res - check_res)/fabs(res);
-	std::cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(getCauchyAt_embedded(params.mu*params.mu)[0]) <<"  "<<
+	std::cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(getResultCauchyAt(params.mu * params.mu)[0]) <<"  "<<
 			"m_renorm - " <<"  "<< B_mu <<"  "<< "Accuracy - " <<"  "<< eps << std::endl;
 	check_res=res;
 }
@@ -393,7 +355,7 @@ void C_Quark::write_Prop_re(int s){
 	std::cout << std::endl;
 	std::cout << "P^2" <<"         "<< "A(p)" <<"        "<< "B(p)"  << std::endl;
 	for (int i = 0; i < scale; i++){
-		storage=getCauchyAt_embedded(x*x);
+		storage= getResultCauchyAt(x * x);
 		data_Prop_re << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 		std::cout << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 		x*=dp;
@@ -493,7 +455,7 @@ t_dArray1D C_Quark::GetTotalSum(){
 	x=Pd;
 	for (int i = 0; i < scale; i++)
 	{
-		storage=getCauchyAt_embedded(x*x);
+		storage= getResultCauchyAt(x * x);
 		temp_result[0]+=real(storage[0]);
 		temp_result[1]+=real(storage[1]);
 		x*=dp;
@@ -517,7 +479,7 @@ void C_Quark::CheckExtrapolation(){
 		tempContour = contour.getParabolaContour();
 
 		for (int i = 0; i < tempContour.size(); i++) {
-			tempABStorage.push_back(getCauchyAt_embedded(tempContour[0][i]));
+			tempABStorage.push_back(getResultCauchyAt(tempContour[0][i]));
 		}
 
 		std::cout << "Ready for Extrapolation?(enter)" << std::endl;
@@ -531,5 +493,3 @@ void C_Quark::CheckExtrapolation(){
 
 		write_Prop_re(100);
 }
-
-
