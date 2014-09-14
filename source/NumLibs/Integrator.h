@@ -141,8 +141,6 @@ class C_Integrator{
 					dz=zr*zz[j];
 					x[j]=(zm+dz);
 					w[j]=w[j]*zr;
-					//std::cout <<x[j] << "  " <<  w[j] << "  " << x[j]*w[j] <<std::endl;
-					//cin.get();
 				}
 	            break;
 	            
@@ -198,62 +196,38 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 
 template <typename T_out,typename T_contour ,typename T_in> class C_Integrator_Path{
     protected:
-	//T_out (C_Integrator_Path::*Integrator_ref)(T_contour &Contour, T_in &Point);
 	int NumAmps;
+    std::function <T_in(T_in, T_in)> * IntegrationWeightFunction;
 
 	C_Integrator_Path(int _NumAps):NumAmps(_NumAps){}
+
+    void setIntegrationWeightFunction(std::function<T_in(T_in, T_in)> *_IntegrationWeightFunction){
+        IntegrationWeightFunction = _IntegrationWeightFunction;
+    }
 	
 	public:
-	/*static C_Integrator_Path * createIntegrator(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id ){
+	static C_Integrator_Path * createIntegrator(int _NumPoints, std::function <T_in(T_in, T_in)> * _IntegrationWeightFunction ){
 		C_Integrator_Path * p;
-	    switch (_id)
-	    {
-	        case qcauchyleg_lin_ID:
-				p = new C_Integrator_Path(_NumPoints, _LimDown, _LimUp, _NumAps, _id);
-	            p->Integrator_ref=&C_Integrator_Path::qcauchyleg_lin;
-	            break;       
-	        default:
-				std::cout << "Integrator_ID Error" << std::endl;
-	            assert( false);
-	    }
+        p = new C_Integrator_Path(_NumPoints);
+        p -> setIntegrationWeightFunction(_IntegrationWeightFunction);
 	    return p;
 	}
-	
-	T_out getResult(T_contour * Contour, int num_part ,T_in * Point){
-		return (this->*Integrator_ref)(Contour,num_part,Point);
-	}
-	
-	T_out qcauchyleg_lin(T_contour * Contour, int num_part,T_in * Point)
+
+	vector<T_out> getResult(T_contour &PathStorage, T_in &Point)
 	{
-		T_out result(NumAps+1),sumF(NumAps);
-		T_in sumN;
-		for (int i = 0; i < NumAps ; i++){sumF[i] = T_in(0.0,0.0);}
-		sumN = T_in(0.0,0.0);
-//#pragma omp parallel 
-{
-		//#pragma omp for
-		for (int j=1;j<=NumPoints;j++) 
-		{
-			T_out F(NumAps);
-			T_in N,temp;
-			T_in z_i,dz_i,coordin;
-			temp = w[j];
-			z_i=(*Contour)[num_part][0][j-1];
-			dz_i=(*Contour)[num_part][1][j-1];
-			coordin=(*Point);
-			for (int i = 0; i < NumAps ; i++){F[i]=conj(z_i-coordin)/norm(z_i-coordin)*dz_i*(*Contour)[num_part][i+2][j-1];}
-			N=conj(z_i-coordin)/norm(z_i-coordin)*dz_i;
-			#pragma omp critical
-			{
-			for (int i = 0; i < NumAps ; i++){sumF[i] += temp*F[i];}
-			sumN += temp*N;
-			}
-			//std::cout << coordin << "  " << z_i << "  " << dz_i << "  " << sumN << "  " << sumF[0] << "  " << (*Contour)[num_part][2][j-1]  << std::endl;
-		}			
-}		
-		result[0]=(sumN);
-		for (int i = 0; i < NumAps ; i++){	result[i+1]=(sumF[i]);  }
-		return result;
-	}*/
+        vector<T_out> result(NumAmps,0);
+        vector<T_in> sum(NumAmps,0);
+        T_in sumNorm = 0;
+        T_in IntegrationWeight;
+
+        for (int j=0;j< PathStorage[0].size();j++){
+            IntegrationWeight = (*IntegrationWeightFunction)(PathStorage[0][j], Point) * PathStorage[1][j];
+            for(int i = 0; i < NumAmps; i++) sum[i] += IntegrationWeight * PathStorage[i+2][j];
+            sumNorm += IntegrationWeight;
+        }
+
+        for(int i = 0; i < NumAmps; i++) result[i] = sum[i]/sumNorm;
+        return result;
+	}
 };
 
