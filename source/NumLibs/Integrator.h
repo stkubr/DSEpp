@@ -179,14 +179,16 @@ template <typename T_out, typename F, typename T_in> class C_Integrator_Line: pu
 	{
 		T_out s, Rplus;
 		int num_row,num_cols;
-		for (int j=1;j<=NumPoints;j++) 
+
+        Rplus=(obj_ref->*func)(x[1]);
+        num_row=Rplus.NumRows();
+        num_cols=Rplus.NumCols();
+        s.Resize(num_row,num_cols);
+        s = w[1]*(Rplus);
+
+		for (int j=2;j<=NumPoints;j++)
 		{
 			Rplus=(obj_ref->*func)(x[j]);
-            if (j==1){
-                num_row=Rplus.NumRows();
-                num_cols=Rplus.NumCols();
-                s.Resize(num_row,num_cols);
-            }
 			s += w[j]*(Rplus);
 		}
 		return s;
