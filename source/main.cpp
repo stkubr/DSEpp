@@ -8,7 +8,7 @@
 #include "../source/types.h"
 #include "../source/DSE/Gluon.hpp"
 #include "../source/Kernel/KernelFactory.hpp"
-#include "../source/DSE/Quark_id.h"
+#include "../source/DSE/Quark_id.hpp"
 
 
 /// main()
@@ -45,8 +45,15 @@ int main(int __argc,char *__argv[]){
     kernel->setPropagators(Props);
 
     up_quark->LinkToKernel(kernel);
-    //up_quark->DressPropagator();
+    up_quark->DressPropagator();
 
+    t_dArray1D ref_value(2,0);
+    ref_value[0]=134.092697854;
+    ref_value[1]=38.5110544794;
+
+    t_dArray1D value(2,0);
+    value=up_quark->GetTotalSum();
+//134.092691503 38.5110260692
     tstop = (double)clock()/CLOCKS_PER_SEC;
     ttime= (tstop-tstart)/omp_get_max_threads();
     cout << "\n\n" << "calculation time=" << "  " << ttime << "  " << "seconds" << endl;
