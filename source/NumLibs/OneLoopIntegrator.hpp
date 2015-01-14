@@ -65,6 +65,42 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
         integrand_args[1]= angle_z;
         return (*integrand)(integrand_args);
     }
+
+    T_out OneLoopForTwoDim(std::function<T_out(T_arg)>  *func_to_int, int numRows, int numCols){
+        t_dArray1D x0,x1;
+        t_dArray1D w0,w1;
+        Integrator_momentum->getNodes(&x0, &w0);
+        Integrator_angle_Z->getNodes(&x1, &w1);
+        Int_counter=0;
+        integrand=func_to_int;
+        T_out result,sum;
+        sum.Resize(numRows,numCols);
+        double w1_temp;
+        for (int i = 1; i < x0.size(); ++i) {
+            integrand_args[0]=x0[i];
+            w1_temp = w0[i];
+            for (int j = 1; j < x1.size(); ++j) {
+                integrand_args[1]=x1[j];
+                result = w1_temp*w1[j]*(*integrand)(integrand_args);
+                sum += result;
+            }
+        }
+        return sum;
+    }
+
+
+    //todo implement conversion from multidimensional to one dimension non-recursive summation
+/*    T_out MultiDimND(std::function<T_out(T_arg)>  *func_to_int){
+        t_dArray2D coordinates(integrand_args.size());
+        t_dArray2D weights(integrand_args.size());
+        for (int i = 0; i < integrand_args.size(); ++i) {
+            Integrator[i]->getNotes(coordinates[i],weights[i]);
+        }
+
+    }
+*/
+
+
 };
 
 
