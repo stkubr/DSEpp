@@ -13,8 +13,10 @@ C_Quark::C_Quark(){
 	flag_dressed=false;
 	flag_renormalization =false;
 	num_amplitudes=2;
+    num_IntegDimentions = 2;
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
-    integrand_args.resize(2);
+	threadloc_integr_inx.resize(omp_get_num_threads());
+	threadloc_p_momenta_inx.resize(omp_get_num_threads());
 }
 
 /*t_cmplx getTensorExpression(t_cmplxVector& p){
@@ -178,22 +180,22 @@ void C_Quark::CalcPropGrid(){
 //----------------------------------------------------------------------
 void C_Quark::CalcPropCont(){
 	int num_contour=Memory->S_cont[0].size();
+	std::function<t_cmplxMatrix(t_cmplxArray1D)>  bound_member_fn = std::bind(&C_Quark::Integrand_numerical,
+			this,
+			std::placeholders::_1);
+
 #pragma omp parallel
 {// start of parallel
-		C_Quark * quark_copy;
-		quark_copy=MakeCopy();
-        std::function<t_cmplxMatrix(t_cmplxArray1D)>  bound_member_fn = std::bind(&C_Quark::Integrand_numerical, quark_copy,std::placeholders::_1);
-
 		t_cmplxMatrix Temp_return(num_amplitudes,1),Bare_term(num_amplitudes,1);
 		Bare_term(0, 0) = Z2;
 		Bare_term(1, 0) = params.m0 - B_renorm;
 #pragma omp for
 		for (int i = 0; i < num_contour/2; i++){ // Iterating over upper part only
-			quark_copy->index_p = i;
-			quark_copy->x = Memory->S_cont[0][i];
-			quark_copy->grid1_num = 0;
+			threadloc_p_momenta_inx[omp_get_thread_num()] = i;
+			threadloc_integr_inx[omp_get_thread_num()]=0;
 
-			Temp_return = Bare_term + quark_copy->MultiDimInt2D(&bound_member_fn);
+			Temp_return = Bare_term + MultiDimInt2D_wo_nested(&bound_member_fn, num_amplitudes, 1);
+
 			Memory->S_cont[2][i] = Temp_return(0, 0);
 			Memory->S_cont[3][i] = Temp_return(1, 0);
 
@@ -201,13 +203,12 @@ void C_Quark::CalcPropCont(){
 			Memory->S_cont[2][num_contour - 1 - i] = conj(Temp_return(0, 0));
 			Memory->S_cont[3][num_contour - 1 - i] = conj(Temp_return(1, 0));
 		}
-		delete quark_copy;
 }// end of parallel
 }
 
 // Set k and p vectors for the Numerical Integrand
 //----------------------------------------------------------------------
-void C_Quark::setKinematic(t_cmplx x, t_cmplx y, t_cmplx z){
+void C_Quark::setKinematic(t_cmplxVector& k, t_cmplxVector& p, t_cmplx x, t_cmplx y, t_cmplx z){
 	k.SetP4(0.0,0.0,sqrt(1.0-z*z)*y,y*z);
 	p.SetP4(0.0,0.0,0.0,sqrt(x));
 }
@@ -216,19 +217,26 @@ void C_Quark::setKinematic(t_cmplx x, t_cmplx y, t_cmplx z){
 //----------------------------------------------------------------------
 t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 	t_cmplx _A,_B,_B2,y2,pk,epsilon;
+
+	int index_p = threadloc_p_momenta_inx[omp_get_thread_num()];
+	int integration_inx = threadloc_integr_inx[omp_get_thread_num()];
+
+	t_cmplx x = Memory->S_cont[0][index_p];
 	t_cmplx y = integVariables[0];
 	t_cmplx z = integVariables[1];
 
-	setKinematic(x,y,z);
+
+	t_cmplxVector k,p;
+	setKinematic(k,p,x,y,z);
 
 	t_cmplxMatrix result(num_amplitudes,1);
 	t_cmplxDirac S(4,4),Proj1(4,4),Proj2(4,4);
 	t_cmplxVector pion_momenta;
 
 	pion_momenta=(p-k/2.0);
-	pk=Memory->S_grid[0][index_p][grid1_num];
-	_A=Memory->S_grid[1][index_p][grid1_num];
-	_B=Memory->S_grid[2][index_p][grid1_num];
+	pk=Memory->S_grid[0][index_p][integration_inx];
+	_A=Memory->S_grid[1][index_p][integration_inx];
+	_B=Memory->S_grid[2][index_p][integration_inx];
 	epsilon=y*y*y/(pk*_A*_A+_B*_B);
 
 	S=-ii*((p-k)*Y)*_A + I*_B;
@@ -236,9 +244,10 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 	Proj1=-ii*(p*Y)/(p*p);
 	Proj2=I;
 
-	result(0,0)=kinematicFactor*epsilon*Kernel->TraceKernelWithoutStoring(Proj1,S,k,p,pion_momenta,true);
-	result(1,0)=kinematicFactor*epsilon*Kernel->TraceKernelWithoutStoring(Proj2,S,k,p,pion_momenta,false);
-	grid1_num++;
+    result(0, 0) = kinematicFactor * epsilon * Kernel->TraceKernelWithoutStoring(Proj1, S, k, p, pion_momenta, true);
+    result(1, 0) = kinematicFactor * epsilon * Kernel->TraceKernelWithoutStoring(Proj2, S, k, p, pion_momenta, false);
+
+	threadloc_integr_inx[omp_get_thread_num()]++;
 	return result;
 }
 

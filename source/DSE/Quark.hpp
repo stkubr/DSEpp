@@ -17,12 +17,11 @@ protected:
 
 	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integrator_momentum_short;
 	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
-	int index_p, grid1_num;
-	t_cmplx x;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
 	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, Z4, check_res, eps;
 	bool flag_renormalization;
-	t_cmplxVector k, p;
+	vector<int> threadloc_p_momenta_inx, threadloc_integr_inx;
+
 
 	// Constructor
 	C_Quark();
@@ -72,7 +71,7 @@ protected:
 	//t_cmplxMatrix Integrand_analitic(t_cmplxArray1D values);
 
 	// Set k and p vectors for the Numerical Integrand
-	void setKinematic(t_cmplx x, t_cmplx y, t_cmplx z);
+	void setKinematic(t_cmplxVector& k, t_cmplxVector& p, t_cmplx x, t_cmplx y, t_cmplx z);
 
 	// Numerical form of the Integrand (avaible for general Kernel)
 	t_cmplxMatrix Integrand_numerical(t_cmplxArray1D values);
