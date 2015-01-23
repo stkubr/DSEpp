@@ -18,6 +18,7 @@ protected:
 	std::vector<C_Propagator*> Propagators;
 	/// TODO to include vector of general vertexes
 	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
+	std::vector<bool> flags_reset_kernel;
 	Kernel_ID Kernel_type_ID;
 	PS_type_ID Exchange_type_ID;
 
@@ -25,6 +26,7 @@ protected:
 		SetNameID("Kernel",1);	
 		Memory=(C_DedicMem_Kernel*)DedicMemFactory_Kernel->CreateMemory();
 		KMatrixThreadStorage.resize(omp_get_max_threads());
+		flags_reset_kernel.resize(omp_get_max_threads());
 	}
 
 public:
@@ -54,23 +56,26 @@ public:
 									  t_cmplxVector& k,
 									  t_cmplxVector& p,
 									  t_cmplxVector& P, bool flag_reset_kernel){
-		t_cmplx result,temp_result;
-		result=0.0;
-		if (flag_reset_kernel){
+
+		t_cmplx result, temp_storage;
+		flags_reset_kernel[omp_get_thread_num()] = flag_reset_kernel;
+		if (flags_reset_kernel[omp_get_thread_num()]){
 			setKMatrixThreadStorage(k,p,P);
 		}
 		int rank=Projector(0,0).Rank();
+
 		for (int t = 0; t < 4; t++){
 			for (int s = 0; s < 4; s++){
 				for (int r = 0; r < 4; r++){
 					for (int u = 0; u < 4; u++){
-						temp_result = takeInnerProduct((Projector)(u,t), (WaveFunc)(s,r), rank)
+                        temp_storage = takeInnerProduct((Projector)(u,t), (WaveFunc)(s,r), rank)
 								    * KMatrixThreadStorage[omp_get_thread_num()](t,s)(r,u);
-						result+=temp_result;
+                        result+=temp_storage;
 					}
 				}
 			}
-		}	
+		}
+
 		return result;
 	}
 
