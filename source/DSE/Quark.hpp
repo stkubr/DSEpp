@@ -5,13 +5,19 @@
 #include "../NumLibs/Integrator.h"
 #include "../NumLibs/Support_functions.h"
 #include "../NumLibs/OneLoopIntegrator.hpp"
+#include "Quark_parameters.hpp"
 
-enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
+//enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
 
 class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
 protected:
+
+	C_AbstractKernel * Kernel;
 	const char * SavePropPath;
+	int num_amplitudes;
+	bool flag_dressed;
+	C_Quark_parameters params;
 
     std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
 
@@ -25,7 +31,10 @@ protected:
 
 	// Constructor
 	C_Quark();
+
 	//t_cmplx getTensorExpression(t_cmplxVector& p);
+
+	void LinkToKernel(C_AbstractKernel * _K);
 
 	void ReadParameters(string & _ParamPath);
 
@@ -61,7 +70,7 @@ protected:
 	// Evaluate Cauchy integral on contour, at certain point
 	t_cmplxArray1D getResultCauchyAt(t_cmplx coordin);
 
-	// Evaluate Cauchy integral on contour, obtain Propogator on grid
+	// Evaluate Cauchy integral on contour, obtain Propagator on grid
 	void CalcPropGrid();
 
 	// Evaluate DSE integral on grid, obtain Propagator on contour
@@ -107,13 +116,14 @@ protected:
 	// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
 	void setPropagatorOnPath(std::vector<t_cmplxMatrix> (*Amplitudes), t_cmplxArray1D (*Path));
 
-	// Gets sum A and B at 100 points. Used for Integration Test.
+	// Gets sum A and B at 100 points. Used for unit tests.
 	t_dArray1D GetTotalSum();
+
 
 	void CheckExtrapolation();
 
 public:
-	static C_Quark* createQuark(Quark_ID id);
+	//static C_Quark* createQuark(Quark_ID id);
 	C_DedicMem_Quark * Memory;
 
 };

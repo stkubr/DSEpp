@@ -23,6 +23,10 @@ C_Quark::C_Quark(){
 	return p*p;
 }*/
 
+void C_Quark::LinkToKernel(C_AbstractKernel * _K) {
+	Kernel = _K;
+}
+
 void C_Quark::ReadParameters(string & _ParamPath){
 	params.ReadParameters(_ParamPath);
 }
@@ -184,7 +188,7 @@ void C_Quark::CalcPropCont(){
 			this,
 			std::placeholders::_1);
 
-#pragma omp parallel
+#pragma omp parallel num_threads(_NUM_THREADS)
 {// start of parallel
 		t_cmplxMatrix Temp_return(num_amplitudes,1),Bare_term(num_amplitudes,1);
 		Bare_term(0, 0) = Z2;
@@ -224,7 +228,6 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 	t_cmplx x = Memory->S_cont[0][index_p];
 	t_cmplx y = integVariables[0];
 	t_cmplx z = integVariables[1];
-
 
 	t_cmplxVector k,p;
 	setKinematic(k,p,x,y,z);
@@ -279,18 +282,20 @@ void C_Quark::PropSetAndCheck(){
 		for (int i = 0; i < 2 ; i++){
 			CalcPropGrid();
 			CalcPropCont();
-			write_Prop_re(20);
+			//write_Prop_re(20);
 		}
 		// Switching on normalization
 		flag_renormalization =true;
 		check_res=1.0;
 		eps=1.0;
 		while (eps>params.Accuracy){
+			//GetTotalSum();
+			//std::cin.get();
 			CalcPropGrid();
 			CalcPropCont();
 			Renormalize();
 			PropCheck(100);
-			write_Prop_re(20);
+			//write_Prop_re(20);
 		}
 	}
 }
@@ -469,7 +474,7 @@ t_dArray1D C_Quark::GetTotalSum(){
 		temp_result[1]+=real(storage[1]);
 		x*=dp;
 	}
-	std::cout.precision(12);
+	std::cout.precision(16);
 	std::cout << temp_result[0] <<" "<< temp_result[1] << std::endl;
 	return temp_result;
 }

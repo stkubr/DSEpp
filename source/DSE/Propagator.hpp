@@ -8,21 +8,15 @@
 #ifndef PROPAGATOR_HPP_
 #define PROPAGATOR_HPP_
 
-#include "Quark_parameters.hpp"
 #include "../types.h"
 #include "../Abs/AbsDiagram.hpp"
+class C_AbstractKernel;
 #include "../Kernel/AbstractKernel.hpp"
 
 
 class C_Propagator: public C_AbsDiagram{
 	public:
-	C_AbstractKernel * Kernel;
-	int num_amplitudes;
-	bool flag_dressed;
 
-	public:
-	C_Quark_parameters params;
-	//virtual void info() = 0;
 	virtual void DressPropagator()=0;
 
 	virtual void InitialState()=0;
@@ -31,19 +25,17 @@ class C_Propagator: public C_AbsDiagram{
 
 	// TODO virtual t_cmplxDirac getTensorExpression(t_cmplxVector& p);
 
-	virtual void SetPropagatorOnPath(std::vector<t_cmplxMatrix> (*AmplitudePath),t_cmplxArray1D (*Path));
+	virtual void SetPropagatorOnPath(std::vector<t_cmplxMatrix> & AmplitudesOnPath, t_cmplxArray1D & Path);
 
 	virtual t_cmplx getDressingFactor();
 
 	virtual void setContourApex(double M2);
 
-	virtual void ExportForKernel( t_cmplxArray2D * dummy);
-
 	virtual t_dArray1D GetTotalSum();
 
-	virtual ~C_Propagator();
+	virtual void LinkToKernel(C_AbstractKernel * _K);
 
-	void LinkToKernel(C_AbstractKernel * _K);
+	virtual ~C_Propagator() {}
 };
 
 class C_Propagator_Factory{
