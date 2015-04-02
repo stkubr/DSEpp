@@ -2,6 +2,8 @@
 #include "Quark.hpp"
 #include <string>
 
+enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
+
 class C_Up_Quark: public C_Quark{
 public:
 	C_Up_Quark(){
@@ -72,7 +74,7 @@ public:
 
 
 // Parameterized Factory Method function
-C_Quark* C_Quark::createQuark( Quark_ID id ){
+/*C_Quark* C_Quark::createQuark( Quark_ID id ){
 	C_Quark * p;
 	switch (id){
 	case Up_ID:
@@ -94,14 +96,39 @@ C_Quark* C_Quark::createQuark( Quark_ID id ){
 		assert( false);
 	}
 	return p;
-};
+};*/
 
 
 class C_Quark_Factory: public C_Propagator_Factory{
 public:
-	C_Propagator* Create(int _id) {
+	/*C_Propagator* Create(int _id) {
 		Quark_ID id=(Quark_ID)_id;
 		return C_Quark::createQuark( (id) );
+	}*/
+
+	C_Propagator* Create(int _id) {
+		Quark_ID id = (Quark_ID) _id;
+		C_Quark *p;
+		switch (id) {
+			case Up_ID:
+				p = new C_Up_Quark();
+				break;
+			case Down_ID:
+				p = new C_Down_Quark();
+				break;
+			case Strange_ID:
+				p = new C_Strange_Quark();
+				break;
+			case Charm_ID:
+				p = new C_Charm_Quark();
+				break;
+			case Test_ID:
+				p = new C_Test_Quark();
+				break;
+			default:
+				assert(false);
+		}
+		return p;
 	}
 };
 
