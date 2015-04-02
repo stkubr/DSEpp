@@ -28,14 +28,13 @@ t_cmplx C_Propagator::getDressingFactor() {
 }
 
 void C_Propagator::setContourApex(double M2) {
-	t_cmplx dummy;
 	std::cout << "Error virtual call:C_Propagator::setContourApex" << std::endl;
 	assert(false);
 }
 
-t_dArray1D C_Propagator::GetTotalSum() {
-	t_dArray1D dummy;
-	std::cout << "Error virtual call:C_Propagator::GetTotalSum" << std::endl;
+double C_Propagator::checkSum() {
+	double dummy;
+	std::cout << "Error virtual call:C_Propagator::checkSum" << std::endl;
 	assert(false);
 	return dummy;
 }

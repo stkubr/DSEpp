@@ -24,7 +24,7 @@ protected:
 	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integrator_momentum_short;
 	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
-	double kinematicFactor,B_renorm, B_mu, A_renorm, Z2, Z4, check_res, eps;
+	double kinematicFactor, B_renorm, B_mu, A_renorm, Z2;
 	bool flag_renormalization;
 	vector<int> threadloc_p_momenta_inx, threadloc_integr_inx;
 
@@ -62,22 +62,14 @@ protected:
 	// Initial guesses for A and B
 	void setInitialAandB();
 
-	// Multidimensional integration on complex plane. (Recursive call)
-	/*t_cmplxMatrix MultiDimInt(t_cmplxMatrix (C_Quark::*func_to_int)(t_cmplxArray1D));
-	t_cmplxMatrix f1(double modul_momenta);
-	t_cmplxMatrix f2(double angle_z);*/
-
 	// Evaluate Cauchy integral on contour, at certain point
-	t_cmplxArray1D getResultCauchyAt(t_cmplx coordin);
+	t_cmplxArray1D PropagatorOnPoint(t_cmplx coordin);
 
 	// Evaluate Cauchy integral on contour, obtain Propagator on grid
-	void CalcPropGrid();
+	void calcPropOnGrid();
 
 	// Evaluate DSE integral on grid, obtain Propagator on contour
-	void CalcPropCont();
-
-	// Analytic form of the Integrand (available only for RL or Pion Contribution)
-	//t_cmplxMatrix Integrand_analitic(t_cmplxArray1D values);
+	void calcPropOnContour();
 
 	// Set k and p vectors for the Numerical Integrand
 	void setKinematic(t_cmplxVector& k, t_cmplxVector& p, t_cmplx x, t_cmplx y, t_cmplx z);
@@ -89,41 +81,38 @@ protected:
 	t_cmplxArray1D getPropAt(t_cmplx q);
 
 	// Calculate consequently Grid and Contour until converge
-	void PropSetAndCheck();
+	void calcPropagator();
 
 	// Apply renormalization
-	void Renormalize();
+	void renormalizeProp();
 
 	// Check convergence
-	void PropCheck(int s);
+	double checkConvergence(double previous_checksum);
 
 	// Initialization (Dressing) of the Propagator
 	void DressPropagator();
 
-	// Drow Propagator at real line
-	void write_Prop_re(int s);
+	// Draw Propagator at real line
+	void drawOnRealAxis(int s);
 
 	// Write Propagator to file
-	void SavePropCountour();
+	void savePropagator();
 
 	// Read Propagator from file
-	void LoadPropCountour();
+	void loadPropagator();
 
 	// Export Propagator to file
 	// (exports all what is needed to perform Cauchy integration outside of this library: contour, weights, etc.)
-	void ExportPropagator();
+	void exportPropagator();
 
 	// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
-	void setPropagatorOnPath(std::vector<t_cmplxMatrix> (*Amplitudes), t_cmplxArray1D (*Path));
+	void setPropagatorOnPath(std::vector<t_cmplxMatrix> & Amplitudes, t_cmplxArray1D & Path);
 
 	// Gets sum A and B at 100 points. Used for unit tests.
-	t_dArray1D GetTotalSum();
+	double checkSum();
 
-
-	void CheckExtrapolation();
 
 public:
-	//static C_Quark* createQuark(Quark_ID id);
 	C_DedicMem_Quark * Memory;
 
 };

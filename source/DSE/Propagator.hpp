@@ -31,7 +31,7 @@ class C_Propagator: public C_AbsDiagram{
 
 	virtual void setContourApex(double M2);
 
-	virtual t_dArray1D GetTotalSum();
+	virtual double checkSum();
 
 	virtual void LinkToKernel(C_AbstractKernel * _K);
 

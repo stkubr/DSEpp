@@ -46,8 +46,6 @@ void C_Quark::InitialState(){
 	B_renorm=0.0;
 	B_mu=0.0;
 	Z2=1.0;
-	eps=1.0;
-	check_res=0.0;
 	flag_dressed=false;
 	flag_renormalization =false;
 
@@ -147,17 +145,17 @@ void C_Quark::setInitialAandB(){
 	}
 }
 
-// Evaluate Cauchy integral on contour, at certain point
+// Returns the values A and B at point in complex plane by evaluating Cauchy integral on contour
 //----------------------------------------------------------------------
-t_cmplxArray1D C_Quark::getResultCauchyAt(t_cmplx coordin){
+t_cmplxArray1D C_Quark::PropagatorOnPoint(t_cmplx coordin){
     return Integrator_cauchy->getResult(Memory->S_cont, coordin);
 }
 
-// Evaluate Cauchy integral on contour, obtain Propagator on grid
+// Obtains quark propagator on the grid by evaluating Cauchy integral on the contour
 //----------------------------------------------------------------------
-void C_Quark::CalcPropGrid(){
-#pragma omp parallel
-{//begin of parallel pragma
+void C_Quark::calcPropOnGrid(){
+#pragma omp parallel num_threads(_NUM_THREADS)
+{//begin of parallel
 		t_cmplx coordin;
 		C_Quark * quark_copy;
 		quark_copy=MakeCopy();
@@ -167,22 +165,23 @@ void C_Quark::CalcPropGrid(){
 			for (int j = 0; j < Memory->S_grid[0][0].size(); j++){
 				coordin=Memory->S_grid[0][i][j];
 				if (real(coordin)<params.LimUk*params.LimUk*params.EffectiveCutoff){
-					S_temp_storage= quark_copy->getResultCauchyAt(coordin);
+					S_temp_storage= quark_copy->PropagatorOnPoint(coordin);
 					Memory->S_grid[1][i][j]=(S_temp_storage[0]);
 					Memory->S_grid[2][i][j]=(S_temp_storage[1]);
 				} else {
-					Memory->S_grid[1][i][j]=Z2*(1.0*params.HeavyLight -(params.HeavyLight-1.0)*real(coordin)) ;
+					// for grid points deep in UV region use asymptotic approximation
+					Memory->S_grid[1][i][j]=Z2*(1.0*params.flag_LightOrHeavyQuark -(params.flag_LightOrHeavyQuark -1.0)*real(coordin)) ;
 					Memory->S_grid[2][i][j]=Z2*(params.m0);
 				}
 			}
 		}
 		delete quark_copy;
-}//end of parallel pragma
+}//end of parallel
 }
 
-// Evaluate DSE integral on grid, obtain quark propagator on contour
+// Obtains quark propagator on the contour by evaluating DSE integral equations on the grid
 //----------------------------------------------------------------------
-void C_Quark::CalcPropCont(){
+void C_Quark::calcPropOnContour(){
 	int num_contour=Memory->S_cont[0].size();
 	std::function<t_cmplxMatrix(t_cmplxArray1D)>  bound_member_fn = std::bind(&C_Quark::Integrand_numerical,
 			this,
@@ -210,14 +209,14 @@ void C_Quark::CalcPropCont(){
 }// end of parallel
 }
 
-// Set k and p vectors for the Numerical Integrand
+// Set k and p 4-vectors for the Integrand
 //----------------------------------------------------------------------
 void C_Quark::setKinematic(t_cmplxVector& k, t_cmplxVector& p, t_cmplx x, t_cmplx y, t_cmplx z){
 	k.SetP4(0.0,0.0,sqrt(1.0-z*z)*y,y*z);
 	p.SetP4(0.0,0.0,0.0,sqrt(x));
 }
 
-// Numerical form of the Integrand (suitable for general Kernel)
+// Numerical form of the Integrand for quark DSE (suitable for general Kernel)
 //----------------------------------------------------------------------
 t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 	t_cmplx _A,_B,_B2,y2,pk,epsilon;
@@ -259,7 +258,7 @@ t_cmplxMatrix C_Quark::Integrand_numerical (t_cmplxArray1D integVariables){
 t_cmplxArray1D C_Quark::getPropAt(t_cmplx q){
 	t_cmplxArray1D tempvector;
 	t_cmplxArray1D storage(5);
-	tempvector= getResultCauchyAt(q);
+	tempvector= PropagatorOnPoint(q);
 
 	// A
 	storage[0]=tempvector[0];
@@ -276,66 +275,51 @@ t_cmplxArray1D C_Quark::getPropAt(t_cmplx q){
 
 // Calculate consequently Grid and Contour until converge
 //----------------------------------------------------------------------
-void C_Quark::PropSetAndCheck(){
-	if(params.ReCalcProp){
-		// First few steps without normalization to speed up convergence
+void C_Quark::calcPropagator(){
+	if(params.flag_loadPropagator){
+		// First few steps without normalization to speed up the convergence
 		for (int i = 0; i < 2 ; i++){
-			CalcPropGrid();
-			CalcPropCont();
-			//write_Prop_re(20);
+			calcPropOnGrid();
+			calcPropOnContour();
 		}
 		// Switching on normalization
 		flag_renormalization =true;
-		check_res=1.0;
-		eps=1.0;
+		double check_sum, eps=100.0;
 		while (eps>params.Accuracy){
-			//GetTotalSum();
-			//std::cin.get();
-			CalcPropGrid();
-			CalcPropCont();
-			Renormalize();
-			PropCheck(100);
-			//write_Prop_re(20);
+			check_sum = checkSum();
+			calcPropOnGrid();
+			calcPropOnContour();
+			renormalizeProp();
+			eps = checkConvergence(check_sum);
 		}
 	}
 }
 
-void C_Quark::Renormalize(){
+// Renormalize A and B quark dressing functions at point params.mu
+//----------------------------------------------------------------------
+void C_Quark::renormalizeProp(){
 	if (flag_renormalization){
-		A_renorm=real(getResultCauchyAt(params.mu * params.mu)[0])-Z2*1.0;
+		A_renorm=real(PropagatorOnPoint(params.mu * params.mu)[0])-Z2*1.0;
 		Z2=1.0 - (A_renorm);
 
-		B_mu=real(getResultCauchyAt(params.mu * params.mu)[1]);
-		B_renorm+=real(getResultCauchyAt(params.mu * params.mu)[1])-params.m0;
+		B_mu=real(PropagatorOnPoint(params.mu * params.mu)[1]);
+		B_renorm+=real(PropagatorOnPoint(params.mu * params.mu)[1])-params.m0;
 	}
 }
 
-// Check convergence
+// Check convergence; compares checksum of A*B of 100 points with previous iteration
 //----------------------------------------------------------------------
-void C_Quark::PropCheck(int s){
-	double Pu,Pd,x,scale,dp;
-	t_cmplxArray1D storage;
-	double res=0;
-	scale = s;
-	Pd=0.01;
-	Pu=params.LimUk*0.8;
-	dp=pow(10,(log10(Pu/Pd)/scale));
-	std::vector<double> A_check(scale),B_check(scale);
-	x=Pd;
-	for (int i = 0; i < scale; i++){
-		storage= getResultCauchyAt(x * x);
-		A_check[i]=real(storage[0]);
-		B_check[i]=real(storage[1]);
-		res+=A_check[i]*B_check[i];
-		x*=dp;
-	}
-	eps=fabs(res - check_res)/fabs(res);
-	std::cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(getResultCauchyAt(params.mu * params.mu)[0]) <<"  "<<
+double C_Quark::checkConvergence(double previous_checksum){
+	double res = checkSum();
+	double eps=fabs(res - previous_checksum)/fabs(res);
+
+	std::cout << "Z2 - " <<"  "<< Z2 <<"  "<< "A_mu" <<"  "<< real(PropagatorOnPoint(params.mu * params.mu)[0]) <<"  "<<
 			"m_renorm - " <<"  "<< B_mu <<"  "<< "Accuracy - " <<"  "<< eps << std::endl;
-	check_res=res;
+
+	return eps;
 }
 
-// Initialization (Dressing) of the Propagator
+// Dressing of the Propagator
 //----------------------------------------------------------------------
 void C_Quark::DressPropagator(){
 	if (flag_dressed==false)
@@ -343,19 +327,20 @@ void C_Quark::DressPropagator(){
 		PrintLine('-');
 		std::cout << "Start Dressing for " << name << " with quark mass -" <<"  "<< params.m0 <<"  "<< "and contour -" <<"  "<< params.M2_contour << std::endl;
 		PrintLine('-');
+
 		setContour();
 		setGrid();
-		//LoadPropCountour();
-		PropSetAndCheck();
+
+		calcPropagator();
+
 		Memory->RemoveGrid();
-		write_Prop_re(100);
-		//CheckExtrapolation();
+		drawOnRealAxis(100);
 	}
 }
 
 // Draw Propagator at real line
 //----------------------------------------------------------------------
-void C_Quark::write_Prop_re(int s){
+void C_Quark::drawOnRealAxis(int s){
 	double Pu,Pd,x,scale,dp;
 	t_cmplxArray1D storage;
 	scale = s;
@@ -369,7 +354,7 @@ void C_Quark::write_Prop_re(int s){
 	std::cout << std::endl;
 	std::cout << "P^2" <<"         "<< "A(p)" <<"        "<< "B(p)"  << std::endl;
 	for (int i = 0; i < scale; i++){
-		storage= getResultCauchyAt(x * x);
+		storage= PropagatorOnPoint(x * x);
 		data_Prop_re << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 		std::cout << x*x <<"  "<< real(storage[0]) <<"  "<< real(storage[1])  << std::endl;
 		x*=dp;
@@ -380,7 +365,7 @@ void C_Quark::write_Prop_re(int s){
 
 // Write Propagator to file
 //----------------------------------------------------------------------
-void C_Quark::SavePropCountour(){
+void C_Quark::savePropagator(){
 	ofstream SavePropStream;
 	SavePropStream.open(SavePropPath);
 	(SavePropStream) << "Z2" << '\t' << Z2 << std::endl;
@@ -395,9 +380,9 @@ void C_Quark::SavePropCountour(){
 
 // Read Propagator from file
 //----------------------------------------------------------------------
-void C_Quark::LoadPropCountour(){
+void C_Quark::loadPropagator(){
 	string dummy;
-	if (!params.ReCalcProp){
+	if (!params.flag_loadPropagator) {
 		ifstream PropContourStream;
 		PropContourStream.open(SavePropPath);
 		PropContourStream >> dummy >> Z2;
@@ -413,7 +398,7 @@ void C_Quark::LoadPropCountour(){
 // Export Propagator to file
 // (exports all what is needed to perform Cauchy integration outside of this library: contour, weights, etc.)
 //----------------------------------------------------------------------
-void C_Quark::ExportPropagator(){
+void C_Quark::exportPropagator(){
 	int j;
 	t_cmplx z_i,dz_i,temp;
 	ofstream PropContourStream;
@@ -435,75 +420,43 @@ void C_Quark::ExportPropagator(){
 	std::cout << "The quark propagator has beed exported" << std::endl;
 }
 
-// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
+// Saves Quark's A and B functions evaluated on provided "Path" in provided "AmplitudeStorage"
 //----------------------------------------------------------------------
-void C_Quark::setPropagatorOnPath(std::vector<t_cmplxMatrix> (*AmplutudeStorage),t_cmplxArray1D (*Path)){
+void C_Quark::setPropagatorOnPath(std::vector<t_cmplxMatrix> & AmplitudeStorage, t_cmplxArray1D & Path){
 	std::cout << std::endl;
 	std::cout << "Quark on Path extraction..." << std::endl;
-	int num_points=(*Path).size();
-	(*AmplutudeStorage).resize(num_points);
+	int num_points=Path.size();
+	AmplitudeStorage.resize(num_points);
 	t_cmplxArray1D temp_vector(5);
 	t_cmplxMatrix temp_amp(2,1);
 	std::cout << "points on the path - " << num_points << std::endl;
 	for (int i = 0; i < num_points; i++)
 	{
-		temp_vector=getPropAt((*Path)[i]);
+		temp_vector=getPropAt(Path[i]);
 		temp_amp(0,0)=temp_vector[3];
 		temp_amp(1,0)=temp_vector[4];
-		(*AmplutudeStorage)[i]=temp_amp;
+		AmplitudeStorage[i]=temp_amp;
 	}
 	std::cout << "Quark on Path extraction finished." << std::endl;
 }
 
 
-// Gets sum A and B at 100 points. Used for Integration Test.
+// Gets sum A * B functions at 100 points.
 //----------------------------------------------------------------------
-t_dArray1D C_Quark::GetTotalSum(){
+double C_Quark::checkSum(){
 	double Pu,Pd,x,scale,dp;
 	t_cmplxArray1D storage;
 	scale = 100;
 	Pd=0.01;
-	Pu=params.LimUk;
+	Pu=0.8*params.LimUk;
 	dp=pow(10,(log10(Pu/Pd)/scale));
-	t_dArray1D temp_result(2,0);
 	x=Pd;
+	double result=0;
 	for (int i = 0; i < scale; i++)
 	{
-		storage= getResultCauchyAt(x * x);
-		temp_result[0]+=real(storage[0]);
-		temp_result[1]+=real(storage[1]);
+		storage= PropagatorOnPoint(x * x);
+		result+= real(storage[0])*real(storage[1]);
 		x*=dp;
 	}
-	std::cout.precision(16);
-	std::cout << temp_result[0] <<" "<< temp_result[1] << std::endl;
-	return temp_result;
-}
-
-
-void C_Quark::CheckExtrapolation(){
-	t_cmplx last_point;
-		t_cmplxArray2D tempContour;
-		t_cmplxArray2D tempABStorage;
-		double M2=16.0;
-		last_point = zz_rad[zz_rad.size()-1]*zz_rad[zz_rad.size()-1] - M2/4.0 + params.LimUk*params.LimDk;
-		Geometry::C_ParabolaContour contour(ii*sqrt(M2)/2.0,
-											ii*sqrt(M2),
-											last_point);
-		contour.setParabolaContour(zz_rad,w_rad,zz_line,w_line);
-		tempContour = contour.getParabolaContour();
-
-		for (int i = 0; i < tempContour.size(); i++) {
-			tempABStorage.push_back(getResultCauchyAt(tempContour[0][i]));
-		}
-
-		std::cout << "Ready for Extrapolation?(enter)" << std::endl;
-		std::cin.get();
-		std::cout << "Yes Captain!" << std::endl;
-
-		Memory->S_cont[0] = tempContour[0];
-		Memory->S_cont[1] = tempContour[1];
-		Memory->S_cont[2] = tempABStorage[0];
-		Memory->S_cont[3] = tempABStorage[1];
-
-		write_Prop_re(100);
+	return result;
 }
