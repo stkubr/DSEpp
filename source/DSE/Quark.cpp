@@ -75,12 +75,6 @@ void C_Quark::ResizeMemory(){
 	Memory->resizeGrid(num_amplitudes+1, 2*params.num_prop_steps + 2*params.num_cutoff_steps, params.num_prop_steps*params.num_angle_steps);
 }
 
-// Allocator copy of "this" (used in parallel sections)
-//----------------------------------------------------------------------
-C_Quark * C_Quark::MakeCopy(){
-	return new C_Quark(*this);
-}
-
 // Set Cauchy contour
 //----------------------------------------------------------------------
 void C_Quark::setContour(){
@@ -157,15 +151,13 @@ void C_Quark::calcPropOnGrid(){
 #pragma omp parallel num_threads(_NUM_THREADS)
 {//begin of parallel
 		t_cmplx coordin;
-		C_Quark * quark_copy;
-		quark_copy=MakeCopy();
 		t_cmplxArray1D S_temp_storage(num_amplitudes);
 #pragma omp for
 		for (int i = 0; i < Memory->S_cont[0].size(); i++){
 			for (int j = 0; j < Memory->S_grid[0][0].size(); j++){
 				coordin=Memory->S_grid[0][i][j];
 				if (real(coordin)<params.LimUk*params.LimUk*params.EffectiveCutoff){
-					S_temp_storage= quark_copy->PropagatorOnPoint(coordin);
+					S_temp_storage= PropagatorOnPoint(coordin);
 					Memory->S_grid[1][i][j]=(S_temp_storage[0]);
 					Memory->S_grid[2][i][j]=(S_temp_storage[1]);
 				} else {
@@ -175,7 +167,6 @@ void C_Quark::calcPropOnGrid(){
 				}
 			}
 		}
-		delete quark_copy;
 }//end of parallel
 }
 

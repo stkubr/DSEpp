@@ -7,8 +7,6 @@
 #include "../NumLibs/OneLoopIntegrator.hpp"
 #include "Quark_parameters.hpp"
 
-//enum Quark_ID { Up_ID=0, Down_ID, Strange_ID, Charm_ID, Test_ID, Quark_ID_End };
-
 class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
 protected:
@@ -33,7 +31,6 @@ protected:
 	C_Quark();
 
 	//t_cmplx getTensorExpression(t_cmplxVector& p);
-
 	void LinkToKernel(C_AbstractKernel * _K);
 
 	void ReadParameters(string & _ParamPath);
@@ -49,9 +46,6 @@ protected:
 	void InitializateIntegrators();
 
 	void ResizeMemory();
-
-	// Copier of "this" (used in parallel sections)
-	virtual C_Quark * MakeCopy();
 
 	// Set Cauchy contour
 	void setContour();
