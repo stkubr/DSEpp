@@ -5,8 +5,6 @@ enum Kernel_ID {RL_ID=0, RL_PS_ID, Kernel_ID_End};
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
 #include "../Abs/AbsDiagram.hpp"
-
-class C_AbstractKernel;
 class C_Propagator;
 #include "../DSE/Propagator.hpp"
 
@@ -18,7 +16,6 @@ protected:
 	std::vector<C_Propagator*> Propagators;
 	/// TODO to include vector of general vertexes
 	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
-	std::vector<bool> flags_reset_kernel;
 	Kernel_ID Kernel_type_ID;
 	PS_type_ID Exchange_type_ID;
 
@@ -26,7 +23,6 @@ protected:
 		SetNameID("Kernel",1);	
 		Memory=(C_DedicMem_Kernel*)DedicMemFactory_Kernel->CreateMemory();
 		KMatrixThreadStorage.resize(omp_get_max_threads());
-		flags_reset_kernel.resize(omp_get_max_threads());
 	}
 
 public:
@@ -58,8 +54,7 @@ public:
 									  t_cmplxVector& P, bool flag_reset_kernel){
 
 		t_cmplx result, temp_storage;
-		flags_reset_kernel[omp_get_thread_num()] = flag_reset_kernel;
-		if (flags_reset_kernel[omp_get_thread_num()]){
+		if (flag_reset_kernel){
 			setKMatrixThreadStorage(k,p,P);
 		}
 		int rank=Projector(0,0).Rank();
@@ -75,7 +70,6 @@ public:
 				}
 			}
 		}
-
 		return result;
 	}
 
