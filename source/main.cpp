@@ -1,14 +1,12 @@
 #include <time.h>
+#include <iomanip>
 #include "omp.h"
 
 #define NUM_PRECISION 7
 #define ORTH_CHECK 0
 #define BASIS_TYPE 1
 
-#include "../source/types.h"
-#include "../source/DSE/Gluon.hpp"
-#include "../source/Kernel/KernelFactory.hpp"
-#include "../source/DSE/Quark_id.hpp"
+#include "DSEpp.hpp"
 
 
 /// main()
@@ -47,13 +45,9 @@ int main(int __argc,char *__argv[]){
     up_quark->LinkToKernel(kernel);
     up_quark->DressPropagator();
 
-    t_dArray1D ref_value(2,0);
-    ref_value[0]=134.092697854;
-    ref_value[1]=38.5110544794;
 
-    t_dArray1D value(2,0);
-    value=up_quark->GetTotalSum();
-//134.092691503 38.5110260692
+    std::cout << std::setprecision(10) << up_quark->checkSum() << endl;
+
     tstop = (double)clock()/CLOCKS_PER_SEC;
     ttime= (tstop-tstart)/omp_get_max_threads();
     cout << "\n\n" << "calculation time=" << "  " << ttime << "  " << "seconds" << endl;
