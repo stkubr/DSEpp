@@ -5,6 +5,10 @@
 #ifndef _DSEPP_DSEPP_HPP_
 #define _DSEPP_DSEPP_HPP_
 
+#ifndef _NUM_THREADS
+#define _NUM_THREADS omp_get_max_threads()
+#endif
+
 class C_AbstractKernel;
 class C_Propagator;
 
