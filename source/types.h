@@ -5,6 +5,8 @@
  *      Author: stkubr
  */
 
+
+
 #ifndef TYPES_HPP_
 #define TYPES_HPP_
 
@@ -14,6 +16,9 @@
 #include "relativistic-quantum-mechanics.h"
 #include <vector>
 
+#ifndef _NUM_THREADS
+#define _NUM_THREADS omp_get_max_threads()
+#endif
 
 typedef std::complex<double> t_cmplx;
 
