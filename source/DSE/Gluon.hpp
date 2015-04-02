@@ -42,11 +42,6 @@ public:
 		// So far the Gluon is given by function, so it is considered to be already dressed.
 	}
 
-    t_cmplx getDressingFactor(){
-        std::cout << "Maris-Tandy gluon cannot provide the dressing factor!" << std::endl;
-        assert(false);
-    }
-
 	// Get value of Gluon at k
 	t_cmplxArray1D getPropAt(t_cmplx k);
 
