@@ -19,8 +19,8 @@ void C_Quark_parameters::Print() {
 			"LimUk" << " - " << LimUk <<std::endl <<
 			"EffectiveCutoff" << " - " << EffectiveCutoff <<std::endl <<
 			"Accuracy" << " - " << Accuracy << std::endl <<
-			"ReCalcProp" << " - " << ReCalcProp << std::endl <<
-			"HeavyLight" << " - " << HeavyLight << std::endl;
+			"flag_loadPropagator" << " - " << flag_loadPropagator << std::endl <<
+			"flag_LightOrHeavyQuark" << " - " << flag_LightOrHeavyQuark << std::endl;
 }
 
 void C_Quark_parameters::ReadParameters(std::string& _ParamPath) {
@@ -38,8 +38,8 @@ void C_Quark_parameters::ReadParameters(std::string& _ParamPath) {
 			(_ParamList) >> line >> LimUk;
 			(_ParamList) >> line >> EffectiveCutoff;
 			(_ParamList) >> line >> Accuracy;
-			(_ParamList) >> line >> ReCalcProp;
-			(_ParamList) >> line >> HeavyLight;
+			(_ParamList) >> line >> flag_loadPropagator;
+			(_ParamList) >> line >> flag_LightOrHeavyQuark;
 		}
 		Print();
 	} else {
@@ -60,6 +60,6 @@ void C_Quark_parameters::setDefault(){
 	LimUk = 50.0;
 	EffectiveCutoff = 0.8;
 	Accuracy = 0.0001;
-	ReCalcProp = 1;
-	HeavyLight = 0;
+	flag_loadPropagator = 1;
+	flag_LightOrHeavyQuark = 0;
 }
