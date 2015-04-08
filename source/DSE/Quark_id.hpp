@@ -15,14 +15,8 @@ public:
 		InitializateIntegrators();
 	}
 
-	C_Up_Quark * MakeCopy(){
-		return new C_Up_Quark(*this);
-	}
-
 	void info() { std::cout << "UP_Quark initialization..." << std::endl; }
 };
-  
-
 
 class C_Down_Quark: public C_Quark{
 public:
@@ -48,10 +42,6 @@ public:
 		InitializateIntegrators();
 	}
 
-	C_Charm_Quark * MakeCopy(){
-		return new C_Charm_Quark(*this);
-	}
-
 	void info() { std::cout << "Charm_Quark initialization..." << std::endl; }
 };
 
@@ -65,11 +55,7 @@ public:
 		InitializateIntegrators();
 	}
 
-	C_Test_Quark * MakeCopy(){
-		return new C_Test_Quark(*this);
-	}
-
-	void info() { std::cout << "Charm_Quark initialization..." << std::endl; }
+	void info() { std::cout << "Test_Quark initialization..." << std::endl; }
 };
 
 
