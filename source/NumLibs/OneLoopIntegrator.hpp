@@ -27,7 +27,7 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
 
 	//______________________________________________________________________
 	// 3d-dimensional integration routine
-	T_out MultiDimInt3D(std::function<T_out(T_arg)>  *func_to_int){
+/*	T_out MultiDimInt3D(std::function<T_out(T_arg)>  *func_to_int){
 		integrand=func_to_int;
 		return Integrator_momentum->getResult(&C_OneLoopIntegrator::f1_3D,this);
 	}
@@ -43,11 +43,11 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
 		integrand_args[2]= angle_y;
 		return (*integrand)(integrand_args);
 	}
-
+*/
 
     //______________________________________________________________________
     // 2d-dimensional integration routine
-    T_out MultiDimInt2D(std::function<T_out(T_arg)>  *func_to_int){
+ /*   T_out MultiDimInt2D(std::function<T_out(T_arg)>  *func_to_int){
         integrand=func_to_int;
         return Integrator_momentum->getResult(&C_OneLoopIntegrator::f1_2D,this);
     }
@@ -59,7 +59,7 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
         integrand_args[1]= angle_z;
         return (*integrand)(integrand_args);
     }
-
+*/
 
     T_out MultiDimInt2D_wo_nested(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
         t_dArray1D x0,x1;
