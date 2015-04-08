@@ -38,10 +38,4 @@ class C_Propagator: public C_AbsDiagram{
 	virtual ~C_Propagator() {}
 };
 
-class C_Propagator_Factory{
-	public:
-	virtual C_Propagator * Create(int)=0;
-	virtual ~C_Propagator_Factory() {}
-};
-
 #endif /* PROPAGATOR_HPP_ */

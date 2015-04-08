@@ -17,6 +17,10 @@ C_Quark::C_Quark(){
 	threadloc_p_momenta_inx.resize(omp_get_num_threads());
 }
 
+C_Quark::~C_Quark(){
+
+}
+
 /*t_cmplx getTensorExpression(t_cmplxVector& p){
 	return p*p;
 }*/

@@ -9,9 +9,8 @@ class C_AbstractKernel;
 class C_Propagator;
 
 #include "../source/types.h"
-#include "../source/DSE/Gluon.hpp"
 #include "../source/Kernel/KernelFactory.hpp"
-#include "../source/DSE/Quark_id.hpp"
+#include "../source/DSE/PropagatorFactory.hpp"
 
 
 #endif //_DSEPP_DSEPP_HPP_

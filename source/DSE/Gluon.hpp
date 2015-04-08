@@ -56,15 +56,4 @@ public:
 
 };
 
-class C_Gluon_Factory: public C_Propagator_Factory{
-	public:
-	C_Propagator* Create(int _id) {
-		Gluon_ID id=(Gluon_ID)_id;
-		return C_Gluon::createGluon( id );
-    }
 
-	C_Propagator* Create(int _id, std::string & _InterpolationPointsPath) {
-		Gluon_ID id=(Gluon_ID)_id;
-		return C_Gluon::createGluon( id, _InterpolationPointsPath );
-	}
-};
