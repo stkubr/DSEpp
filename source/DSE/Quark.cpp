@@ -10,8 +10,6 @@
 C_Quark::C_Quark(){
 	Memory_abs=DedicMemFactory_Quark->CreateMemory();
 	Memory=(C_DedicMem_Quark*)Memory_abs;
-	flag_dressed=false;
-	flag_renormalization =false;
 	num_amplitudes=2;
     num_IntegDimentions = 2;
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
@@ -57,17 +55,17 @@ void C_Quark::InitialState(){
 // Resize all storages (internal and external), also create side objects like (Integrators, Kernels and etc.)
 //----------------------------------------------------------------------
 void C_Quark::InitializateIntegrators(){
-    Integrator_momentum =C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
+    Integrator_momentum =C_Integrator_Line<t_cmplxMatrix,double>::createIntegrator(
 			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_lin_ID);
-	Integrator_angle_Z =C_Integrator_Line<t_cmplxMatrix,C_OneLoopIntegrator,double>::createIntegrator(
+	Integrator_angle_Z =C_Integrator_Line<t_cmplxMatrix,double>::createIntegrator(
 			params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
-	Integrator_momentum_short =C_Integrator_Line<t_cmplxMatrix,C_Quark,double>::createIntegrator(
+	Integrator_momentum_short =C_Integrator_Line<t_cmplxMatrix,double>::createIntegrator(
 			params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_sym_ID);
     Integrator_cauchy=C_Integrator_Path<t_cmplx,t_cmplxArray2D,t_cmplx>::createIntegrator(num_amplitudes, &CauchyIntegratonWeight_lambda);
 
-	Integrator_momentum->getNodes(&zz_rad,&w_rad);
-	Integrator_momentum_short->getNodes(&zz_line,&w_line);
-	Integrator_angle_Z->getNodes(&zz_angle,&w_angle);
+	Integrator_momentum->getNodes(zz_rad,w_rad);
+	Integrator_momentum_short->getNodes(zz_line,w_line);
+	Integrator_angle_Z->getNodes(zz_angle,w_angle);
 }
 
 void C_Quark::ResizeMemory(){

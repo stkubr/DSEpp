@@ -2,7 +2,8 @@
 
 #include "Propagator.hpp"
 #include "../NumLibs/Geometry/ParabolaContour.hpp"
-#include "../NumLibs/Integrator.h"
+#include "../NumLibs/Integrator.hpp"
+#include "../NumLibs/Integrator_Path.hpp"
 #include "../NumLibs/Support_functions.h"
 #include "../NumLibs/OneLoopIntegrator.hpp"
 #include "Quark_parameters.hpp"
@@ -19,7 +20,7 @@ protected:
 
     std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
 
-	C_Integrator_Line<t_cmplxMatrix, C_Quark, double> * Integrator_momentum_short;
+	C_Integrator_Line<t_cmplxMatrix, double> * Integrator_momentum_short;
 	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
 	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
 	double kinematicFactor, B_renorm, B_mu, A_renorm, Z2;
@@ -29,6 +30,8 @@ protected:
 
 	// Constructor
 	C_Quark();
+
+	~C_Quark();
 
 	//t_cmplx getTensorExpression(t_cmplxVector& p);
 	void LinkToKernel(C_AbstractKernel * _K);

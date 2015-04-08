@@ -15,15 +15,15 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
     T_arg integrand_args;
 	int num_IntegDimentions;
 	C_Kinematics_1loop Momenta;
-	C_Integrator_Line<T_out,C_OneLoopIntegrator,T_in> * Integrator_momentum;
-	C_Integrator_Line<T_out,C_OneLoopIntegrator,T_in> * Integrator_angle_Z;
-	C_Integrator_Line<T_out,C_OneLoopIntegrator,T_in> * Integrator_angle_Y;
+	C_Integrator_Line<T_out,T_in> * Integrator_momentum;
+	C_Integrator_Line<T_out,T_in> * Integrator_angle_Z;
+	C_Integrator_Line<T_out,T_in> * Integrator_angle_Y;
 
-    std::function<T_out(t_cmplxArray1D)>  *integrand;
+    std::function<T_out(T_arg)>  *integrand;
 
-	C_OneLoopIntegrator(){
+	/*C_OneLoopIntegrator(){
         integrand_args.resize(3);
-	}
+	}*/
 
 	//______________________________________________________________________
 	// 3d-dimensional integration routine
@@ -65,8 +65,8 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
         t_dArray1D x0,x1;
         t_dArray1D w0,w1;
         T_arg integrand_args_local;
-        Integrator_momentum->getNodes(&x0, &w0);
-        Integrator_angle_Z->getNodes(&x1, &w1);
+        Integrator_momentum->getNodes(x0, w0);
+        Integrator_angle_Z->getNodes(x1, w1);
         integrand=func_to_int;
         T_out result,sum;
         integrand_args_local.resize(num_IntegDimentions);
