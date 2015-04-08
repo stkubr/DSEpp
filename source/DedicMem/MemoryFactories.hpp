@@ -5,6 +5,8 @@
 #ifndef _DSEPP_MEMORYFACTORIES_HPP_
 #define _DSEPP_MEMORYFACTORIES_HPP_
 
+#include "DedicMem.hpp"
+
 class C_MemoryFactory{
 public:
     virtual C_DedicMem_Abs* CreateMemory()=0;
@@ -36,6 +38,5 @@ public:
 extern C_MemoryFactory_Quark * DedicMemFactory_Quark;
 extern C_MemoryFactory_Kernel * DedicMemFactory_Kernel;
 extern C_MemoryFactory_BSE * DedicMemFactory_BSE;
-
 
 #endif //_DSEPP_MEMORYFACTORIES_HPP_
