@@ -104,7 +104,7 @@ void C_Gluon::setInterpolatorPoints(std::string& _InterpolationPointsPath){
 	}
 	else {std::cout << "Cant open file!" << std::endl; assert(false);}
 	GluonInterpStream.close();
-	FuncToInterpolate = new Interpolation::Linear<t_cmplx,t_cmplx>(GluonTempStorage[0].size(), &GluonTempStorage[0], &GluonTempStorage[1]);
+	FuncToInterpolate = new Interpolation::Linear<t_cmplx,t_cmplx>(GluonTempStorage[0].size(), GluonTempStorage[0], GluonTempStorage[1]);
 }
 
 // Read parameters from file

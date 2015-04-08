@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../NumLibs/Linear_interpolation.h"
+#include "../NumLibs/Linear_interpolation.hpp"
 #include "Propagator.hpp"
 #include <string>
 
