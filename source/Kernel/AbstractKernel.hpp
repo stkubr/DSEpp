@@ -21,7 +21,7 @@ protected:
 
 	C_AbstractKernel(){
 		SetNameID("Kernel",1);	
-		Memory=(C_DedicMem_Kernel*)DedicMemFactory_Kernel->CreateMemory();
+		Memory=static_pointer_cast<C_DedicMem_Kernel*>(DedicMemFactory_Kernel->CreateMemory());
 		KMatrixThreadStorage.resize(omp_get_max_threads());
 	}
 
