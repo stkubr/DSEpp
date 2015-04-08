@@ -7,8 +7,7 @@ enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 #include "../Abs/AbsDiagram.hpp"
 class C_Propagator;
 #include "../DSE/Propagator.hpp"
-
-
+#include "../DedicMem/MemoryFactories.hpp"
 
 class C_AbstractKernel: public C_AbsDiagram{
 
@@ -20,8 +19,8 @@ protected:
 	PS_type_ID Exchange_type_ID;
 
 	C_AbstractKernel(){
-		SetNameID("Kernel",1);	
-		Memory=static_pointer_cast<C_DedicMem_Kernel*>(DedicMemFactory_Kernel->CreateMemory());
+		SetNameID("Kernel",1);
+		Memory=static_cast<C_DedicMem_Kernel*>(DedicMemFactory_Kernel->CreateMemory());
 		KMatrixThreadStorage.resize(omp_get_max_threads());
 	}
 
