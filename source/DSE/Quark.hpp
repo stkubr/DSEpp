@@ -7,12 +7,14 @@
 #include "../NumLibs/Support_functions.h"
 #include "../NumLibs/OneLoopIntegrator.hpp"
 #include "Quark_parameters.hpp"
+#include "../DedicMem/MemoryFactories.hpp"
 
 class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
 protected:
 
 	C_AbstractKernel * Kernel;
+	C_DedicMem_Quark * Memory;
 	const char * SavePropPath;
 	int num_amplitudes;
 	bool flag_dressed;
@@ -107,10 +109,6 @@ protected:
 
 	// Gets sum A and B at 100 points. Used for unit tests.
 	double checkSum();
-
-
-public:
-	C_DedicMem_Quark * Memory;
 
 };
 

@@ -8,8 +8,7 @@
 #include "Quark.hpp"
 
 C_Quark::C_Quark(){
-	Memory_abs=DedicMemFactory_Quark->CreateMemory();
-	Memory=(C_DedicMem_Quark*)Memory_abs;
+	Memory=static_cast<C_DedicMem_Quark*>(DedicMemFactory_Quark->CreateMemory());
 	num_amplitudes=2;
     num_IntegDimentions = 2;
 	kinematicFactor=1.0/(16.0*pi*pi*pi);
