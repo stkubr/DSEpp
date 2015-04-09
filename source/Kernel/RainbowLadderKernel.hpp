@@ -8,10 +8,11 @@
 #ifndef RAINBOWLADDERKERNEL_HPP_
 #define RAINBOWLADDERKERNEL_HPP_
 
-#include "AbstractKernel.hpp"
+#include "TwoQuarkKernel.hpp"
 
-class C_Kernel_RL: public C_AbstractKernel{
-	public:
+class C_Kernel_RL: public C_TwoQuarkKernel{
+    friend class C_Kernel_Factory;
+protected:
     t_cmplx Z2;
 
     C_Kernel_RL(){
@@ -19,8 +20,6 @@ class C_Kernel_RL: public C_AbstractKernel{
         Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
         Z2=1.0;
     }
-
-    void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
 
 	void setMediators(t_cmplxVector& k,
 					  t_cmplxVector& p,
@@ -30,6 +29,8 @@ class C_Kernel_RL: public C_AbstractKernel{
 	t_cmplx ElementKmatrix(int t, int s, int r, int u,
                           std::vector<t_cmplxTensor>& Mediators);
 
+public:
+    void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
 };
 
 #endif /* RAINBOWLADDERKERNEL_HPP_ */
