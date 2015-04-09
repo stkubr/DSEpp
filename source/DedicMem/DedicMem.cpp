@@ -23,7 +23,7 @@ void C_DedicMem_Quark::RemoveGrid() {
 
 void C_DedicMem_Quark::RemoveContour() {
     S_cont.clear();
-    std::cout << "Grid storage has been erased." << std::endl;
+    std::cout << "Contour storage has been erased." << std::endl;
 }
 
 void C_DedicMem_Quark::info() {
