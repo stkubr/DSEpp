@@ -72,7 +72,7 @@ C_Gluon* C_Gluon::createGluon( Gluon_ID id, std::string& _InterpolationPointsPat
 
 // Initialization
 //----------------------------------------------------------------------
-void C_Gluon::InitialState(){
+void C_Gluon::setToInitialState(){
 	ReadParameters();
 	GluonCheck();
 }
@@ -124,7 +124,7 @@ void C_Gluon::ReadParameters(){
 
 // Get value of Gluon at k
 //----------------------------------------------------------------------
-t_cmplxArray1D C_Gluon::getPropAt(t_cmplx k){
+t_cmplxArray1D C_Gluon::PropagatorAtPoint(t_cmplx k){
 	t_cmplxArray1D return_vec(1,0);
 	return_vec[0]=(this->*Gluon_ref)(k);
 	return return_vec;

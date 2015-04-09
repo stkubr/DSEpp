@@ -19,7 +19,7 @@ private:
 	C_Gluon();
 
 	// Initialization
-	void InitialState();
+	void setToInitialState();
 
 	void setGluonDefaultParameters();
 
@@ -38,12 +38,12 @@ public:
 	static C_Gluon* createGluon(Gluon_ID id);
 	static C_Gluon* createGluon(Gluon_ID id, std::string& _InterpolationPointsPath);
 
-	void DressPropagator() {
+	void dressPropagator() {
 		// So far the Gluon is given by function, so it is considered to be already dressed.
 	}
 
 	// Get value of Gluon at k
-	t_cmplxArray1D getPropAt(t_cmplx k);
+	t_cmplxArray1D PropagatorAtPoint(t_cmplx k);
 
 	// Maris-Tandy gluon model
 	t_cmplx GluonMT(t_cmplx k);
