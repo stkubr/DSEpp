@@ -30,6 +30,7 @@ class C_DedicMem_Quark: public C_DedicMem_Abs {
 	void resizeContour(int amps_num, int cont_num);
 	
 	void RemoveGrid();
+	void RemoveContour();
 
 	void info();
 };
