@@ -317,7 +317,7 @@ void C_Quark::calcPropagator() {
 		// Switching on normalization
 		flag_renormalization = true;
 		double check_sum, eps = 100.0;
-		while (eps > params.Accuracy) {
+		while (fabs(eps) > fabs(params.Accuracy)) {
 			check_sum = checkSum();
 			calcPropOnGrid();
 			calcPropOnContour();
@@ -346,7 +346,7 @@ void C_Quark::renormalizeProp() {
  */
 double C_Quark::checkConvergence(double previous_checksum) {
 	double res = checkSum();
-	double eps = (fabs(res) - fabs(previous_checksum)) / fabs(res);
+	double eps = fabs(fabs(res) - fabs(previous_checksum)) / fabs(res);
 
 	std::cout << "Z2 - " << "  " << Z2 << "  " << "A_mu" << "  " << real(PropagatorOnPoint(params.mu * params.mu)[0]) << "  " <<
 			"m_renorm - " << "  " << B_mu << "  " << "Accuracy - " << "  " << eps << std::endl;
