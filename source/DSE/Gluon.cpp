@@ -21,7 +21,6 @@ C_Gluon::C_Gluon(){
 	SetNameID("Gluon", 1);
 }
 
-
 // Parameterized Factory Method function
 //----------------------------------------------------------------------
 C_Gluon* C_Gluon::createGluon(Gluon_ID id){
@@ -145,7 +144,7 @@ void C_Gluon::GluonCheck(){
 	Gluon.open ("Data_files/Gluon.dat");
 	for (int i = 0; i <= scale; i++){
 		t_cmplx point = x*x;
-		Gluon << real(point) <<"  "<< real(getPropAt(point)[0]) << std::endl;
+		Gluon << real(point) <<"  "<< real(PropagatorAtPoint(point)[0]) << std::endl;
 		x*=dp;
 	}
 	Gluon.close();

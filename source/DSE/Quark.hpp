@@ -1,4 +1,10 @@
-#pragma once
+/**
+ * Quark.hpp
+ * Author: stkubr
+ */
+
+#ifndef QUARK_HPP_
+#define QUARK_HPP_
 
 #include "Propagator.hpp"
 #include "../NumLibs/Geometry/ParabolaContour.hpp"
@@ -13,49 +19,74 @@ class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, do
 
 protected:
 
+	/// two-body scattering Kernel
 	C_AbstractKernel * Kernel;
+
+	/// quark's Memory handler class, contains the contour and the grid at which quark DSE evaluated
 	C_DedicMem_Quark * Memory;
-	const char * SavePropPath;
+
+	/// path to file to store the calculated propagator
+	string SavePropPath;
+
+	/// number of projected out amplitudes (quark has two, A and B)
 	int num_amplitudes;
-	bool flag_dressed;
+
+	/// contains all params the quark DSE need to have
 	C_Quark_parameters params;
 
+	/// defines the Cauchy integral measure
     std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
 
-	C_Integrator_Line<t_cmplxMatrix, double> * Integrator_momentum_short;
+	/// Line Integrator for the cutoff part of parabolic contour
+	C_Integrator_Line<t_cmplxMatrix, double> *Integrator_momentum_cutoff;
+
+	/// Path Integrator for the complete contour
 	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
-	t_dArray1D zz_rad, w_rad, zz_line, w_line, zz_angle, w_angle, z_circus, w_circus;
-	double kinematicFactor, B_renorm, B_mu, A_renorm, Z2;
-	bool flag_renormalization;
+
+	/// zz are the integration nodes, w are the weights
+	t_dArray1D zz_radial, w_radial, zz_cutoff, w_cutoff, zz_angle, w_angle;
+
+	/// just a momentum volume factor
+	double kinematicFactor;
+
+	/// Renormalization constants
+	double B_renorm, B_mu, A_renorm, Z2;
+
+	/// thread-local storages of indexes
 	vector<int> threadloc_p_momenta_inx, threadloc_integr_inx;
 
+	bool flag_dressed;
+	bool flag_renormalization;
 
-	// Constructor
+	// the constructor
 	C_Quark();
 
+	// the destructor
 	~C_Quark();
 
 	//t_cmplx getTensorExpression(t_cmplxVector& p);
-	void LinkToKernel(C_AbstractKernel * _K);
 
-	void ReadParameters(string & _ParamPath);
+	void linkToKernel(C_AbstractKernel *_K);
 
-	t_cmplx getDressingFactor();
+	void readQuarkParameters(string &_ParamPath);
+
+	t_cmplx DressingFactor();
 
 	void setContourApex(double M2);
 
 	// Set parameters to initial values
-	void InitialState();
+	void setToInitialState();
 
-	// Resize all storages (internal and external), also create side objects like (Integrators, Kernels and etc.)
-	void InitializateIntegrators();
+	// Create Integrators and get the integration points and weights out of them
+	void initializateIntegrators();
 
-	void ResizeMemory();
+	// Resize the dedicated memory storages for the contour and the grid according to loaded "params"
+	void resizeMemory();
 
-	// Set Cauchy contour
+	// Set Contour in complex plane
 	void setContour();
 
-	// Set Cauchy contour
+	// Set Grid in complex plane
 	void setGrid();
 
 	// Initial guesses for A and B
@@ -77,7 +108,7 @@ protected:
 	t_cmplxMatrix Integrand_numerical(t_cmplxArray1D values);
 
 	// Calculation A,B,M,Sigma_V,Sigma_S at point in contour
-	t_cmplxArray1D getPropAt(t_cmplx q);
+	t_cmplxArray1D PropagatorAtPoint(t_cmplx q);
 
 	// Calculate consequently Grid and Contour until converge
 	void calcPropagator();
@@ -88,8 +119,8 @@ protected:
 	// Check convergence
 	double checkConvergence(double previous_checksum);
 
-	// Initialization (Dressing) of the Propagator
-	void DressPropagator();
+	// Dress the Propagator
+	void dressPropagator();
 
 	// Draw Propagator at real line
 	void drawOnRealAxis(int s);
@@ -112,3 +143,4 @@ protected:
 
 };
 
+#endif /* QUARK_HPP_ */

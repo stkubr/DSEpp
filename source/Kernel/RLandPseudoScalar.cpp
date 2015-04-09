@@ -16,9 +16,9 @@
 		t_cmplx k2_product;
 		k2_product=(k*k);
 		t_cmplx Gluon_factor=1.0;
-		t_cmplx Z2 = Propagators[1]->getDressingFactor();
+		t_cmplx Z2 = Propagators[1]->DressingFactor();
 		t_cmplxTensor Gluon_Matrix(2),PS_Matrix(0);
-		Gluon_factor=Z2*Z2*4.0/3.0*Propagators[0]->getPropAt(k2_product)[0];
+		Gluon_factor=Z2*Z2*4.0/3.0* Propagators[0]->PropagatorAtPoint(k2_product)[0];
 		Gluon_Matrix=Gluon_factor*(g-((k)%(k))/(k2_product));
 		t_cmplx PS_momenta=(P)*(P);
 
@@ -114,7 +114,7 @@
 		double PionDecayConst = 0.093;
 		t_cmplxTensor PS_Matrix(0);
 		//PS_factor=GetDressingAt(0,0,0,vertex_momenta);
-		PS_factor=Propagators[1]->getPropAt(vertex_momenta)[1];
+		PS_factor= Propagators[1]->PropagatorAtPoint(vertex_momenta)[1];
 		PS_Matrix=-3.0*PS_factor*Z2/(prop_momenta + PseudoMesonMass*PseudoMesonMass)/PionDecayConst/(1.0 + (real(vertex_momenta))/100.0);
 		return PS_Matrix;
 	}
@@ -124,7 +124,7 @@
 		double PionDecayConst = 0.093;
 		t_cmplxTensor PS_Matrix(0);
 		//PS_factor=GetDressingAt(0,0,0,vertex_momenta);
-		PS_factor=Propagators[1]->getPropAt(vertex_momenta)[1];
+		PS_factor= Propagators[1]->PropagatorAtPoint(vertex_momenta)[1];
 		PS_Matrix=3.0*real(PS_factor)*Z2/(prop_momenta + PseudoMesonMass*PseudoMesonMass)/PionDecayConst/(1.0 + (real(vertex_momenta))/100.0);
 		return PS_Matrix;
 	}

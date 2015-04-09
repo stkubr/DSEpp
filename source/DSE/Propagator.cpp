@@ -6,9 +6,9 @@
 
 #include "Propagator.hpp"
 
-t_cmplxArray1D C_Propagator::getPropAt(t_cmplx q) {
+t_cmplxArray1D C_Propagator::PropagatorAtPoint(t_cmplx q) {
 	t_cmplxArray1D dummy(1, 0);
-	std::cout << "Pure virtual call:C_Propagator::getPropAt" << std::endl;
+	std::cout << "Pure virtual call:C_Propagator::PropagatorAtPoint" << std::endl;
 	assert(false);
 	return dummy;
 }
@@ -19,9 +19,9 @@ void C_Propagator::SetPropagatorOnPath(std::vector<t_cmplxMatrix> & AmplitudesOn
 	assert(false);
 }
 
-t_cmplx C_Propagator::getDressingFactor() {
+t_cmplx C_Propagator::DressingFactor() {
 	t_cmplx dummy;
-	std::cout << "Pure virtual call:C_Propagator::getDressingFactor" << std::endl;
+	std::cout << "Pure virtual call:C_Propagator::DressingFactor" << std::endl;
 	assert(false);
 	return dummy;
 }
@@ -38,7 +38,7 @@ double C_Propagator::checkSum() {
 	return dummy;
 }
 
-void C_Propagator::LinkToKernel(C_AbstractKernel * _K) {
-	std::cout << "Pure virtual call:C_Propagator::LinkToKernel" << std::endl;
+void C_Propagator::linkToKernel(C_AbstractKernel *_K) {
+	std::cout << "Pure virtual call:C_Propagator::linkToKernel" << std::endl;
 	assert(false);
 }

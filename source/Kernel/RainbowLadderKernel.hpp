@@ -28,10 +28,8 @@ class C_Kernel_RL: public C_AbstractKernel{
 					  std::vector<t_cmplxTensor>& Mediators);
 
 	t_cmplx ElementKmatrix(int t, int s, int r, int u,
-							  std::vector<t_cmplxTensor>& Mediators);
+                          std::vector<t_cmplxTensor>& Mediators);
 
 };
-
-
 
 #endif /* RAINBOWLADDERKERNEL_HPP_ */

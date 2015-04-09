@@ -1,7 +1,23 @@
-#pragma once
+/*
+ * AbstractKernel.hpp
+ *      Author: stkubr
+ */
 
+#ifndef ABSTRACTKERNEL_HPP_
+#define ABSTRACTKERNEL_HPP_
+
+/**
+ * Enumeration of all available types of two-body scattering kernels
+ * RL - Rainbow-ladder single gluon exchange
+ * RL_PS - Rainbow-ladder single gluon exchange + PseudoScalar exchange (aka pion cloud)
+*/
 enum Kernel_ID {RL_ID=0, RL_PS_ID, Kernel_ID_End};
 
+/**
+ * Enumeration of all available types PseudoScalar exchange
+ * Pion_exchange - the pion cloud effect
+ * Etta_exchange - /f$ \eta_c /f$ exchange for charmonium
+*/
 enum PS_type_ID {Pion_exchange_ID=0, Etta_exchange_ID, PS_type_ID_End};
 
 #include "../Abs/AbsDiagram.hpp"
@@ -10,18 +26,21 @@ class C_Propagator;
 #include "../DedicMem/MemoryFactories.hpp"
 
 class C_AbstractKernel: public C_AbsDiagram{
-
 protected:
+
+	/// vector of pointer to prapagator as two-body scattering mediators
 	std::vector<C_Propagator*> Propagators;
 	/// TODO to include vector of general vertexes
-	std::vector<t_cmplxMatrix2D> KMatrixThreadStorage;
+
+	std::vector<t_cmplxMatrix2D> threadloc_KMatrix;
+
 	Kernel_ID Kernel_type_ID;
 	PS_type_ID Exchange_type_ID;
 
 	C_AbstractKernel(){
 		SetNameID("Kernel",1);
 		Memory=static_cast<C_DedicMem_Kernel*>(DedicMemFactory_Kernel->CreateMemory());
-		KMatrixThreadStorage.resize(omp_get_max_threads());
+		threadloc_KMatrix.resize(omp_get_max_threads());
 	}
 
 public:
@@ -63,7 +82,7 @@ public:
 				for (int r = 0; r < 4; r++){
 					for (int u = 0; u < 4; u++){
                         temp_storage = takeInnerProduct((Projector)(u,t), (WaveFunc)(s,r), rank)
-								    * KMatrixThreadStorage[omp_get_thread_num()](t,s)(r,u);
+								    * threadloc_KMatrix[omp_get_thread_num()](t,s)(r,u);
                         result+=temp_storage;
 					}
 				}
@@ -75,9 +94,9 @@ public:
 	// Sets K_matrix for each thread calling the trace
 	void setKMatrixThreadStorage(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P){
 		std::vector<t_cmplxTensor> MediatorKernel;
-		resizeKmatrix(KMatrixThreadStorage[omp_get_thread_num()]);
+		resizeKmatrix(threadloc_KMatrix[omp_get_thread_num()]);
 		setMediators(k,p,P,MediatorKernel);
-		setKmatrix(KMatrixThreadStorage[omp_get_thread_num()],MediatorKernel);
+		setKmatrix(threadloc_KMatrix[omp_get_thread_num()],MediatorKernel);
 	}
 
 	// Takes inner product of two provided tensors
@@ -128,4 +147,4 @@ public:
 
 };
 
-
+#endif /* ABSTRACTKERNEL_HPP_ */

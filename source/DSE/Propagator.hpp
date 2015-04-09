@@ -17,23 +17,36 @@ class C_AbstractKernel;
 class C_Propagator: public C_AbsDiagram{
 	public:
 
-	virtual void DressPropagator()=0;
+	/**
+ 	* Dress Propagator according to defined in derived class DSE scheme
+ 	* this is the function where all !!SCIENCE!! of DSE happens
+ 	*/
+	virtual void dressPropagator()=0;
 
-	virtual void InitialState()=0;
+	/**
+ 	* Reset parameters to initial values
+ 	*/
+	virtual void setToInitialState()=0;
 
-	virtual t_cmplxArray1D getPropAt(t_cmplx q);
+	/**
+ 	* Return the value of all possible for this kind of propagator dressing functions at point
+ 	*/
+	virtual t_cmplxArray1D PropagatorAtPoint(t_cmplx q);
 
 	// TODO virtual t_cmplxDirac getTensorExpression(t_cmplxVector& p);
 
+	/**
+ 	* Save propagator dressing functions, evaluated on provided "Path", in provided "AmplitudeStorage"
+ 	*/
 	virtual void SetPropagatorOnPath(std::vector<t_cmplxMatrix> & AmplitudesOnPath, t_cmplxArray1D & Path);
 
-	virtual t_cmplx getDressingFactor();
+	virtual t_cmplx DressingFactor();
 
 	virtual void setContourApex(double M2);
 
 	virtual double checkSum();
 
-	virtual void LinkToKernel(C_AbstractKernel * _K);
+	virtual void linkToKernel(C_AbstractKernel *_K);
 
 	virtual ~C_Propagator() {}
 };

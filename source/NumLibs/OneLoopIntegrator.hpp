@@ -12,13 +12,20 @@
 
 template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrator{
 	public:
+
+    /// the variables over the loop integration is done, for example vector \f$ (k,z,y,\phi) \f$
     T_arg integrand_args;
-	int num_IntegDimentions;
+
+	int numIntegDimentions;
+
+    /// the momenta 4-vectors associated with singe loop integration
 	C_Kinematics_1loop Momenta;
+
 	C_Integrator_Line<T_out,T_in> * Integrator_momentum;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Z;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Y;
 
+    /// function pointer to the integrand to be integrated
     std::function<T_out(T_arg)>  *integrand;
 
 	/*C_OneLoopIntegrator(){
@@ -69,7 +76,7 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
         Integrator_angle_Z->getNodes(x1, w1);
         integrand=func_to_int;
         T_out result,sum;
-        integrand_args_local.resize(num_IntegDimentions);
+        integrand_args_local.resize(numIntegDimentions);
         sum.Resize(numRows,numCols);
         double w1_temp;
         for (int i = 1; i < x0.size(); ++i) {

@@ -42,11 +42,12 @@ int main(int __argc,char *__argv[]){
 
     kernel->setPropagators(Props);
 
-    up_quark->LinkToKernel(kernel);
-    up_quark->DressPropagator();
+    up_quark->linkToKernel(kernel);
+    up_quark->dressPropagator();
 
 
-    std::cout << std::setprecision(10) << up_quark->checkSum() << endl;
+    std::cout << std::setprecision(16) << up_quark->checkSum() << endl;
+    //61.49288903070202
 
     tstop = (double)clock()/CLOCKS_PER_SEC;
     ttime= (tstop-tstart)/omp_get_max_threads();
