@@ -1,0 +1,17 @@
+digraph "C_TwoLoopIntegrator"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="C_TwoLoopIntegrator",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Momenta" ,fontname="Helvetica"];
+  Node2 [label="C_Kinematics_1loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___kinematics__1loop.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integ_angle_Phi_2\nInteg_angle_cheb_1\nInteg_angle_cheb_2\nInteg_radial_1\nInteg_radial_2\nInteg_angle_Y_1\nInteg_angle_Y_2" ,fontname="Helvetica"];
+  Node3 [label="C_Integrator_Line\<\l t_cmplxMatrix, C_TwoLoopIntegrator,\l double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator___line.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="C_Integrator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator.html"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory_Loop" ,fontname="Helvetica"];
+  Node5 [label="C_DedicMem_2_Loop_Int",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem__2___loop___int.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="C_DedicMem_Abs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___abs.html"];
+}

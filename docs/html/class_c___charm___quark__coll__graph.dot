@@ -1,0 +1,39 @@
+digraph "C_Charm_Quark"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="C_Charm_Quark",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="C_Quark",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___quark.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="C_Propagator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___propagator.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="C_AbsDiagram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abs_diagram.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory_abs" ,fontname="Helvetica"];
+  Node5 [label="C_DedicMem_Abs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___abs.html"];
+  Node6 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="C_OneLoopIntegrator\l\< t_cmplxMatrix, double,\l t_cmplxArray1D \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___one_loop_integrator.html"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Momenta" ,fontname="Helvetica"];
+  Node7 [label="C_Kinematics_1loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___kinematics__1loop.html"];
+  Node8 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integrator_angle_Y\nIntegrator_angle_Z\nIntegrator_momentum" ,fontname="Helvetica"];
+  Node8 [label="C_Integrator_Line\<\l t_cmplxMatrix, C_OneLoopIntegrator,\l double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator___line.html"];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="C_Integrator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator.html"];
+  Node10 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory" ,fontname="Helvetica"];
+  Node10 [label="C_DedicMem_Quark",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___quark.html"];
+  Node5 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" params" ,fontname="Helvetica"];
+  Node11 [label="C_Quark_parameters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___quark__parameters.html"];
+  Node12 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Kernel" ,fontname="Helvetica"];
+  Node12 [label="C_AbstractKernel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abstract_kernel.html"];
+  Node4 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory" ,fontname="Helvetica"];
+  Node13 [label="C_DedicMem_Kernel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___kernel.html"];
+  Node5 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integrator_momentum\l_short" ,fontname="Helvetica"];
+  Node14 [label="C_Integrator_Line\<\l t_cmplxMatrix, C_Quark,\l double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator___line.html"];
+  Node9 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integrator_cauchy" ,fontname="Helvetica"];
+  Node15 [label="C_Integrator_Path\<\l t_cmplx, t_cmplxArray2D,\l t_cmplx \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator___path.html"];
+}

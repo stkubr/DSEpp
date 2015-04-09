@@ -1,0 +1,81 @@
+\hypertarget{class_c___abstract_kernel}{\section{C\-\_\-\-Abstract\-Kernel Class Reference}
+\label{class_c___abstract_kernel}\index{C\-\_\-\-Abstract\-Kernel@{C\-\_\-\-Abstract\-Kernel}}
+}
+Inheritance diagram for C\-\_\-\-Abstract\-Kernel\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c___abstract_kernel}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c___abstract_kernel_a6a6510a5e44b78d22c6b1287121074c7}{virtual void {\bfseries info} ()=0}\label{class_c___abstract_kernel_a6a6510a5e44b78d22c6b1287121074c7}
+
+\item 
+\hypertarget{class_c___abstract_kernel_af2656096f4bb6b293b7c6fd6b98e1852}{void {\bfseries set\-Exchange\-I\-D} (P\-S\-\_\-type\-\_\-\-I\-D exchange\-\_\-id)}\label{class_c___abstract_kernel_af2656096f4bb6b293b7c6fd6b98e1852}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a732c7cfecc0f30cd585734b4a3b2f5d0}{Kernel\-\_\-\-I\-D {\bfseries Kernel\-I\-D} ()}\label{class_c___abstract_kernel_a732c7cfecc0f30cd585734b4a3b2f5d0}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a7f4d733129fb96fc6b3964c6b2ef696d}{void {\bfseries set\-Propagators} (std\-::vector$<$ \hyperlink{class_c___propagator}{C\-\_\-\-Propagator} $\ast$ $>$ \-\_\-\-\_\-\-Propagators)}\label{class_c___abstract_kernel_a7f4d733129fb96fc6b3964c6b2ef696d}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a44d9413f79dcb3581f6f626dcaabda94}{virtual void {\bfseries set\-Convolution\-Type} (int type)}\label{class_c___abstract_kernel_a44d9413f79dcb3581f6f626dcaabda94}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a0589cd3db4acff68cb08f7150bc3c994}{t\-\_\-cmplx {\bfseries Trace\-Kernel\-Without\-Storing} (t\-\_\-cmplx\-Dirac \&Projector, t\-\_\-cmplx\-Dirac \&Wave\-Func, t\-\_\-cmplx\-Vector \&k, t\-\_\-cmplx\-Vector \&p, t\-\_\-cmplx\-Vector \&P, bool flag\-\_\-reset\-\_\-kernel)}\label{class_c___abstract_kernel_a0589cd3db4acff68cb08f7150bc3c994}
+
+\item 
+\hypertarget{class_c___abstract_kernel_af7b68da40937efab335f2f3dc85a0aac}{void {\bfseries set\-K\-Matrix\-Thread\-Storage} (t\-\_\-cmplx\-Vector \&k, t\-\_\-cmplx\-Vector \&p, t\-\_\-cmplx\-Vector \&P)}\label{class_c___abstract_kernel_af7b68da40937efab335f2f3dc85a0aac}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a1bc1d99206e76ab535e2b22c65587b66}{t\-\_\-cmplx {\bfseries take\-Inner\-Product} (t\-\_\-cmplx\-Tensor \&A, t\-\_\-cmplx\-Tensor \&B, int rank)}\label{class_c___abstract_kernel_a1bc1d99206e76ab535e2b22c65587b66}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a2f2a68781d4bcd8cb7e12f6ae149f22f}{void {\bfseries resize\-Kmatrix} (t\-\_\-cmplx\-Matrix2\-D \&K\-\_\-matrix)}\label{class_c___abstract_kernel_a2f2a68781d4bcd8cb7e12f6ae149f22f}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a93c0cd44a8327c5afa956f39713bc94a}{virtual void {\bfseries set\-Mediators} (t\-\_\-cmplx\-Vector \&k, t\-\_\-cmplx\-Vector \&p, t\-\_\-cmplx\-Vector \&P, std\-::vector$<$ t\-\_\-cmplx\-Tensor $>$ \&Mediators)=0}\label{class_c___abstract_kernel_a93c0cd44a8327c5afa956f39713bc94a}
+
+\item 
+\hypertarget{class_c___abstract_kernel_ad90e029ee7da0a8aee835a0e12ee569f}{virtual t\-\_\-cmplx {\bfseries Element\-Kmatrix} (int t, int s, int r, int u, std\-::vector$<$ t\-\_\-cmplx\-Tensor $>$ \&Mediators)=0}\label{class_c___abstract_kernel_ad90e029ee7da0a8aee835a0e12ee569f}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a8a46c6a478ff8c4cef966a011ddf4cc3}{void {\bfseries set\-Kmatrix} (t\-\_\-cmplx\-Matrix2\-D \&K\-\_\-matrix, std\-::vector$<$ t\-\_\-cmplx\-Tensor $>$ \&Mediators)}\label{class_c___abstract_kernel_a8a46c6a478ff8c4cef966a011ddf4cc3}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c___abstract_kernel_a8e4523d9df8882a20b01e511d05815f0}{static \hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$ {\bfseries create\-Kernel} (Kernel\-\_\-\-I\-D id)}\label{class_c___abstract_kernel_a8e4523d9df8882a20b01e511d05815f0}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c___abstract_kernel_a490aac141740e9ee3c4d2b0c0dcb77c7}{\hyperlink{class_c___dedic_mem___kernel}{C\-\_\-\-Dedic\-Mem\-\_\-\-Kernel} $\ast$ {\bfseries Memory}}\label{class_c___abstract_kernel_a490aac141740e9ee3c4d2b0c0dcb77c7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c___abstract_kernel_aa60e6339b256ab24d835f35520df5052}{std\-::vector$<$ \hyperlink{class_c___propagator}{C\-\_\-\-Propagator} $\ast$ $>$ \hyperlink{class_c___abstract_kernel_aa60e6339b256ab24d835f35520df5052}{Propagators}}\label{class_c___abstract_kernel_aa60e6339b256ab24d835f35520df5052}
+
+\begin{DoxyCompactList}\small\item\em vector of pointer to prapagator as two-\/body scattering mediators \end{DoxyCompactList}\item 
+\hypertarget{class_c___abstract_kernel_aac115b60d8e20bd58262b92e403f0750}{std\-::vector$<$ t\-\_\-cmplx\-Matrix2\-D $>$ \hyperlink{class_c___abstract_kernel_aac115b60d8e20bd58262b92e403f0750}{threadloc\-\_\-\-K\-Matrix}}\label{class_c___abstract_kernel_aac115b60d8e20bd58262b92e403f0750}
+
+\begin{DoxyCompactList}\small\item\em T\-O\-D\-O to include vector of general vertexes. \end{DoxyCompactList}\item 
+\hypertarget{class_c___abstract_kernel_a2752ba2a46e476d657e8199cf55c2b3c}{Kernel\-\_\-\-I\-D {\bfseries Kernel\-\_\-type\-\_\-\-I\-D}}\label{class_c___abstract_kernel_a2752ba2a46e476d657e8199cf55c2b3c}
+
+\item 
+\hypertarget{class_c___abstract_kernel_a20b072a954f3f1ec0cd78350f1871cf8}{P\-S\-\_\-type\-\_\-\-I\-D {\bfseries Exchange\-\_\-type\-\_\-\-I\-D}}\label{class_c___abstract_kernel_a20b072a954f3f1ec0cd78350f1871cf8}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+source/\-Kernel/Abstract\-Kernel.\-hpp\item 
+source/\-Kernel/Kernel\-Factory.\-hpp\end{DoxyCompactItemize}

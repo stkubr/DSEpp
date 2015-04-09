@@ -1,0 +1,9 @@
+digraph "source/DedicMem" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b2f33c71d4aa5e7af42a1ca61ff5af1b {
+    graph [ bgcolor="#ddddee", pencolor="black", label="source" fontname="Helvetica", fontsize="10", URL="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html"]
+  dir_0cc69c641e00c6502c1c2667d1456cad [shape=box, label="DedicMem", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0cc69c641e00c6502c1c2667d1456cad.html"];
+  }
+}

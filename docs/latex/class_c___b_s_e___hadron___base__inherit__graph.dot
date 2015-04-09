@@ -1,0 +1,27 @@
+digraph "C_BSE_Hadron_Base"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="C_BSE_Hadron_Base",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="C_BSE_Base",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___base.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="C_AbsVertex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abs_vertex.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="C_AbsDiagram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abs_diagram.html"];
+  Node5 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="C_OneLoopIntegrator\l\< T_out, T_in, T_arg \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___one_loop_integrator.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="C_BSE_Hadron_Meson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___hadron___meson.html"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="C_Mesons_AxialVector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___mesons___axial_vector.html"];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="C_Mesons_PseudoScalar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___mesons___pseudo_scalar.html"];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="C_Mesons_Scalar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___mesons___scalar.html"];
+  Node6 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="C_Mesons_Tensor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___mesons___tensor.html"];
+  Node6 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="C_Mesons_Vector",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___mesons___vector.html"];
+}

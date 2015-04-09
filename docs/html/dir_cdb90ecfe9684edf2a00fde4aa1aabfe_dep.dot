@@ -1,0 +1,9 @@
+digraph "source/NumLibs/Geometry" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_48364d9cda41e54558721dfff990631a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="NumLibs" fontname="Helvetica", fontsize="10", URL="dir_48364d9cda41e54558721dfff990631a.html"]
+  dir_cdb90ecfe9684edf2a00fde4aa1aabfe [shape=box, label="Geometry", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_cdb90ecfe9684edf2a00fde4aa1aabfe.html"];
+  }
+}

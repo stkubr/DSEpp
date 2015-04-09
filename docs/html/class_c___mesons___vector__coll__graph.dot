@@ -1,0 +1,45 @@
+digraph "C_Mesons_Vector"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="C_Mesons_Vector",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="C_BSE_Hadron_Meson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___hadron___meson.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="C_BSE_Hadron_Base",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___hadron___base.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="C_BSE_Base",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___base.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="C_AbsVertex",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abs_vertex.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="C_AbsDiagram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abs_diagram.html"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory_abs" ,fontname="Helvetica"];
+  Node7 [label="C_DedicMem_Abs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___abs.html"];
+  Node8 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Parton_M\nParton_P" ,fontname="Helvetica"];
+  Node8 [label="C_Propagator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___propagator.html"];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Kernel" ,fontname="Helvetica"];
+  Node9 [label="C_AbstractKernel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___abstract_kernel.html"];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory" ,fontname="Helvetica"];
+  Node10 [label="C_DedicMem_Kernel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___kernel.html"];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Memory" ,fontname="Helvetica"];
+  Node11 [label="C_DedicMem_BSE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___dedic_mem___b_s_e.html"];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="C_OneLoopIntegrator\l\< T_out, T_in, T_arg \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___one_loop_integrator.html"];
+  Node13 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Momenta" ,fontname="Helvetica"];
+  Node13 [label="C_Kinematics_1loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___kinematics__1loop.html"];
+  Node14 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" integrand_args" ,fontname="Helvetica"];
+  Node14 [label="T_arg",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node15 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integrator_angle_Y\nIntegrator_angle_Z\nIntegrator_momentum" ,fontname="Helvetica"];
+  Node15 [label="C_Integrator_Line\<\l T_out, C_OneLoopIntegrator,\l T_in \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator___line.html"];
+  Node16 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="C_Integrator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___integrator.html"];
+  Node17 -> Node15 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" Integrator_ref" ,fontname="Helvetica"];
+  Node17 [label="T_out",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node18 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" params" ,fontname="Helvetica"];
+  Node18 [label="C_BSE_Hadron_parameters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c___b_s_e___hadron__parameters.html"];
+}

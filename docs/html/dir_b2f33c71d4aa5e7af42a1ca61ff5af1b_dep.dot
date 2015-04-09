@@ -1,0 +1,16 @@
+digraph "source" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b2f33c71d4aa5e7af42a1ca61ff5af1b {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html"];
+    dir_b2f33c71d4aa5e7af42a1ca61ff5af1b [shape=plaintext label="source"];
+    dir_9789a2c80932562e0ba79d69cb062769 [shape=box label="Abs" color="black" fillcolor="white" style="filled" URL="dir_9789a2c80932562e0ba79d69cb062769.html"];
+    dir_0cc69c641e00c6502c1c2667d1456cad [shape=box label="DedicMem" color="black" fillcolor="white" style="filled" URL="dir_0cc69c641e00c6502c1c2667d1456cad.html"];
+    dir_b9021d0ea53ce33012fa27811b35306f [shape=box label="DSE" color="black" fillcolor="white" style="filled" URL="dir_b9021d0ea53ce33012fa27811b35306f.html"];
+    dir_2f241fddb59ead5b18511f83be7da2da [shape=box label="Kernel" color="black" fillcolor="white" style="filled" URL="dir_2f241fddb59ead5b18511f83be7da2da.html"];
+    dir_d5ae386a6f0807235315e96b95b23a25 [shape=box label="Mockups" color="black" fillcolor="white" style="filled" URL="dir_d5ae386a6f0807235315e96b95b23a25.html"];
+    dir_48364d9cda41e54558721dfff990631a [shape=box label="NumLibs" color="red" fillcolor="white" style="filled" URL="dir_48364d9cda41e54558721dfff990631a.html"];
+    dir_a7fd7c7f10205a6503b593fe924737d9 [shape=box label="Vertex" color="red" fillcolor="white" style="filled" URL="dir_a7fd7c7f10205a6503b593fe924737d9.html"];
+  }
+}
