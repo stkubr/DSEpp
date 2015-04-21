@@ -11,16 +11,8 @@
 #include "../Abs/Kinematics.hpp"
 
 template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrator{
-	public:
-
-    /// the variables over the loop integration is done, for example vector \f$ (k,z,y,\phi) \f$
-    T_arg integrand_args;
-
-	int numIntegDimentions;
-
-    /// the momenta 4-vectors associated with singe loop integration
-	C_Kinematics_1loop Momenta;
-
+protected:
+    int numIntegDimentions;
 	C_Integrator_Line<T_out,T_in> * Integrator_momentum;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Z;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Y;
@@ -28,47 +20,42 @@ template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrat
     /// function pointer to the integrand to be integrated
     std::function<T_out(T_arg)>  *integrand;
 
-	/*C_OneLoopIntegrator(){
-        integrand_args.resize(3);
-	}*/
+    /// the variables over the loop integration is done, for example vector \f$ (k,z,y,\phi) \f$
+    T_arg integrand_args;
 
-	//______________________________________________________________________
-	// 3d-dimensional integration routine
-/*	T_out MultiDimInt3D(std::function<T_out(T_arg)>  *func_to_int){
-		integrand=func_to_int;
-		return Integrator_momentum->getResult(&C_OneLoopIntegrator::f1_3D,this);
-	}
-	T_out f1_3D(T_in modul_momenta){
-		integrand_args[0]=(modul_momenta);
-		return Integrator_angle_Z->getResult(&C_OneLoopIntegrator::f2_3D,this);
-	}
-	T_out f2_3D(T_in angle_z){
-		integrand_args[1]= angle_z;
-		return Integrator_angle_Y->getResult(&C_OneLoopIntegrator::f3_3D,this);
-	}
-	T_out f3_3D(T_in angle_y){
-		integrand_args[2]= angle_y;
-		return (*integrand)(integrand_args);
-	}
-*/
+    /// the momenta 4-vectors associated with singe loop integration
+    C_Kinematics_1loop Momenta;
 
-    //______________________________________________________________________
-    // 2d-dimensional integration routine
- /*   T_out MultiDimInt2D(std::function<T_out(T_arg)>  *func_to_int){
-        integrand=func_to_int;
-        return Integrator_momentum->getResult(&C_OneLoopIntegrator::f1_2D,this);
-    }
-    T_out f1_2D(T_in modul_momenta){
-        integrand_args[0]=(modul_momenta);
-        return Integrator_angle_Z->getResult(&C_OneLoopIntegrator::f2_2D,this);
-    }
-    T_out f2_2D(T_in angle_z){
-        integrand_args[1]= angle_z;
-        return (*integrand)(integrand_args);
-    }
-*/
+     T_out calcIntegral3D(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
+         t_dArray1D x,z,y;
+         t_dArray1D w_x,w_z,w_y;
+         T_arg integrand_args_local;
+         Integrator_momentum->getNodes(x, w_x);
+         Integrator_angle_Z->getNodes(z, w_z);
+         Integrator_angle_Y->getNodes(y, w_y);
+         integrand=func_to_int;
+         T_out result,sum;
+         integrand_args_local.resize(numIntegDimentions);
+         sum.Resize(numRows,numCols);
+         double w_x_temp, w_z_temp;
+         for (int i = 1; i < x.size(); ++i) {
+             integrand_args_local[0]=x[i];
+             w_x_temp = w_x[i];
+             for (int j = 1; j < z.size(); ++j) {
+                 integrand_args_local[1]=z[j];
+                 w_z_temp = w_z[j];
+                 for (int k = 0; k < y.size(); ++k) {
+                     integrand_args_local[2]=y[k];
+                     result = w_x_temp*w_z_temp*w_y[k]*(*integrand)(integrand_args_local);
+                     sum += result;
+                 }
+             }
+         }
+         return sum;
+     }
 
-    T_out MultiDimInt2D_wo_nested(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
+
+    T_out calcIntegral2D(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
         t_dArray1D x0,x1;
         t_dArray1D w0,w1;
         T_arg integrand_args_local;
