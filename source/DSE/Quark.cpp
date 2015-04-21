@@ -225,7 +225,7 @@ void C_Quark::calcPropOnContour() {
 			threadloc_p_momenta_inx[omp_get_thread_num()] = i;
 			threadloc_integr_inx[omp_get_thread_num()] = 0;
 
-			Temp_return = Bare_term + MultiDimInt2D_wo_nested(&bound_member_fn, num_amplitudes, 1);
+			Temp_return = Bare_term + calcIntegral2D(&bound_member_fn, num_amplitudes, 1);
 
 			Memory->S_cont[2][i] = Temp_return(0, 0);
 			Memory->S_cont[3][i] = Temp_return(1, 0);
