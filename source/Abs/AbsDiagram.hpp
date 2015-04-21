@@ -52,6 +52,8 @@ class C_AbsDiagram{
 	void GetNameID(){
 		std::cout << "This is object -" <<"  "<< name <<"  "<< "with ID -" <<"  "<< ID  << std::endl;
 	}
+
+	virtual ~C_AbsDiagram(){}
 };
 
 #endif /* ABSDIAGRAM_HPP_ */
