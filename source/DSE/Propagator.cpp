@@ -13,7 +13,7 @@ t_cmplxArray1D C_Propagator::PropagatorAtPoint(t_cmplx q) {
 	return dummy;
 }
 
-void C_Propagator::setPropagatorOnPath(std::vector<t_cmplxMatrix> &AmplitudesOnPath,
+void C_Propagator::setPropagatorOnPath(t_cmplxArray2D &AmplitudesOnPath,
 									   t_cmplxArray1D &Path) {
 	std::cout << "Pure virtual call:C_Propagator::SetQuarkonPath" << std::endl;
 	assert(false);
