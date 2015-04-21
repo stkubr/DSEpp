@@ -38,7 +38,7 @@ class C_Propagator: public C_AbsDiagram{
 	/**
  	* Save propagator dressing functions, evaluated on provided "Path", in provided "AmplitudeStorage"
  	*/
-	virtual void SetPropagatorOnPath(std::vector<t_cmplxMatrix> & AmplitudesOnPath, t_cmplxArray1D & Path);
+	virtual void setPropagatorOnPath(t_cmplxArray2D &AmplitudesOnPath, t_cmplxArray1D &Path);
 
 	virtual t_cmplx DressingFactor();
 
@@ -46,7 +46,7 @@ class C_Propagator: public C_AbsDiagram{
 
 	virtual double checkSum();
 
-	virtual void linkToKernel(C_AbstractKernel *_K);
+	virtual void linkToKernel(C_AbstractKernel * _Kernel);
 
 	virtual ~C_Propagator() {}
 };

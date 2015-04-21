@@ -463,19 +463,17 @@ void C_Quark::exportPropagator() {
 /**
  * Saves Quark's A and B functions evaluated on provided "Path" in provided "AmplitudeStorage"
  */
-void C_Quark::setPropagatorOnPath(std::vector<t_cmplxMatrix> &AmplitudeStorage, t_cmplxArray1D &Path) {
+void C_Quark::setPropagatorOnPath(t_cmplxArray2D &AmplitudeStorage, t_cmplxArray1D &Path) {
 	std::cout << std::endl;
 	std::cout << "Quark on Path extraction..." << std::endl;
 	int num_points = Path.size();
-	AmplitudeStorage.resize(num_points);
+	AmplitudeStorage.resize(2, t_cmplxArray1D(num_points));
 	t_cmplxArray1D temp_vector(5);
-	t_cmplxMatrix temp_amp(2, 1);
 	std::cout << "points on the path - " << num_points << std::endl;
 	for (int i = 0; i < num_points; i++) {
 		temp_vector = PropagatorAtPoint(Path[i]);
-		temp_amp(0, 0) = temp_vector[3];
-		temp_amp(1, 0) = temp_vector[4];
-		AmplitudeStorage[i] = temp_amp;
+		AmplitudeStorage[0][i] = temp_vector[3];
+		AmplitudeStorage[1][i] = temp_vector[4];
 	}
 	std::cout << "Quark on Path extraction finished." << std::endl;
 }
