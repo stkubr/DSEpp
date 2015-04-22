@@ -1,4 +1,11 @@
-#pragma once
+//
+// Created by stkubr on 21.04.15.
+//
+
+#ifndef KINEMATICS_1LOOP_H_
+#define KINEMATICS_1LOOP_H_
+
+#include "../types.h"
 
 class C_Kinematics_1loop{
 	private:
@@ -83,3 +90,5 @@ class C_Kinematics_1loop{
 	
 		
 };
+
+#endif /* KINEMATICS_1LOOP_H_ */
