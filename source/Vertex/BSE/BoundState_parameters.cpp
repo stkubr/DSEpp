@@ -58,9 +58,9 @@ void C_BoundState_parameters::setDefault() {
 
     NumRadial = 24;
     Cheb_order = 1;
-    NumCheb_nod1 = 6;
-    NumCheb_nod2 = 6;
-    NumAngleY = 6;
+    NumCheb_nod1 = 4;
+    NumCheb_nod2 = 4;
+    NumAngleY = 4;
 
     NumRadial_Contour = 48;
     NumCheb_Contour = 8;
