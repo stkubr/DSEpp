@@ -8,7 +8,10 @@
 #ifndef ONELOOPINTEGRATOR_HPP_
 #define ONELOOPINTEGRATOR_HPP_
 
+#include <functional>
+#include <omp.h>
 #include "../Abs/Kinematics.hpp"
+#include "Integrator.hpp"
 
 template <typename T_out, typename T_in, typename T_arg> class C_OneLoopIntegrator{
 protected:
@@ -16,6 +19,9 @@ protected:
 	C_Integrator_Line<T_out,T_in> * Integrator_momentum;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Z;
 	C_Integrator_Line<T_out,T_in> * Integrator_angle_Y;
+    std::vector<int> threadloc_Integ_ctr;
+    std::vector<int> threadloc_momentum_inx;
+
 
     /// function pointer to the integrand to be integrated
     std::function<T_out(T_arg)>  *integrand;
@@ -25,6 +31,13 @@ protected:
 
     /// the momenta 4-vectors associated with singe loop integration
     C_Kinematics_1loop Momenta;
+
+    C_OneLoopIntegrator(){
+        threadloc_Integ_ctr.resize(omp_get_num_threads());
+        threadloc_momentum_inx.resize(omp_get_num_threads());
+    }
+
+    virtual ~C_OneLoopIntegrator(){}
 
      T_out calcIntegral3D(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
          t_dArray1D x,z,y;
@@ -39,6 +52,7 @@ protected:
          sum.Resize(numRows,numCols);
          double w_x_temp, w_z_temp;
          for (int i = 1; i < x.size(); ++i) {
+             threadloc_momentum_inx[omp_get_thread_num()]=i;
              integrand_args_local[0]=x[i];
              w_x_temp = w_x[i];
              for (int j = 1; j < z.size(); ++j) {
