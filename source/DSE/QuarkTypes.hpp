@@ -69,7 +69,6 @@ public:
 		SavePropPath=("Data_files/SaveQuarkContour_TEST.dat");
 		params.setDefault();
 		setToInitialState();
-		initializateIntegrators();
 	}
 
 	void info() { std::cout << "Test_Quark initialization..." << std::endl; }

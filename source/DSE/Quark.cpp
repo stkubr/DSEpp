@@ -67,6 +67,11 @@ void C_Quark::setToInitialState() {
 	};
 
 	resizeMemory();
+
+	initializateIntegrators();
+	setContour();
+	setGrid();
+	drawOnRealAxis(100);
 }
 
 /**
@@ -118,12 +123,12 @@ void C_Quark::setContour() {
 
 	setInitialAandB();
 
-	ofstream countur_data;
-	countur_data.open("Data_files/countur_data.dat");
+	ofstream contour_data;
+	contour_data.open("Data_files/contour_data.dat");
 	for (int j = 0; j < Memory->S_cont[0].size(); j++) {
-		countur_data << real(Memory->S_cont[0][j]) << "  " << imag(Memory->S_cont[0][j]) << std::endl;
+		contour_data << real(Memory->S_cont[0][j]) << "  " << imag(Memory->S_cont[0][j]) << std::endl;
 	}
-	countur_data.close();
+	contour_data.close();
 	std::cout << "Contour has been set! points - " << Memory->S_cont[0].size() << std::endl;
 }
 
@@ -168,8 +173,8 @@ void C_Quark::setInitialAandB() {
 	};
 
 	for (int i = 0; i < Memory->S_cont[0].size(); i++) {
-		Memory->S_cont[2][i] = (initA(Memory->S_cont[0][1]));
-		Memory->S_cont[3][i] = (initB(Memory->S_cont[0][1]));
+		Memory->S_cont[2][i] = (initA(Memory->S_cont[0][i]));
+		Memory->S_cont[3][i] = (initB(Memory->S_cont[0][i]));
 	}
 }
 
