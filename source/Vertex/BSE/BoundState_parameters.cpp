@@ -56,8 +56,8 @@ void C_BoundState_parameters::setDefault() {
     zetta_part = 0.5;
     OffShell = 0;
 
-    NumRadial = 24;
-    Cheb_order = 1;
+    NumRadial = 20;
+    Cheb_order = 2;
     NumCheb_nod1 = 4;
     NumCheb_nod2 = 4;
     NumAngleY = 4;
