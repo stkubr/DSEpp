@@ -33,8 +33,8 @@ protected:
     C_Kinematics_1loop Momenta;
 
     C_OneLoopIntegrator(){
-        threadloc_Integ_ctr.resize(omp_get_num_threads());
-        threadloc_momentum_inx.resize(omp_get_num_threads());
+        threadloc_Integ_ctr.resize(omp_get_num_threads(),0);
+        threadloc_momentum_inx.resize(omp_get_num_threads(),0);
     }
 
     virtual ~C_OneLoopIntegrator(){}
@@ -51,6 +51,7 @@ protected:
          integrand_args_local.resize(numIntegDimentions);
          sum.Resize(numRows,numCols);
          double w_x_temp, w_z_temp;
+         threadloc_Integ_ctr[omp_get_thread_num()]=0;
          for (int i = 1; i < x.size(); ++i) {
              threadloc_momentum_inx[omp_get_thread_num()]=i;
              integrand_args_local[0]=x[i];
@@ -58,9 +59,10 @@ protected:
              for (int j = 1; j < z.size(); ++j) {
                  integrand_args_local[1]=z[j];
                  w_z_temp = w_z[j];
-                 for (int k = 0; k < y.size(); ++k) {
+                 for (int k = 1; k < y.size(); ++k) {
                      integrand_args_local[2]=y[k];
                      result = w_x_temp*w_z_temp*w_y[k]*(*integrand)(integrand_args_local);
+                     threadloc_Integ_ctr[omp_get_thread_num()]++;
                      sum += result;
                  }
              }
