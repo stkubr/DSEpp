@@ -36,7 +36,7 @@ class C_Kinematics_1loop{
 		 N2_Factor=(p2*P2 - p_P*p_P);
 	}
 	
-	void SetVectors_k(double _zetta, t_cmplx x, t_cmplx y, t_cmplx z)
+	void SetVectors_k(t_cmplx x, t_cmplx y, t_cmplx z)
 	{
 		 k.SetP4(0.0, sqrt((1.0-z*z)*(1.0-y*y))*x, y*sqrt((1.0-z*z))*x, (x)*z );
 		 k_T=TransIn(k,P);
