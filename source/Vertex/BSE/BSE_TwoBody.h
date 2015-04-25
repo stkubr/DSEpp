@@ -111,26 +111,9 @@ public:
     }
 
     void SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
-        Momenta.SetVectors_k(params.zetta_part,x,y,z);
+        Momenta.SetVectors_k(x,y,z);
         Momenta.SetVectors_q();
         Momenta.SetVestors_k_for_S(params.zetta_part,Momenta.k);
-    }
-
-    void setProj(int k){
-        for (int i = 1; i <= params.Cheb_order; i++){
-            proj_amp[i]=0.0;
-        }
-        proj_amp[k]=1.0;
-    }
-
-    t_cmplx U_ex(t_cmplx z_ex)
-    {
-        t_cmplx sum_ex; sum_ex=0;
-        for (int i = 1; i <= params.Cheb_order ; i++)
-        {
-            sum_ex+=Cheb_polinoms(z_ex,(i-1)*2)*proj_amp[i];
-        }
-        return sum_ex;
     }
 
     virtual C_BSE_TwoBody * MakeCopy()
@@ -459,7 +442,7 @@ public:
         SetWaveFunctions();
         result=Kinematic_factor*GetBSA();
 
-        threadloc_Integ_ctr[omp_get_thread_num()]++;
+
         //Complex_Int_counter++;
         return result;
     }
@@ -469,13 +452,11 @@ public:
         int z_ex_counter=0;
         t_cmplxMatrix result(num_amplitudes,1);
         Momenta.SetVector_P(_P);
-        //Complex_Int_counter=0;
-        setProj(proj);
         if(proj==1){
             for (int j=1;j<=params.NumCheb_nod2;j++)
             {
-                t_cmplx z_v;
-                z_v=zz_cheb[j];
+
+                t_cmplx z_v = zz_cheb[j];
                 Momenta.SetVectors_p(z_v,_p);
 
                 SetDiracStructures(Momenta.p,Momenta.P,&Projectors);
@@ -495,9 +476,7 @@ public:
                 z_ex_counter++;
 
                 //DebugLine("before");
-
                 result=calcIntegral3D(&bound_member_fn, num_amplitudes, 1);
-
                 for (int i = 0; i < num_amplitudes ; i++)
                 {
                     Bare_vertex=0.0;
@@ -514,7 +493,7 @@ public:
             {
                 t_cmplx z_v;
                 z_v=zz_cheb[j];
-                result(i,0) += w_cheb[j]*BUFFER_dataAmp_ex(i,j)*U_ex(z_v);
+                result(i,0) += w_cheb[j]*BUFFER_dataAmp_ex(i,j)*Cheb_polinoms(z_v,(proj-1)*2);
                 //std::cout << BUFFER_dataAmp_ex(0,j) << "  " << z_v << "  " << j << "  " << w_cheb[j] << "  " << U_ex(z_v) << std::endl;
             }
         }
@@ -527,66 +506,39 @@ public:
     {
         for (int proj_cheb = 1; proj_cheb <=params.Cheb_order ; proj_cheb++)
         {
-      /*      std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn = std::bind(&C_BSE_TwoBody::Integrand,
-                                                                                     this,
-                                                                                     std::placeholders::_1);
-*/
-//#pragma omp parallel num_threads(1)
-            {//start of pragma
+//#pragma omp parallel
+ {//start of pragma
                 t_cmplx p2;
-                C_BSE_TwoBody * bsa_copy_omp;
-                bsa_copy_omp=MakeCopy();
-                std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn = std::bind(&C_BSE_TwoBody::Integrand,
-                                                                                         bsa_copy_omp,
-                                                                                         std::placeholders::_1);
-
+                std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn = std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
                 t_cmplxMatrix Temp_matrix(num_amplitudes,1);
 //#pragma omp for
-                for (int i = 1; i <= params.NumRadial; i++)
-                {
-                    if(proj_cheb>=2)
-                    {
-                        for (int ampl = 0; ampl < num_amplitudes ; ampl++)
-                        {
+                for (int i = 1; i <= params.NumRadial; i++) {
+                    if(proj_cheb>=2) {
+                        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
                             //std::cout << "more Chebychevs !! ";
-                            for (int w = 1; w <=params.NumCheb_nod2; w++)
-                            {
-                                bsa_copy_omp->BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
-                                //std::cout << bsa_copy_omp.F_buffer[w] << "  ";
+                            for (int w = 1; w <=params.NumCheb_nod2; w++) {
+                                BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
                             }
-                            //std::cout << std::endl;
                         }
                     }
-
-                    bsa_copy_omp->index_p=i;
+                    index_p=i;
                     p2=zz_rad[i];
                     BUFFER_AMP(i,0)=p2;
-                    //std::cout << "Hi, I`m Debug Line" << "   Before Integr!" << std::endl;
+                    Temp_matrix=CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
 
-                    Temp_matrix=bsa_copy_omp->CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
-
-                    //std::cout << "Hi, I`m Debug Line" << "   After Integr!" << std::endl;
-                    for (int ampl = 0; ampl < num_amplitudes ; ampl++)
-                    {
+                    for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
 
                         BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
-                        //std::cout << BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl)) << "  " << i << "  " << proj_cheb+params.Cheb_order*(ampl) << std::endl;
                     }
-                    //std::cout << "Blah blah, I`m debug line!" << "  " << i << "  " << proj_cheb << "  " << BUFFER_AMP(i,0) << "  " << BUFFER_AMP(i,proj_cheb) << "  " << p2  << std::endl;
-                    if(proj_cheb==1)
-                    {
-                        //std::cout << " The first Chebychevs !! "<< std::endl;
-                        for (int ampl = 0; ampl < num_amplitudes ; ampl++)
-                        {
-                            for (int w = 1; w <= params.NumCheb_nod2 ; w++)
-                            {
-                                BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=bsa_copy_omp->BUFFER_dataAmp_ex(ampl,w);
-                                //std::cout << BUFFER_F_ex(i,w + num_cheb_nod2*(ampl)) << "  " << w << "  " << ampl << std::endl;
+
+                    if(proj_cheb==1) {
+                        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
+                            for (int w = 1; w <= params.NumCheb_nod2 ; w++) {
+                                BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=BUFFER_dataAmp_ex(ampl,w);
                             }
                         }
                     }
                 }
-                delete bsa_copy_omp;
             }//end of pragma
         }
 
@@ -604,7 +556,7 @@ public:
         t_cmplx ff1,ff2,ff3,Lambda_EV;
         ff1=0;ff2=0;ff3=0;
         Momenta.SetVector_P(P);
-        //PreCalculation();
+        PreCalculation();
         SetDressing_ref=&C_BSE_TwoBody::SetDressing_normal;
         GetBSA_ref=&C_BSE_TwoBody::GetBSA;
         std::cout << "Dressing BSA... " << std::endl << std::endl;
