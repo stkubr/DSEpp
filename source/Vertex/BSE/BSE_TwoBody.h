@@ -447,58 +447,55 @@ public:
         return result;
     }
 
-    t_cmplxMatrix CalcBSA(t_cmplx _p, t_cmplx _P, int proj, std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn){
-        t_cmplx Bare_vertex;
-        int z_ex_counter=0;
+    void CalcBSA(t_cmplx _p, t_cmplx _P, int proj, std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn){
         t_cmplxMatrix result(num_amplitudes,1);
         Momenta.SetVector_P(_P);
-        if(proj==1){
-            for (int j=1;j<=params.NumCheb_nod2;j++)
+        for (int j=1;j<=params.NumCheb_nod2;j++){
+            t_cmplx z_v = zz_cheb[j];
+            Momenta.SetVectors_p(z_v,_p);
+
+            SetDiracStructures(Momenta.p,Momenta.P,&Projectors);
+            SetWeightCoeff();
+            FullWaveFunction=Projectors[0];
+
+            result=calcIntegral3D(&bound_member_fn, num_amplitudes, 1);
+            for (int i = 0; i < num_amplitudes ; i++)
             {
-
-                t_cmplx z_v = zz_cheb[j];
-                Momenta.SetVectors_p(z_v,_p);
-
-                SetDiracStructures(Momenta.p,Momenta.P,&Projectors);
-                SetWeightCoeff();
-                FullWaveFunction=Projectors[0];
-
-#if ORTH_CHECK
-				#pragma omp master
-				{
-					std::cout << "Orthogonality Check - " << std::endl;
-					OrthogonalityCheck();
-				}
-				cin.get();
-				#endif
-
-
-                z_ex_counter++;
-
-                //DebugLine("before");
-                result=calcIntegral3D(&bound_member_fn, num_amplitudes, 1);
-                for (int i = 0; i < num_amplitudes ; i++)
-                {
-                    Bare_vertex=0.0;
-                    if (flag_off_shell && i==0) {Bare_vertex=2.0/pi* Parton_P->DressingFactor();}
-                    BUFFER_dataAmp_ex(i,z_ex_counter)=result(i,0)+Bare_vertex;
-                }
+                t_cmplx Bare_vertex=0.0;
+                if (flag_off_shell && i==0) {Bare_vertex=2.0/pi* Parton_P->DressingFactor();}
+                BUFFER_dataAmp_ex(i,j)=result(i,0)+Bare_vertex;
             }
         }
+    }
 
-        for (int i = 0; i < num_amplitudes ; i++)
-        {
+    t_cmplxMatrix DeProj(int proj){
+        t_cmplxMatrix result(num_amplitudes,1);
+        for (int i = 0; i < num_amplitudes ; i++) {
             result(i,0)=0.0;
-            for (int j=1;j<=params.NumCheb_nod2;j++)
-            {
-                t_cmplx z_v;
-                z_v=zz_cheb[j];
+            for (int j=1;j<=params.NumCheb_nod2;j++) {
+                t_cmplx z_v=zz_cheb[j];
                 result(i,0) += w_cheb[j]*BUFFER_dataAmp_ex(i,j)*Cheb_polinoms(z_v,(proj-1)*2);
-                //std::cout << BUFFER_dataAmp_ex(0,j) << "  " << z_v << "  " << j << "  " << w_cheb[j] << "  " << U_ex(z_v) << std::endl;
             }
         }
         return result;
     }
+
+    void setBufferIn(int i){
+        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
+            for (int w = 1; w <= params.NumCheb_nod2 ; w++) {
+                BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=BUFFER_dataAmp_ex(ampl,w);
+            }
+        }
+    }
+
+    void setBufferOut(int i){
+        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
+            for (int w = 1; w <=params.NumCheb_nod2; w++) {
+                BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
+            }
+        }
+    }
+
 
 //
 //------------------------------------------------------------------
@@ -509,39 +506,29 @@ public:
 //#pragma omp parallel
  {//start of pragma
                 t_cmplx p2;
-                std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn = std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
+                std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn =
+                        std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
                 t_cmplxMatrix Temp_matrix(num_amplitudes,1);
 //#pragma omp for
                 for (int i = 1; i <= params.NumRadial; i++) {
-                    if(proj_cheb>=2) {
-                        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
-                            //std::cout << "more Chebychevs !! ";
-                            for (int w = 1; w <=params.NumCheb_nod2; w++) {
-                                BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
-                            }
-                        }
-                    }
                     index_p=i;
                     p2=zz_rad[i];
                     BUFFER_AMP(i,0)=p2;
-                    Temp_matrix=CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
-
-                    for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
-
-                        BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
+                    if(proj_cheb==1) {
+                        CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
+                        setBufferIn(i);
+                    } else {
+                        setBufferOut(i);
                     }
 
-                    if(proj_cheb==1) {
-                        for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
-                            for (int w = 1; w <= params.NumCheb_nod2 ; w++) {
-                                BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=BUFFER_dataAmp_ex(ampl,w);
-                            }
-                        }
+                    Temp_matrix=DeProj(proj_cheb);
+
+                    for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
+                        BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
                     }
                 }
             }//end of pragma
         }
-
     }
 
 
