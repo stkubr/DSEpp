@@ -15,8 +15,8 @@ public:
         //SetNameID("BSE_PseudoScalar",1);
         num_amplitudes=4; // number of amplitudes for PseudoScalar
         Initialization();
-        threadloc_Projectors.resize(omp_get_num_threads(), std::vector<t_cmplxDirac>(num_amplitudes));
-        threadloc_WeightCoeff.resize(omp_get_num_threads(), t_cmplxArray1D(num_amplitudes));
+        threadloc_Projectors.resize(omp_get_max_threads(), std::vector<t_cmplxDirac>(num_amplitudes));
+        threadloc_WeightCoeff.resize(omp_get_max_threads(), t_cmplxArray1D(num_amplitudes));
     }
 
     void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
