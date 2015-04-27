@@ -9,18 +9,35 @@
 
 class C_TwoQuarkKernel: public C_AbstractKernel{
 protected:
+    /// Kernel's Memory handler class
     C_DedicMem_Kernel * Memory;
+
+    /// Thread-local KMatrix storage
     std::vector<t_cmplxMatrix2D> threadloc_KMatrix;
+
+
+    /**
+     * Pointers to Propagators that will be used in inside the Kernel;
+     * It can be that during the calculation of quark propagator
+     * it will be traced with the kernel that contains a pointer to the very same
+     * quark propagator; this fact reflects the essence of self-consistency of
+     * DSE integral equations
+    */
     std::vector<C_Propagator*> Propagators;
 
     Kernel_ID Kernel_type_ID;
 
+    /**
+     * The constractor
+    */
     C_TwoQuarkKernel(){
         Memory=static_cast<C_DedicMem_Kernel*>(DedicMemFactory_Kernel->CreateMemory());
         threadloc_KMatrix.resize(omp_get_max_threads());
     }
 
-    // Sets K_matrix for each thread calling the trace
+    /**
+     * Sets K_matrix for each thread calling the trace
+    */
     void setKMatrixThreadStorage(t_cmplxVector& k, t_cmplxVector& p, t_cmplxVector& P){
         std::vector<t_cmplxTensor> MediatorKernel;
         resizeKmatrix(threadloc_KMatrix[omp_get_thread_num()]);
@@ -28,7 +45,9 @@ protected:
         setKmatrix(threadloc_KMatrix[omp_get_thread_num()],MediatorKernel);
     }
 
-    // Takes inner product of two provided tensors
+    /**
+     * Takes inner product of two provided tensors of the given rank
+    */
     t_cmplx takeInnerProduct(t_cmplxTensor& A, t_cmplxTensor& B, int rank){
         t_cmplx result=0.0;
         if(rank==2){
@@ -43,7 +62,9 @@ protected:
         return result;
     }
 
-    // K matrix resizing to (4,4,4,4)
+    /**
+     * Resize the K matrix to (4,4,4,4)
+    */
     void resizeKmatrix(t_cmplxMatrix2D& K_matrix){
         K_matrix.Resize(4,4);
         for (int i = 0; i < 4; i++){

@@ -15,39 +15,18 @@ public:
         //SetNameID("BSE_PseudoScalar",1);
         num_amplitudes=4; // number of amplitudes for PseudoScalar
         Initialization();
-        Amplitudes.resize(4);
+        //Amplitudes.resize(4);
         Projectors.resize(4);
-        WaveFunctions.resize(4);
+        //WaveFunctions.resize(4);
         WeightCoeff.resize(4);
         //SaveBSEPath="Data_files/SaveBSE_PseudoScalar.dat";
     }
 
-    void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
-        //#if BASIS_TYPE == 1
-        (*DiracStructure)[0]=ii*Y5;
-        (*DiracStructure)[1]=Y5*(_P*Z);
-        (*DiracStructure)[2]=Y5*(_k*Z)*(_k*_P);
-        (*DiracStructure)[3]=Y5*((_k*SIG)*_P);
-
-        //#endif
-
-        /*#if BASIS_TYPE == 2
-
-        Y_T=Momenta.TransIn(Y,_P);
-        t_cmplxVector _k_T;
-        _k_T=Momenta.TransIn(_k,_P);
-        t_cmplx _k2_T,_k2, _k_P,_P2;
-        _k2_T=_k_T*_k_T;
-        _k2=_k*_k;
-        _k_P=_k*_P;
-        _P2=_P*_P;
-
-        (*DiracStructure)[0]=Y5;
-        (*DiracStructure)[1]=Y5*(_P*Z);
-        (*DiracStructure)[2]=Y5*(_k_T*Z);
-        (*DiracStructure)[3]=ii/2.0*Y5*((_k_T*Z)*(_P*Z) - (_P*Z)*(_k_T*Z));
-
-        #endif*/
+    void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
+        (DiracStructure)[0]=ii*Y5;
+        (DiracStructure)[1]=Y5*(_P*Z);
+        (DiracStructure)[2]=Y5*(_k*Z)*(_k*_P);
+        (DiracStructure)[3]=Y5*((_k*SIG)*_P);
     }
 
     virtual C_BSE_Pion * MakeCopy()
@@ -74,14 +53,14 @@ public:
 		#endif*/
     }
 
-    void setPropagators(t_cmplxVector *K_plus, t_cmplxVector *K_minus)
+    void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus, t_cmplxDirac & S_p, t_cmplxDirac & S_m)
     {
         t_cmplxArray1D quark_temp_sigma;
-        quark_temp_sigma= Parton_P->PropagatorAtPoint((*K_plus) * (*K_plus));
-        S_p=(-1.0*ii*((*K_plus)*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
+        quark_temp_sigma= Parton_P->PropagatorAtPoint(K_plus * K_plus);
+        S_p=(-1.0*ii*(K_plus*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
 
-        quark_temp_sigma= Parton_M->PropagatorAtPoint((*K_minus) * (*K_minus));
-        S_m=(-1.0*ii*((*K_minus)*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
+        quark_temp_sigma= Parton_M->PropagatorAtPoint(K_minus * K_minus);
+        S_m=(-1.0*ii*(K_minus*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
     }
 };
 

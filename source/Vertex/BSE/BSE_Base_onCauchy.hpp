@@ -120,9 +120,7 @@
 		for (int i = 0; i < num_amplitudes; i++) result[i]=(F[i]/N);		
 		return result;
 	}
-	
-	
-	
+
 	void C_BSE_Hadron_Base::CalcVectorGrid(){
 		std::cout << "Vector Grid" << std::endl;
 #pragma omp parallel //num_threads(1)

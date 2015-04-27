@@ -1,5 +1,5 @@
 #pragma once
-#include "BSE_Base.h"
+#include "BSE_Base.hpp"
 
 enum Dirac_ID {PseudoScalar_ID=0, Scalar_ID, Vector_ID, AxialVector_ID, Tensor_ID, Dirac_ID_End};
 
@@ -110,12 +110,12 @@ class C_BSE_Hadron_Meson: public C_BSE_Hadron_Base {
 	
 };
 
-class C_Mesons_PseudoScalar: public C_BSE_Hadron_Meson {
+class C_Mesons_PseudoScalar: public C_BSE_TwoBody {
 	
 	public:
 	C_Mesons_PseudoScalar(){
-		SetNameID("BSE_PseudoScalar",1);
-		num_amplitudes=4; // number of amplitudes for PseudoScalar
+		//SetNameID("BSE_PseudoScalar",1);
+		num_amplitudes=1; // number of amplitudes for PseudoScalar
 		Initialization();
 		Amplitudes.resize(4);
 		Projectors.resize(4);
@@ -125,15 +125,15 @@ class C_Mesons_PseudoScalar: public C_BSE_Hadron_Meson {
 	}
 	
 	void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){
-		#if BASIS_TYPE == 1
+		//#if BASIS_TYPE == 1
 		(*DiracStructure)[0]=ii*Y5;
 		(*DiracStructure)[1]=Y5*(_P*Z);
 		(*DiracStructure)[2]=Y5*(_k*Z)*(_k*_P);
 		(*DiracStructure)[3]=Y5*((_k*SIG)*_P);
 		
-		#endif
+		//#endif
 		
-		#if BASIS_TYPE == 2
+		/*#if BASIS_TYPE == 2
 		
 		Y_T=Momenta.TransIn(Y,_P);
 		t_cmplxVector _k_T;
@@ -149,7 +149,7 @@ class C_Mesons_PseudoScalar: public C_BSE_Hadron_Meson {
 		(*DiracStructure)[2]=Y5*(_k_T*Z);
 		(*DiracStructure)[3]=ii/2.0*Y5*((_k_T*Z)*(_P*Z) - (_P*Z)*(_k_T*Z));
 		
-		#endif
+		#endif*/
 	}
 	
 	virtual C_Mesons_PseudoScalar * MakeCopy()

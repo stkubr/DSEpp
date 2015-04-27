@@ -31,75 +31,6 @@ class C_BSE_Base: public C_AbsVertex{
 	}
 };
 
-class C_BSE_Hadron_parameters{
-	public:
-	int NumRadial,NumCheb_nod1,NumCheb_nod2,Cheb_order,NumAngleY;
-	int NumRadial_Contour, NumCheb_Contour, NumAngleY_Contour; 
-	int NumRadial_Matrix, NumCheb_Matrix, NumAngleY_Matrix;
-	double LimUk,LimDk,zetta_part;
-	bool OffShell;
-	
-	void Print(std::ostream &__os = std::cout) const {
-		__os << 
-		"LimDk" << " - " << LimDk << std::endl <<
-		"LimUk" << " - " << LimUk << std::endl <<
-		"zetta_part" << " - " << zetta_part << std::endl <<
-		"OffShell" << " - " << OffShell << std::endl <<
-		
-		"NumRadial" << " - " << NumRadial << std::endl <<
-		"Cheb_order" << " - " << Cheb_order << std::endl <<
-		"NumCheb_nod1" << " - " << NumCheb_nod1 << std::endl <<
-		"NumCheb_nod2" << " - " << NumCheb_nod2 << std::endl <<
-		"NumAngleY" << " - " << NumAngleY << std::endl <<
-		
-		"NumRadial_Contour" << " - " << NumRadial_Contour << std::endl <<
-		"NumCheb_Contour" << " - " << NumCheb_Contour << std::endl <<
-		"NumAngleY_Contour" << " - " << NumAngleY_Contour << std::endl <<
-		
-		"NumRadial_Matrix" << " - " << NumRadial_Matrix << std::endl <<
-		"NumCheb_Matrix" << " - " << NumCheb_Matrix << std::endl <<
-		"NumAngleY_Matrix" << " - " << NumAngleY_Matrix << std::endl <<
-		
-		std::endl;	
-	}
-	
-	void setParams(std::ifstream * _ParamList){
-			string line;
-			if ((*_ParamList).is_open())
-			{
-				while ( (*_ParamList).good() )
-				{
-					(*_ParamList) >> line >> LimDk;
-					(*_ParamList) >> line >> LimUk;
-					(*_ParamList) >> line >> zetta_part;
-					(*_ParamList) >> line >> OffShell;
-					
-					(*_ParamList) >> line >> NumRadial;
-					(*_ParamList) >> line >> Cheb_order;
-					(*_ParamList) >> line >> NumCheb_nod1;
-					(*_ParamList) >> line >> NumCheb_nod2;
-					(*_ParamList) >> line >> NumAngleY;
-					
-					(*_ParamList) >> line >> NumRadial_Contour;
-					(*_ParamList) >> line >> NumCheb_Contour;
-					(*_ParamList) >> line >> NumAngleY_Contour;
-					
-					(*_ParamList) >> line >> NumRadial_Matrix;
-					(*_ParamList) >> line >> NumCheb_Matrix;
-					(*_ParamList) >> line >> NumAngleY_Matrix;
-					
-				}
-			}
-			else std::cout << "Cant open file!" << std::endl;
-		}
-};
-
-ostream& operator<<(ostream &__os, const C_BSE_Hadron_parameters &__params){
-		__params.Print(__os);
-		return __os;
-	}
-
-
 class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 	protected:
 	int /*Int_counter,*/Complex_Int_counter,index_zp,index_p;
@@ -150,10 +81,10 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 	void setPropagators(t_cmplxVector *K_plus, t_cmplxVector *K_minus)
 	{
 		t_cmplxArray1D quark_temp_sigma;
-		quark_temp_sigma=Parton_P->getPropAt((*K_plus)*(*K_plus));
+		quark_temp_sigma= Parton_P->PropagatorAtPoint((*K_plus) * (*K_plus));
 		S_p=(-1.0*ii*((*K_plus)*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
 		
-		quark_temp_sigma=Parton_M->getPropAt((*K_minus)*(*K_minus));
+		quark_temp_sigma= Parton_M->PropagatorAtPoint((*K_minus) * (*K_minus));
 		S_m=(-1.0*ii*((*K_minus)*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
 	}
 	
@@ -180,7 +111,6 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 			}	
 			std::cout << std::endl << std::endl;
 		}
-		cin.get();
 	}
 	
 	void Initialization(){
@@ -195,7 +125,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 		//Parton_M=QuarkFactory->Create(&Parton_ID_M);
 		//Parton_M=Parton_P;
 		
-		//Kernel->setZ2DressingFactor(Parton_P->getDressingFactor());
+		//Kernel->setZ2DressingFactor(Parton_P->DressingFactor());
 		
 		ResizeALL();
 		
@@ -549,7 +479,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 			}
 	    }
 	}
-	
+
 	void SetDressing_shifted(t_cmplx z){
 		Momenta.ShiftMomenta(params.zetta_part);
 		for (int j = 0; j < num_amplitudes ; j++){	
@@ -621,7 +551,7 @@ class C_BSE_Hadron_Base: public C_BSE_Base, public C_OneLoopIntegrator{
 				for (int i = 0; i < num_amplitudes ; i++)
 				{
 					Bare_vertex=0.0;
-					if (flag_off_shell && i==0) {Bare_vertex=2.0/pi*Parton_P->getDressingFactor();}
+					if (flag_off_shell && i==0) {Bare_vertex=2.0/pi* Parton_P->DressingFactor();}
 					BUFFER_dataAmp_ex(i,z_ex_counter)=result(i,0)+Bare_vertex;
 				}
 			}
