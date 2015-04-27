@@ -57,7 +57,7 @@ void C_BoundState_parameters::setDefault() {
     OffShell = 0;
 
     NumRadial = 20;
-    Cheb_order = 1;
+    Cheb_order = 2;
     NumCheb_nod1 = 4;
     NumCheb_nod2 = 4;
     NumAngleY = 4;
