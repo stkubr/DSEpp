@@ -22,10 +22,6 @@ protected:
     std::vector<int> threadloc_Integ_ctr;
     std::vector<int> threadloc_momentum_inx;
 
-
-    /// function pointer to the integrand to be integrated
-    std::function<T_out(T_arg)>  *integrand;
-
     /// the variables over the loop integration is done, for example vector \f$ (k,z,y,\phi) \f$
     T_arg integrand_args;
 
@@ -33,9 +29,9 @@ protected:
     std::vector<C_Kinematics_1loop> threadloc_Momenta;
 
     C_OneLoopIntegrator(){
-        threadloc_Integ_ctr.resize(omp_get_num_threads(),0);
-        threadloc_momentum_inx.resize(omp_get_num_threads(),0);
-        threadloc_Momenta.resize(omp_get_num_threads());
+        threadloc_Integ_ctr.resize(omp_get_max_threads(),0);
+        threadloc_momentum_inx.resize(omp_get_max_threads(),0);
+        threadloc_Momenta.resize(omp_get_max_threads());
     }
 
     virtual ~C_OneLoopIntegrator(){}
@@ -47,7 +43,6 @@ protected:
          Integrator_momentum->getNodes(x, w_x);
          Integrator_angle_Z->getNodes(z, w_z);
          Integrator_angle_Y->getNodes(y, w_y);
-         integrand=func_to_int;
          T_out result,sum;
          integrand_args_local.resize(numIntegDimentions);
          sum.Resize(numRows,numCols);
@@ -62,7 +57,7 @@ protected:
                  w_z_temp = w_z[j];
                  for (int k = 1; k < y.size(); ++k) {
                      integrand_args_local[2]=y[k];
-                     result = w_x_temp*w_z_temp*w_y[k]*(*integrand)(integrand_args_local);
+                     result = w_x_temp*w_z_temp*w_y[k]*(*func_to_int)(integrand_args_local);
                      threadloc_Integ_ctr[omp_get_thread_num()]++;
                      sum += result;
                  }
@@ -78,7 +73,6 @@ protected:
         T_arg integrand_args_local;
         Integrator_momentum->getNodes(x0, w0);
         Integrator_angle_Z->getNodes(x1, w1);
-        integrand=func_to_int;
         T_out result,sum;
         integrand_args_local.resize(numIntegDimentions);
         sum.Resize(numRows,numCols);
@@ -88,7 +82,7 @@ protected:
             w1_temp = w0[i];
             for (int j = 1; j < x1.size(); ++j) {
                 integrand_args_local[1]=x1[j];
-                result = w1_temp*w1[j]*(*integrand)(integrand_args_local);
+                result = w1_temp*w1[j]*(*func_to_int)(integrand_args_local);
                 sum += result;
             }
         }
