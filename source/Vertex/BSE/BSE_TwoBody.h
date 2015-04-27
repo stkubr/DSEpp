@@ -113,12 +113,6 @@ public:
         std::cout << AMP << std::endl;
     }
 
-   /* void SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
-        Momenta.SetVectors_k(x,y,z);
-        Momenta.SetVectors_q();
-        Momenta.SetVestors_k_for_S(params.zetta_part,Momenta.k);
-    }*/
-
    C_Kinematics_1loop SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
        C_Kinematics_1loop Momenta;
        Momenta.SetVectors_k(x,y,z);
@@ -128,15 +122,6 @@ public:
        Momenta.SetVectors_q();
        return Momenta;
    }
-
-    virtual C_BSE_TwoBody * MakeCopy()
-    {
-        return new C_BSE_TwoBody(*this);
-    }
-
-    /*   t_cmplxMatrix IntegAngleY(){
-           return Integ_angle_Y->getResult(&C_BSE_TwoBody::f3);
-       }*/
 
     void PreCalculation(){
         Memory->resizeAmpStorage(num_amplitudes,params.NumRadial*params.NumCheb_nod1*params.NumAngleY);
@@ -160,21 +145,19 @@ public:
         if(!flag_precalculation){
             std::vector<t_cmplxDirac> Amplitudes(num_amplitudes);
             SetDiracStructures(Momenta.k,Momenta.P, Amplitudes);
-
             t_cmplxDirac S_p, S_m;
             setPropagators(Momenta.k_p, Momenta.k_m, S_p, S_m);
-
             for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=S_p*Amplitudes[i]*S_m;}
-        }
-        else{
+        } else {
             for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=Memory->AmpStorage[i][threadloc_Integ_ctr[omp_get_thread_num()]];}
         }
         return WaveFunctions;
     }
 
     t_cmplxDirac SetFullWaveFunction(std::vector<t_cmplxDirac> & WaveFunctions, t_cmplxArray1D & U_amp){
-        t_cmplxDirac FullWaveFunction = WaveFunctions[0]*U_amp[0];
-        for (int i = 1; i < num_amplitudes; i++){ FullWaveFunction+=WaveFunctions[i]*U_amp[i]; }
+        t_cmplxDirac FullWaveFunction = WaveFunctions[0];
+        FullWaveFunction.Zero();
+        for (int i = 0; i < num_amplitudes; i++){ FullWaveFunction+=WaveFunctions[i]*U_amp[i]; }
         return FullWaveFunction;
     }
 
@@ -227,18 +210,17 @@ public:
         return result;
     }
 
-    void CalcBSA(t_cmplx _p, t_cmplx _P, int proj, std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn){
+    t_cmplxMatrix CalcBSA(t_cmplx _p, t_cmplx _P, int proj, std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn){
         t_cmplxMatrix result(num_amplitudes,1);
+        t_cmplxMatrix BUFFER_dataAmp_ex(num_amplitudes,params.NumCheb_nod2+1);
         threadloc_Momenta[omp_get_thread_num()].SetVector_P(_P);
         for (int j=1;j<=params.NumCheb_nod2;j++){
             t_cmplx z_v = zz_cheb[j];
             threadloc_Momenta[omp_get_thread_num()].SetVectors_p(z_v,_p);
-
             SetDiracStructures(threadloc_Momenta[omp_get_thread_num()].p,
                                threadloc_Momenta[omp_get_thread_num()].P,
                                threadloc_Projectors[omp_get_thread_num()]);
             SetWeightCoeff();
-
             result=calcIntegral3D(&bound_member_fn, num_amplitudes, 1);
             for (int i = 0; i < num_amplitudes ; i++)
             {
@@ -247,9 +229,10 @@ public:
                 BUFFER_dataAmp_ex(i,j)=result(i,0)+Bare_vertex;
             }
         }
+        return BUFFER_dataAmp_ex;
     }
 
-    t_cmplxMatrix DeProj(int proj){
+    t_cmplxMatrix DeProj(int proj, t_cmplxMatrix & BUFFER_dataAmp_ex){
         t_cmplxMatrix result(num_amplitudes,1);
         for (int i = 0; i < num_amplitudes ; i++) {
             result(i,0)=0.0;
@@ -261,7 +244,7 @@ public:
         return result;
     }
 
-    void setBufferIn(int i){
+    void setBufferIn(int i, t_cmplxMatrix & BUFFER_dataAmp_ex){
         for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
             for (int w = 1; w <= params.NumCheb_nod2 ; w++) {
                 BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))=BUFFER_dataAmp_ex(ampl,w);
@@ -269,7 +252,7 @@ public:
         }
     }
 
-    void setBufferOut(int i){
+    void setBufferOut(int i, t_cmplxMatrix & BUFFER_dataAmp_ex){
         for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
             for (int w = 1; w <=params.NumCheb_nod2; w++) {
                 BUFFER_dataAmp_ex(ampl,w)=BUFFER_F_ex(i,w + params.NumCheb_nod2*(ampl))*1.0;
@@ -281,28 +264,25 @@ public:
 //------------------------------------------------------------------
     void BSA_step(t_cmplx P)
     {
+        std::vector<t_cmplxMatrix> threadloc_BUFFER_dataAmp_ex(8);
         for (int proj_cheb = 1; proj_cheb <=params.Cheb_order ; proj_cheb++)
         {
-//#pragma omp parallel
+#pragma omp parallel
  {//start of pragma
-                t_cmplx p2;
                 std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn =
                         std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
-                t_cmplxMatrix Temp_matrix(num_amplitudes,1);
-//#pragma omp for
+#pragma omp for
                 for (int i = 1; i <= params.NumRadial; i++) {
-                    index_p=i;
-                    p2=zz_rad[i];
+                    t_cmplx p2=zz_rad[i];
                     BUFFER_AMP(i,0)=p2;
-
+                    t_cmplxMatrix BUFFER_dataAmp_ex;
                     if(proj_cheb==1) {
-                        CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
-                        setBufferIn(i);
+                        threadloc_BUFFER_dataAmp_ex[omp_get_thread_num()] = CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
+                        setBufferIn(i,threadloc_BUFFER_dataAmp_ex[omp_get_thread_num()]);
                     } else {
-                        setBufferOut(i);
+                        setBufferOut(i,threadloc_BUFFER_dataAmp_ex[omp_get_thread_num()]);
                     }
-
-                    Temp_matrix=DeProj(proj_cheb);
+                    t_cmplxMatrix Temp_matrix=DeProj(proj_cheb,threadloc_BUFFER_dataAmp_ex[omp_get_thread_num()]);
                     for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
                         BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
                     }
@@ -408,64 +388,6 @@ public:
         std::cout << std::endl << AMP << std::endl;
     }
 
- /*   void DrawBSA(t_cmplx _P){
-        t_cmplxMatrix TempArray(num_amplitudes,1);
-        ofstream temp_continuation;
-        temp_continuation.open ("Data_files/BSEs.dat");
-        for (int i = 1; i < zz_rad.size(); i++)
-        {
-            TempArray=CalcBSA(sqrt(zz_rad[i]),_P,1);
-            temp_continuation << (zz_rad[i]);
-            for (int amp = 0; amp < num_amplitudes; amp++) temp_continuation  << '	' <<  real(TempArray(amp,0));
-            temp_continuation << std::endl;
-        }
-        temp_continuation.close();
-    }
-*/
-/*
-    double NormalizeBSA(t_cmplx _K){
-        std::cout << std::endl;
-        PrintLine('=');
-        std::cout << std::endl;
-        std::cout << "Calculation Norm Factor..." << std::endl;
-        std::cout << std::endl;
-        double BSE_Norm_factor;
-        t_cmplx h=_K/5.0;
-        t_cmplx res_int,N,Lambda_EV;
-        flag_amp_desciption=false;
-        std::vector <t_cmplx> deriv_step_norm(4);
-        for (int i = 1; i <= 2; i++)
-        {
-            double i_count;
-            i_count=i;
-            std::cout << "Derivative at point " << _K+(i_count)*h << std::endl;
-            deriv_step_norm[(i-1)]=DressBSA(_K+(i_count)*h,10);
-
-            std::cout << "Derivative at point " << _K-(i_count)*h << std::endl;
-            deriv_step_norm[(i-1)+2]=DressBSA(_K-(i_count)*h,10);
-        }
-        //flag_normalization=true;
-
-        Lambda_EV=DressBSA(_K,10);
-
-        SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
-        GetBSA_ref=&C_BSE_Hadron_Base::GetBSA_norm;
-
-        res_int=quad3d()(0,0);
-        //flag_normalization=false;
-        N=(-deriv_step_norm[1] + 8.0*deriv_step_norm[0] - 8.0*deriv_step_norm[2] + deriv_step_norm[3])/(12.0*imag(h));
-        std::cout << deriv_step_norm[0] << "  " << deriv_step_norm[1] << "  " << deriv_step_norm[2] << "  " << deriv_step_norm[3] << std::endl;
-        std::cout << N << "  " << res_int << std::endl;
-        //NORM=sqrt(1.0/fabs(real(N))/3.0/fabs(real(res_int))/Lambda_EV)/sqrt(2.0*imag(_K))*0.5;
-        //NORM=sqrt(fabs(real(N))/fabs(real(res_int)))/sqrt(2.0*imag(K_v));
-
-        BSE_Norm_factor=real(sqrt(Lambda_EV/fabs(real(N))/fabs(real(res_int)))*sqrt(2.0*imag(_K)));
-
-        std::cout << "NormFactor = "<< BSE_Norm_factor << std::endl;
-
-        return BSE_Norm_factor;
-    }
-*/
     void SetBSAonPath(t_cmplxArray1D (*AmplitudePath),t_cmplxArray1D (*Path) ,t_cmplx Q)
     {
         std::cout << std::endl;
@@ -482,15 +404,15 @@ public:
         Time=Get_Time();
 #pragma omp parallel
         {//start of pragma
-            C_BSE_TwoBody * bsa_copy_omp;
-            bsa_copy_omp=MakeCopy();
+            //C_BSE_TwoBody * bsa_copy_omp;
+            //bsa_copy_omp=MakeCopy();
             t_cmplxMatrix Temp_matrix(num_amplitudes,1);
 #pragma omp for
             for (int i = 0; i < num_points; i++)
             {
                // (*AmplitudePath)[i]=NORM*bsa_copy_omp->CalcBSA(sqrt((*Path)[i]),Q,1)(0,0);
             }
-            delete bsa_copy_omp;
+            //delete bsa_copy_omp;
         }//end of pragma
         std::cout << " Time for continuation spent - " << (Get_Time() - Time)/8.0 << std::endl;
         std::cout << "On Path calculation finished." << std::endl;
