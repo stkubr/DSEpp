@@ -27,7 +27,7 @@ public:
 
     C_BoundState_parameters params;
 
-    std::vector<t_cmplxDirac> Amplitudes,Projectors,WaveFunctions;
+    std::vector<t_cmplxDirac> /*Amplitudes*/Projectors/*WaveFunctions*/;
     t_cmplxDirac FullWaveFunction,FullAmplitude;
     t_cmplxArray1D U_amp, WeightCoeff;
 
@@ -110,20 +110,29 @@ public:
         std::cout << AMP << std::endl;
     }
 
-    void SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
+   /* void SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
         Momenta.SetVectors_k(x,y,z);
         Momenta.SetVectors_q();
         Momenta.SetVestors_k_for_S(params.zetta_part,Momenta.k);
-    }
+    }*/
+
+   C_Kinematics_1loop SetIntMomenta(t_cmplx x, t_cmplx y, t_cmplx z){
+       C_Kinematics_1loop Momenta;
+       Momenta.SetVectors_k(x,y,z);
+       Momenta.P = C_BSE_TwoBody::Momenta.P;
+       Momenta.SetVestors_k_for_S(params.zetta_part,Momenta.k);
+       Momenta.SetVectors_q();
+       return Momenta;
+   }
 
     virtual C_BSE_TwoBody * MakeCopy()
     {
         return new C_BSE_TwoBody(*this);
     }
 
- /*   t_cmplxMatrix IntegAngleY(){
-        return Integ_angle_Y->getResult(&C_BSE_TwoBody::f3);
-    }*/
+    /*   t_cmplxMatrix IntegAngleY(){
+           return Integ_angle_Y->getResult(&C_BSE_TwoBody::f3);
+       }*/
 
     void PreCalculation(){
         Memory->resizeAmpStorage(num_amplitudes,params.NumRadial*params.NumCheb_nod1*params.NumAngleY);
@@ -131,8 +140,8 @@ public:
         for (int i = 1; i < zz_rad.size(); i++){
             for (int j = 1; j < zz_cheb.size(); j++){
                 for (int k = 1; k < zz_angleY.size(); k++){
-                    SetIntMomenta(sqrt(zz_rad[i]),zz_angleY[k],zz_cheb[j]);
-                    SetWaveFunctions();
+                    C_Kinematics_1loop momenta = SetIntMomenta(sqrt(zz_rad[i]),zz_angleY[k],zz_cheb[j]);
+                    std::vector<t_cmplxDirac> WaveFunctions = SetWaveFunctions(momenta);
                     for (int amp_ctr = 0; amp_ctr < num_amplitudes; amp_ctr++){ Memory->setAmpStorage(amp_ctr, int_ctr, &WaveFunctions[amp_ctr]); }
                     int_ctr++;
                 }
@@ -142,234 +151,241 @@ public:
         //cin.get();
     }
 
- /*   void CalcEVMatrix(Eigen::ComplexEigenSolver<Eigen::MatrixXcf> * ces){
-        Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
-        //std::cout << "Memory->EVMatrix call" << std::endl;
-#pragma omp parallel
-        {//start of pragma
-            C_BSE_Hadron_Base * bsa_copy_omp;
-            bsa_copy_omp=MakeCopy();
-            t_cmplxMatrix Temp_Matrix;
-            double _p2,_k2,_z,_y,_zp;
-            double _w_zp,_w_k2,_w_z;
-            bsa_copy_omp->k_col=0;
-            bsa_copy_omp->Int_counter=0;
-#pragma omp for
-            for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
-                bsa_copy_omp->index_zp=0;
-                bsa_copy_omp->index_p=p_ctr;
-                _p2=zz_rad[p_ctr];
-                for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
-                    bsa_copy_omp->index_zp=zp_ctr;
-                    _zp=zz_cheb[zp_ctr];
-                    bsa_copy_omp->Momenta.SetVectors_p(_zp,sqrt(_p2));
-                    bsa_copy_omp->SetDiracStructures(bsa_copy_omp->Momenta.p,bsa_copy_omp->Momenta.P,&bsa_copy_omp->Projectors);
-                    bsa_copy_omp->SetWeightCoeff();
-                    //FullWaveFunction=Projectors[0];
-                    //_w_zp=w10_ch_ex[zp_ctr];
-                    for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
-                        //k_ctr = 1;
-                        _k2=zz_rad[k_ctr];
-                        _w_k2=w_rad[k_ctr];
-                        bsa_copy_omp->integrand_args[0]=_k2;
-                        bsa_copy_omp->flag_sigma=false;
-                        for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
-                            _z=zz_cheb[z_ctr];
-                            _w_z=w_cheb[z_ctr];
-                            bsa_copy_omp->integrand_args[1]=_z;
-                            //Temp_Matrix=bsa_copy_omp->SetMatrixAtPoint(_P,_p2,_zp,_k2,_z);
-                            Temp_Matrix=bsa_copy_omp->IntegAngleY();
-                            for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
-                                for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
+    /*   void CalcEVMatrix(Eigen::ComplexEigenSolver<Eigen::MatrixXcf> * ces){
+           Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
+           //std::cout << "Memory->EVMatrix call" << std::endl;
+   #pragma omp parallel
+           {//start of pragma
+               C_BSE_Hadron_Base * bsa_copy_omp;
+               bsa_copy_omp=MakeCopy();
+               t_cmplxMatrix Temp_Matrix;
+               double _p2,_k2,_z,_y,_zp;
+               double _w_zp,_w_k2,_w_z;
+               bsa_copy_omp->k_col=0;
+               bsa_copy_omp->Int_counter=0;
+   #pragma omp for
+               for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
+                   bsa_copy_omp->index_zp=0;
+                   bsa_copy_omp->index_p=p_ctr;
+                   _p2=zz_rad[p_ctr];
+                   for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
+                       bsa_copy_omp->index_zp=zp_ctr;
+                       _zp=zz_cheb[zp_ctr];
+                       bsa_copy_omp->Momenta.SetVectors_p(_zp,sqrt(_p2));
+                       bsa_copy_omp->SetDiracStructures(bsa_copy_omp->Momenta.p,bsa_copy_omp->Momenta.P,&bsa_copy_omp->Projectors);
+                       bsa_copy_omp->SetWeightCoeff();
+                       //FullWaveFunction=Projectors[0];
+                       //_w_zp=w10_ch_ex[zp_ctr];
+                       for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
+                           //k_ctr = 1;
+                           _k2=zz_rad[k_ctr];
+                           _w_k2=w_rad[k_ctr];
+                           bsa_copy_omp->integrand_args[0]=_k2;
+                           bsa_copy_omp->flag_sigma=false;
+                           for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
+                               _z=zz_cheb[z_ctr];
+                               _w_z=w_cheb[z_ctr];
+                               bsa_copy_omp->integrand_args[1]=_z;
+                               //Temp_Matrix=bsa_copy_omp->SetMatrixAtPoint(_P,_p2,_zp,_k2,_z);
+                               Temp_Matrix=bsa_copy_omp->IntegAngleY();
+                               for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
+                                   for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
 
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
-                                    Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
-                                }
-                            }
-                            //std::cout << Temp_Matrix(0,0) << std::endl;
-                            //cin.get();
-                        }
-                        bsa_copy_omp->k_col++;
-                    }
-                    bsa_copy_omp->k_col=0;
-                    bsa_copy_omp->Int_counter=0;
-                }
-            }
-            delete bsa_copy_omp;
-        }// end of pragma
-        //std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
-        ces->compute(Memory->EVMatrix);
+                                       //std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
+                                       //std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
+                                       Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
+                                   }
+                               }
+                               //std::cout << Temp_Matrix(0,0) << std::endl;
+                               //cin.get();
+                           }
+                           bsa_copy_omp->k_col++;
+                       }
+                       bsa_copy_omp->k_col=0;
+                       bsa_copy_omp->Int_counter=0;
+                   }
+               }
+               delete bsa_copy_omp;
+           }// end of pragma
+           //std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
+           ces->compute(Memory->EVMatrix);
+       }
+
+       t_cmplxArray2D SetEVMatrix(t_cmplx _P){
+           Momenta.SetVector_P(_P);
+           PreCalculation();
+           t_dArray1D zz_rad_temp,zz_cheb_temp;
+           SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
+           GetBSA_ref=&C_BSE_Hadron_Base::GetBSA_matrix;
+
+           setInitialAMP();
+
+           Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
+
+           Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
+           //std::cout << "Memory->EVMatrix call" << std::endl;
+   #pragma omp parallel
+           {//start of pragma
+               C_BSE_Hadron_Base * bsa_copy_omp;
+               bsa_copy_omp=MakeCopy();
+               t_cmplxMatrix Temp_Matrix;
+               double _p2,_k2,_z,_y,_zp;
+               double _w_zp,_w_k2,_w_z;
+               bsa_copy_omp->k_col=0;
+               bsa_copy_omp->Int_counter=0;
+   #pragma omp for
+               for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
+                   bsa_copy_omp->index_zp=0;
+                   bsa_copy_omp->index_p=p_ctr;
+                   _p2=zz_rad[p_ctr];
+                   for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
+                       bsa_copy_omp->index_zp=zp_ctr;
+                       _zp=zz_cheb[zp_ctr];
+                       bsa_copy_omp->Momenta.SetVectors_p(_zp,sqrt(_p2));
+                       bsa_copy_omp->SetDiracStructures(bsa_copy_omp->Momenta.p,bsa_copy_omp->Momenta.P,&bsa_copy_omp->Projectors);
+                       bsa_copy_omp->SetWeightCoeff();
+                       //FullWaveFunction=Projectors[0];
+                       //_w_zp=w10_ch_ex[zp_ctr];
+                       for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
+                           //k_ctr = 1;
+                           _k2=zz_rad[k_ctr];
+                           _w_k2=w_rad[k_ctr];
+                           bsa_copy_omp->integrand_args[0]=_k2;
+                           bsa_copy_omp->flag_sigma=false;
+                           for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
+                               _z=zz_cheb[z_ctr];
+                               _w_z=w_cheb[z_ctr];
+                               bsa_copy_omp->integrand_args[1]=_z;
+                               //Temp_Matrix=bsa_copy_omp->SetMatrixAtPoint(_P,_p2,_zp,_k2,_z);
+                               Temp_Matrix=bsa_copy_omp->IntegAngleY();
+                               for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
+                                   for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
+
+                                       //std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
+                                       //std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
+                                       Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
+                                   }
+                               }
+                               //std::cout << Temp_Matrix(0,0) << std::endl;
+                               //cin.get();
+                           }
+                           bsa_copy_omp->k_col++;
+                       }
+                       bsa_copy_omp->k_col=0;
+                       bsa_copy_omp->Int_counter=0;
+                   }
+               }
+               delete bsa_copy_omp;
+           }// end of pragma
+           //std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
+           ces.compute(Memory->EVMatrix);
+           flag_precalculation=false;
+           //CalcEVMatrix(&ces);
+           Eigen::VectorXcf EV=ces.eigenvalues();
+
+
+           auto Parity = [&](int num_state) -> t_cmplx {
+               t_cmplx parity=0.0;
+               for (int p_ctr = 1; p_ctr < 2 ; p_ctr++){
+                   for (int p_amp_ctr = 0; p_amp_ctr < 1 ; p_amp_ctr++){
+                       for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
+                           t_cmplx summ,diff;
+
+                           summ = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) +
+                                  ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
+
+                           diff = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) -
+                                  ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
+
+                           if(fabs(real(summ))<=fabs(real(diff))) {parity = -1.0;}
+                           else{ parity = 1.0; }
+                       }
+                   }
+               }
+               return parity;
+           };
+
+           //std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
+           int i= EV.size()-1;
+           t_cmplxArray2D Dominant_EV_and_parity(2);
+           while( i > EV.size()-10)
+           {
+               //std::cout << EV[i] << "  " << i << std::endl;
+               Dominant_EV_and_parity[0].push_back(EV[i]);
+               Dominant_EV_and_parity[1].push_back(Parity(i));
+               //std::cout << i << "  " << EV[i] << "  " << Parity(i)<< std::endl;
+               i--;
+           }
+           //std::cout << ces.eigenvectors().col(EV.size()-1) << std::endl;
+           return Dominant_EV_and_parity;
+       }
+
+       void DrawBSA_matrix(t_cmplx _P, int _state, int amp_num){
+           int num_state;
+           Momenta.SetVector_P(_P);
+           PreCalculation();
+           t_dArray1D zz_rad_temp,zz_cheb_temp;
+           SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
+           GetBSA_ref=&C_BSE_Hadron_Base::GetBSA_matrix;
+
+           flag_precalculation=false;
+           Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
+           //ces.compute(Memory->EVMatrix);
+           CalcEVMatrix(&ces);
+           Eigen::VectorXcf EV=ces.eigenvalues();
+           num_state = EV.size()- _state;
+
+           ofstream DrawBSA_matrix;
+           DrawBSA_matrix.open ("Data_files/BSEs_matrix.dat");
+
+           int i=EV.size()-1;
+
+           while(i > EV.size()-6)
+           {
+               //std::cout << EV[i] << "  " << i << std::endl;
+               i--;
+           }
+
+           t_cmplxArray1D result(zz_rad.size());
+           for (int p_ctr = 1; p_ctr <= params.NumRadial ; p_ctr++){
+               result[p_ctr-1]=0;
+               for (int j=1;j<=params.NumCheb_nod1;j++)
+               {
+                   t_cmplx z_v,element;
+                   element=ces.eigenvectors().col(num_state)(j-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*amp_num);
+                   z_v=zz_cheb[j];
+                   result[p_ctr-1] += w_cheb[j]*Cheb_polinoms(z_v,0)*real(element);
+                   //std::cout << w_cheb[j] << "  " << U_ex(z_v) << "  " << real(element) << std::endl;
+               }
+               DrawBSA_matrix << zz_rad[p_ctr] << "  " << real(result[p_ctr-1]) << std::endl;
+               //std::cout << zz_rad[p_ctr] << "  " << result[p_ctr-1] << std::endl;
+               //cin.get();
+           }
+           DrawBSA_matrix.close();
+       }
+   */
+
+    std::vector<t_cmplxDirac> SetWaveFunctions(C_Kinematics_1loop & Momenta){
+        std::vector<t_cmplxDirac> WaveFunctions(num_amplitudes);
+        if(!flag_precalculation){
+            std::vector<t_cmplxDirac> Amplitudes(num_amplitudes);
+            SetDiracStructures(Momenta.k,Momenta.P, Amplitudes);
+
+            t_cmplxDirac S_p, S_m;
+            setPropagators(Momenta.k_p, Momenta.k_m, S_p, S_m);
+
+            for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=S_p*Amplitudes[i]*S_m;}
+        }
+        else{
+            for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=Memory->AmpStorage[i][threadloc_Integ_ctr[omp_get_thread_num()]];}
+        }
+        return WaveFunctions;
     }
 
-    t_cmplxArray2D SetEVMatrix(t_cmplx _P){
-        Momenta.SetVector_P(_P);
-        PreCalculation();
-        t_dArray1D zz_rad_temp,zz_cheb_temp;
-        SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
-        GetBSA_ref=&C_BSE_Hadron_Base::GetBSA_matrix;
-
-        setInitialAMP();
-
-        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
-
-        Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
-        //std::cout << "Memory->EVMatrix call" << std::endl;
-#pragma omp parallel
-        {//start of pragma
-            C_BSE_Hadron_Base * bsa_copy_omp;
-            bsa_copy_omp=MakeCopy();
-            t_cmplxMatrix Temp_Matrix;
-            double _p2,_k2,_z,_y,_zp;
-            double _w_zp,_w_k2,_w_z;
-            bsa_copy_omp->k_col=0;
-            bsa_copy_omp->Int_counter=0;
-#pragma omp for
-            for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
-                bsa_copy_omp->index_zp=0;
-                bsa_copy_omp->index_p=p_ctr;
-                _p2=zz_rad[p_ctr];
-                for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
-                    bsa_copy_omp->index_zp=zp_ctr;
-                    _zp=zz_cheb[zp_ctr];
-                    bsa_copy_omp->Momenta.SetVectors_p(_zp,sqrt(_p2));
-                    bsa_copy_omp->SetDiracStructures(bsa_copy_omp->Momenta.p,bsa_copy_omp->Momenta.P,&bsa_copy_omp->Projectors);
-                    bsa_copy_omp->SetWeightCoeff();
-                    //FullWaveFunction=Projectors[0];
-                    //_w_zp=w10_ch_ex[zp_ctr];
-                    for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
-                        //k_ctr = 1;
-                        _k2=zz_rad[k_ctr];
-                        _w_k2=w_rad[k_ctr];
-                        bsa_copy_omp->integrand_args[0]=_k2;
-                        bsa_copy_omp->flag_sigma=false;
-                        for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
-                            _z=zz_cheb[z_ctr];
-                            _w_z=w_cheb[z_ctr];
-                            bsa_copy_omp->integrand_args[1]=_z;
-                            //Temp_Matrix=bsa_copy_omp->SetMatrixAtPoint(_P,_p2,_zp,_k2,_z);
-                            Temp_Matrix=bsa_copy_omp->IntegAngleY();
-                            for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
-                                for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
-
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
-                                    Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
-                                }
-                            }
-                            //std::cout << Temp_Matrix(0,0) << std::endl;
-                            //cin.get();
-                        }
-                        bsa_copy_omp->k_col++;
-                    }
-                    bsa_copy_omp->k_col=0;
-                    bsa_copy_omp->Int_counter=0;
-                }
-            }
-            delete bsa_copy_omp;
-        }// end of pragma
-        //std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
-        ces.compute(Memory->EVMatrix);
-        flag_precalculation=false;
-        //CalcEVMatrix(&ces);
-        Eigen::VectorXcf EV=ces.eigenvalues();
-
-
-        auto Parity = [&](int num_state) -> t_cmplx {
-            t_cmplx parity=0.0;
-            for (int p_ctr = 1; p_ctr < 2 ; p_ctr++){
-                for (int p_amp_ctr = 0; p_amp_ctr < 1 ; p_amp_ctr++){
-                    for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
-                        t_cmplx summ,diff;
-
-                        summ = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) +
-                               ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
-
-                        diff = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) -
-                               ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
-
-                        if(fabs(real(summ))<=fabs(real(diff))) {parity = -1.0;}
-                        else{ parity = 1.0; }
-                    }
-                }
-            }
-            return parity;
-        };
-
-        //std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
-        int i= EV.size()-1;
-        t_cmplxArray2D Dominant_EV_and_parity(2);
-        while( i > EV.size()-10)
-        {
-            //std::cout << EV[i] << "  " << i << std::endl;
-            Dominant_EV_and_parity[0].push_back(EV[i]);
-            Dominant_EV_and_parity[1].push_back(Parity(i));
-            //std::cout << i << "  " << EV[i] << "  " << Parity(i)<< std::endl;
-            i--;
-        }
-        //std::cout << ces.eigenvectors().col(EV.size()-1) << std::endl;
-        return Dominant_EV_and_parity;
-    }
-
-    void DrawBSA_matrix(t_cmplx _P, int _state, int amp_num){
-        int num_state;
-        Momenta.SetVector_P(_P);
-        PreCalculation();
-        t_dArray1D zz_rad_temp,zz_cheb_temp;
-        SetDressing_ref=&C_BSE_Hadron_Base::SetDressing_normal;
-        GetBSA_ref=&C_BSE_Hadron_Base::GetBSA_matrix;
-
-        flag_precalculation=false;
-        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
-        //ces.compute(Memory->EVMatrix);
-        CalcEVMatrix(&ces);
-        Eigen::VectorXcf EV=ces.eigenvalues();
-        num_state = EV.size()- _state;
-
-        ofstream DrawBSA_matrix;
-        DrawBSA_matrix.open ("Data_files/BSEs_matrix.dat");
-
-        int i=EV.size()-1;
-
-        while(i > EV.size()-6)
-        {
-            //std::cout << EV[i] << "  " << i << std::endl;
-            i--;
-        }
-
-        t_cmplxArray1D result(zz_rad.size());
-        for (int p_ctr = 1; p_ctr <= params.NumRadial ; p_ctr++){
-            result[p_ctr-1]=0;
-            for (int j=1;j<=params.NumCheb_nod1;j++)
-            {
-                t_cmplx z_v,element;
-                element=ces.eigenvectors().col(num_state)(j-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*amp_num);
-                z_v=zz_cheb[j];
-                result[p_ctr-1] += w_cheb[j]*Cheb_polinoms(z_v,0)*real(element);
-                //std::cout << w_cheb[j] << "  " << U_ex(z_v) << "  " << real(element) << std::endl;
-            }
-            DrawBSA_matrix << zz_rad[p_ctr] << "  " << real(result[p_ctr-1]) << std::endl;
-            //std::cout << zz_rad[p_ctr] << "  " << result[p_ctr-1] << std::endl;
-            //cin.get();
-        }
-        DrawBSA_matrix.close();
-    }
-*/
-
-    void SetWaveFunctions(){
-     if(!flag_precalculation){
-         SetDiracStructures(Momenta.k,Momenta.P,&Amplitudes);
-         setPropagators(&Momenta.k_p, &Momenta.k_m);
-         for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=S_p*Amplitudes[i]*S_m;}
-     }
-     else{
-         for (int i = 0; i < num_amplitudes; i++){ WaveFunctions[i]=Memory->AmpStorage[i][threadloc_Integ_ctr[omp_get_thread_num()]];}
-     }
- }
-
-    void SetFullWaveFunction(){
-        FullWaveFunction.Zero();
-        for (int i = 0; i < num_amplitudes; i++){ FullWaveFunction+=WaveFunctions[i]*U_amp[i]; }
+    t_cmplxDirac SetFullWaveFunction(std::vector<t_cmplxDirac> & WaveFunctions, t_cmplxArray1D & U_amp){
+        t_cmplxDirac FullWaveFunction = WaveFunctions[0]*U_amp[0];
+        for (int i = 1; i < num_amplitudes; i++){ FullWaveFunction+=WaveFunctions[i]*U_amp[i]; }
+        return FullWaveFunction;
     }
 
     t_cmplxMatrix GetBSA(){
@@ -378,7 +394,6 @@ public:
         k_p_P=(Momenta.k + Momenta.p - Momenta.P)/2.0;
         result.Resize(num_amplitudes,1);
         pre_result.Resize(num_amplitudes,1);
-        SetFullWaveFunction();
         bool flag_reset_kernel=true;
         for (int i = 0; i < num_amplitudes; i++) {
             pre_result(i,0)=Kernel->TraceKernelWithoutStoring((Projectors[i]),
@@ -392,16 +407,14 @@ public:
     }
 
     virtual t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
-    virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> * DiracStructure){std::cout << "Error - virtual call" << std::endl; assert(false);};
-    virtual void setPropagators(t_cmplxVector *K_plus, t_cmplxVector *K_minus){std::cout << "Error - virtual call" << std::endl;}
+    virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){std::cout << "Error - virtual call" << std::endl; assert(false);};
+    virtual void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus, t_cmplxDirac & S_p, t_cmplxDirac & S_m){std::cout << "Error - virtual call" << std::endl;}
     //virtual t_cmplxMatrix GetBSA(){t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
 
-    void SetDressing_normal(t_cmplx z){
+    t_cmplxArray1D SetDressing_normal(t_cmplx z){
         /*if (flag_sigma == true){
             flag_sigma = false;*/
-            for (int j = 0; j < num_amplitudes ; j++){
-                U_amp[j]=0.0;
-            }
+        t_cmplxArray1D U_amp(num_amplitudes,0);
             for (int i = 1; i <= params.Cheb_order ; i++){
                 t_cmplx temp_in;
                 temp_in=Cheb_polinoms(z,(i-1)*2);
@@ -411,6 +424,7 @@ public:
                 }
             }
         //}
+        return U_amp;
     }
 /*
     void SetDressing_shifted(t_cmplx z){
@@ -428,22 +442,30 @@ public:
     }
 */
     t_cmplxMatrix Integrand(t_cmplxArray1D args){
-        t_cmplxMatrix result;
+        t_cmplxMatrix result,pre_result;
+        t_cmplxVector k_p_P;
         t_cmplx Kinematic_factor;
         t_cmplx x,y,z;
         x=sqrt(args[0]);
         z=args[1];
         y=args[2];
-        SetIntMomenta(x, y, z);
-
-        (this->*SetDressing_ref)(z);
-
+        C_Kinematics_1loop Momenta = SetIntMomenta(x,y,z);
+        t_cmplxArray1D U_amp = SetDressing_normal(z);
         Kinematic_factor=-1.0/(8.0*pi*pi*pi*pi)*(args[0]);//(1.0 + args[0]/1000.0);//(1.0 + real(Momenta.P2)/1000.0)/(1.0 + real(Momenta.p2)/1000.0);
-        SetWaveFunctions();
-        result=Kinematic_factor*GetBSA();
-
-
-        //Complex_Int_counter++;
+        std::vector<t_cmplxDirac> WaveFunctions = SetWaveFunctions(Momenta);
+        t_cmplxDirac FullWaveFunction = SetFullWaveFunction(WaveFunctions,U_amp);
+        k_p_P=(Momenta.k + Momenta.p - Momenta.P)/2.0;
+        result.Resize(num_amplitudes,1);
+        pre_result.Resize(num_amplitudes,1);
+        bool flag_reset_kernel=true;
+        for (int i = 0; i < num_amplitudes; i++) {
+            pre_result(i,0)=Kernel->TraceKernelWithoutStoring((Projectors[i]),
+                                                              FullWaveFunction,
+                                                              Momenta.q,Momenta.k,
+                                                              k_p_P,flag_reset_kernel);
+            flag_reset_kernel=false;
+        }
+        result=Kinematic_factor*DisentangleAmps(&pre_result);
         return result;
     }
 
@@ -454,9 +476,8 @@ public:
             t_cmplx z_v = zz_cheb[j];
             Momenta.SetVectors_p(z_v,_p);
 
-            SetDiracStructures(Momenta.p,Momenta.P,&Projectors);
+            SetDiracStructures(Momenta.p,Momenta.P,Projectors);
             SetWeightCoeff();
-            FullWaveFunction=Projectors[0];
 
             result=calcIntegral3D(&bound_member_fn, num_amplitudes, 1);
             for (int i = 0; i < num_amplitudes ; i++)
@@ -496,7 +517,6 @@ public:
         }
     }
 
-
 //
 //------------------------------------------------------------------
     void BSA_step(t_cmplx P)
@@ -514,6 +534,7 @@ public:
                     index_p=i;
                     p2=zz_rad[i];
                     BUFFER_AMP(i,0)=p2;
+
                     if(proj_cheb==1) {
                         CalcBSA(sqrt(p2),P,proj_cheb,bound_member_fn);
                         setBufferIn(i);
@@ -522,7 +543,6 @@ public:
                     }
 
                     Temp_matrix=DeProj(proj_cheb);
-
                     for (int ampl = 0; ampl < num_amplitudes ; ampl++) {
                         BUFFER_AMP(i,proj_cheb+params.Cheb_order*(ampl))=Temp_matrix(ampl,0);
                     }
@@ -530,7 +550,6 @@ public:
             }//end of pragma
         }
     }
-
 
     void dressBSE(t_cmplxVector P){
         DressBSA(t_cmplx(0,0.1),10);
@@ -543,9 +562,9 @@ public:
         t_cmplx ff1,ff2,ff3,Lambda_EV;
         ff1=0;ff2=0;ff3=0;
         Momenta.SetVector_P(P);
-        PreCalculation();
-        SetDressing_ref=&C_BSE_TwoBody::SetDressing_normal;
-        GetBSA_ref=&C_BSE_TwoBody::GetBSA;
+        //PreCalculation();
+        //SetDressing_ref=&C_BSE_TwoBody::SetDressing_normal;
+        //GetBSA_ref=&C_BSE_TwoBody::GetBSA;
         std::cout << "Dressing BSA... " << std::endl << std::endl;
         std::cout << fixed;
         //std::cout << setprecision (NUM_PRECISION);
@@ -590,16 +609,12 @@ public:
         return Lambda_EV;
     }
 
-    void PreNormBSA()
-    {
-        for (int i = 1; i <= params.NumRadial; i++)
-        {
-            for (int j = 1; j <= params.Cheb_order*(num_amplitudes); j++)
-            {
+    void PreNormBSA() {
+        for (int i = 1; i <= params.NumRadial; i++) {
+            for (int j = 1; j <= params.Cheb_order*(num_amplitudes); j++) {
                 AMP(i,0)=BUFFER_AMP(i,0);
                 if(flag_off_shell)AMP(i,j)=BUFFER_AMP(i,j);//BUFFER_AMP(1,1);
                 else AMP(i,j)=BUFFER_AMP(i,j)/(real(BUFFER_AMP(1,1)));
-
             }
         }
     }
