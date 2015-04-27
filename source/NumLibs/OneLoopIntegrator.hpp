@@ -30,11 +30,12 @@ protected:
     T_arg integrand_args;
 
     /// the momenta 4-vectors associated with singe loop integration
-    C_Kinematics_1loop Momenta;
+    std::vector<C_Kinematics_1loop> threadloc_Momenta;
 
     C_OneLoopIntegrator(){
         threadloc_Integ_ctr.resize(omp_get_num_threads(),0);
         threadloc_momentum_inx.resize(omp_get_num_threads(),0);
+        threadloc_Momenta.resize(omp_get_num_threads());
     }
 
     virtual ~C_OneLoopIntegrator(){}
