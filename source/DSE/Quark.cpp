@@ -15,8 +15,8 @@ C_Quark::C_Quark() {
 	num_amplitudes = 2;
 	numIntegDimentions = 2;
 	kinematicFactor = 1.0 / (16.0 * pi * pi * pi);
-	threadloc_integr_inx.resize(omp_get_num_threads());
-	threadloc_p_momenta_inx.resize(omp_get_num_threads());
+	threadloc_integr_inx.resize(omp_get_max_threads());
+	threadloc_p_momenta_inx.resize(omp_get_max_threads());
 }
 
 /**
