@@ -29,6 +29,8 @@ protected:
         setNodes(id);
     }
 
+    virtual ~C_IntegrationNodes(){}
+
     //Given the lower and upper limits of integration x1 and x2, and given n, this routine returns
     //arrays x[1..n] and w[1..n] of length n, containing the abscissas and weights of the Gauss-
     //Legendre n-point quadrature formula.
