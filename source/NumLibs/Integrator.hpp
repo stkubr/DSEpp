@@ -9,12 +9,7 @@
 #include "IntegrationNodes.hpp"
 
 template <typename T_out, typename T_in> class C_Integrator_Line: public C_IntegrationNodes{
-	protected:		
-
-	std::function <T_out(T_in)> * Integrand;
-
-
-	
+	protected:
 	C_Integrator_Line(int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id):
 			C_IntegrationNodes(_NumPoints, _LimDown, _LimUp, _NumAps, _id) {
 	}
@@ -26,23 +21,15 @@ template <typename T_out, typename T_in> class C_Integrator_Line: public C_Integ
 	    return p;
 	}
 
-	T_out getResult(std::function <T_out(T_in)> * Integrand)
-	{
-		T_out s, Rplus;
-		int num_row,num_cols;
-
-        Rplus=(*Integrand)(x[1]);
-        num_row=Rplus.NumRows();
-        num_cols=Rplus.NumCols();
-        s.Resize(num_row,num_cols);
-        s = w[1]*(Rplus);
-
-		for (int j=2;j<=NumPoints;j++)
-		{
-			Rplus=(*Integrand)(x[j]);
-			s += w[j]*(Rplus);
+	T_out getResult(std::function <T_out(T_in)> * func_to_int,  int numRows, int numCols) {
+		T_out sum, result;
+		sum.Resize(numRows,numCols);
+		result.Resize(numRows,numCols);
+		for (int j=1;j<=NumPoints;j++) {
+			result=(*func_to_int)(x[j]);
+			sum += w[j]*(result);
 		}
-		return s;
+		return sum;
 	}
 
 };
