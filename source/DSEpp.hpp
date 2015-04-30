@@ -2,6 +2,8 @@
 // Created by stkubr on 01.04.15.
 //
 
+#define SHOW_PRECISION 6
+
 #ifndef _DSEPP_DSEPP_HPP_
 #define _DSEPP_DSEPP_HPP_
 
