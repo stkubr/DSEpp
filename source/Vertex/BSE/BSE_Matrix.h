@@ -112,48 +112,42 @@ public:
                 }
             }
         }// end of pragma
+        flag_precalculation=false;
         std::cout << Memory->EVMatrix.norm() << std::endl;
         std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
         ces.compute(Memory->EVMatrix);
-        flag_precalculation=false;
-        //CalcEVMatrix(&ces);
-        Eigen::VectorXcf EV=ces.eigenvalues();
-
-
-        auto Parity = [&](int num_state) -> t_cmplx {
-            t_cmplx parity=0.0;
-            for (int p_ctr = 1; p_ctr < 2 ; p_ctr++){
-                for (int p_amp_ctr = 0; p_amp_ctr < 1 ; p_amp_ctr++){
-                    for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
-                        t_cmplx summ,diff;
-
-                        summ = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) +
-                               ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
-
-                        diff = ces.eigenvectors().col(num_state)(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr) -
-                               ces.eigenvectors().col(num_state)(zz_cheb.size() - zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr);
-
-                        if(fabs(real(summ))<=fabs(real(diff))) {parity = -1.0;}
-                        else{ parity = 1.0; }
-                    }
-                }
-            }
-            return parity;
-        };
-
-        //std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
-        int i= EV.size()-1;
+        Eigen::VectorXcf eigenvalues = ces.eigenvalues();
+        Eigen::MatrixXcf eigenvectors = (Eigen::MatrixXcf)ces.eigenvectors();
+        std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
+        int i= eigenvalues.size()-1;
         t_cmplxArray2D Dominant_EV_and_parity(2);
-        while( i > EV.size()-10)
-        {
-            //std::cout << EV[i] << "  " << i << std::endl;
-            Dominant_EV_and_parity[0].push_back(EV[i]);
-            Dominant_EV_and_parity[1].push_back(Parity(i));
-            std::cout << i << "  " << EV[i] << "  " << Parity(i)<< std::endl;
+        while( i > eigenvalues.size()-10) {
+            t_cmplx symmetricity = detectSymmetricity(eigenvectors,i);
+            Dominant_EV_and_parity[0].push_back(eigenvalues[i]);
+            Dominant_EV_and_parity[1].push_back(symmetricity);
+            std::cout << i << "  " << eigenvalues[i] << "  " << symmetricity << std::endl;
             i--;
         }
-        //std::cout << ces.eigenvectors().col(EV.size()-1) << std::endl;
         return Dominant_EV_and_parity;
+    }
+
+
+
+    t_cmplx detectSymmetricity(Eigen::MatrixXcf & eigenvectors, int num_state){
+        t_cmplx symmetricity;
+        int p_ctr = 1;
+        int p_amp_ctr = 0;
+        int inx_momenta_amp = (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr;
+        for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
+            t_cmplx summ,diff;
+            int inx_angle_plus =  zp_ctr-1 + inx_momenta_amp;
+            int inx_angle_minus =  zz_cheb.size() - zp_ctr-1 + inx_momenta_amp;
+            summ = eigenvectors.col(num_state)(inx_angle_plus) + eigenvectors.col(num_state)(inx_angle_minus);
+            diff = eigenvectors.col(num_state)(inx_angle_plus) - eigenvectors.col(num_state)(inx_angle_minus);
+            if(fabs(real(summ))<=fabs(real(diff))) {symmetricity = -1.0;}
+            else{ symmetricity = 1.0; }
+        }
+        return symmetricity;
     }
 
 };
