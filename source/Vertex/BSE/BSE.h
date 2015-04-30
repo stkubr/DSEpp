@@ -12,11 +12,11 @@
 
 class C_BSE: public C_AbsDiagram {
 public:
-    //virtual t_cmplxArray2D calcEigenvalues(t_cmplxVector P)=0;
+    virtual t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates)=0;
 
     virtual void dressBSE(t_cmplxVector P)=0;
 
-   // virtual void setBSEonPath(t_cmplxArray2D &AmplitudesOnPath, t_cmplxArray1D &Path)=0;
+    virtual void setBSEonPath(t_cmplxArray2D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx P)=0;
 
     //virtual double checkSum()=0;
 

@@ -357,13 +357,12 @@ public:
         return Lambda_EV;
     }
 
-    void SetBSAonPath(t_cmplxArray1D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx Q) {
+    void setBSAonPath(t_cmplxArray2D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx P) {
         std::cout << std::endl;
         std::cout << "On Path calculation..." << std::endl;
         flag_amp_desciption=true;
-        DressBSA(Q,10);
-        AmplitudePath.resize(Path.size());
-        t_cmplxMatrix Temp(num_amplitudes,1);
+        DressBSA(P,10);
+        AmplitudePath.resize(Path.size(), t_cmplxArray1D(num_amplitudes));
         std::cout << "Initialized" << std::endl;
         std::cout << "points on the path - " << Path.size() << std::endl;
 #pragma omp parallel
@@ -374,7 +373,10 @@ public:
 #pragma omp for
             for (int i = 0; i < Path.size(); i++)
             {
-                AmplitudePath[i]=CalcBSA(sqrt(Path[i]),Q,1,bound_member_fn)(0,0);
+                Temp_matrix = CalcBSA(sqrt(Path[i]), P,1,bound_member_fn);
+                for (int j = 0; j < num_amplitudes; ++j) {
+                    AmplitudePath[i][j]=Temp_matrix(j,0);
+                }
             }
         }//end of pragma
         std::cout << "On Path calculation finished." << std::endl;
