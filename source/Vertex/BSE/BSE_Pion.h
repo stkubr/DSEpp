@@ -5,10 +5,9 @@
 #ifndef DSEPP_BSE_PION_H
 #define DSEPP_BSE_PION_H
 
+#include "BSE_Matrix.h"
 
-#include "BSE_TwoBody.h"
-
-class C_BSE_Pion: public C_BSE_TwoBody {
+class C_BSE_Pion: public C_BSE_Matrix {
 
 public:
     C_BSE_Pion(){
@@ -37,7 +36,7 @@ public:
         t_cmplx p_P = threadloc_Momenta[omp_get_thread_num()].p_P;
         t_cmplx P2 = threadloc_Momenta[omp_get_thread_num()].P2;
         t_cmplx weight = threadloc_WeightCoeff[omp_get_thread_num()][0];
-		t_cmplxMatrix result(4,1);
+		t_cmplxMatrix result(num_amplitudes,1);
 		result(0,0)=1.0/weight*(*pre_result)(0,0);
 		result(1,0)=1.0/weight*(p2/N2_Factor*(*pre_result)(1,0) - 1.0/N2_Factor*(*pre_result)(2,0));
 		result(2,0)=1.0/weight*(-1.0/N2_Factor*(*pre_result)(1,0) + P2/p_P/p_P/N2_Factor*(*pre_result)(2,0));
