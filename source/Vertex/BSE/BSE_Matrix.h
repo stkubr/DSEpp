@@ -66,9 +66,6 @@ public:
         Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
 #pragma omp parallel
         {//start of pragma
-            t_cmplxMatrix Temp_Matrix;
-            double _p2,_k2,_z,_y,_zp;
-            double _w_zp,_w_k2,_w_z;
             t_cmplxArray1D integrand_args_local;
             integrand_args_local.resize(numIntegDimentions);
             threadloc_Momenta[omp_get_thread_num()].SetVector_P(_P);
@@ -79,34 +76,15 @@ public:
 #pragma omp for
             for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
                 threadloc_momentum_inx[omp_get_thread_num()]=p_ctr;
-                _p2=zz_rad[p_ctr];
+                double _p2=zz_rad[p_ctr];
                 for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
-                    _zp=zz_cheb[zp_ctr];
+                    double _zp=zz_cheb[zp_ctr];
                     threadloc_Momenta[omp_get_thread_num()].SetVectors_p(_zp,sqrt(_p2));
                     SetDiracStructures(threadloc_Momenta[omp_get_thread_num()].p,
                                        threadloc_Momenta[omp_get_thread_num()].P,
                                        threadloc_Projectors[omp_get_thread_num()]);
                     SetWeightCoeff();
-                    for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
-                        _k2=zz_rad[k_ctr];
-                        _w_k2=w_rad[k_ctr];
-                        integrand_args_local[0]=_k2;
-                        for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
-                            _z=zz_cheb[z_ctr];
-                            _w_z=w_cheb[z_ctr];
-                            integrand_args_local[1]=_z;
-                            Temp_Matrix=IntegAngleY(bound_member_fn);
-                            for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
-                                for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr << std::endl;
-                                    //std::cout << k_ctr << "  " << z_ctr << "  " << zp_ctr + (p_ctr-1)*(params.NumRadial-z_ctr*(NumRadialPoints-1))-1+ NumRadialPoints*(num_cheb_nod1)*p_amp_ctr << "  " << z_ctr + (k_ctr-1)*(NumRadialPoints-z_ctr*(NumRadialPoints-1)) + NumRadialPoints*(num_cheb_nod1)*k_amp_ctr-1 << std::endl;
-                                    Memory->EVMatrix(zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr, z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr)=pi/2.0*_w_k2*_w_z*Temp_Matrix(p_amp_ctr,k_amp_ctr);
-                                }
-                            }
-
-                        }
-                        threadloc_momentum_inx[omp_get_thread_num()]++;
-                    }
+                    setInternalGrid(bound_member_fn, &integrand_args_local, p_ctr, zp_ctr );
                     threadloc_momentum_inx[omp_get_thread_num()]=0;
                     threadloc_Integ_ctr[omp_get_thread_num()]=0;
                 }
@@ -132,6 +110,34 @@ public:
     }
 
 
+    void setInternalGrid(std::function<t_cmplxMatrix(double)> & bound_member_fn,
+                         t_cmplxArray1D * integrand_args_local,
+                         int p_ctr, int zp_ctr){
+        t_cmplxMatrix Temp_Matrix;
+        for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
+            double _k2=zz_rad[k_ctr];
+            double _w_k2=w_rad[k_ctr];
+            (*integrand_args_local)[0]=_k2;
+            for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
+                double _z=zz_cheb[z_ctr];
+                double _w_z=w_cheb[z_ctr];
+                (*integrand_args_local)[1]=_z;
+                Temp_Matrix=_w_k2*_w_z*IntegAngleY(bound_member_fn);
+                setEVMatrix(Temp_Matrix, p_ctr, zp_ctr, k_ctr, z_ctr);
+            }
+            threadloc_momentum_inx[omp_get_thread_num()]++;
+        }
+    }
+
+    void setEVMatrix(t_cmplxMatrix & Temp_Matrix, int p_ctr, int zp_ctr, int k_ctr, int z_ctr){
+        for (int p_amp_ctr = 0; p_amp_ctr < num_amplitudes ; p_amp_ctr++){
+            for (int k_amp_ctr = 0; k_amp_ctr < num_amplitudes ; k_amp_ctr++){
+                int inx_external = zp_ctr-1 + (p_ctr-1)*(params.NumCheb_nod1)+ params.NumRadial*(params.NumCheb_nod1)*p_amp_ctr;
+                int inx_internal = z_ctr-1 + (k_ctr-1)*(params.NumCheb_nod1) + params.NumRadial*(params.NumCheb_nod1)*k_amp_ctr;
+                Memory->EVMatrix(inx_external, inx_internal) = pi/2.0*Temp_Matrix(p_amp_ctr,k_amp_ctr);
+            }
+        }
+    }
 
     t_cmplx detectSymmetricity(Eigen::MatrixXcf & eigenvectors, int num_state){
         t_cmplx symmetricity;
