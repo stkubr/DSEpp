@@ -57,25 +57,41 @@ public:
         return result_M;
     }
 
-    t_cmplxArray2D SetEVMatrix(t_cmplx _P){
+    t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates){
+        calcEVMatrix(P[3]);
+        std::cout << Memory->EVMatrix.norm() << std::endl;
+        std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
+        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
+        ces.compute(Memory->EVMatrix);
+        Eigen::VectorXcf eigenvalues = ces.eigenvalues();
+        Eigen::MatrixXcf eigenvectors = (Eigen::MatrixXcf)ces.eigenvectors();
+        std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
+        int i= eigenvalues.size()-1;
+        t_cmplxArray2D Dominant_EV_and_parity(2);
+        while( i > eigenvalues.size() - numberOfStates) {
+            t_cmplx symmetricity = detectSymmetricity(eigenvectors,i);
+            Dominant_EV_and_parity[0].push_back(eigenvalues[i]);
+            Dominant_EV_and_parity[1].push_back(symmetricity);
+            std::cout << i << "  " << eigenvalues[i] << "  " << symmetricity << std::endl;
+            i--;
+        }
+        return Dominant_EV_and_parity;
+    }
+
+    void calcEVMatrix(t_cmplx _P){
         threadloc_Momenta[omp_get_thread_num()].SetVector_P(_P);
         PreCalculation();
-        t_dArray1D zz_rad_temp,zz_cheb_temp;
-        setInitialAMP();
-        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
         Memory->ResizeEVMatrix(params.NumRadial,params.NumCheb_nod1,num_amplitudes,1);
 #pragma omp parallel
         {//start of pragma
             t_cmplxArray1D integrand_args_local;
             integrand_args_local.resize(numIntegDimentions);
             threadloc_Momenta[omp_get_thread_num()].SetVector_P(_P);
-            threadloc_momentum_inx[omp_get_thread_num()]=0;
             threadloc_Integ_ctr[omp_get_thread_num()]=0;
             std::function<t_cmplxMatrix(double)> bound_member_fn =
                     std::bind(&C_BSE_Matrix::func_warp, this, &integrand_args_local, std::placeholders::_1);
 #pragma omp for
             for (int p_ctr = 1; p_ctr < zz_rad.size() ; p_ctr++){
-                threadloc_momentum_inx[omp_get_thread_num()]=p_ctr;
                 double _p2=zz_rad[p_ctr];
                 for (int zp_ctr = 1; zp_ctr < zz_cheb.size() ; zp_ctr++){
                     double _zp=zz_cheb[zp_ctr];
@@ -85,28 +101,11 @@ public:
                                        threadloc_Projectors[omp_get_thread_num()]);
                     SetWeightCoeff();
                     setInternalGrid(bound_member_fn, &integrand_args_local, p_ctr, zp_ctr );
-                    threadloc_momentum_inx[omp_get_thread_num()]=0;
                     threadloc_Integ_ctr[omp_get_thread_num()]=0;
                 }
             }
         }// end of pragma
         flag_precalculation=false;
-        std::cout << Memory->EVMatrix.norm() << std::endl;
-        std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
-        ces.compute(Memory->EVMatrix);
-        Eigen::VectorXcf eigenvalues = ces.eigenvalues();
-        Eigen::MatrixXcf eigenvectors = (Eigen::MatrixXcf)ces.eigenvectors();
-        std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
-        int i= eigenvalues.size()-1;
-        t_cmplxArray2D Dominant_EV_and_parity(2);
-        while( i > eigenvalues.size()-10) {
-            t_cmplx symmetricity = detectSymmetricity(eigenvectors,i);
-            Dominant_EV_and_parity[0].push_back(eigenvalues[i]);
-            Dominant_EV_and_parity[1].push_back(symmetricity);
-            std::cout << i << "  " << eigenvalues[i] << "  " << symmetricity << std::endl;
-            i--;
-        }
-        return Dominant_EV_and_parity;
     }
 
 
