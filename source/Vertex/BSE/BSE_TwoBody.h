@@ -166,9 +166,8 @@ public:
         return U_amp;
     }
 
-    t_cmplxMatrix Integrand(t_cmplxArray1D args){
-        t_cmplxMatrix result(num_amplitudes,1),pre_result(num_amplitudes,1);
-        t_cmplxVector k_p_P;
+    t_cmplxMatrix Integrand_vector(t_cmplxArray1D args){
+        t_cmplxMatrix result(num_amplitudes,1), pre_result(num_amplitudes,1);
         t_cmplx Kinematic_factor;
         t_cmplx x,y,z;
         x=sqrt(args[0]);
@@ -179,16 +178,24 @@ public:
         Kinematic_factor=-1.0/(8.0*pi*pi*pi*pi)*(args[0]);
         std::vector<t_cmplxDirac> WaveFunctions = SetWaveFunctions(momenta);
         t_cmplxDirac FullWaveFunction = SetFullWaveFunction(WaveFunctions, U_amp);
-        k_p_P=(momenta.k + momenta.p - momenta.P)/2.0;
+        pre_result = traceWithKernel_Vector(FullWaveFunction, momenta);
+        result = Kinematic_factor*pre_result;
+        return result;
+    }
+
+    t_cmplxMatrix traceWithKernel_Vector(t_cmplxDirac & FullWaveFunction,C_Kinematics_1loop & momenta){
+        t_cmplxMatrix result(num_amplitudes,1), pre_result(num_amplitudes,1);
+        t_cmplxVector k_p_P;
+        k_p_P = (momenta.k + momenta.p - momenta.P)/2.0;
         bool flag_reset_kernel=true;
         for (int i = 0; i < num_amplitudes; i++) {
-            pre_result(i,0)=Kernel->TraceKernelWithoutStoring((threadloc_Projectors[omp_get_thread_num()][i]),
-                                                              FullWaveFunction,
-                                                              momenta.q, momenta.k,
-                                                              k_p_P,flag_reset_kernel);
+            pre_result(i,0)=Kernel->TraceKernelWithoutStoring(threadloc_Projectors[omp_get_thread_num()][i],
+                                                          FullWaveFunction,
+                                                          momenta.q, momenta.k, k_p_P,
+                                                          flag_reset_kernel);
             flag_reset_kernel=false;
         }
-        result=Kinematic_factor*DisentangleAmps(&pre_result);
+        result = DisentangleAmps(&pre_result);
         return result;
     }
 
@@ -252,7 +259,7 @@ public:
 #pragma omp parallel
  {//start of pragma
                 std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn =
-                        std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
+                        std::bind(&C_BSE_TwoBody::Integrand_vector, this, std::placeholders::_1);
 #pragma omp for
                 for (int i = 1; i <= params.NumRadial; i++) {
                     t_cmplx p2=zz_rad[i];
@@ -333,7 +340,7 @@ public:
         threadloc_Momenta[omp_get_thread_num()].SetVector_P(P);
         PreCalculation();
         std::cout << "Dressing BSA... " << std::endl << std::endl;
-        std::cout << fixed;
+        std::cout << setprecision(SHOW_PRECISION);
         setInitialAMP();
         for (int kk = 1; kk <= steps; kk++) {
             std::cout << "Step number - " << kk << std::endl;
@@ -362,7 +369,7 @@ public:
 #pragma omp parallel
         {//start of pragma
             std::function<t_cmplxMatrix(t_cmplxArray1D)> bound_member_fn =
-                    std::bind(&C_BSE_TwoBody::Integrand, this, std::placeholders::_1);
+                    std::bind(&C_BSE_TwoBody::Integrand_vector, this, std::placeholders::_1);
             t_cmplxMatrix Temp_matrix(num_amplitudes,1);
 #pragma omp for
             for (int i = 0; i < Path.size(); i++)
