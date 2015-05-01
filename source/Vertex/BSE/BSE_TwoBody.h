@@ -150,8 +150,17 @@ public:
         t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
     virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
         std::cout << "Error - virtual call" << std::endl; assert(false);};
-    virtual void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus, t_cmplxDirac & S_p, t_cmplxDirac & S_m){
-        std::cout << "Error - virtual call" << std::endl;}
+
+    void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus,
+                        t_cmplxDirac & S_p, t_cmplxDirac & S_m)
+    {
+        t_cmplxArray1D quark_temp_sigma;
+        quark_temp_sigma= Parton_P->PropagatorAtPoint(K_plus * K_plus);
+        S_p=(-1.0*ii*(K_plus*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
+
+        quark_temp_sigma= Parton_M->PropagatorAtPoint(K_minus * K_minus);
+        S_m=(-1.0*ii*(K_minus*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
+    }
 
     t_cmplxArray1D SetDressing_normal(t_cmplx z){
         t_cmplxArray1D U_amp(num_amplitudes,0);
