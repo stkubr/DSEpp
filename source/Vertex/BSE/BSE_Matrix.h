@@ -5,12 +5,10 @@
 #ifndef DSEPP_C_BSE_MATRIX_H
 #define DSEPP_C_BSE_MATRIX_H
 
-
 #include "BSE_TwoBody.h"
 
 class C_BSE_Matrix: public C_BSE_TwoBody {
 public:
-
     t_cmplxMatrix IntegAngleY(std::function<t_cmplxMatrix(double)> & bound_member_fn){
         return Integrator_angle_Y->getResult(&bound_member_fn, num_amplitudes, num_amplitudes);
     }
@@ -100,7 +98,7 @@ public:
                                        threadloc_Momenta[omp_get_thread_num()].P,
                                        threadloc_Projectors[omp_get_thread_num()]);
                     SetWeightCoeff();
-                    setInternalGrid(bound_member_fn, &integrand_args_local, p_ctr, zp_ctr );
+                    setInternalGrid(bound_member_fn, &integrand_args_local, p_ctr, zp_ctr);
                     threadloc_Integ_ctr[omp_get_thread_num()]=0;
                 }
             }
@@ -114,13 +112,11 @@ public:
                          int p_ctr, int zp_ctr){
         t_cmplxMatrix Temp_Matrix;
         for (int k_ctr = 1; k_ctr < zz_rad.size(); k_ctr++){
-            double _k2=zz_rad[k_ctr];
+            (*integrand_args_local)[0]=zz_rad[k_ctr];
             double _w_k2=w_rad[k_ctr];
-            (*integrand_args_local)[0]=_k2;
             for (int z_ctr = 1; z_ctr < zz_cheb.size() ; z_ctr++){
-                double _z=zz_cheb[z_ctr];
+                (*integrand_args_local)[1]=zz_cheb[z_ctr];
                 double _w_z=w_cheb[z_ctr];
-                (*integrand_args_local)[1]=_z;
                 Temp_Matrix=_w_k2*_w_z*IntegAngleY(bound_member_fn);
                 setEVMatrix(Temp_Matrix, p_ctr, zp_ctr, k_ctr, z_ctr);
             }
@@ -154,7 +150,6 @@ public:
         }
         return symmetricity;
     }
-
 };
 
 
