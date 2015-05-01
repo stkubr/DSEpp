@@ -16,9 +16,11 @@ public:
 
     virtual void dressBSE(t_cmplxVector P)=0;
 
-    virtual void setBSEonPath(t_cmplxArray2D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx P)=0;
+    virtual void setBSAonPath(t_cmplxArray2D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx P)=0;
 
-    //virtual double checkSum()=0;
+    virtual double checkSum_PowerMethod()=0;
+
+    virtual double checkSum_EVMatrixNorm()=0;
 
     virtual void linkToKernel(C_AbstractKernel * _Kernel)=0;
 

@@ -18,11 +18,13 @@
 #include "BoundState_parameters.h"
 
 class C_BSE_TwoBody: public C_BSE, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
-public:
+protected:
     /// External Objects
     C_AbstractKernel * Kernel;
     C_Propagator * Parton_P;
     C_Propagator * Parton_M;
+
+    C_DedicMem_BSE * Memory;
 
     C_BoundState_parameters params;
 
@@ -46,6 +48,13 @@ public:
         numIntegDimentions=3;
         params.setDefault();
         params.print();
+    }
+
+    virtual ~C_BSE_TwoBody(){
+        delete Integrator_momentum;
+        delete Integrator_angle_Z;
+        delete Integrator_angle_Y;
+        delete Memory;
     }
 
     void SetWeightCoeff(){
@@ -151,7 +160,7 @@ public:
     virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
         std::cout << "Error - virtual call" << std::endl; assert(false);};
 
-    void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus,
+    virtual void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus,
                         t_cmplxDirac & S_p, t_cmplxDirac & S_m)
     {
         t_cmplxArray1D quark_temp_sigma;
@@ -289,8 +298,26 @@ public:
         }
     }
 
-    void dressBSE(t_cmplxVector P){
-        DressBSA(P[3],10); // 4th component
+    t_cmplx DressBSA(t_cmplx P, int steps) {
+        t_cmplx Lambda_EV;
+        threadloc_Momenta[omp_get_thread_num()].SetVector_P(P);
+        PreCalculation();
+        std::cout << "Dressing BSA... " << std::endl << std::endl;
+        std::cout << setprecision(SHOW_PRECISION);
+        setInitialAMP();
+        for (int kk = 1; kk <= steps; kk++) {
+            std::cout << "Step number - " << kk << std::endl;
+            BSA_step(P);
+            Lambda_EV=calcLambdaEV();
+            PreNormBSA();
+            PrintLine('-');
+            std::cout  << "Eigenvalue.v1 - " << Lambda_EV << "  at P = " << "  " << P << std::endl;
+            PrintLine('-');
+            if(flag_amp_desciption) WriteAmplitudeDescyption();
+            PrintLine('#');
+        }
+        flag_precalculation=false;
+        return Lambda_EV;
     }
 
     t_cmplx calcLambdaEV(){
@@ -342,29 +369,25 @@ public:
         }
         std::cout << std::endl << AMP << std::endl;
     }
-//
-//------------------------------------------------------------------
-    t_cmplx DressBSA(t_cmplx P, int steps) {
-        t_cmplx Lambda_EV;
-        threadloc_Momenta[omp_get_thread_num()].SetVector_P(P);
-        PreCalculation();
-        std::cout << "Dressing BSA... " << std::endl << std::endl;
-        std::cout << setprecision(SHOW_PRECISION);
-        setInitialAMP();
-        for (int kk = 1; kk <= steps; kk++) {
-            std::cout << "Step number - " << kk << std::endl;
-            BSA_step(P);
-            Lambda_EV=calcLambdaEV();
-            PreNormBSA();
-            PrintLine('-');
-            std::cout  << "Eigenvalue.v1 - " << Lambda_EV << "  at P = " << "  " << P << std::endl;
-            PrintLine('-');
-            if(flag_amp_desciption) WriteAmplitudeDescyption();
-            PrintLine('#');
-        }
-        flag_precalculation=false;
-        return Lambda_EV;
+
+public:
+    void dressBSE(t_cmplxVector P){
+        DressBSA(P[3],10); // 4th component (rest frame)
     }
+
+    double checkSum_PowerMethod(){
+        flag_amp_desciption = false;
+        DressBSA(t_cmplx(0,0.1),10);
+        t_cmplx checkSum = 0;
+        for (int i = 1; i <= params.NumRadial; i++){
+            for (int j = 1; j <=params.Cheb_order*num_amplitudes ; j++){
+                checkSum += AMP(i,j);
+            }
+        }
+        return norm(checkSum);
+    }
+
+    virtual double checkSum_EVMatrixNorm(){  return 0;}
 
     void setBSAonPath(t_cmplxArray2D & AmplitudePath,t_cmplxArray1D & Path ,t_cmplx P) {
         std::cout << std::endl;
@@ -390,9 +413,6 @@ public:
         }//end of pragma
         std::cout << "On Path calculation finished." << std::endl;
     }
-
-public:
-    C_DedicMem_BSE * Memory;
 
     void linkToKernel(C_AbstractKernel * _Kernel){
         Kernel=_Kernel;

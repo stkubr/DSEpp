@@ -8,7 +8,9 @@
 #include "BSE_TwoBody.h"
 
 class C_BSE_Matrix: public C_BSE_TwoBody {
-public:
+protected:
+    virtual ~C_BSE_Matrix(){}
+
     t_cmplxMatrix IntegAngleY(std::function<t_cmplxMatrix(double)> & bound_member_fn){
         return Integrator_angle_Y->getResult(&bound_member_fn, num_amplitudes, num_amplitudes);
     }
@@ -55,27 +57,6 @@ public:
         return result_M;
     }
 
-    t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates){
-        calcEVMatrix(P[3]);
-        std::cout << Memory->EVMatrix.norm() << std::endl;
-        std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
-        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
-        ces.compute(Memory->EVMatrix);
-        Eigen::VectorXcf eigenvalues = ces.eigenvalues();
-        Eigen::MatrixXcf eigenvectors = (Eigen::MatrixXcf)ces.eigenvectors();
-        std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
-        int i= eigenvalues.size()-1;
-        t_cmplxArray2D Dominant_EV_and_parity(2);
-        while( i > eigenvalues.size() - numberOfStates) {
-            t_cmplx symmetricity = detectSymmetricity(eigenvectors,i);
-            Dominant_EV_and_parity[0].push_back(eigenvalues[i]);
-            Dominant_EV_and_parity[1].push_back(symmetricity);
-            std::cout << i << "  " << eigenvalues[i] << "  " << symmetricity << std::endl;
-            i--;
-        }
-        return Dominant_EV_and_parity;
-    }
-
     void calcEVMatrix(t_cmplx _P){
         threadloc_Momenta[omp_get_thread_num()].SetVector_P(_P);
         PreCalculation();
@@ -105,7 +86,6 @@ public:
         }// end of pragma
         flag_precalculation=false;
     }
-
 
     void setInternalGrid(std::function<t_cmplxMatrix(double)> & bound_member_fn,
                          t_cmplxArray1D * integrand_args_local,
@@ -149,6 +129,32 @@ public:
             else{ symmetricity = 1.0; }
         }
         return symmetricity;
+    }
+
+public:
+    t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates){
+        calcEVMatrix(P[3]);
+        std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
+        Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
+        ces.compute(Memory->EVMatrix);
+        Eigen::VectorXcf eigenvalues = ces.eigenvalues();
+        Eigen::MatrixXcf eigenvectors = (Eigen::MatrixXcf)ces.eigenvectors();
+        std::cout << "EigenValues computation is done. The eigenvalues of EVMatrix are obtained." << std::endl;
+        int i= eigenvalues.size()-1;
+        t_cmplxArray2D Dominant_EV_and_parity(2);
+        while( i > eigenvalues.size() - numberOfStates) {
+            t_cmplx symmetricity = detectSymmetricity(eigenvectors,i);
+            Dominant_EV_and_parity[0].push_back(eigenvalues[i]);
+            Dominant_EV_and_parity[1].push_back(symmetricity);
+            std::cout << i << "  " << eigenvalues[i] << "  " << symmetricity << std::endl;
+            i--;
+        }
+        return Dominant_EV_and_parity;
+    }
+
+    double checkSum_EVMatrixNorm(){
+        calcEVMatrix(t_cmplx(0,0.1));
+        return Memory->EVMatrix.norm();
     }
 };
 
