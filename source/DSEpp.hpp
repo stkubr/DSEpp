@@ -13,7 +13,6 @@ class C_Propagator;
 #include "../source/types.h"
 #include "../source/Kernel/KernelFactory.hpp"
 #include "../source/DSE/PropagatorFactory.hpp"
-#include "../source/Vertex/BSE/BSE_Pion.h"
-
+#include "../source/Vertex/BSE/BSE_Factory.h"
 
 #endif //_DSEPP_DSEPP_HPP_
