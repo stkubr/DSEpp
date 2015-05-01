@@ -7,11 +7,11 @@
 
 #include "BSE_Matrix.h"
 
-class C_BSE_Pion: public C_BSE_Matrix {
+class C_BSE_PseudoScalar: public C_BSE_Matrix {
 
 public:
-    C_BSE_Pion(){
-        //SetNameID("BSE_PseudoScalar",1);
+    C_BSE_PseudoScalar(){
+        SetNameID("BSE_PseudoScalar",1);
         num_amplitudes=4; // number of amplitudes for PseudoScalar
         Initialization();
         threadloc_Projectors.resize(omp_get_max_threads(), std::vector<t_cmplxDirac>(num_amplitudes));
@@ -23,11 +23,6 @@ public:
         (DiracStructure)[1]=Y5*(_P*Z);
         (DiracStructure)[2]=Y5*(_k*Z)*(_k*_P);
         (DiracStructure)[3]=Y5*((_k*SIG)*_P);
-    }
-
-    virtual C_BSE_Pion * MakeCopy()
-    {
-        return new C_BSE_Pion(*this);
     }
 
     t_cmplxMatrix DisentangleAmps(t_cmplxMatrix * pre_result){
@@ -42,25 +37,6 @@ public:
 		result(2,0)=1.0/weight*(-1.0/N2_Factor*(*pre_result)(1,0) + P2/p_P/p_P/N2_Factor*(*pre_result)(2,0));
 		result(3,0)=1.0/weight*(-1.0/N2_Factor*(*pre_result)(3,0));
 		return result;
-/*		#endif
-
-#if BASIS_TYPE == 2
-
-		t_cmplxMatrix result(num_amplitudes,1);
-		for (int i = 0; i < num_amplitudes; i++) result(i,0)=(*pre_result)(i,0)/WeightCoeff[i];
-		return result;
-
-		#endif*/
-    }
-
-    void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus, t_cmplxDirac & S_p, t_cmplxDirac & S_m)
-    {
-        t_cmplxArray1D quark_temp_sigma;
-        quark_temp_sigma= Parton_P->PropagatorAtPoint(K_plus * K_plus);
-        S_p=(-1.0*ii*(K_plus*Z)*quark_temp_sigma[3] + I*quark_temp_sigma[4]);
-
-        quark_temp_sigma= Parton_M->PropagatorAtPoint(K_minus * K_minus);
-        S_m=(-1.0*ii*(K_minus*Z)*(quark_temp_sigma[3]) + I*(quark_temp_sigma[4]));
     }
 };
 
