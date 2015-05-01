@@ -12,18 +12,24 @@
 #include "RLandPseudoScalar.hpp"
 
 class C_Kernel_Factory{
-	public:
+private:
+    C_Kernel_Factory(){}
+
+public:
+    static C_Kernel_Factory& instance(){
+        static C_Kernel_Factory ins;
+        return ins;
+    }
+
 	C_AbstractKernel* Create(Kernel_ID _id) {
         C_AbstractKernel * p;
         switch (_id)
         {
             case RL_ID:
                 p = new C_Kernel_RL();
-               // p->Kernel_type_ID=(_id);
                 break;
             case RL_PS_ID:
                 p = new C_Kernel_RL_PS();
-               // p->Kernel_type_ID=(_id);
                 break;
             default:
                 assert(false);

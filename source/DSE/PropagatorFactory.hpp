@@ -8,14 +8,16 @@
 #include "Gluon.hpp"
 #include "QuarkTypes.hpp"
 
-class C_Propagator_Factory{
-public:
-    virtual C_Propagator * Create(int)=0;
-    virtual ~C_Propagator_Factory() {}
-};
+class C_Gluon_Factory{
+private:
+    C_Gluon_Factory(){}
 
-class C_Gluon_Factory: public C_Propagator_Factory{
 public:
+    static C_Gluon_Factory& instance(){
+        static C_Gluon_Factory ins;
+        return ins;
+    }
+
     C_Propagator* Create(int _id) {
         Gluon_ID id=(Gluon_ID)_id;
         return C_Gluon::createGluon( id );
@@ -27,8 +29,15 @@ public:
     }
 };
 
-class C_Quark_Factory: public C_Propagator_Factory{
+class C_Quark_Factory{
+private:
+    C_Quark_Factory(){}
+
 public:
+    static C_Quark_Factory& instance(){
+        static C_Quark_Factory ins;
+        return ins;
+    }
 
     C_Propagator* Create(int _id) {
         Quark_ID id = (Quark_ID) _id;
