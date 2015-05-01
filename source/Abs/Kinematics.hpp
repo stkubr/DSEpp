@@ -58,13 +58,13 @@ class C_Kinematics_1loop{
 		k_p=_k+_zetta*P;
 		k_m=_k+(_zetta-1.0)*P;
 	}
-	
-	t_cmplxDirac TransIn(t_cmplxDirac _T, t_cmplxVector _P)
+
+	static t_cmplxDirac TransIn(t_cmplxDirac & _T, t_cmplxVector & _P)
 	{
 		return _T - (_P*_T)*_P/(_P*_P);
 	}
 	
-	t_cmplxTensor TransIn(t_cmplxVector _T, t_cmplxVector _P)
+	static t_cmplxTensor TransIn(t_cmplxVector & _T, t_cmplxVector & _P)
 	{
 		return _T - (_P*_T)*_P/(_P*_P);
 	}
