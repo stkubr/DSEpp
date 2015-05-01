@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(DSEpp)
 
 #Set CFLAGs
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fopenmp -std=gnu++0x -Wall")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fopenmp -g -std=gnu++0x")
 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fopenmp -std=gnu++0x -ffast-math -O3")
 
