@@ -20,7 +20,8 @@ public:
 
     void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
         t_cmplxDirac Y_T=C_Kinematics_1loop::TransIn(Y,_P);
-        t_cmplxVector _k_T = C_Kinematics_1loop::TransIn(_k,_P);
+        t_cmplxVector _k_T;
+        _k_T = C_Kinematics_1loop::TransIn(_k,_P);
         t_cmplx _k2_T=_k_T*_k_T;
         t_cmplx _k2=_k*_k;
         t_cmplx _k_P=_k*_P;
