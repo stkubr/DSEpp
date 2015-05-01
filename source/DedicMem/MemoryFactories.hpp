@@ -7,33 +7,26 @@
 
 #include "DedicMem.hpp"
 
-class C_MemoryFactory{
-public:
-    virtual C_DedicMem_Abs* CreateMemory()=0;
-    virtual ~C_MemoryFactory() {}
-};
-
-class C_MemoryFactory_Quark: public C_MemoryFactory{
+class C_MemoryFactory_Quark{
 public:
     C_DedicMem_Abs* CreateMemory() {
         return new C_DedicMem_Quark;
     }
 };
 
-class C_MemoryFactory_Kernel: public C_MemoryFactory{
+class C_MemoryFactory_Kernel{
 public:
     C_DedicMem_Abs* CreateMemory() {
         return new C_DedicMem_Kernel;
     }
 };
 
-class C_MemoryFactory_BSE: public C_MemoryFactory{
+class C_MemoryFactory_BSE{
 public:
     C_DedicMem_Abs* CreateMemory() {
         return new C_DedicMem_BSE;
     }
 };
-
 
 extern C_MemoryFactory_Quark * DedicMemFactory_Quark;
 extern C_MemoryFactory_Kernel * DedicMemFactory_Kernel;
