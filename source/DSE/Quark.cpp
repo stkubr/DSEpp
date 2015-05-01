@@ -71,7 +71,6 @@ void C_Quark::setToInitialState() {
 	initializateIntegrators();
 	setContour();
 	setGrid();
-	drawOnRealAxis(100);
 }
 
 /**
