@@ -47,7 +47,6 @@ protected:
         flag_precalculation=false;
         numIntegDimentions=3;
         params.setDefault();
-        params.print();
     }
 
     virtual ~C_BSE_TwoBody(){
@@ -159,6 +158,11 @@ protected:
         t_cmplxMatrix dummy; std::cout << "Error - virtual call" << std::endl; assert(false); return dummy;};
     virtual void SetDiracStructures(t_cmplxVector _k, t_cmplxVector _P, std::vector<t_cmplxDirac> & DiracStructure){
         std::cout << "Error - virtual call" << std::endl; assert(false);};
+
+    void preparePropagators(){
+        Parton_P->dressPropagator();
+        Parton_M->dressPropagator();
+    }
 
     virtual void setPropagators(t_cmplxVector & K_plus, t_cmplxVector  & K_minus,
                         t_cmplxDirac & S_p, t_cmplxDirac & S_m)
@@ -301,6 +305,7 @@ protected:
     t_cmplx DressBSA(t_cmplx P, int steps) {
         t_cmplx Lambda_EV;
         threadloc_Momenta[omp_get_thread_num()].SetVector_P(P);
+        preparePropagators();
         PreCalculation();
         std::cout << "Dressing BSA... " << std::endl << std::endl;
         std::cout << setprecision(SHOW_PRECISION);

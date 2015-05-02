@@ -133,6 +133,7 @@ protected:
 
 public:
     t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates){
+        preparePropagators();
         calcEVMatrix(P[3]);
         std::cout << "EVMatrix is full. EigenValues computation engaged..." << std::endl;
         Eigen::ComplexEigenSolver<Eigen::MatrixXcf> ces;
