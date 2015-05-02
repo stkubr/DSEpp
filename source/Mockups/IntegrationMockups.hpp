@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <source/types.h>
+
 class C_Integration_Mockup
 {
 	private :
@@ -82,7 +85,4 @@ class C_Integration_Mockup
 	double getUpLimit(){
 		return dUpLimit;
 	}
-	
-	
-	
 };
