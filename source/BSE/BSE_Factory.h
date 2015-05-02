@@ -9,7 +9,7 @@
 #include "BSE_Scalar.h"
 #include "BSE_Vector.h"
 
-enum BSE_ID {PseudoScalar_ID=0, Scalar_ID, Vector_ID, Dirac_ID_End};
+enum BSE_ID {PseudoScalar_ID=0, Scalar_ID, Vector_ID, BSE_ID_End};
 
 class C_BSE_Factory {
 private:
