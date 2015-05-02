@@ -375,6 +375,7 @@ void C_Quark::dressPropagator() {
 
 		Memory->RemoveGrid();
 		drawOnRealAxis(100);
+		flag_dressed = true;
 	}
 }
 
