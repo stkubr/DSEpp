@@ -66,7 +66,6 @@ protected:
          return sum;
      }
 
-
     T_out calcIntegral2D(std::function<T_out(T_arg)> *func_to_int, int numRows, int numCols){
         t_dArray1D x0,x1;
         t_dArray1D w0,w1;
@@ -88,20 +87,6 @@ protected:
         }
         return sum;
     }
-
-
-    //todo implement conversion from multidimensional to one dimension non-recursive summation
-/*    T_out MultiDimND(std::function<T_out(T_arg)>  *func_to_int){
-        t_dArray2D coordinates(integrand_args.size());
-        t_dArray2D weights(integrand_args.size());
-        for (int i = 0; i < integrand_args.size(); ++i) {
-            Integrator[i]->getNotes(coordinates[i],weights[i]);
-        }
-
-    }
-*/
-
-
 };
 
 
