@@ -52,7 +52,7 @@ void C_BoundState_parameters::setParams(std::string &_ParamPath) {
 void C_BoundState_parameters::setDefault() {
     std::cout << "Default BoundState parameters!" << std::endl;
     LimDk = 0.0001;
-    LimUk = 1000;
+    LimUk = 2000;
     zetta_part = 0.5;
     OffShell = 0;
 
