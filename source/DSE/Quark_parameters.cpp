@@ -7,6 +7,7 @@
 
 #include "Quark_parameters.hpp"
 
+using namespace Propagators;
 
 void C_Quark_parameters::Print() {
 	std::cout << "Points on Parabola" << " - " << num_prop_steps << std::endl <<

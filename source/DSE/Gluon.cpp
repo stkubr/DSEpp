@@ -7,14 +7,16 @@
 
 #include "Gluon.hpp"
 
+using namespace Propagators;
+
 // Constructor
 //----------------------------------------------------------------------
 C_Gluon::C_Gluon(std::string& __GluonParamPath){
 	SetNameID("Gluon", 1);
 	GluonParamPath=__GluonParamPath;
-	Gluon_ref=&C_Gluon::GluonMT;
-	ReadParameters();
-	GluonCheck();
+	Gluon_ref=&C_Gluon::GluonByMarisTandy;
+	readParameters();
+	checkGluon();
 }
 
 C_Gluon::C_Gluon(){
@@ -73,13 +75,13 @@ C_Gluon* C_Gluon::createGluon( Gluon_ID id, std::string& _InterpolationPointsPat
 // Initialization
 //----------------------------------------------------------------------
 void C_Gluon::setToInitialState(){
-	ReadParameters();
-	GluonCheck();
+	readParameters();
+	checkGluon();
 }
 
 // Sets Maris-Tandy-like Gluon with default parameters
 void C_Gluon::setGluonDefaultParameters(){
-	Gluon_ref=&C_Gluon::GluonMT;
+	Gluon_ref=&C_Gluon::GluonByMarisTandy;
 	D=0.93;
 	w2=0.16;
     LogTail=1;
@@ -103,12 +105,12 @@ void C_Gluon::setInterpolatorPoints(std::string& _InterpolationPointsPath){
 	}
 	else {std::cout << "Cant open file!" << std::endl; assert(false);}
 	GluonInterpStream.close();
-	FuncToInterpolate = new Interpolation::Linear<t_cmplx,t_cmplx>(GluonTempStorage[0].size(), GluonTempStorage[0], GluonTempStorage[1]);
+	FuncToInterpolate = new Interpolation::C_Linear<t_cmplx,t_cmplx>(GluonTempStorage[0].size(), GluonTempStorage[0], GluonTempStorage[1]);
 }
 
 // Read parameters from file
 //----------------------------------------------------------------------
-void C_Gluon::ReadParameters(){
+void C_Gluon::readParameters(){
 	std::string line;
 	std::ifstream ParamList(GluonParamPath);
 	if (ParamList.is_open()){
@@ -132,7 +134,7 @@ t_cmplxArray1D C_Gluon::PropagatorAtPoint(t_cmplx k){
 
 // Kernel check on real line
 //----------------------------------------------------------------------
-void C_Gluon::GluonCheck(){
+void C_Gluon::checkGluon(){
 	double Pu,Pd,x,scale,dp;
 	scale = 100;
 	Pd=0.01;
@@ -159,7 +161,7 @@ void C_Gluon::setMTParams(double Lambda, double Etta){
 
 // Maris-Tandy gluon model
 //----------------------------------------------------------------------
-t_cmplx C_Gluon::GluonMT(t_cmplx k){
+t_cmplx C_Gluon::GluonByMarisTandy(t_cmplx k){
 	const double gamma_m=12.0/(33.0 - 2.0*4.0);
 	const double m_t=0.5;
 	const double tau=7.389056 - 1.0;

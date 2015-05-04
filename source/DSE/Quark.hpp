@@ -1,5 +1,4 @@
-/**
- * Quark.hpp
+/** \file Quark.hpp
  * Author: stkubr
  */
 
@@ -10,137 +9,152 @@
 #include "../NumLibs/Geometry/ParabolaContour.hpp"
 #include "../NumLibs/Integrator.hpp"
 #include "../NumLibs/Integrator_Path.hpp"
-#include "../NumLibs/Support_functions.h"
+#include "../NumLibs/Extra_functions.h"
 #include "../NumLibs/OneLoopIntegrator.hpp"
 #include "Quark_parameters.hpp"
 #include "../DedicMem/MemoryFactories.hpp"
 
-class C_Quark: public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
+namespace Propagators {
 
-protected:
+/**
+ * \brief The Quark Dyson-Schwinger equations in general form
+ *
+ * It uses iterative Power Method to obtain the solutions of the equations
+ * the only input into equations is two-quark scattering kernel,
+ * provided by C_AbstractKernel * Kernel pointer through linkToKernel()
+ *
+ * C_Quark_parameters params define the technicalities like: the number of integration points and etc.
+ *
+*/
+	class C_Quark : public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
-	/// two-body scattering Kernel
-	C_AbstractKernel * Kernel;
+	protected:
 
-	/// quark's Memory handler class, contains the contour and the grid at which quark DSE evaluated
-	C_DedicMem_Quark * Memory;
+		/// two-body scattering Kernel
+		Kernels::C_AbstractKernel *Kernel;
 
-	/// path to file to store the calculated propagator
-	string SavePropPath;
+		/// quark's Memory handler class, contains the contour and the grid at which quark DSE evaluated
+		C_DedicMem_Quark *Memory;
 
-	/// number of projected out amplitudes (quark has two, A and B)
-	int num_amplitudes;
+		/// path to file to store the calculated propagator
+		string SavePropPath;
 
-	/// contains all params the quark DSE need to have
-	C_Quark_parameters params;
+		/// number of projected out amplitudes (quark has two, A and B)
+		int num_amplitudes;
 
-	/// defines the Cauchy integral measure
-    std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
+		/// contains all params the quark DSE need to have
+		C_Quark_parameters params;
 
-	/// Line Integrator for the cutoff part of parabolic contour
-	C_Integrator_Line<t_cmplxMatrix, double> *Integrator_momentum_cutoff;
+		/// defines the Cauchy integral measure
+		std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
 
-	/// Path Integrator for the complete contour
-	C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> * Integrator_cauchy;
+		/// Line Integrator for the cutoff part of parabolic contour
+		C_Integrator_Line<t_cmplxMatrix, double> *Integrator_momentum_cutoff;
 
-	/// zz are the integration nodes, w are the weights
-	t_dArray1D zz_radial, w_radial, zz_cutoff, w_cutoff, zz_angle, w_angle;
+		/// Path Integrator for the complete contour
+		C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> *Integrator_cauchy;
 
-	/// just a momentum volume factor
-	double kinematicFactor;
+		/// zz are the integration nodes, w are the weights
+		t_dArray1D zz_radial, w_radial, zz_cutoff, w_cutoff, zz_angle, w_angle;
 
-	/// Renormalization constants
-	double B_renorm, B_mu, A_renorm, Z2;
+		/// just a momentum volume factor
+		double kinematicFactor;
 
-	/// thread-local storages of indexes
-	vector<int> threadloc_p_momenta_inx, threadloc_integr_inx;
+		/// Renormalization constants
+		double B_renorm, B_mu, A_renorm, Z2;
 
-	bool flag_dressed;
-	bool flag_renormalization;
+		/// thread-local storages of indexes
+		vector<int> threadloc_p_momenta_inx, threadloc_integr_inx;
 
-	// the constructor
-	C_Quark();
+		bool flag_dressed;
+		bool flag_renormalization;
 
-	// the destructor
-	~C_Quark();
+		/// The constructor
+		C_Quark();
 
-	//t_cmplx getTensorExpression(t_cmplxVector& p);
+		/// The destructor
+		virtual ~C_Quark();
 
-	void linkToKernel(C_AbstractKernel *_K);
+		void readQuarkParameters(string &_ParamPath);
 
-	void readQuarkParameters(string &_ParamPath);
+		/// Create Integrators and get the integration points and weights
+		void initializateIntegrators();
 
-	t_cmplx DressingFactor();
+		/// Resize the dedicated memory storages for the contour and the grid according to loaded "params"
+		void resizeMemory();
 
-	void setContourApex(double M2);
+		/// Set Contour in complex plane
+		void setContour();
 
-	// Set parameters to initial values
-	void setToInitialState();
+		/// Set Grid in complex plane
+		void setGrid();
 
-	// Create Integrators and get the integration points and weights out of them
-	void initializateIntegrators();
+		/// Initial guesses for A and B dressing functions
+		void setInitialAandB();
 
-	// Resize the dedicated memory storages for the contour and the grid according to loaded "params"
-	void resizeMemory();
+		/// Evaluate Cauchy integral on contour, at certain point
+		t_cmplxArray1D PropagatorOnPoint(t_cmplx coordin);
 
-	// Set Contour in complex plane
-	void setContour();
+		/// Evaluate Cauchy integral on contour, obtain Propagator on grid
+		void calcPropOnGrid();
 
-	// Set Grid in complex plane
-	void setGrid();
+		/// Evaluate DSE integral on grid, obtain Propagator on contour
+		void calcPropOnContour();
 
-	// Initial guesses for A and B
-	void setInitialAandB();
+		/// Set k and p vectors for the Numerical Integrand
+		void setKinematic(t_cmplxVector &k, t_cmplxVector &p, t_cmplx x, t_cmplx y, t_cmplx z);
 
-	// Evaluate Cauchy integral on contour, at certain point
-	t_cmplxArray1D PropagatorOnPoint(t_cmplx coordin);
+		/// Numerical form of the Integrand (avaible for general Kernel)
+		t_cmplxMatrix Integrand_numerical(t_cmplxArray1D values);
 
-	// Evaluate Cauchy integral on contour, obtain Propagator on grid
-	void calcPropOnGrid();
+		/// Calculate consequently Grid and Contour until converge
+		void calcPropagator();
 
-	// Evaluate DSE integral on grid, obtain Propagator on contour
-	void calcPropOnContour();
+		/// Apply renormalization
+		void renormalizeProp();
 
-	// Set k and p vectors for the Numerical Integrand
-	void setKinematic(t_cmplxVector& k, t_cmplxVector& p, t_cmplx x, t_cmplx y, t_cmplx z);
+		/// Check convergence
+		double checkConvergence(double previous_checksum);
 
-	// Numerical form of the Integrand (avaible for general Kernel)
-	t_cmplxMatrix Integrand_numerical(t_cmplxArray1D values);
+		/// Draw Propagator at real line
+		void drawOnRealAxis(int s);
 
-	// Calculation A,B,M,Sigma_V,Sigma_S at point in contour
-	t_cmplxArray1D PropagatorAtPoint(t_cmplx q);
+		/// Write Propagator to file
+		void savePropagator();
 
-	// Calculate consequently Grid and Contour until converge
-	void calcPropagator();
+		/// Read Propagator from file
+		void loadPropagator();
 
-	// Apply renormalization
-	void renormalizeProp();
+		/// Export Propagator to file
+		/// (exports all what is needed to perform Cauchy integration outside of this library: contour, weights, etc.)
+		void exportPropagator();
 
-	// Check convergence
-	double checkConvergence(double previous_checksum);
+	public:
+		/// Dress the Propagator
+		void dressPropagator();
 
-	// Dress the Propagator
-	void dressPropagator();
+		/// Set quark's state to initial (bare)
+		void setToInitialState();
 
-	// Draw Propagator at real line
-	void drawOnRealAxis(int s);
+		/// Sets the class member Kernel pointer to one provided externally
+		void linkToKernel(Kernels::C_AbstractKernel *_K);
 
-	// Write Propagator to file
-	void savePropagator();
+		/// Outputs the /f$ Z_2(\mu^2) /f$ renormalization factor
+		t_cmplx Z2Factor();
 
-	// Read Propagator from file
-	void loadPropagator();
+		/// Sets the /f$ -\frac{M^2}{4} /f$ for the contour
+		void setContourApex(double M2);
 
-	// Export Propagator to file
-	// (exports all what is needed to perform Cauchy integration outside of this library: contour, weights, etc.)
-	void exportPropagator();
+		/// Calculation A,B,M,Sigma_V,Sigma_S dressing functions at point inside the contour
+		t_cmplxArray1D PropagatorAtPoint(t_cmplx q);
 
-	// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
-	void setPropagatorOnPath(t_cmplxArray2D & Amplitudes, t_cmplxArray1D & Path);
+		/// Saves Quark's A and B function on provided "Path" in provided "AmplutudeStorage"
+		void setPropagatorOnPath(t_cmplxArray2D &Amplitudes, t_cmplxArray1D &Path);
 
-	// Gets sum A and B at 100 points. Used for unit tests.
-	double checkSum();
+		/// Gets sum A and B at 100 points. Used for unit tests.
+		double checkSum();
 
-};
+	};
 
+}
 #endif /* QUARK_HPP_ */

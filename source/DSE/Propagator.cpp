@@ -6,6 +6,8 @@
 
 #include "Propagator.hpp"
 
+using namespace Propagators;
+
 t_cmplxArray1D C_Propagator::PropagatorAtPoint(t_cmplx q) {
 	t_cmplxArray1D dummy(1, 0);
 	std::cout << "Pure virtual call:C_Propagator::PropagatorAtPoint" << std::endl;
@@ -19,9 +21,9 @@ void C_Propagator::setPropagatorOnPath(t_cmplxArray2D &AmplitudesOnPath,
 	assert(false);
 }
 
-t_cmplx C_Propagator::DressingFactor() {
+t_cmplx C_Propagator::Z2Factor() {
 	t_cmplx dummy;
-	std::cout << "Pure virtual call:C_Propagator::DressingFactor" << std::endl;
+	std::cout << "Pure virtual call:C_Propagator::Z2Factor" << std::endl;
 	assert(false);
 	return dummy;
 }
@@ -38,7 +40,7 @@ double C_Propagator::checkSum() {
 	return dummy;
 }
 
-void C_Propagator::linkToKernel(C_AbstractKernel *_K) {
+void C_Propagator::linkToKernel(Kernels::C_AbstractKernel *_K) {
 	std::cout << "Pure virtual call:C_Propagator::linkToKernel" << std::endl;
 	assert(false);
 }

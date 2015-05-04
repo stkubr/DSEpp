@@ -6,6 +6,7 @@
 
 #include "Quark.hpp"
 
+using namespace Propagators;
 
 /**
  * the constructor
@@ -35,7 +36,7 @@ C_Quark::~C_Quark() {
 	return p*p;
 }*/
 
-void C_Quark::linkToKernel(C_AbstractKernel *_K) {
+void C_Quark::linkToKernel(Kernels::C_AbstractKernel *_K) {
 	Kernel = _K;
 }
 
@@ -43,7 +44,7 @@ void C_Quark::readQuarkParameters(string &_ParamPath) {
 	params.ReadParameters(_ParamPath);
 }
 
-t_cmplx C_Quark::DressingFactor() {
+t_cmplx C_Quark::Z2Factor() {
 	return Z2;
 }
 
