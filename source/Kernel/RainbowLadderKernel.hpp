@@ -10,27 +10,37 @@
 
 #include "TwoQuarkKernel.hpp"
 
-class C_Kernel_RL: public C_TwoQuarkKernel{
-    friend class C_Kernel_Factory;
-protected:
-    t_cmplx Z2;
+namespace Kernels {
 
-    C_Kernel_RL(){
-        SetNameID("Kernel RainbowLadder",1);
-        Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
-        Z2=1.0;
-    }
+/**
+ * \brief The Rainbow-Ladder scattering Kernel
+ *
+ * Pure single gluon exchange. setMediators() sets the gluon polarization tensor with effective gluon dressing function.
+*/
+    class C_Kernel_RL : public C_TwoQuarkKernel {
+        friend class C_Kernel_Factory;
 
-	void setMediators(t_cmplxVector& k,
-					  t_cmplxVector& p,
-					  t_cmplxVector& P,
-					  std::vector<t_cmplxTensor>& Mediators);
+    protected:
+        t_cmplx Z2;
 
-	t_cmplx ElementKmatrix(int t, int s, int r, int u,
-                          std::vector<t_cmplxTensor>& Mediators);
+        C_Kernel_RL() {
+            SetNameID("Kernel RainbowLadder", 1);
+            Memory->VertexDressings.resize(2, t_cmplxArray3D(1));
+            Z2 = 1.0;
+        }
 
-public:
-    void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
-};
+        /// Sets gluon propagating inside of Kernel
+        void setMediators(t_cmplxVector &k,
+                          t_cmplxVector &p,
+                          t_cmplxVector &P,
+                          std::vector<t_cmplxTensor> &Mediators);
 
+        /// Set a (t,s,r,u) element of the K_matrix for a given class
+        t_cmplx ElementKmatrix(int t, int s, int r, int u,
+                               std::vector<t_cmplxTensor> &Mediators);
+
+    public:
+        void info() { std::cout << "Kernel RainbowLadder" << std::endl; }
+    };
+}
 #endif /* RAINBOWLADDERKERNEL_HPP_ */

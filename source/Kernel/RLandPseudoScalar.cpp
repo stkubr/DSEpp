@@ -7,6 +7,8 @@
 
 #include "RLandPseudoScalar.hpp"
 
+using namespace Kernels;
+
     void C_Kernel_RL_PS::setMesonExchangeMass(t_cmplx _M){
         PseudoMesonMass=_M;
     }
@@ -16,7 +18,7 @@
 		t_cmplx k2_product;
 		k2_product=(k*k);
 		t_cmplx Gluon_factor=1.0;
-		t_cmplx Z2 = Propagators[1]->DressingFactor();
+		t_cmplx Z2 = Propagators[1]->Z2Factor();
 		t_cmplxTensor Gluon_Matrix(2),PS_Matrix(0);
 		Gluon_factor=Z2*Z2*4.0/3.0* Propagators[0]->PropagatorAtPoint(k2_product)[0];
 		Gluon_Matrix=Gluon_factor*(g-((k)%(k))/(k2_product));
