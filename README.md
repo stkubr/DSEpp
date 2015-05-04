@@ -1,0 +1,3 @@
+The library provides basic objects and core numerical routines, needed for a scientific calculations within the framework of Dyson-Schwinger and Bette-Salper equations.
+The related research carried out by developing and using this library is reported in https://github.com/stkubr/Thesis/blob/master/Thesis_Kubrak.pdf .
+Note however this is only partial release and most of features are not implemented.
