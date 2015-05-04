@@ -32,7 +32,7 @@ namespace BSE {
  * - calculate Lambda eigenvalue
  * - repeat for desired number of steps
  */
-    class C_BSE_TwoBody : public C_BSE, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
+    class C_BSE_TwoBody : public C_BSE, public Integration::C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
     protected:
         /// Pointer to scattering kernel
         Kernels::C_AbstractKernel *Kernel;

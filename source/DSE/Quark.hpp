@@ -26,7 +26,7 @@ namespace Propagators {
  * C_Quark_parameters params define the technicalities like: the number of integration points and etc.
  *
 */
-	class C_Quark : public C_Propagator, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
+	class C_Quark : public C_Propagator, public Integration::C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
 
 	protected:
 
@@ -49,10 +49,10 @@ namespace Propagators {
 		std::function<t_cmplx(t_cmplx, t_cmplx)> CauchyIntegratonWeight_lambda;
 
 		/// Line Integrator for the cutoff part of parabolic contour
-		C_Integrator_Line<t_cmplxMatrix, double> *Integrator_momentum_cutoff;
+		Integration::C_Integrator_Line<t_cmplxMatrix, double> *Integrator_momentum_cutoff;
 
 		/// Path Integrator for the complete contour
-		C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> *Integrator_cauchy;
+		Integration::C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx> *Integrator_cauchy;
 
 		/// zz are the integration nodes, w are the weights
 		t_dArray1D zz_radial, w_radial, zz_cutoff, w_cutoff, zz_angle, w_angle;

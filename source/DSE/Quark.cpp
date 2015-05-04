@@ -78,16 +78,16 @@ void C_Quark::setToInitialState() {
  * Create Integrators and get the integration points and weights out of them
  */
 void C_Quark::initializateIntegrators() {
-	Integrator_momentum = C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_lin_ID);
+	Integrator_momentum = Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+			params.num_prop_steps, params.LimDk, params.LimUk, num_amplitudes, Integration::qgausleg_lin_ID);
 
-	Integrator_angle_Z = C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-			params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
+	Integrator_angle_Z = Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+			params.num_angle_steps, params.LimDk, params.LimUk, num_amplitudes, Integration::qgauscheb_ID);
 
-	Integrator_momentum_cutoff = C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-			params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, qgausleg_sym_ID);
+	Integrator_momentum_cutoff = Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+			params.num_cutoff_steps, params.LimDk, params.LimUk, num_amplitudes, Integration::qgausleg_sym_ID);
 
-	Integrator_cauchy = C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx>::createIntegrator(num_amplitudes, &CauchyIntegratonWeight_lambda);
+	Integrator_cauchy = Integration::C_Integrator_Path<t_cmplx, t_cmplxArray2D, t_cmplx>::createIntegrator(num_amplitudes, &CauchyIntegratonWeight_lambda);
 
 	Integrator_momentum->getNodes(zz_radial, w_radial);
 	Integrator_momentum_cutoff->getNodes(zz_cutoff, w_cutoff);

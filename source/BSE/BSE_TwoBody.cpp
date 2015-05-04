@@ -41,12 +41,12 @@ void C_BSE_TwoBody::checkOrthogonality() {
 }
 
 void C_BSE_TwoBody::Initialization() {
-    Integrator_momentum = C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-            params.NumRadial, params.LimDk, params.LimUk, num_amplitudes, qgausleg_log_ID);
-    Integrator_angle_Z=C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-            params.NumCheb_nod1, params.LimDk, params.LimUk, num_amplitudes, qgauscheb_ID);
-    Integrator_angle_Y=C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
-            params.NumAngleY, -1.0, 1.0, num_amplitudes, qgausleg_sym_ID);
+    Integrator_momentum = Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+            params.NumRadial, params.LimDk, params.LimUk, num_amplitudes, Integration::qgausleg_log_ID);
+    Integrator_angle_Z= Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+            params.NumCheb_nod1, params.LimDk, params.LimUk, num_amplitudes, Integration::qgauscheb_ID);
+    Integrator_angle_Y= Integration::C_Integrator_Line<t_cmplxMatrix, double>::createIntegrator(
+            params.NumAngleY, -1.0, 1.0, num_amplitudes, Integration::qgausleg_sym_ID);
     Integrator_momentum->getNodes(zz_rad,w_rad);
     Integrator_angle_Z->getNodes(zz_cheb,w_cheb);
     Integrator_angle_Y->getNodes(zz_angleY,w_angleY);
