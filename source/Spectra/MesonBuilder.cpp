@@ -4,4 +4,4 @@
 
 #include "MesonBuilder.h"
 
-C_MesonBuilder TestBuilder(Test_ID, Test_ID, RL_ID, Test_Gluon_ID);
+C_MesonBuilder TestBuilder(Propagators::Test_ID, Propagators::Test_ID, Kernels::RL_ID, Propagators::Test_Gluon_ID);

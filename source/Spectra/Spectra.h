@@ -9,24 +9,24 @@
 
 class C_Spectra {
 public:
-    std::vector<C_Propagator*> Propagators;
-    std::vector<C_AbstractKernel*> Kernels;
-    std::vector<C_BSE*>  BSEs;
+    std::vector<Propagators::C_Propagator*> Propagators;
+    std::vector<Kernels::C_AbstractKernel*> Kernels;
+    std::vector<BSE::C_BSE*>  BSEs;
 
 public:
     ~C_Spectra(){
         deleteAllPieces();
     }
 
-    void setPropagators(std::vector<C_Propagator *> _Propagators){
+    void setPropagators(std::vector<Propagators::C_Propagator *> _Propagators){
         Propagators=_Propagators;
     }
 
-    void setKernels(std::vector<C_AbstractKernel *> _Kernels){
+    void setKernels(std::vector<Kernels::C_AbstractKernel *> _Kernels){
         Kernels=_Kernels;
     }
 
-    void setBSEs(std::vector<C_BSE *> _BSEs){
+    void setBSEs(std::vector<BSE::C_BSE *> _BSEs){
         BSEs=_BSEs;
     }
 
