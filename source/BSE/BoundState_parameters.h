@@ -10,19 +10,21 @@
 #include <fstream>
 #include <assert.h>
 
-class C_BoundState_parameters {
-public:
-    int NumRadial,NumCheb_nod1,NumCheb_nod2,Cheb_order,NumAngleY;
-    int NumRadial_Contour, NumCheb_Contour, NumAngleY_Contour;
-    double LimUk,LimDk,zetta_part;
-    bool OffShell;
+namespace BSE {
 
-    void print();
+    class C_BoundState_parameters {
+    public:
+        int NumRadial, NumCheb_nod1, NumCheb_nod2, Cheb_order, NumAngleY;
+        int NumRadial_Contour, NumCheb_Contour, NumAngleY_Contour;
+        double LimUk, LimDk, zetta_part;
+        bool OffShell;
 
-    void setParams(std::string& _ParamPath);
+        void print();
 
-    void setDefault();
-};
+        void setParams(std::string &_ParamPath);
 
+        void setDefault();
+    };
 
+}
 #endif //DSEPP_BOUNDSTATE_PARAMETERS_H

@@ -4,6 +4,8 @@
 
 #include "BoundState_parameters.h"
 
+using namespace BSE;
+
 void C_BoundState_parameters::print() {
     std::cout <<
     "LimDk" << " - " << LimDk << std::endl <<
