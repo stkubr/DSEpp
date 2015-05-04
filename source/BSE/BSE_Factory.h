@@ -9,36 +9,41 @@
 #include "BSE_Scalar.h"
 #include "BSE_Vector.h"
 
-enum BSE_ID {PseudoScalar_ID=0, Scalar_ID, Vector_ID, BSE_ID_End};
+namespace BSE {
 
-class C_BSE_Factory {
-private:
-    C_BSE_Factory(){}
+    enum BSE_ID {
+        PseudoScalar_ID = 0, Scalar_ID, Vector_ID, BSE_ID_End
+    };
 
-public:
-    static C_BSE_Factory& instance(){
-        static C_BSE_Factory ins;
-        return ins;
-    }
+    class C_BSE_Factory {
+    private:
+        C_BSE_Factory() { }
 
-    C_BSE * Create(BSE_ID id) {
-        C_BSE * ptr;
-        switch (id) {
-            case PseudoScalar_ID:
-                ptr = new C_BSE_PseudoScalar();
-                break;
-            case Scalar_ID:
-                ptr = new C_BSE_Scalar();
-                break;
-            case Vector_ID:
-                ptr = new C_BSE_Vector();
-                break;
-            default:
-                assert(false);
+    public:
+        static C_BSE_Factory &instance() {
+            static C_BSE_Factory ins;
+            return ins;
         }
-        return ptr;
-    }
-};
 
+        C_BSE *Create(BSE_ID id) {
+            C_BSE *ptr;
+            switch (id) {
+                case PseudoScalar_ID:
+                    ptr = new C_BSE_PseudoScalar();
+                    break;
+                case Scalar_ID:
+                    ptr = new C_BSE_Scalar();
+                    break;
+                case Vector_ID:
+                    ptr = new C_BSE_Vector();
+                    break;
+                default:
+                    assert(false);
+            }
+            return ptr;
+        }
+    };
+
+}
 
 #endif //DSEPP_BSE_FACTORY_H
