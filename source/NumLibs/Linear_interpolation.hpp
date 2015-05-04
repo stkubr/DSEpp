@@ -5,12 +5,11 @@
 
 namespace Interpolation {
 
-//! Linearly interpolates a given set of points.
-
-template<typename x_type, typename y_type> class Linear {
+/// Linearly interpolates a given set of points.
+template<typename x_type, typename y_type> class C_Linear {
 public:
 
-	Linear(int n, std::vector<x_type> & x, std::vector<y_type> & y) {
+	C_Linear(int n, std::vector<x_type> & x, std::vector<y_type> & y) {
 		m_x.clear();
 		m_y.clear();
 		m_x.resize(n);
@@ -21,7 +20,6 @@ public:
 			m_y[i] = y[i];
 		}
 	}
-
 
 	double inline Real(t_cmplx x) {
 		return real(x);
