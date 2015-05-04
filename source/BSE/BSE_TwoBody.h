@@ -35,13 +35,13 @@ namespace BSE {
     class C_BSE_TwoBody : public C_BSE, public C_OneLoopIntegrator<t_cmplxMatrix, double, t_cmplxArray1D> {
     protected:
         /// Pointer to scattering kernel
-        C_AbstractKernel *Kernel;
+        Kernels::C_AbstractKernel *Kernel;
 
         /// Pointer to parton with momenta \f$ k_+ \f$
-        C_Propagator *Parton_P;
+        Propagators::C_Propagator *Parton_P;
 
         /// Pointer to parton with momenta \f$ k_- \f$
-        C_Propagator *Parton_M;
+        Propagators::C_Propagator *Parton_M;
 
         /// Pointer to external dedicated memory storage
         C_DedicMem_BSE *Memory;
@@ -187,12 +187,12 @@ namespace BSE {
         void setBSAonPath(t_cmplxArray2D &AmplitudePath, t_cmplxArray1D &Path, t_cmplx P);
 
         /// links to externally provided Kernel
-        void linkToKernel(C_AbstractKernel *_Kernel) {
+        void linkToKernel(Kernels::C_AbstractKernel *_Kernel) {
             Kernel = _Kernel;
         }
 
         /// links to externally provided propagators(partons)
-        void linkToPartons(std::vector<C_Propagator *> _partons) {
+        void linkToPartons(std::vector<Propagators::C_Propagator *> _partons) {
             Parton_P = _partons[0];
             Parton_M = _partons[1];
         }

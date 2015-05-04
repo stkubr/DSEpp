@@ -24,9 +24,9 @@ namespace BSE {
 
         virtual double checkSum_EVMatrixNorm() = 0;
 
-        virtual void linkToKernel(C_AbstractKernel *_Kernel) = 0;
+        virtual void linkToKernel(Kernels::C_AbstractKernel *_Kernel) = 0;
 
-        virtual void linkToPartons(std::vector<C_Propagator *> _Partons) = 0;
+        virtual void linkToPartons(std::vector<Propagators::C_Propagator *> _Partons) = 0;
 
         virtual ~C_BSE() { }
     };
