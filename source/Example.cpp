@@ -4,8 +4,6 @@
 #include "omp.h"
 
 #define NUM_PRECISION 7
-#define ORTH_CHECK 0
-#define BASIS_TYPE 1
 
 #include "DSEpp.hpp"
 #include "Spectra/Binder.h"
@@ -45,8 +43,6 @@ int main(int __argc, char *__argv[]) {
   P.SetP4(0, 0, 0, t_cmplx(0, 0.757));
   // calculate eigenvalues using matrix for the vector mesons
   spectra->getBSEs(2)->calcEigenStates(P, 10);
-
-
 
   tstop = (double) clock() / CLOCKS_PER_SEC;
   ttime = (tstop - tstart) / omp_get_max_threads();
