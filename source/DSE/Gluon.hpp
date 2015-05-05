@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../NumLibs/Linear_interpolation.hpp"
+#include "../NumLibs/LinearInterpolation.h"
 #include "Propagator.hpp"
 #include <string>
 
