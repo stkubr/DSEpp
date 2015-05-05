@@ -8,7 +8,7 @@
 #include "../DSEpp.hpp"
 
 class C_Spectra {
-public:
+protected:
     std::vector<Propagators::C_Propagator*> Propagators;
     std::vector<Kernels::C_AbstractKernel*> Kernels;
     std::vector<BSE::C_BSE*>  BSEs;
@@ -30,39 +30,23 @@ public:
         BSEs=_BSEs;
     }
 
-    void linkAllPieces(){
-        Kernels[0]->setPropagators({Propagators[0],Propagators[1]});
-        Propagators[1]->linkToKernel(Kernels[0]);
-        Propagators[2]->linkToKernel(Kernels[0]);
-        for (int i = 0; i < BSEs.size(); i++){
-            BSEs[i]->linkToKernel(Kernels[0]);
-            BSEs[i]->linkToPartons({Propagators[1],Propagators[2]});
-        }
+    Propagators::C_Propagator * getPropagators(int i) const {
+        if(Propagators[i]) return Propagators[i];
     }
 
-    void checkAllPieces(){
-        for (int i = 0; i < Propagators.size(); i++){
-            Propagators[i]->GetNameID();
-        }
-        for (int i = 0; i < Kernels.size(); i++){
-            Kernels[i]->GetNameID();
-        }
-        for (int i = 0; i < BSEs.size()-1; i++){
-            BSEs[i]->GetNameID();
-        }
+    Kernels::C_AbstractKernel * getKernels(int i) const {
+        if(Kernels[i]) return Kernels[i];
     }
 
-    void deleteAllPieces(){
-        for (int i = 0; i < Propagators.size(); i++){
-            if(Propagators[i]) delete (Propagators[i]);
-        }
-        for (int i = 0; i < Kernels.size(); i++){
-            if(Kernels[i]) delete (Kernels[i]);
-        }
-        for (int i = 0; i < BSEs.size(); i++){
-            if(BSEs[i]) delete (BSEs[i]);
-        }
+    BSE::C_BSE * getBSEs(int i) const {
+        if(BSEs[i]) return BSEs[i];
     }
+
+    void linkAllPieces();
+
+    void checkAllPieces();
+
+    void deleteAllPieces();
 };
 
 
