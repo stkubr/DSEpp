@@ -17,16 +17,16 @@ include_directories(Libraries/eigen)
 #grab all files we need to compile
 file(GLOB_RECURSE SRC
     "source/*/*.cpp"
-    "source/*/*.hpp"
-    "source/*/*.h"
-    "source/*.hpp"
-    "source/*.h"
+    #"source/*/*.hpp"
+    #"source/*/*.h"
+    #"source/*.hpp"
+    #"source/*.h"
 )
 
 add_library( myLib ${SRC} )
 target_include_directories (myLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-set(SOURCE_FILES source/main.cpp)
+set(SOURCE_FILES source/Example.cpp)
 
 add_executable(DSEpp ${SOURCE_FILES})
 target_link_libraries( DSEpp myLib )
