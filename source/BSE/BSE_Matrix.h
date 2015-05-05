@@ -9,8 +9,8 @@
 
 namespace BSE {
 
-/*
- * Two-quark Bethe-Salpeter Equations
+/**
+ * \brief Two-quark Bethe-Salpeter Equations
  *
  * This class adds the lambda eigenvalue calculation by
  * matrix eigenvalue decomposition method. The method itself is provided by Eigen library.

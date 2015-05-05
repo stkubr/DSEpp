@@ -20,8 +20,8 @@
 
 namespace BSE {
 
-/*
- * Two-quark Bethe-Salpeter Equations
+/**
+ * \brief Two-quark Bethe-Salpeter Equations
  *
  * In this class it uses the Power Method to obtain the solutions
  * overall this method can be described as:

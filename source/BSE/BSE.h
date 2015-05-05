@@ -12,6 +12,10 @@
 
 namespace BSE {
 
+/**
+ * \brief The interface class for all BSEs: two-body (mesons) or more
+ *
+*/
     class C_BSE : public C_AbsDiagram {
     public:
         virtual t_cmplxArray2D calcEigenStates(t_cmplxVector P, int numberOfStates) = 0;
