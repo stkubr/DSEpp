@@ -1,44 +1,115 @@
 \hypertarget{class_c___one_loop_integrator}{\section{C\-\_\-\-One\-Loop\-Integrator$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$ Class Template Reference}
 \label{class_c___one_loop_integrator}\index{C\-\_\-\-One\-Loop\-Integrator$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$@{C\-\_\-\-One\-Loop\-Integrator$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$}}
 }
-Inheritance diagram for C\-\_\-\-One\-Loop\-Integrator$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=1.647059cm]{class_c___one_loop_integrator}
-\end{center}
-\end{figure}
-\subsection*{Public Member Functions}
+
+
+{\ttfamily \#include $<$One\-Loop\-Integrator.\-hpp$>$}
+
+\subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c___one_loop_integrator_a5e7c8284194da215e0f1a883ec97068f}{T\-\_\-out {\bfseries Multi\-Dim\-Int2\-D\-\_\-wo\-\_\-nested} (std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$func\-\_\-to\-\_\-int, int num\-Rows, int num\-Cols)}\label{class_c___one_loop_integrator_a5e7c8284194da215e0f1a883ec97068f}
-
+\hyperlink{class_c___one_loop_integrator_a2cec9d83b4f5a12b03abf7bd28ef9f72}{C\-\_\-\-One\-Loop\-Integrator} ()
+\item 
+virtual \hyperlink{class_c___one_loop_integrator_afe89ae625faf097b591fce467e9d1eb5}{$\sim$\-C\-\_\-\-One\-Loop\-Integrator} ()
+\item 
+T\-\_\-out \hyperlink{class_c___one_loop_integrator_a9dd059711cbac033c88e1ab644ec3084}{calc\-Integral3\-D} (std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$func\-\_\-to\-\_\-int, int num\-Rows, int num\-Cols)
+\item 
+T\-\_\-out \hyperlink{class_c___one_loop_integrator_a7b35dcdd6f0f58d305bbaf53ba1afcd4}{calc\-Integral2\-D} (std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$func\-\_\-to\-\_\-int, int num\-Rows, int num\-Cols)
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}{T\-\_\-arg \hyperlink{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}{integrand\-\_\-args}}\label{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}
-
+int \hyperlink{class_c___one_loop_integrator_aed8066a37eaa0865bd484ffd18884abb}{num\-Integ\-Dimentions}
+\item 
+\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ \hyperlink{class_c___one_loop_integrator_af884706bf7461487cfb254d78b797e94}{Integrator\-\_\-momentum}
+\item 
+\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ \hyperlink{class_c___one_loop_integrator_a2826eadcd033a03808d645cd883acceb}{Integrator\-\_\-angle\-\_\-\-Z}
+\item 
+\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ \hyperlink{class_c___one_loop_integrator_a5770d28cb44d0ea9c3d331203ee84440}{Integrator\-\_\-angle\-\_\-\-Y}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{class_c___one_loop_integrator_a78ea7c4afee6c20ed50e6fa171a47dc3}{threadloc\-\_\-\-Integ\-\_\-ctr}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{class_c___one_loop_integrator_af7ddf02e8c2d913b2a38f6670e26ac3b}{threadloc\-\_\-momentum\-\_\-inx}
+\item 
+T\-\_\-arg \hyperlink{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}{integrand\-\_\-args}
 \begin{DoxyCompactList}\small\item\em the variables over the loop integration is done, for example vector $ (k,z,y,\phi) $ \end{DoxyCompactList}\item 
-\hypertarget{class_c___one_loop_integrator_aed8066a37eaa0865bd484ffd18884abb}{int {\bfseries num\-Integ\-Dimentions}}\label{class_c___one_loop_integrator_aed8066a37eaa0865bd484ffd18884abb}
+std\-::vector$<$ \hyperlink{class_c___kinematics__1loop}{C\-\_\-\-Kinematics\-\_\-1loop} $>$ \hyperlink{class_c___one_loop_integrator_a767bf7500b35433779ed8b2fdb5b73a7}{threadloc\-\_\-\-Momenta}
+\begin{DoxyCompactList}\small\item\em the momenta 4-\/vectors associated with singe loop integration \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-\hypertarget{class_c___one_loop_integrator_a47a4a2f9a811fb4cd92824ea6561d18b}{\hyperlink{class_c___kinematics__1loop}{C\-\_\-\-Kinematics\-\_\-1loop} \hyperlink{class_c___one_loop_integrator_a47a4a2f9a811fb4cd92824ea6561d18b}{Momenta}}\label{class_c___one_loop_integrator_a47a4a2f9a811fb4cd92824ea6561d18b}
 
-\begin{DoxyCompactList}\small\item\em the momenta 4-\/vectors associated with singe loop integration \end{DoxyCompactList}\item 
-\hypertarget{class_c___one_loop_integrator_af884706bf7461487cfb254d78b797e94}{\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ {\bfseries Integrator\-\_\-momentum}}\label{class_c___one_loop_integrator_af884706bf7461487cfb254d78b797e94}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c___one_loop_integrator_a2cec9d83b4f5a12b03abf7bd28ef9f72}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{C\-\_\-\-One\-Loop\-Integrator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::{\bf C\-\_\-\-One\-Loop\-Integrator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a2cec9d83b4f5a12b03abf7bd28ef9f72}
+\hypertarget{class_c___one_loop_integrator_afe89ae625faf097b591fce467e9d1eb5}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!$\sim$\-C\-\_\-\-One\-Loop\-Integrator@{$\sim$\-C\-\_\-\-One\-Loop\-Integrator}}
+\index{$\sim$\-C\-\_\-\-One\-Loop\-Integrator@{$\sim$\-C\-\_\-\-One\-Loop\-Integrator}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{$\sim$\-C\-\_\-\-One\-Loop\-Integrator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ virtual {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::$\sim${\bf C\-\_\-\-One\-Loop\-Integrator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___one_loop_integrator_afe89ae625faf097b591fce467e9d1eb5}
 
-\item 
-\hypertarget{class_c___one_loop_integrator_a2826eadcd033a03808d645cd883acceb}{\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ {\bfseries Integrator\-\_\-angle\-\_\-\-Z}}\label{class_c___one_loop_integrator_a2826eadcd033a03808d645cd883acceb}
 
-\item 
-\hypertarget{class_c___one_loop_integrator_a5770d28cb44d0ea9c3d331203ee84440}{\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}$<$ T\-\_\-out, T\-\_\-in $>$ $\ast$ {\bfseries Integrator\-\_\-angle\-\_\-\-Y}}\label{class_c___one_loop_integrator_a5770d28cb44d0ea9c3d331203ee84440}
+\subsection{Member Function Documentation}
+\hypertarget{class_c___one_loop_integrator_a7b35dcdd6f0f58d305bbaf53ba1afcd4}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!calc\-Integral2\-D@{calc\-Integral2\-D}}
+\index{calc\-Integral2\-D@{calc\-Integral2\-D}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{calc\-Integral2\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ T\-\_\-out {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::calc\-Integral2\-D (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$}]{func\-\_\-to\-\_\-int, }
+\item[{int}]{num\-Rows, }
+\item[{int}]{num\-Cols}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a7b35dcdd6f0f58d305bbaf53ba1afcd4}
+\hypertarget{class_c___one_loop_integrator_a9dd059711cbac033c88e1ab644ec3084}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!calc\-Integral3\-D@{calc\-Integral3\-D}}
+\index{calc\-Integral3\-D@{calc\-Integral3\-D}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{calc\-Integral3\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ T\-\_\-out {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::calc\-Integral3\-D (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$}]{func\-\_\-to\-\_\-int, }
+\item[{int}]{num\-Rows, }
+\item[{int}]{num\-Cols}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a9dd059711cbac033c88e1ab644ec3084}
 
-\item 
-\hypertarget{class_c___one_loop_integrator_a1c5871eec44be782114ba875d88488e0}{std\-::function$<$ T\-\_\-out(T\-\_\-arg)$>$ $\ast$ \hyperlink{class_c___one_loop_integrator_a1c5871eec44be782114ba875d88488e0}{integrand}}\label{class_c___one_loop_integrator_a1c5871eec44be782114ba875d88488e0}
 
-\begin{DoxyCompactList}\small\item\em function pointer to the integrand to be integrated \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection{Member Data Documentation}
+\hypertarget{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!integrand\-\_\-args@{integrand\-\_\-args}}
+\index{integrand\-\_\-args@{integrand\-\_\-args}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{integrand\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ T\-\_\-arg {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::integrand\-\_\-args\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a196a8d045623e4af5d4bb9fca7c105bb}
+
+
+the variables over the loop integration is done, for example vector $ (k,z,y,\phi) $ 
+
+\hypertarget{class_c___one_loop_integrator_a5770d28cb44d0ea9c3d331203ee84440}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!Integrator\-\_\-angle\-\_\-\-Y@{Integrator\-\_\-angle\-\_\-\-Y}}
+\index{Integrator\-\_\-angle\-\_\-\-Y@{Integrator\-\_\-angle\-\_\-\-Y}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{Integrator\-\_\-angle\-\_\-\-Y}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ {\bf C\-\_\-\-Integrator\-\_\-\-Line}$<$T\-\_\-out,T\-\_\-in$>$$\ast$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::Integrator\-\_\-angle\-\_\-\-Y\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a5770d28cb44d0ea9c3d331203ee84440}
+\hypertarget{class_c___one_loop_integrator_a2826eadcd033a03808d645cd883acceb}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!Integrator\-\_\-angle\-\_\-\-Z@{Integrator\-\_\-angle\-\_\-\-Z}}
+\index{Integrator\-\_\-angle\-\_\-\-Z@{Integrator\-\_\-angle\-\_\-\-Z}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{Integrator\-\_\-angle\-\_\-\-Z}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ {\bf C\-\_\-\-Integrator\-\_\-\-Line}$<$T\-\_\-out,T\-\_\-in$>$$\ast$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::Integrator\-\_\-angle\-\_\-\-Z\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a2826eadcd033a03808d645cd883acceb}
+\hypertarget{class_c___one_loop_integrator_af884706bf7461487cfb254d78b797e94}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!Integrator\-\_\-momentum@{Integrator\-\_\-momentum}}
+\index{Integrator\-\_\-momentum@{Integrator\-\_\-momentum}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{Integrator\-\_\-momentum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ {\bf C\-\_\-\-Integrator\-\_\-\-Line}$<$T\-\_\-out,T\-\_\-in$>$$\ast$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::Integrator\-\_\-momentum\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_af884706bf7461487cfb254d78b797e94}
+\hypertarget{class_c___one_loop_integrator_aed8066a37eaa0865bd484ffd18884abb}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!num\-Integ\-Dimentions@{num\-Integ\-Dimentions}}
+\index{num\-Integ\-Dimentions@{num\-Integ\-Dimentions}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{num\-Integ\-Dimentions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ int {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::num\-Integ\-Dimentions\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_aed8066a37eaa0865bd484ffd18884abb}
+\hypertarget{class_c___one_loop_integrator_a78ea7c4afee6c20ed50e6fa171a47dc3}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!threadloc\-\_\-\-Integ\-\_\-ctr@{threadloc\-\_\-\-Integ\-\_\-ctr}}
+\index{threadloc\-\_\-\-Integ\-\_\-ctr@{threadloc\-\_\-\-Integ\-\_\-ctr}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{threadloc\-\_\-\-Integ\-\_\-ctr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ std\-::vector$<$int$>$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::threadloc\-\_\-\-Integ\-\_\-ctr\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a78ea7c4afee6c20ed50e6fa171a47dc3}
+\hypertarget{class_c___one_loop_integrator_a767bf7500b35433779ed8b2fdb5b73a7}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!threadloc\-\_\-\-Momenta@{threadloc\-\_\-\-Momenta}}
+\index{threadloc\-\_\-\-Momenta@{threadloc\-\_\-\-Momenta}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{threadloc\-\_\-\-Momenta}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ std\-::vector$<${\bf C\-\_\-\-Kinematics\-\_\-1loop}$>$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::threadloc\-\_\-\-Momenta\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_a767bf7500b35433779ed8b2fdb5b73a7}
+
+
+the momenta 4-\/vectors associated with singe loop integration 
+
+\hypertarget{class_c___one_loop_integrator_af7ddf02e8c2d913b2a38f6670e26ac3b}{\index{C\-\_\-\-One\-Loop\-Integrator@{C\-\_\-\-One\-Loop\-Integrator}!threadloc\-\_\-momentum\-\_\-inx@{threadloc\-\_\-momentum\-\_\-inx}}
+\index{threadloc\-\_\-momentum\-\_\-inx@{threadloc\-\_\-momentum\-\_\-inx}!C_OneLoopIntegrator@{C\-\_\-\-One\-Loop\-Integrator}}
+\subsubsection[{threadloc\-\_\-momentum\-\_\-inx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T\-\_\-out, typename T\-\_\-in, typename T\-\_\-arg$>$ std\-::vector$<$int$>$ {\bf C\-\_\-\-One\-Loop\-Integrator}$<$ T\-\_\-out, T\-\_\-in, T\-\_\-arg $>$\-::threadloc\-\_\-momentum\-\_\-inx\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___one_loop_integrator_af7ddf02e8c2d913b2a38f6670e26ac3b}
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-source/\-Num\-Libs/One\-Loop\-Integrator.\-hpp\end{DoxyCompactItemize}
+source/\-Num\-Libs/\hyperlink{_one_loop_integrator_8hpp}{One\-Loop\-Integrator.\-hpp}\end{DoxyCompactItemize}

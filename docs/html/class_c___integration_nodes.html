@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,6 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">C_IntegrationNodes Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_integration_nodes_8hpp_source.html">IntegrationNodes.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for C_IntegrationNodes:</div>
 <div class="dyncontent">
@@ -103,62 +106,470 @@ Inheritance diagram for C_IntegrationNodes:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad63bb8d4226180ecf6332852a52b702b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad63bb8d4226180ecf6332852a52b702b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getNodes</b> (t_dArray1D &amp;_x, t_dArray1D &amp;_w)</td></tr>
+<tr class="memitem:ad63bb8d4226180ecf6332852a52b702b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#ad63bb8d4226180ecf6332852a52b702b">getNodes</a> (<a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;_x, <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;_w)</td></tr>
 <tr class="separator:ad63bb8d4226180ecf6332852a52b702b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aae608186412f531e84601f7681d9a5ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae608186412f531e84601f7681d9a5ba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>C_IntegrationNodes</b> (int _NumPoints, double _LimDown, double _LimUp, int _NumAps, Integrator_ID _id)</td></tr>
+<tr class="memitem:aae608186412f531e84601f7681d9a5ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#aae608186412f531e84601f7681d9a5ba">C_IntegrationNodes</a> (int _NumPoints, double _LimDown, double _LimUp, int _NumAps, <a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a> _id)</td></tr>
 <tr class="separator:aae608186412f531e84601f7681d9a5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85fe5a11c29a8c59a75d5497901ca322"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85fe5a11c29a8c59a75d5497901ca322"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>gauleg</b> (double x1, double x2, t_dArray1D &amp;x, t_dArray1D &amp;w, int n)</td></tr>
+<tr class="memitem:aaba1eab67b07ff7ce5c16667aa9acda3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#aaba1eab67b07ff7ce5c16667aa9acda3">~C_IntegrationNodes</a> ()</td></tr>
+<tr class="separator:aaba1eab67b07ff7ce5c16667aa9acda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85fe5a11c29a8c59a75d5497901ca322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a85fe5a11c29a8c59a75d5497901ca322">gauleg</a> (double x1, double x2, <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;<a class="el" href="class_c___integration_nodes.html#ac7482a184d19e0ec9bf62a99edd9e29b">x</a>, <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;<a class="el" href="class_c___integration_nodes.html#a023a6f295be0574aca58f8a67ac6263d">w</a>, int n)</td></tr>
 <tr class="separator:a85fe5a11c29a8c59a75d5497901ca322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a551c1c98b67b3def0e59e65e3d515401"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a551c1c98b67b3def0e59e65e3d515401"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>gaucheb</b> (double x1, double x2, t_dArray1D &amp;x, t_dArray1D &amp;w, int n)</td></tr>
+<tr class="memitem:a551c1c98b67b3def0e59e65e3d515401"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a551c1c98b67b3def0e59e65e3d515401">gaucheb</a> (double x1, double x2, <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;<a class="el" href="class_c___integration_nodes.html#ac7482a184d19e0ec9bf62a99edd9e29b">x</a>, <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;<a class="el" href="class_c___integration_nodes.html#a023a6f295be0574aca58f8a67ac6263d">w</a>, int n)</td></tr>
 <tr class="separator:a551c1c98b67b3def0e59e65e3d515401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac368475cac1e355e8a4ee4e3354888ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac368475cac1e355e8a4ee4e3354888ae"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setNodes</b> (Integrator_ID _id)</td></tr>
+<tr class="memitem:ac368475cac1e355e8a4ee4e3354888ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#ac368475cac1e355e8a4ee4e3354888ae">setNodes</a> (<a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a> _id)</td></tr>
 <tr class="separator:ac368475cac1e355e8a4ee4e3354888ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a2db6e5b500d59df584a1556fd2e928f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2db6e5b500d59df584a1556fd2e928f4"></a>
-const double&#160;</td><td class="memItemRight" valign="bottom"><b>pi</b> =3.14159265358979</td></tr>
+<tr class="memitem:a2db6e5b500d59df584a1556fd2e928f4"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a2db6e5b500d59df584a1556fd2e928f4">pi</a> =3.14159265358979</td></tr>
 <tr class="separator:a2db6e5b500d59df584a1556fd2e928f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7f3f12030b61afb7d11ff833b92ab2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d7f3f12030b61afb7d11ff833b92ab2"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>LimUp</b></td></tr>
+<tr class="memitem:a9d7f3f12030b61afb7d11ff833b92ab2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a9d7f3f12030b61afb7d11ff833b92ab2">LimUp</a></td></tr>
 <tr class="separator:a9d7f3f12030b61afb7d11ff833b92ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2b7209a4f2aa65d90ca2cc1f22655ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2b7209a4f2aa65d90ca2cc1f22655ab"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>LimDown</b></td></tr>
+<tr class="memitem:aa2b7209a4f2aa65d90ca2cc1f22655ab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#aa2b7209a4f2aa65d90ca2cc1f22655ab">LimDown</a></td></tr>
 <tr class="separator:aa2b7209a4f2aa65d90ca2cc1f22655ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2aae6c2f677378b02fe1dd72137d5649"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2aae6c2f677378b02fe1dd72137d5649"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>NumPoints</b></td></tr>
+<tr class="memitem:a2aae6c2f677378b02fe1dd72137d5649"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a2aae6c2f677378b02fe1dd72137d5649">NumPoints</a></td></tr>
 <tr class="separator:a2aae6c2f677378b02fe1dd72137d5649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bf574f9151846abaeb89c2a9acca173"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bf574f9151846abaeb89c2a9acca173"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>NumAps</b></td></tr>
+<tr class="memitem:a1bf574f9151846abaeb89c2a9acca173"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a1bf574f9151846abaeb89c2a9acca173">NumAps</a></td></tr>
 <tr class="separator:a1bf574f9151846abaeb89c2a9acca173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abced67ac9650b49ca756fe34b0aa593a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abced67ac9650b49ca756fe34b0aa593a"></a>
-t_dArray1D&#160;</td><td class="memItemRight" valign="bottom"><b>zz</b></td></tr>
+<tr class="memitem:abced67ac9650b49ca756fe34b0aa593a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#abced67ac9650b49ca756fe34b0aa593a">zz</a></td></tr>
 <tr class="separator:abced67ac9650b49ca756fe34b0aa593a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a023a6f295be0574aca58f8a67ac6263d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a023a6f295be0574aca58f8a67ac6263d"></a>
-t_dArray1D&#160;</td><td class="memItemRight" valign="bottom"><b>w</b></td></tr>
+<tr class="memitem:a023a6f295be0574aca58f8a67ac6263d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a023a6f295be0574aca58f8a67ac6263d">w</a></td></tr>
 <tr class="separator:a023a6f295be0574aca58f8a67ac6263d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7482a184d19e0ec9bf62a99edd9e29b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7482a184d19e0ec9bf62a99edd9e29b"></a>
-t_dArray1D&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="memitem:ac7482a184d19e0ec9bf62a99edd9e29b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#ac7482a184d19e0ec9bf62a99edd9e29b">x</a></td></tr>
 <tr class="separator:ac7482a184d19e0ec9bf62a99edd9e29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c7d0366d7ce1134f6a4c0944f80803b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c7d0366d7ce1134f6a4c0944f80803b"></a>
-Integrator_ID&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="memitem:a1c7d0366d7ce1134f6a4c0944f80803b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration_nodes.html#a1c7d0366d7ce1134f6a4c0944f80803b">id</a></td></tr>
 <tr class="separator:a1c7d0366d7ce1134f6a4c0944f80803b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aae608186412f531e84601f7681d9a5ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">C_IntegrationNodes::C_IntegrationNodes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_NumPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_LimDown</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_LimUp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_NumAps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a>&#160;</td>
+          <td class="paramname"><em>_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaba1eab67b07ff7ce5c16667aa9acda3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual C_IntegrationNodes::~C_IntegrationNodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a551c1c98b67b3def0e59e65e3d515401"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_IntegrationNodes::gaucheb </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a85fe5a11c29a8c59a75d5497901ca322"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_IntegrationNodes::gauleg </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad63bb8d4226180ecf6332852a52b702b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_IntegrationNodes::getNodes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>_w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac368475cac1e355e8a4ee4e3354888ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_IntegrationNodes::setNodes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a>&#160;</td>
+          <td class="paramname"><em>_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a1c7d0366d7ce1134f6a4c0944f80803b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_integration_nodes_8hpp.html#a8a2a136fba71c4785a5bdfe3e0e23b2b">Integrator_ID</a> C_IntegrationNodes::id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2b7209a4f2aa65d90ca2cc1f22655ab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_IntegrationNodes::LimDown</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9d7f3f12030b61afb7d11ff833b92ab2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_IntegrationNodes::LimUp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1bf574f9151846abaeb89c2a9acca173"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int C_IntegrationNodes::NumAps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2aae6c2f677378b02fe1dd72137d5649"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int C_IntegrationNodes::NumPoints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2db6e5b500d59df584a1556fd2e928f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double C_IntegrationNodes::pi =3.14159265358979</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a023a6f295be0574aca58f8a67ac6263d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> C_IntegrationNodes::w</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac7482a184d19e0ec9bf62a99edd9e29b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> C_IntegrationNodes::x</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abced67ac9650b49ca756fe34b0aa593a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> C_IntegrationNodes::zz</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>source/NumLibs/<a class="el" href="_integration_nodes_8hpp_source.html">IntegrationNodes.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:23 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

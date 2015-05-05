@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Geometry</b></li><li class="navelem"><a class="el" href="class_geometry_1_1_c___parabola_contour.html">C_ParabolaContour</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_geometry.html">Geometry</a></li><li class="navelem"><a class="el" href="class_geometry_1_1_c___parabola_contour.html">C_ParabolaContour</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -92,27 +93,113 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Geometry::C_ParabolaContour Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_parabola_contour_8hpp_source.html">ParabolaContour.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa0c00c9315f7d61dd1731074e0846dba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0c00c9315f7d61dd1731074e0846dba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>C_ParabolaContour</b> (t_cmplx __ParabolaApex, t_cmplx __k_coeff, t_cmplx __b_coeff)</td></tr>
+<tr class="memitem:aa0c00c9315f7d61dd1731074e0846dba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geometry_1_1_c___parabola_contour.html#aa0c00c9315f7d61dd1731074e0846dba">C_ParabolaContour</a> (<a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> __ParabolaApex, <a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> __k_coeff, <a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> __b_coeff)</td></tr>
 <tr class="separator:aa0c00c9315f7d61dd1731074e0846dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a578b2b2d45be66ef6effe03cbf047a7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a578b2b2d45be66ef6effe03cbf047a7a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setParabolaContour</b> (const t_dArray1D &amp;p_parabola, const t_dArray1D &amp;w_parabola, const t_dArray1D &amp;p_line, const t_dArray1D &amp;w_line)</td></tr>
+<tr class="memitem:a578b2b2d45be66ef6effe03cbf047a7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geometry_1_1_c___parabola_contour.html#a578b2b2d45be66ef6effe03cbf047a7a">setParabolaContour</a> (const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;p_parabola, const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;w_parabola, const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;p_line, const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;w_line)</td></tr>
 <tr class="separator:a578b2b2d45be66ef6effe03cbf047a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32867584ce7dfc8234a3446fa803c23f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32867584ce7dfc8234a3446fa803c23f"></a>
-t_cmplxArray2D&#160;</td><td class="memItemRight" valign="bottom"><b>getParabolaContour</b> ()</td></tr>
+<tr class="memitem:a32867584ce7dfc8234a3446fa803c23f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geometry_1_1_c___parabola_contour.html#a32867584ce7dfc8234a3446fa803c23f">getParabolaContour</a> ()</td></tr>
 <tr class="separator:a32867584ce7dfc8234a3446fa803c23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aa0c00c9315f7d61dd1731074e0846dba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Geometry::C_ParabolaContour::C_ParabolaContour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td>
+          <td class="paramname"><em>__ParabolaApex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td>
+          <td class="paramname"><em>__k_coeff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td>
+          <td class="paramname"><em>__b_coeff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a32867584ce7dfc8234a3446fa803c23f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a> Geometry::C_ParabolaContour::getParabolaContour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a578b2b2d45be66ef6effe03cbf047a7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Geometry::C_ParabolaContour::setParabolaContour </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_parabola</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>w_parabola</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>p_line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>w_line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>source/NumLibs/Geometry/<a class="el" href="_parabola_contour_8hpp_source.html">ParabolaContour.hpp</a></li>
-<li>source/NumLibs/Geometry/ParabolaContour.cpp</li>
+<li>source/NumLibs/Geometry/<a class="el" href="_parabola_contour_8cpp.html">ParabolaContour.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:26 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:26 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

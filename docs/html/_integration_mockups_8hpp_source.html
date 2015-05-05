@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,99 +88,113 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">IntegrationMockups.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="_integration_mockups_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html">    3</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___integration___mockup.html">C_Integration_Mockup</a></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">private</span> :</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">int</span> intNumIntegrationPoints, intFunctionType;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">double</span> dDownLimit, dUpLimit;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">double</span> dIntegrationResult;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    double (<a class="code" href="class_c___integration___mockup.html">C_Integration_Mockup</a>::*TestingFunction) (double);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_c___integration___mockup.html">C_Integration_Mockup</a>(){</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        intNumIntegrationPoints=1000;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        dDownLimit=-1.0;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        dUpLimit=1.0;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> setFunctionType(<span class="keywordtype">int</span> __intFunctionType){</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        intFunctionType=__intFunctionType;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">switch</span> (intFunctionType)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">case</span> 0: </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionSine3x;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">case</span> 1: </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionCheb;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="types_8h.html">source/types.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___integration___mockup.html">C_Integration_Mockup</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">private</span> :</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> intNumIntegrationPoints, intFunctionType;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">double</span> dDownLimit, dUpLimit;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">double</span> dIntegrationResult;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    double (<a class="code" href="class_c___integration___mockup.html">C_Integration_Mockup</a>::*TestingFunction) (double);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a5cce9d870510d167ae8e52a0fc88b4d0">   16</a></span>&#160;    <a class="code" href="class_c___integration___mockup.html#a5cce9d870510d167ae8e52a0fc88b4d0">C_Integration_Mockup</a>(){</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        intNumIntegrationPoints=1000;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        dDownLimit=-1.0;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        dUpLimit=1.0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a277f0c63bed990b9c8beae175be845e6">   22</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___integration___mockup.html#a277f0c63bed990b9c8beae175be845e6">setFunctionType</a>(<span class="keywordtype">int</span> __intFunctionType){</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        intFunctionType=__intFunctionType;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">switch</span> (intFunctionType)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">case</span> 0: </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#abe3f2f04b984ae16533e71fa75a3ac43">C_Integration_Mockup::FunctionSine3x</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">case</span> 2: </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionPower;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">case</span> 1: </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#a283bf7e4fa7926c5c309b3d05250857e">C_Integration_Mockup::FunctionCheb</a>;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">case</span> 3: </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionChebCheb;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">case</span> 2: </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#a6072270abf1e552a30b3b8eeaae56b57">C_Integration_Mockup::FunctionPower</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">case</span> 4: </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionPowerCheb;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">case</span> 3: </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#ad0b2dc2666f3f535bb8de192dea15000">C_Integration_Mockup::FunctionChebCheb</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                TestingFunction=&amp;C_Integration_Mockup::FunctionLine;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                std::cout &lt;&lt; <span class="stringliteral">&quot;Function Line selected&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    t_dMatrix IntegrandMockup(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        t_dMatrix result(1,1);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        result(0,0)=(this-&gt;*TestingFunction)(x);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">double</span> FunctionLine(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> x;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">double</span> FunctionSine3x(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> sin(3.0*x);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">double</span> FunctionCheb(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> sqrt(1-x*x);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">double</span> FunctionPower(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> cosh(sinh(x));</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> FunctionChebCheb(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> 1.0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">double</span> FunctionPowerCheb(<span class="keywordtype">double</span> x){</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> cosh(sinh(x))/sqrt(1-x*x);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">int</span> getNumIntegrationPoints(){</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> intNumIntegrationPoints;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">double</span> getDownLimit(){</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> dDownLimit;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">double</span> getUpLimit(){</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> dUpLimit;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">case</span> 4: </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#a98ac3a8fa83fd6696e34061aecd94e9c">C_Integration_Mockup::FunctionPowerCheb</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                TestingFunction=&amp;<a class="code" href="class_c___integration___mockup.html#ae5fea8d5929f9e08bd8a520bc6fc007e">C_Integration_Mockup::FunctionLine</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                std::cout &lt;&lt; <span class="stringliteral">&quot;Function Line selected&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a0cf4106561a8032a45ab56d346ca48ed">   47</a></span>&#160;    <a class="code" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a> <a class="code" href="class_c___integration___mockup.html#a0cf4106561a8032a45ab56d346ca48ed">IntegrandMockup</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a> result(1,1);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        result(0,0)=(this-&gt;*TestingFunction)(x);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#ae5fea8d5929f9e08bd8a520bc6fc007e">   53</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#ae5fea8d5929f9e08bd8a520bc6fc007e">FunctionLine</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> x;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#abe3f2f04b984ae16533e71fa75a3ac43">   57</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#abe3f2f04b984ae16533e71fa75a3ac43">FunctionSine3x</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> sin(3.0*x);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a283bf7e4fa7926c5c309b3d05250857e">   61</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#a283bf7e4fa7926c5c309b3d05250857e">FunctionCheb</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> sqrt(1-x*x);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a6072270abf1e552a30b3b8eeaae56b57">   65</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#a6072270abf1e552a30b3b8eeaae56b57">FunctionPower</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> cosh(sinh(x));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#ad0b2dc2666f3f535bb8de192dea15000">   69</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#ad0b2dc2666f3f535bb8de192dea15000">FunctionChebCheb</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> 1.0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a98ac3a8fa83fd6696e34061aecd94e9c">   73</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#a98ac3a8fa83fd6696e34061aecd94e9c">FunctionPowerCheb</a>(<span class="keywordtype">double</span> x){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> cosh(sinh(x))/sqrt(1-x*x);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#ac29856604fcf4791fd4dd459ab8dd020">   77</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_c___integration___mockup.html#ac29856604fcf4791fd4dd459ab8dd020">getNumIntegrationPoints</a>(){</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> intNumIntegrationPoints;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#a2c945ead423a0e422a0e5d81dd6056fe">   81</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#a2c945ead423a0e422a0e5d81dd6056fe">getDownLimit</a>(){</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> dDownLimit;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_c___integration___mockup.html#ae46f0b9c1ab11f106b54c54c200583b9">   85</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___integration___mockup.html#ae46f0b9c1ab11f106b54c54c200583b9">getUpLimit</a>(){</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> dUpLimit;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
-<div class="ttc" id="class_c___integration___mockup_html"><div class="ttname"><a href="class_c___integration___mockup.html">C_Integration_Mockup</a></div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:3</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_ad0b2dc2666f3f535bb8de192dea15000"><div class="ttname"><a href="class_c___integration___mockup.html#ad0b2dc2666f3f535bb8de192dea15000">C_Integration_Mockup::FunctionChebCheb</a></div><div class="ttdeci">double FunctionChebCheb(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:69</div></div>
+<div class="ttc" id="types_8h_html_a8d0da220940fc7baa5ba6b385e9b874e"><div class="ttname"><a href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a></div><div class="ttdeci">Matrix&lt; double &gt; t_dMatrix</div><div class="ttdoc">Matrix (if in Dirac space then (4,4) ) </div><div class="ttdef"><b>Definition:</b> types.h:29</div></div>
+<div class="ttc" id="types_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a6072270abf1e552a30b3b8eeaae56b57"><div class="ttname"><a href="class_c___integration___mockup.html#a6072270abf1e552a30b3b8eeaae56b57">C_Integration_Mockup::FunctionPower</a></div><div class="ttdeci">double FunctionPower(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:65</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_ae5fea8d5929f9e08bd8a520bc6fc007e"><div class="ttname"><a href="class_c___integration___mockup.html#ae5fea8d5929f9e08bd8a520bc6fc007e">C_Integration_Mockup::FunctionLine</a></div><div class="ttdeci">double FunctionLine(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:53</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a2c945ead423a0e422a0e5d81dd6056fe"><div class="ttname"><a href="class_c___integration___mockup.html#a2c945ead423a0e422a0e5d81dd6056fe">C_Integration_Mockup::getDownLimit</a></div><div class="ttdeci">double getDownLimit()</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:81</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a98ac3a8fa83fd6696e34061aecd94e9c"><div class="ttname"><a href="class_c___integration___mockup.html#a98ac3a8fa83fd6696e34061aecd94e9c">C_Integration_Mockup::FunctionPowerCheb</a></div><div class="ttdeci">double FunctionPowerCheb(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:73</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_ac29856604fcf4791fd4dd459ab8dd020"><div class="ttname"><a href="class_c___integration___mockup.html#ac29856604fcf4791fd4dd459ab8dd020">C_Integration_Mockup::getNumIntegrationPoints</a></div><div class="ttdeci">int getNumIntegrationPoints()</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:77</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_ae46f0b9c1ab11f106b54c54c200583b9"><div class="ttname"><a href="class_c___integration___mockup.html#ae46f0b9c1ab11f106b54c54c200583b9">C_Integration_Mockup::getUpLimit</a></div><div class="ttdeci">double getUpLimit()</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:85</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a0cf4106561a8032a45ab56d346ca48ed"><div class="ttname"><a href="class_c___integration___mockup.html#a0cf4106561a8032a45ab56d346ca48ed">C_Integration_Mockup::IntegrandMockup</a></div><div class="ttdeci">t_dMatrix IntegrandMockup(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:47</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a5cce9d870510d167ae8e52a0fc88b4d0"><div class="ttname"><a href="class_c___integration___mockup.html#a5cce9d870510d167ae8e52a0fc88b4d0">C_Integration_Mockup::C_Integration_Mockup</a></div><div class="ttdeci">C_Integration_Mockup()</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:16</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a283bf7e4fa7926c5c309b3d05250857e"><div class="ttname"><a href="class_c___integration___mockup.html#a283bf7e4fa7926c5c309b3d05250857e">C_Integration_Mockup::FunctionCheb</a></div><div class="ttdeci">double FunctionCheb(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:61</div></div>
+<div class="ttc" id="class_c___integration___mockup_html"><div class="ttname"><a href="class_c___integration___mockup.html">C_Integration_Mockup</a></div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:6</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_abe3f2f04b984ae16533e71fa75a3ac43"><div class="ttname"><a href="class_c___integration___mockup.html#abe3f2f04b984ae16533e71fa75a3ac43">C_Integration_Mockup::FunctionSine3x</a></div><div class="ttdeci">double FunctionSine3x(double x)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:57</div></div>
+<div class="ttc" id="class_c___integration___mockup_html_a277f0c63bed990b9c8beae175be845e6"><div class="ttname"><a href="class_c___integration___mockup.html#a277f0c63bed990b9c8beae175be845e6">C_Integration_Mockup::setFunctionType</a></div><div class="ttdeci">void setFunctionType(int __intFunctionType)</div><div class="ttdef"><b>Definition:</b> IntegrationMockups.hpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:18 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

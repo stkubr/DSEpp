@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,6 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">C_DedicMem_BSE Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_dedic_mem_8hpp_source.html">DedicMem.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for C_DedicMem_BSE:</div>
 <div class="dyncontent">
@@ -101,58 +104,333 @@ Inheritance diagram for C_DedicMem_BSE:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad6928f35d1bb6dc0a9e7896cb435de77"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6928f35d1bb6dc0a9e7896cb435de77"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeAmpStorage</b> (int amps, int points)</td></tr>
+<tr class="memitem:ad6928f35d1bb6dc0a9e7896cb435de77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#ad6928f35d1bb6dc0a9e7896cb435de77">resizeAmpStorage</a> (int amps, int points)</td></tr>
 <tr class="separator:ad6928f35d1bb6dc0a9e7896cb435de77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0fc9faee6bf0212366e272929d05299"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0fc9faee6bf0212366e272929d05299"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAmpStorage</b> (int amp, int point, t_cmplxDirac *Amp)</td></tr>
+<tr class="memitem:ae0fc9faee6bf0212366e272929d05299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#ae0fc9faee6bf0212366e272929d05299">setAmpStorage</a> (int amp, int point, <a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> *Amp)</td></tr>
 <tr class="separator:ae0fc9faee6bf0212366e272929d05299"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e45518a37fafeb43d866fdf8b60dbd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e45518a37fafeb43d866fdf8b60dbd6"></a>
-t_cmplxDirac&#160;</td><td class="memItemRight" valign="bottom"><b>getAmpStorage</b> (int amp, int point)</td></tr>
+<tr class="memitem:a1e45518a37fafeb43d866fdf8b60dbd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a1e45518a37fafeb43d866fdf8b60dbd6">getAmpStorage</a> (int amp, int point)</td></tr>
 <tr class="separator:a1e45518a37fafeb43d866fdf8b60dbd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a832e259d5897e9b274d529979d92d08f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a832e259d5897e9b274d529979d92d08f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearAmpStorage</b> ()</td></tr>
+<tr class="memitem:a832e259d5897e9b274d529979d92d08f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a832e259d5897e9b274d529979d92d08f">clearAmpStorage</a> ()</td></tr>
 <tr class="separator:a832e259d5897e9b274d529979d92d08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e6c97cc94e185ccb93b4b83a6caa986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e6c97cc94e185ccb93b4b83a6caa986"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ResizeEVMatrix</b> (int num_rad, int num_angle, int num_amplitudes, int num_chebs)</td></tr>
+<tr class="memitem:a4e6c97cc94e185ccb93b4b83a6caa986"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a4e6c97cc94e185ccb93b4b83a6caa986">ResizeEVMatrix</a> (int num_rad, int num_angle, int num_amplitudes, int num_chebs)</td></tr>
 <tr class="separator:a4e6c97cc94e185ccb93b4b83a6caa986"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77dd95cd06387357599deb84c8a1b5f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77dd95cd06387357599deb84c8a1b5f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeBSEContour</b> (int num_amplitudes, int num_points)</td></tr>
+<tr class="memitem:a77dd95cd06387357599deb84c8a1b5f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a77dd95cd06387357599deb84c8a1b5f3">resizeBSEContour</a> (int num_amplitudes, int num_points)</td></tr>
 <tr class="separator:a77dd95cd06387357599deb84c8a1b5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1acb22de1a69296a075dc76a066c1cff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1acb22de1a69296a075dc76a066c1cff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeBSEGrid</b> (int num_amplitudes, int num_ex, int num_in)</td></tr>
+<tr class="memitem:a1acb22de1a69296a075dc76a066c1cff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a1acb22de1a69296a075dc76a066c1cff">resizeBSEGrid</a> (int num_amplitudes, int num_ex, int num_in)</td></tr>
 <tr class="separator:a1acb22de1a69296a075dc76a066c1cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eb9828cf1137c08d65e9c531f57dd87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8eb9828cf1137c08d65e9c531f57dd87"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearCauchyGrid</b> ()</td></tr>
+<tr class="memitem:a8eb9828cf1137c08d65e9c531f57dd87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a8eb9828cf1137c08d65e9c531f57dd87">clearCauchyGrid</a> ()</td></tr>
 <tr class="separator:a8eb9828cf1137c08d65e9c531f57dd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7db75e75c587b9a25e937bb77ee399d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7db75e75c587b9a25e937bb77ee399d7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>info</b> ()</td></tr>
+<tr class="memitem:a7db75e75c587b9a25e937bb77ee399d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a7db75e75c587b9a25e937bb77ee399d7">info</a> ()</td></tr>
 <tr class="separator:a7db75e75c587b9a25e937bb77ee399d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_c___dedic_mem___abs"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c___dedic_mem___abs')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a></td></tr>
+<tr class="memitem:ad29a5d2938c8e4cd709ba5ede7a116cc inherit pub_methods_class_c___dedic_mem___abs"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___abs.html#ad29a5d2938c8e4cd709ba5ede7a116cc">~C_DedicMem_Abs</a> ()</td></tr>
+<tr class="separator:ad29a5d2938c8e4cd709ba5ede7a116cc inherit pub_methods_class_c___dedic_mem___abs"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a532449af372b4823ec11c1bac16a39f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a532449af372b4823ec11c1bac16a39f6"></a>
-std::vector&lt; std::vector<br class="typebreak"/>
-&lt; t_cmplxDirac &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AmpStorage</b></td></tr>
+<tr class="memitem:a532449af372b4823ec11c1bac16a39f6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector<br class="typebreak"/>
+&lt; <a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a532449af372b4823ec11c1bac16a39f6">AmpStorage</a></td></tr>
 <tr class="separator:a532449af372b4823ec11c1bac16a39f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f0de44c8872d59b5db86058088e040e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f0de44c8872d59b5db86058088e040e"></a>
-Eigen::MatrixXcf&#160;</td><td class="memItemRight" valign="bottom"><b>EVMatrix</b></td></tr>
+<tr class="memitem:a5f0de44c8872d59b5db86058088e040e"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXcf&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a5f0de44c8872d59b5db86058088e040e">EVMatrix</a></td></tr>
 <tr class="separator:a5f0de44c8872d59b5db86058088e040e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcbf7c4206df13acafeab297bc039f29"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcbf7c4206df13acafeab297bc039f29"></a>
-t_cmplxArray2D&#160;</td><td class="memItemRight" valign="bottom"><b>CauchyContour</b></td></tr>
+<tr class="memitem:adcbf7c4206df13acafeab297bc039f29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#adcbf7c4206df13acafeab297bc039f29">CauchyContour</a></td></tr>
 <tr class="separator:adcbf7c4206df13acafeab297bc039f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d11282e491e4762101a83d7e80e5733"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d11282e491e4762101a83d7e80e5733"></a>
-t_cmplxArray3D&#160;</td><td class="memItemRight" valign="bottom"><b>CauchyGrid</b></td></tr>
+<tr class="memitem:a0d11282e491e4762101a83d7e80e5733"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___dedic_mem___b_s_e.html#a0d11282e491e4762101a83d7e80e5733">CauchyGrid</a></td></tr>
 <tr class="separator:a0d11282e491e4762101a83d7e80e5733"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a832e259d5897e9b274d529979d92d08f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::clearAmpStorage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8eb9828cf1137c08d65e9c531f57dd87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::clearCauchyGrid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1e45518a37fafeb43d866fdf8b60dbd6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> C_DedicMem_BSE::getAmpStorage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7db75e75c587b9a25e937bb77ee399d7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_c___dedic_mem___abs.html#a058cad18bf5cbc3e4d20272e41158f86">C_DedicMem_Abs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad6928f35d1bb6dc0a9e7896cb435de77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::resizeAmpStorage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>points</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a77dd95cd06387357599deb84c8a1b5f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::resizeBSEContour </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_amplitudes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_points</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1acb22de1a69296a075dc76a066c1cff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::resizeBSEGrid </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_amplitudes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_ex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4e6c97cc94e185ccb93b4b83a6caa986"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::ResizeEVMatrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_rad</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_amplitudes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_chebs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae0fc9faee6bf0212366e272929d05299"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_DedicMem_BSE::setAmpStorage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>amp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> *&#160;</td>
+          <td class="paramname"><em>Amp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a532449af372b4823ec11c1bac16a39f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector &lt;<a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&gt; &gt; C_DedicMem_BSE::AmpStorage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adcbf7c4206df13acafeab297bc039f29"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a> C_DedicMem_BSE::CauchyContour</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d11282e491e4762101a83d7e80e5733"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a> C_DedicMem_BSE::CauchyGrid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5f0de44c8872d59b5db86058088e040e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXcf C_DedicMem_BSE::EVMatrix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>source/DedicMem/<a class="el" href="_dedic_mem_8hpp_source.html">DedicMem.hpp</a></li>
-<li>source/DedicMem/DedicMem.cpp</li>
+<li>source/DedicMem/<a class="el" href="_dedic_mem_8cpp.html">DedicMem.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:22 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:25 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

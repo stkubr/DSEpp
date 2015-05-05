@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,72 +88,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Gluon.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../NumLibs/Linear_interpolation.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Propagator.hpp&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">enum</span> Gluon_ID {RL_MT_Light_ID=0, RL_MT_Heavy_ID, PS_Light_ID, RL_MT_Heavy_DD_ID, Arbitrary_Gluon_ID, Test_Gluon_ID, Gluon_ID_End};</div>
+<a href="_gluon_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;../NumLibs/LinearInterpolation.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_propagator_8hpp.html">Propagator.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_c___gluon.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___gluon.html">C_Gluon</a>: <span class="keyword">public</span> <a class="code" href="class_c___propagator.html">C_Propagator</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">double</span> D, w2;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> LogTail;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    t_cmplx (<a class="code" href="class_c___gluon.html">C_Gluon</a>::*Gluon_ref)(t_cmplx);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::string GluonParamPath;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_interpolation_1_1_linear.html">Interpolation::Linear&lt;t_cmplx, t_cmplx&gt;</a> * FuncToInterpolate;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// Constructor</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_c___gluon.html">C_Gluon</a>(std::string&amp; _GluonParamPath);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_c___gluon.html">C_Gluon</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// Initialization</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> InitialState();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> setGluonDefaultParameters();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Load interpolation points for Gluon</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> setInterpolatorPoints(std::string&amp; _InterpolationPointsPath);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Read parameters from file</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> ReadParameters();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Gluon check on the real line</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> GluonCheck();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespace_propagators.html">    9</a></span>&#160;<span class="keyword">namespace </span>Propagators {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2">   15</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2">Gluon_ID</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2ace04dae079f9948a2c7cd73461e7a21a">   16</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2ace04dae079f9948a2c7cd73461e7a21a">RL_MT_Light_ID</a> = 0,</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3763741e2763cc2606cae8ae4a9ad8b4">   17</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3763741e2763cc2606cae8ae4a9ad8b4">RL_MT_Heavy_ID</a>,</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3ff257878b20e6403002b455d50a928e">   18</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3ff257878b20e6403002b455d50a928e">PS_Light_ID</a>,</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aaab60119984f1b32d8ae45dfbb28a58e">   19</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aaab60119984f1b32d8ae45dfbb28a58e">RL_MT_Heavy_DD_ID</a>,</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aa03ebd5d031c4b42ff6f7a616fcfea8a">   20</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aa03ebd5d031c4b42ff6f7a616fcfea8a">Arbitrary_Gluon_ID</a>,</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8cf45a24d5f8f5248fea047456421479">   21</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8cf45a24d5f8f5248fea047456421479">Test_Gluon_ID</a>,</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8ce6291a8d2ee7d3bd0365d041883f9d">   22</a></span>&#160;        <a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8ce6291a8d2ee7d3bd0365d041883f9d">Gluon_ID_End</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___gluon.html">   31</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a> : <span class="keyword">public</span> <a class="code" href="class_propagators_1_1_c___propagator.html">C_Propagator</a> {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">double</span> D, w2;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">int</span> LogTail;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Parametrized Factory Method function</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_c___gluon.html">C_Gluon</a>* createGluon(Gluon_ID <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_c___gluon.html">C_Gluon</a>* createGluon(Gluon_ID <span class="keywordtype">id</span>, std::string&amp; _InterpolationPointsPath);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> (<a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a>::*Gluon_ref)(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::string GluonParamPath;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="class_interpolation_1_1_c___linear.html">Interpolation::C_Linear&lt;t_cmplx, t_cmplx&gt;</a> *FuncToInterpolate;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> DressPropagator() {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// So far the Gluon is given by function, so it is considered to be already dressed.</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Get value of Gluon at k</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    t_cmplxArray1D getPropAt(t_cmplx k);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// Maris-Tandy gluon model</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    t_cmplx GluonMT(t_cmplx k);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Set manually Maris-Tandy gluon model parameters (redefined by Lambda and Etta)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> setMTParams(<span class="keywordtype">double</span> Lambda, <span class="keywordtype">double</span> Etta);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a>(std::string &amp;_GluonParamPath);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> setToInitialState();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> setGluonDefaultParameters();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> setInterpolatorPoints(std::string &amp;_InterpolationPointsPath);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Model given by interpolation over provided points set</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    t_cmplx GluonByInterpolation(t_cmplx k);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> readParameters();</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> checkGluon();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="ttc" id="class_c___gluon_html"><div class="ttname"><a href="class_c___gluon.html">C_Gluon</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:9</div></div>
-<div class="ttc" id="class_c___propagator_html"><div class="ttname"><a href="class_c___propagator.html">C_Propagator</a></div><div class="ttdef"><b>Definition:</b> Propagator.hpp:17</div></div>
-<div class="ttc" id="class_interpolation_1_1_linear_html"><div class="ttname"><a href="class_interpolation_1_1_linear.html">Interpolation::Linear&lt; t_cmplx, t_cmplx &gt;</a></div></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> GluonByMarisTandy(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> k);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> GluonByInterpolation(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> k);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a> *<a class="code" href="class_propagators_1_1_c___gluon.html#aa6b6cb7bfb183bfae684fa6a840643ff">createGluon</a>(<a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2">Gluon_ID</a> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_propagators_1_1_c___gluon.html">C_Gluon</a> *<a class="code" href="class_propagators_1_1_c___gluon.html#aa6b6cb7bfb183bfae684fa6a840643ff">createGluon</a>(<a class="code" href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2">Gluon_ID</a> <span class="keywordtype">id</span>, std::string &amp;_InterpolationPointsPath);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___gluon.html#aeb5df6b8c6058687a1ea048217561ffa">   73</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___gluon.html#aeb5df6b8c6058687a1ea048217561ffa">dressPropagator</a>() {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// So far the Gluon is given by function, so it is considered to be already dressed.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a> <a class="code" href="class_propagators_1_1_c___gluon.html#abfa90c782397bcb81c98529d46dc081f">PropagatorAtPoint</a>(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> k);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___gluon.html#a2a2f857431b7a3cb1142631d31507091">setMTParams</a>(<span class="keywordtype">double</span> Lambda, <span class="keywordtype">double</span> Etta);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="ttc" id="class_propagators_1_1_c___gluon_html"><div class="ttname"><a href="class_propagators_1_1_c___gluon.html">Propagators::C_Gluon</a></div><div class="ttdoc">The Gluon model Although the gluon itself can posses its own DSE here we use an approximation: the ef...</div><div class="ttdef"><b>Definition:</b> Gluon.hpp:31</div></div>
+<div class="ttc" id="class_propagators_1_1_c___gluon_html_aeb5df6b8c6058687a1ea048217561ffa"><div class="ttname"><a href="class_propagators_1_1_c___gluon.html#aeb5df6b8c6058687a1ea048217561ffa">Propagators::C_Gluon::dressPropagator</a></div><div class="ttdeci">void dressPropagator()</div><div class="ttdef"><b>Definition:</b> Gluon.hpp:73</div></div>
+<div class="ttc" id="class_propagators_1_1_c___gluon_html_abfa90c782397bcb81c98529d46dc081f"><div class="ttname"><a href="class_propagators_1_1_c___gluon.html#abfa90c782397bcb81c98529d46dc081f">Propagators::C_Gluon::PropagatorAtPoint</a></div><div class="ttdeci">t_cmplxArray1D PropagatorAtPoint(t_cmplx k)</div><div class="ttdoc">Get value of Gluon at /f$ k^2 /f$. </div><div class="ttdef"><b>Definition:</b> Gluon.cpp:129</div></div>
+<div class="ttc" id="types_8h_html_aab52f79903881ec15d289b3dbfb102fd"><div class="ttname"><a href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a></div><div class="ttdeci">std::vector&lt; t_cmplx &gt; t_cmplxArray1D</div><div class="ttdef"><b>Definition:</b> types.h:52</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2ace04dae079f9948a2c7cd73461e7a21a"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2ace04dae079f9948a2c7cd73461e7a21a">Propagators::RL_MT_Light_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:16</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2">Propagators::Gluon_ID</a></div><div class="ttdeci">Gluon_ID</div><div class="ttdef"><b>Definition:</b> Gluon.hpp:15</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2aa03ebd5d031c4b42ff6f7a616fcfea8a"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aa03ebd5d031c4b42ff6f7a616fcfea8a">Propagators::Arbitrary_Gluon_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:20</div></div>
+<div class="ttc" id="_propagator_8hpp_html"><div class="ttname"><a href="_propagator_8hpp.html">Propagator.hpp</a></div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html">Propagators::C_Propagator</a></div><div class="ttdoc">The interface class for all propagators: quarks, gluons or ghosts. </div><div class="ttdef"><b>Definition:</b> Propagator.hpp:26</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2a3763741e2763cc2606cae8ae4a9ad8b4"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3763741e2763cc2606cae8ae4a9ad8b4">Propagators::RL_MT_Heavy_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:17</div></div>
+<div class="ttc" id="types_8h_html_aa75ae339052372f671bb263e6a272e82"><div class="ttname"><a href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a></div><div class="ttdeci">std::complex&lt; double &gt; t_cmplx</div><div class="ttdef"><b>Definition:</b> types.h:23</div></div>
+<div class="ttc" id="class_propagators_1_1_c___gluon_html_aa6b6cb7bfb183bfae684fa6a840643ff"><div class="ttname"><a href="class_propagators_1_1_c___gluon.html#aa6b6cb7bfb183bfae684fa6a840643ff">Propagators::C_Gluon::createGluon</a></div><div class="ttdeci">static C_Gluon * createGluon(Gluon_ID id)</div><div class="ttdoc">Parametrized Factory Method function. </div><div class="ttdef"><b>Definition:</b> Gluon.cpp:28</div></div>
+<div class="ttc" id="class_interpolation_1_1_c___linear_html"><div class="ttname"><a href="class_interpolation_1_1_c___linear.html">Interpolation::C_Linear&lt; t_cmplx, t_cmplx &gt;</a></div></div>
+<div class="ttc" id="class_propagators_1_1_c___gluon_html_a2a2f857431b7a3cb1142631d31507091"><div class="ttname"><a href="class_propagators_1_1_c___gluon.html#a2a2f857431b7a3cb1142631d31507091">Propagators::C_Gluon::setMTParams</a></div><div class="ttdeci">void setMTParams(double Lambda, double Etta)</div><div class="ttdoc">Set manually Maris-Tandy gluon model parameters (redefined by Lambda and Etta) </div><div class="ttdef"><b>Definition:</b> Gluon.cpp:157</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2a3ff257878b20e6403002b455d50a928e"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a3ff257878b20e6403002b455d50a928e">Propagators::PS_Light_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:18</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2a8ce6291a8d2ee7d3bd0365d041883f9d"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8ce6291a8d2ee7d3bd0365d041883f9d">Propagators::Gluon_ID_End</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:22</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2a8cf45a24d5f8f5248fea047456421479"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2a8cf45a24d5f8f5248fea047456421479">Propagators::Test_Gluon_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:21</div></div>
+<div class="ttc" id="namespace_propagators_html_a55f0e3c882b2f293bee7645ad477bda2aaab60119984f1b32d8ae45dfbb28a58e"><div class="ttname"><a href="namespace_propagators.html#a55f0e3c882b2f293bee7645ad477bda2aaab60119984f1b32d8ae45dfbb28a58e">Propagators::RL_MT_Heavy_DD_ID</a></div><div class="ttdef"><b>Definition:</b> Gluon.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

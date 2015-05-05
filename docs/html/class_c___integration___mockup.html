@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,50 +89,329 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">C_Integration_Mockup Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_integration_mockups_8hpp_source.html">IntegrationMockups.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a277f0c63bed990b9c8beae175be845e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a277f0c63bed990b9c8beae175be845e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setFunctionType</b> (int __intFunctionType)</td></tr>
+<tr class="memitem:a5cce9d870510d167ae8e52a0fc88b4d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a5cce9d870510d167ae8e52a0fc88b4d0">C_Integration_Mockup</a> ()</td></tr>
+<tr class="separator:a5cce9d870510d167ae8e52a0fc88b4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a277f0c63bed990b9c8beae175be845e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a277f0c63bed990b9c8beae175be845e6">setFunctionType</a> (int __intFunctionType)</td></tr>
 <tr class="separator:a277f0c63bed990b9c8beae175be845e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf4106561a8032a45ab56d346ca48ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cf4106561a8032a45ab56d346ca48ed"></a>
-t_dMatrix&#160;</td><td class="memItemRight" valign="bottom"><b>IntegrandMockup</b> (double x)</td></tr>
+<tr class="memitem:a0cf4106561a8032a45ab56d346ca48ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a0cf4106561a8032a45ab56d346ca48ed">IntegrandMockup</a> (double x)</td></tr>
 <tr class="separator:a0cf4106561a8032a45ab56d346ca48ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5fea8d5929f9e08bd8a520bc6fc007e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5fea8d5929f9e08bd8a520bc6fc007e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionLine</b> (double x)</td></tr>
+<tr class="memitem:ae5fea8d5929f9e08bd8a520bc6fc007e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#ae5fea8d5929f9e08bd8a520bc6fc007e">FunctionLine</a> (double x)</td></tr>
 <tr class="separator:ae5fea8d5929f9e08bd8a520bc6fc007e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe3f2f04b984ae16533e71fa75a3ac43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe3f2f04b984ae16533e71fa75a3ac43"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionSine3x</b> (double x)</td></tr>
+<tr class="memitem:abe3f2f04b984ae16533e71fa75a3ac43"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#abe3f2f04b984ae16533e71fa75a3ac43">FunctionSine3x</a> (double x)</td></tr>
 <tr class="separator:abe3f2f04b984ae16533e71fa75a3ac43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a283bf7e4fa7926c5c309b3d05250857e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a283bf7e4fa7926c5c309b3d05250857e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionCheb</b> (double x)</td></tr>
+<tr class="memitem:a283bf7e4fa7926c5c309b3d05250857e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a283bf7e4fa7926c5c309b3d05250857e">FunctionCheb</a> (double x)</td></tr>
 <tr class="separator:a283bf7e4fa7926c5c309b3d05250857e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6072270abf1e552a30b3b8eeaae56b57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6072270abf1e552a30b3b8eeaae56b57"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionPower</b> (double x)</td></tr>
+<tr class="memitem:a6072270abf1e552a30b3b8eeaae56b57"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a6072270abf1e552a30b3b8eeaae56b57">FunctionPower</a> (double x)</td></tr>
 <tr class="separator:a6072270abf1e552a30b3b8eeaae56b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0b2dc2666f3f535bb8de192dea15000"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0b2dc2666f3f535bb8de192dea15000"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionChebCheb</b> (double x)</td></tr>
+<tr class="memitem:ad0b2dc2666f3f535bb8de192dea15000"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#ad0b2dc2666f3f535bb8de192dea15000">FunctionChebCheb</a> (double x)</td></tr>
 <tr class="separator:ad0b2dc2666f3f535bb8de192dea15000"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98ac3a8fa83fd6696e34061aecd94e9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98ac3a8fa83fd6696e34061aecd94e9c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>FunctionPowerCheb</b> (double x)</td></tr>
+<tr class="memitem:a98ac3a8fa83fd6696e34061aecd94e9c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a98ac3a8fa83fd6696e34061aecd94e9c">FunctionPowerCheb</a> (double x)</td></tr>
 <tr class="separator:a98ac3a8fa83fd6696e34061aecd94e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac29856604fcf4791fd4dd459ab8dd020"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac29856604fcf4791fd4dd459ab8dd020"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumIntegrationPoints</b> ()</td></tr>
+<tr class="memitem:ac29856604fcf4791fd4dd459ab8dd020"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#ac29856604fcf4791fd4dd459ab8dd020">getNumIntegrationPoints</a> ()</td></tr>
 <tr class="separator:ac29856604fcf4791fd4dd459ab8dd020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c945ead423a0e422a0e5d81dd6056fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c945ead423a0e422a0e5d81dd6056fe"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getDownLimit</b> ()</td></tr>
+<tr class="memitem:a2c945ead423a0e422a0e5d81dd6056fe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#a2c945ead423a0e422a0e5d81dd6056fe">getDownLimit</a> ()</td></tr>
 <tr class="separator:a2c945ead423a0e422a0e5d81dd6056fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae46f0b9c1ab11f106b54c54c200583b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae46f0b9c1ab11f106b54c54c200583b9"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getUpLimit</b> ()</td></tr>
+<tr class="memitem:ae46f0b9c1ab11f106b54c54c200583b9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integration___mockup.html#ae46f0b9c1ab11f106b54c54c200583b9">getUpLimit</a> ()</td></tr>
 <tr class="separator:ae46f0b9c1ab11f106b54c54c200583b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5cce9d870510d167ae8e52a0fc88b4d0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">C_Integration_Mockup::C_Integration_Mockup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a283bf7e4fa7926c5c309b3d05250857e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionCheb </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad0b2dc2666f3f535bb8de192dea15000"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionChebCheb </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae5fea8d5929f9e08bd8a520bc6fc007e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionLine </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6072270abf1e552a30b3b8eeaae56b57"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionPower </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a98ac3a8fa83fd6696e34061aecd94e9c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionPowerCheb </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abe3f2f04b984ae16533e71fa75a3ac43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::FunctionSine3x </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2c945ead423a0e422a0e5d81dd6056fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::getDownLimit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac29856604fcf4791fd4dd459ab8dd020"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int C_Integration_Mockup::getNumIntegrationPoints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae46f0b9c1ab11f106b54c54c200583b9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_Integration_Mockup::getUpLimit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0cf4106561a8032a45ab56d346ca48ed"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a> C_Integration_Mockup::IntegrandMockup </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a277f0c63bed990b9c8beae175be845e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_Integration_Mockup::setFunctionType </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>__intFunctionType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>source/Mockups/<a class="el" href="_integration_mockups_8hpp_source.html">IntegrationMockups.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:23 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:20 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

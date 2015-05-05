@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 80.321285
+%%BoundingBox: 0 0 500 182.741117
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,13 +19,13 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 6.225000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 2.736111 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 6 def
-/cols 9 def
+/rows 9 def
+/cols 5 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
 
@@ -174,27 +174,22 @@
 boxfont setfont
 1 boundaspect scale
 (C_AbsDiagram) cw
-(C_AbstractKernel) cw
-(C_AbsVertex) cw
-(C_Propagator) cw
-(C_Kernel_RL) cw
-(C_Kernel_RL_PS) cw
-(C_BSE_Base) cw
-(C_Gluon) cw
-(C_Quark) cw
-(C_BSE_Hadron_Base) cw
-(C_Bottom_Quark) cw
-(C_Charm_Quark) cw
-(C_Down_Quark) cw
-(C_Strange_Quark) cw
-(C_Test_Quark) cw
-(C_Up_Quark) cw
-(C_BSE_Hadron_Meson) cw
-(C_Mesons_AxialVector) cw
-(C_Mesons_PseudoScalar) cw
-(C_Mesons_Scalar) cw
-(C_Mesons_Tensor) cw
-(C_Mesons_Vector) cw
+(BSE::C_BSE) cw
+(Kernels::C_AbstractKernel) cw
+(Propagators::C_Propagator) cw
+(BSE::C_BSE_TwoBody) cw
+(Kernels::C_TwoQuarkKernel) cw
+(Propagators::C_Gluon) cw
+(Propagators::C_Quark) cw
+(BSE::C_BSE_Matrix) cw
+(Kernels::C_Kernel_RL) cw
+(Kernels::C_Kernel_RL_PS) cw
+(Propagators::C_Bottom_Quark) cw
+(Propagators::C_Charm_Quark) cw
+(Propagators::C_Down_Quark) cw
+(Propagators::C_Strange_Quark) cw
+(Propagators::C_Test_Quark) cw
+(Propagators::C_Up_Quark) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -206,96 +201,78 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (C_AbsDiagram) 2.000000 5.000000 box
- (C_AbstractKernel) 0.500000 4.000000 box
- (C_AbsVertex) 2.000000 4.000000 box
- (C_Propagator) 4.250000 4.000000 box
- (C_Kernel_RL) 0.000000 3.000000 box
- (C_Kernel_RL_PS) 1.000000 3.000000 box
- (C_BSE_Base) 2.000000 3.000000 box
- (C_Gluon) 3.000000 3.000000 box
- (C_Quark) 5.500000 3.000000 box
- (C_BSE_Hadron_Base) 2.000000 2.000000 box
- (C_Bottom_Quark) 3.000000 2.000000 box
- (C_Charm_Quark) 4.000000 2.000000 box
- (C_Down_Quark) 5.000000 2.000000 box
- (C_Strange_Quark) 6.000000 2.000000 box
- (C_Test_Quark) 7.000000 2.000000 box
- (C_Up_Quark) 8.000000 2.000000 box
- (C_BSE_Hadron_Meson) 2.000000 1.000000 box
- (C_Mesons_AxialVector) 0.000000 0.000000 box
- (C_Mesons_PseudoScalar) 1.000000 0.000000 box
- (C_Mesons_Scalar) 2.000000 0.000000 box
- (C_Mesons_Tensor) 3.000000 0.000000 box
- (C_Mesons_Vector) 4.000000 0.000000 box
+ (C_AbsDiagram) 1.000000 8.000000 box
+ (BSE::C_BSE) 0.000000 7.000000 box
+ (Kernels::C_AbstractKernel) 1.000000 7.000000 box
+ (Propagators::C_Propagator) 2.500000 7.000000 box
+ (BSE::C_BSE_TwoBody) 0.000000 6.000000 box
+ (Kernels::C_TwoQuarkKernel) 1.000000 6.000000 box
+ (Propagators::C_Gluon) 2.000000 6.000000 box
+ (Propagators::C_Quark) 3.000000 6.000000 box
+ (BSE::C_BSE_Matrix) 0.000000 5.000000 box
+0.000000 5.000000 mark
+ (Kernels::C_Kernel_RL) 2.000000 5.000000 box
+ (Kernels::C_Kernel_RL_PS) 2.000000 4.000000 box
+ (Propagators::C_Bottom_Quark) 4.000000 5.000000 box
+ (Propagators::C_Charm_Quark) 4.000000 4.000000 box
+ (Propagators::C_Down_Quark) 4.000000 3.000000 box
+ (Propagators::C_Strange_Quark) 4.000000 2.000000 box
+ (Propagators::C_Test_Quark) 4.000000 1.000000 box
+ (Propagators::C_Up_Quark) 4.000000 0.000000 box
 
 % ----- relations -----
 
 solid
-1 2.000000 4.250000 out
+1 1.000000 7.250000 out
 solid
-0.500000 4.250000 5.000000 conn
+0.000000 2.500000 8.000000 conn
 solid
-0 0.500000 4.750000 in
+0 0.000000 7.750000 in
 solid
-1 0.500000 3.250000 out
+1 0.000000 6.250000 out
 solid
-0.000000 1.000000 4.000000 conn
+0 1.000000 7.750000 in
 solid
-0 2.000000 4.750000 in
+1 1.000000 6.250000 out
 solid
-1 2.000000 3.250000 out
+0 2.500000 7.750000 in
 solid
-0 4.250000 4.750000 in
+1 2.500000 6.250000 out
 solid
-1 4.250000 3.250000 out
+2.000000 3.000000 7.000000 conn
 solid
-3.000000 5.500000 4.000000 conn
+0 0.000000 6.750000 in
 solid
-0 0.000000 3.750000 in
+1 0.000000 5.250000 out
 solid
-0 1.000000 3.750000 in
+0 1.000000 6.750000 in
 solid
-0 2.000000 3.750000 in
+1 1.000000 5.250000 out
 solid
-1 2.000000 2.250000 out
+0 2.000000 6.750000 in
 solid
-0 3.000000 3.750000 in
+0 3.000000 6.750000 in
 solid
-0 5.500000 3.750000 in
+1 3.000000 5.250000 out
 solid
-1 5.500000 2.250000 out
+0 0.000000 5.750000 in
 solid
-3.000000 8.000000 3.000000 conn
+0 1.000000 5.500000 hedge
 solid
-0 2.000000 2.750000 in
+0 1.000000 4.500000 hedge
 solid
-1 2.000000 1.250000 out
+1.000000 6.000000 4.500000 vedge
 solid
-0 3.000000 2.750000 in
+0 3.000000 5.500000 hedge
 solid
-0 4.000000 2.750000 in
+0 3.000000 4.500000 hedge
 solid
-0 5.000000 2.750000 in
+0 3.000000 3.500000 hedge
 solid
-0 6.000000 2.750000 in
+0 3.000000 2.500000 hedge
 solid
-0 7.000000 2.750000 in
+0 3.000000 1.500000 hedge
 solid
-0 8.000000 2.750000 in
+0 3.000000 0.500000 hedge
 solid
-0 2.000000 1.750000 in
-solid
-1 2.000000 0.250000 out
-solid
-0.000000 4.000000 1.000000 conn
-solid
-0 0.000000 0.750000 in
-solid
-0 1.000000 0.750000 in
-solid
-0 2.000000 0.750000 in
-solid
-0 3.000000 0.750000 in
-solid
-0 4.000000 0.750000 in
+3.000000 6.000000 0.500000 vedge

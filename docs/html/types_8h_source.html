@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">types.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="types_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * types.hpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jan 21, 2014</span></div>
@@ -105,39 +107,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef _NUM_THREADS</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _NUM_THREADS omp_get_max_threads()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="types_8h.html#ad38314971f1fce25b79909440804afca">   20</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _NUM_THREADS omp_get_max_threads()</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">typedef</span> std::complex&lt;double&gt; t_cmplx;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">   23</a></span>&#160;<span class="keyword">typedef</span> std::complex&lt;double&gt; <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">typedef</span> Vector4&lt;complex&lt;double&gt; &gt; t_cmplxVector;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">   26</a></span>&#160;<span class="keyword">typedef</span> Vector4&lt;complex&lt;double&gt; &gt; <a class="code" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">typedef</span> Matrix&lt;double&gt; t_dMatrix;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">   29</a></span>&#160;<span class="keyword">typedef</span> Matrix&lt;double&gt; <a class="code" href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">typedef</span> Matrix&lt;complex&lt;double&gt; &gt; t_cmplxMatrix;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="types_8h.html#a24d30fabb53c3b88ffb2af3ce415e9df">   32</a></span>&#160;<span class="keyword">typedef</span> Matrix&lt;complex&lt;double&gt; &gt; <a class="code" href="types_8h.html#a24d30fabb53c3b88ffb2af3ce415e9df">t_cmplxMatrix</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> Tensor&lt;double&gt; t_dTensor;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="types_8h.html#a7962e20989a6b8efc97f46a8438e10fb">   35</a></span>&#160;<span class="keyword">typedef</span> Tensor&lt;double&gt; <a class="code" href="types_8h.html#a7962e20989a6b8efc97f46a8438e10fb">t_dTensor</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">typedef</span> Tensor&lt;complex&lt;double&gt; &gt; t_cmplxTensor;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="types_8h.html#a23430de2ae483000af45037b36fedba8">   38</a></span>&#160;<span class="keyword">typedef</span> Tensor&lt;complex&lt;double&gt; &gt; <a class="code" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">typedef</span> Matrix&lt;Tensor&lt;complex&lt;double&gt; &gt; &gt; t_cmplxDirac;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">   41</a></span>&#160;<span class="keyword">typedef</span> Matrix&lt;Tensor&lt;complex&lt;double&gt; &gt; &gt; <a class="code" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">typedef</span> Matrix&lt; t_cmplxMatrix &gt; t_cmplxMatrix2D;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">   46</a></span>&#160;<span class="keyword">typedef</span> Matrix&lt; t_cmplxMatrix &gt; <a class="code" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">typedef</span> std::vector&lt;double&gt; t_dArray1D;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_dArray1D&gt; t_dArray2D;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_dArray2D&gt; t_dArray3D;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">   48</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;double&gt; <a class="code" href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="types_8h.html#a4ddb5158555763064b839eaf516b8d50">   49</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_dArray1D&gt; <a class="code" href="types_8h.html#a4ddb5158555763064b839eaf516b8d50">t_dArray2D</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="types_8h.html#a37838e1ce071ad7ba050070159c90746">   50</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_dArray2D&gt; <a class="code" href="types_8h.html#a37838e1ce071ad7ba050070159c90746">t_dArray3D</a>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplx&gt; t_cmplxArray1D;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray1D&gt; t_cmplxArray2D;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray2D&gt; t_cmplxArray3D;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray3D&gt; t_cmplxArray4D;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">   52</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplx&gt; <a class="code" href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">   53</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray1D&gt; <a class="code" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="types_8h.html#a13088102853997a3c148dfe29c372f85">   54</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray2D&gt; <a class="code" href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="types_8h.html#a71e866ee00a3173697327849014bce9b">   55</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;t_cmplxArray3D&gt; <a class="code" href="types_8h.html#a71e866ee00a3173697327849014bce9b">t_cmplxArray4D</a>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* TYPES_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="types_8h_html_a8d0da220940fc7baa5ba6b385e9b874e"><div class="ttname"><a href="types_8h.html#a8d0da220940fc7baa5ba6b385e9b874e">t_dMatrix</a></div><div class="ttdeci">Matrix&lt; double &gt; t_dMatrix</div><div class="ttdoc">Matrix (if in Dirac space then (4,4) ) </div><div class="ttdef"><b>Definition:</b> types.h:29</div></div>
+<div class="ttc" id="types_8h_html_a7962e20989a6b8efc97f46a8438e10fb"><div class="ttname"><a href="types_8h.html#a7962e20989a6b8efc97f46a8438e10fb">t_dTensor</a></div><div class="ttdeci">Tensor&lt; double &gt; t_dTensor</div><div class="ttdoc">Tensor in Euclidean space with arbitrary rank. </div><div class="ttdef"><b>Definition:</b> types.h:35</div></div>
+<div class="ttc" id="types_8h_html_aab52f79903881ec15d289b3dbfb102fd"><div class="ttname"><a href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a></div><div class="ttdeci">std::vector&lt; t_cmplx &gt; t_cmplxArray1D</div><div class="ttdef"><b>Definition:</b> types.h:52</div></div>
+<div class="ttc" id="types_8h_html_a13088102853997a3c148dfe29c372f85"><div class="ttname"><a href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray2D &gt; t_cmplxArray3D</div><div class="ttdef"><b>Definition:</b> types.h:54</div></div>
+<div class="ttc" id="types_8h_html_ae924474dbd8b75d3e13a2674c4a06787"><div class="ttname"><a href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a></div><div class="ttdeci">Matrix&lt; Tensor&lt; complex&lt; double &gt; &gt; &gt; t_cmplxDirac</div><div class="ttdoc">Composite object which is Dirac matrix and Lorentz tensor. </div><div class="ttdef"><b>Definition:</b> types.h:41</div></div>
+<div class="ttc" id="types_8h_html_a71e866ee00a3173697327849014bce9b"><div class="ttname"><a href="types_8h.html#a71e866ee00a3173697327849014bce9b">t_cmplxArray4D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray3D &gt; t_cmplxArray4D</div><div class="ttdef"><b>Definition:</b> types.h:55</div></div>
+<div class="ttc" id="types_8h_html_a23430de2ae483000af45037b36fedba8"><div class="ttname"><a href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a></div><div class="ttdeci">Tensor&lt; complex&lt; double &gt; &gt; t_cmplxTensor</div><div class="ttdoc">Tensor in Euclidean space with arbitrary rank. </div><div class="ttdef"><b>Definition:</b> types.h:38</div></div>
+<div class="ttc" id="types_8h_html_a4ddb5158555763064b839eaf516b8d50"><div class="ttname"><a href="types_8h.html#a4ddb5158555763064b839eaf516b8d50">t_dArray2D</a></div><div class="ttdeci">std::vector&lt; t_dArray1D &gt; t_dArray2D</div><div class="ttdef"><b>Definition:</b> types.h:49</div></div>
+<div class="ttc" id="types_8h_html_a4db8c78f1689c3a957b2866daaae58f2"><div class="ttname"><a href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray1D &gt; t_cmplxArray2D</div><div class="ttdef"><b>Definition:</b> types.h:53</div></div>
+<div class="ttc" id="types_8h_html_ab0ebabce2061a9cbb83363a282add98f"><div class="ttname"><a href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a></div><div class="ttdeci">Matrix&lt; t_cmplxMatrix &gt; t_cmplxMatrix2D</div><div class="ttdef"><b>Definition:</b> types.h:46</div></div>
+<div class="ttc" id="types_8h_html_aa75ae339052372f671bb263e6a272e82"><div class="ttname"><a href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a></div><div class="ttdeci">std::complex&lt; double &gt; t_cmplx</div><div class="ttdef"><b>Definition:</b> types.h:23</div></div>
+<div class="ttc" id="types_8h_html_a7572e8a35cd6501ce959f177307310a4"><div class="ttname"><a href="types_8h.html#a7572e8a35cd6501ce959f177307310a4">t_dArray1D</a></div><div class="ttdeci">std::vector&lt; double &gt; t_dArray1D</div><div class="ttdef"><b>Definition:</b> types.h:48</div></div>
+<div class="ttc" id="types_8h_html_a37838e1ce071ad7ba050070159c90746"><div class="ttname"><a href="types_8h.html#a37838e1ce071ad7ba050070159c90746">t_dArray3D</a></div><div class="ttdeci">std::vector&lt; t_dArray2D &gt; t_dArray3D</div><div class="ttdef"><b>Definition:</b> types.h:50</div></div>
+<div class="ttc" id="types_8h_html_a24d30fabb53c3b88ffb2af3ce415e9df"><div class="ttname"><a href="types_8h.html#a24d30fabb53c3b88ffb2af3ce415e9df">t_cmplxMatrix</a></div><div class="ttdeci">Matrix&lt; complex&lt; double &gt; &gt; t_cmplxMatrix</div><div class="ttdoc">Matrix (if in Dirac space then (4,4) ) </div><div class="ttdef"><b>Definition:</b> types.h:32</div></div>
+<div class="ttc" id="types_8h_html_ae8d0d77d0edff801ba45e425c85cf87d"><div class="ttname"><a href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a></div><div class="ttdeci">Vector4&lt; complex&lt; double &gt; &gt; t_cmplxVector</div><div class="ttdoc">4-vector in Euclidean space </div><div class="ttdef"><b>Definition:</b> types.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

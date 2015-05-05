@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,44 +92,211 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">C_Integrator_Path&lt; T_out, T_contour, T_in &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_integrator___path_8hpp_source.html">Integrator_Path.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95026f1b45d90861f246b828ce9131c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95026f1b45d90861f246b828ce9131c0"></a>
-vector&lt; T_out &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getResult</b> (T_contour &amp;PathStorage, T_in &amp;Point)</td></tr>
+<tr class="memitem:a95026f1b45d90861f246b828ce9131c0"><td class="memItemLeft" align="right" valign="top">vector&lt; T_out &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#a95026f1b45d90861f246b828ce9131c0">getResult</a> (T_contour &amp;PathStorage, T_in &amp;Point)</td></tr>
 <tr class="separator:a95026f1b45d90861f246b828ce9131c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad68512fccb5e8ef0402b214401268a2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad68512fccb5e8ef0402b214401268a2a"></a>
-static <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createIntegrator</b> (int _NumPoints, std::function&lt; T_in(T_in, T_in)&gt; *_IntegrationWeightFunction)</td></tr>
+<tr class="memitem:ad68512fccb5e8ef0402b214401268a2a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#ad68512fccb5e8ef0402b214401268a2a">createIntegrator</a> (int _NumPoints, std::function&lt; T_in(T_in, T_in)&gt; *_IntegrationWeightFunction)</td></tr>
 <tr class="separator:ad68512fccb5e8ef0402b214401268a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab4acfaa64baff2436a466a3e2f099827"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4acfaa64baff2436a466a3e2f099827"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>C_Integrator_Path</b> (int _NumAps)</td></tr>
+<tr class="memitem:ab4acfaa64baff2436a466a3e2f099827"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#ab4acfaa64baff2436a466a3e2f099827">C_Integrator_Path</a> (int _NumAps)</td></tr>
 <tr class="separator:ab4acfaa64baff2436a466a3e2f099827"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab02353508a8140cafd2d2cf1ad8368ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab02353508a8140cafd2d2cf1ad8368ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setIntegrationWeightFunction</b> (std::function&lt; T_in(T_in, T_in)&gt; *_IntegrationWeightFunction)</td></tr>
+<tr class="memitem:ab02353508a8140cafd2d2cf1ad8368ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#ab02353508a8140cafd2d2cf1ad8368ac">setIntegrationWeightFunction</a> (std::function&lt; T_in(T_in, T_in)&gt; *_IntegrationWeightFunction)</td></tr>
 <tr class="separator:ab02353508a8140cafd2d2cf1ad8368ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ae229090f61dadfaec6eb74eea341de53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae229090f61dadfaec6eb74eea341de53"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>NumAmps</b></td></tr>
+<tr class="memitem:ae229090f61dadfaec6eb74eea341de53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#ae229090f61dadfaec6eb74eea341de53">NumAmps</a></td></tr>
 <tr class="separator:ae229090f61dadfaec6eb74eea341de53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefd642a90c8bd5064c1c39c96e58756d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefd642a90c8bd5064c1c39c96e58756d"></a>
-std::function&lt; T_in(T_in, T_in)&gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>IntegrationWeightFunction</b></td></tr>
+<tr class="memitem:aefd642a90c8bd5064c1c39c96e58756d"><td class="memItemLeft" align="right" valign="top">std::function&lt; T_in(T_in, T_in)&gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___integrator___path.html#aefd642a90c8bd5064c1c39c96e58756d">IntegrationWeightFunction</a></td></tr>
 <tr class="separator:aefd642a90c8bd5064c1c39c96e58756d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab4acfaa64baff2436a466a3e2f099827"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::<a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_NumAps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad68512fccb5e8ef0402b214401268a2a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>* <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::createIntegrator </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_NumPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; T_in(T_in, T_in)&gt; *&#160;</td>
+          <td class="paramname"><em>_IntegrationWeightFunction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a95026f1b45d90861f246b828ce9131c0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;T_out&gt; <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::getResult </td>
+          <td>(</td>
+          <td class="paramtype">T_contour &amp;&#160;</td>
+          <td class="paramname"><em>PathStorage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T_in &amp;&#160;</td>
+          <td class="paramname"><em>Point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab02353508a8140cafd2d2cf1ad8368ac"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::setIntegrationWeightFunction </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; T_in(T_in, T_in)&gt; *&#160;</td>
+          <td class="paramname"><em>_IntegrationWeightFunction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aefd642a90c8bd5064c1c39c96e58756d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;T_in(T_in, T_in)&gt;* <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::IntegrationWeightFunction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae229090f61dadfaec6eb74eea341de53"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_contour, typename T_in&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_c___integrator___path.html">C_Integrator_Path</a>&lt; T_out, T_contour, T_in &gt;::NumAmps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>source/NumLibs/<a class="el" href="_integrator___path_8hpp_source.html">Integrator_Path.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:23 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

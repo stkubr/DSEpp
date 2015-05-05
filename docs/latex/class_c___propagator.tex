@@ -1,6 +1,15 @@
 \hypertarget{class_c___propagator}{\section{C\-\_\-\-Propagator Class Reference}
 \label{class_c___propagator}\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}}
 }
+
+
+The interface class for all propagators\-: quarks, gluons or ghosts.  
+
+
+
+
+{\ttfamily \#include $<$Propagator.\-hpp$>$}
+
 Inheritance diagram for C\-\_\-\-Propagator\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,26 +23,54 @@ virtual void \hyperlink{class_c___propagator_a4b82db59060878e794c3590ee3fbc3f1}{
 \item 
 virtual void \hyperlink{class_c___propagator_a2efb521f2afd9ad94c07f62db1d03b8b}{set\-To\-Initial\-State} ()=0
 \item 
-virtual t\-\_\-cmplx\-Array1\-D \hyperlink{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}{Propagator\-At\-Point} (t\-\_\-cmplx q)
+virtual \hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \hyperlink{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}{Propagator\-At\-Point} (\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} q)
 \item 
-virtual void \hyperlink{class_c___propagator_a47d173c63a0256ad71f41fd1cf873d4d}{Set\-Propagator\-On\-Path} (std\-::vector$<$ t\-\_\-cmplx\-Matrix $>$ \&Amplitudes\-On\-Path, t\-\_\-cmplx\-Array1\-D \&Path)
+virtual void \hyperlink{class_c___propagator_a8f555dfead878b17db05cc679b7ce9aa}{set\-Propagator\-On\-Path} (\hyperlink{types_8h_a4db8c78f1689c3a957b2866daaae58f2}{t\-\_\-cmplx\-Array2\-D} \&Amplitudes\-On\-Path, \hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \&Path)
 \item 
-\hypertarget{class_c___propagator_a5b9292b9ec6396c95238255cb9116727}{virtual t\-\_\-cmplx {\bfseries Dressing\-Factor} ()}\label{class_c___propagator_a5b9292b9ec6396c95238255cb9116727}
-
-\item 
-\hypertarget{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}{virtual void {\bfseries set\-Contour\-Apex} (double M2)}\label{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}
-
-\item 
-\hypertarget{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}{virtual double {\bfseries check\-Sum} ()}\label{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}
-
-\item 
-\hypertarget{class_c___propagator_ad278336169262f85686e400feed87750}{virtual void {\bfseries link\-To\-Kernel} (\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$\-\_\-\-K)}\label{class_c___propagator_ad278336169262f85686e400feed87750}
-
+virtual \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} \hyperlink{class_c___propagator_ad875936f27fc648f9681f5e18286425a}{Z2\-Factor} ()
+\begin{DoxyCompactList}\small\item\em Outputs the /f\$ Z\-\_\-2($^\wedge$2) /f\$ renormalization factor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}{set\-Contour\-Apex} (double M2)
+\begin{DoxyCompactList}\small\item\em Sets the /f\$ -\/\{M$^\wedge$2\}\{4\} /f\$ for the contour. \end{DoxyCompactList}\item 
+virtual double \hyperlink{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}{check\-Sum} ()
+\begin{DoxyCompactList}\small\item\em Gets sum A and B at 100 points. Used for unit tests. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_c___propagator_ae4c299d0b4ab2bf2b5c101153062949d}{link\-To\-Kernel} (\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$\-\_\-\-Kernel)
+\begin{DoxyCompactList}\small\item\em Sets the class member Kernel pointer to one provided externally. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_c___propagator_a4a3a1b4a06e8a393bda0973634915317}{$\sim$\-C\-\_\-\-Propagator} ()
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+The interface class for all propagators\-: quarks, gluons or ghosts. 
+
+(yep, fancy name for a particle). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c___propagator_a4a3a1b4a06e8a393bda0973634915317}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!$\sim$\-C\-\_\-\-Propagator@{$\sim$\-C\-\_\-\-Propagator}}
+\index{$\sim$\-C\-\_\-\-Propagator@{$\sim$\-C\-\_\-\-Propagator}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{$\sim$\-C\-\_\-\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}virtual C\-\_\-\-Propagator\-::$\sim$\-C\-\_\-\-Propagator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_c___propagator_a4a3a1b4a06e8a393bda0973634915317}
+
+
 \subsection{Member Function Documentation}
+\hypertarget{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!check\-Sum@{check\-Sum}}
+\index{check\-Sum@{check\-Sum}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{check\-Sum}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Propagator\-::check\-Sum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}
+
+
+Gets sum A and B at 100 points. Used for unit tests. 
+
+
+
+Reimplemented in \hyperlink{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}{C\-\_\-\-Quark}.
+
 \hypertarget{class_c___propagator_a4b82db59060878e794c3590ee3fbc3f1}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!dress\-Propagator@{dress\-Propagator}}
 \index{dress\-Propagator@{dress\-Propagator}!C_Propagator@{C\-\_\-\-Propagator}}
 \subsubsection[{dress\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}virtual void C\-\_\-\-Propagator\-::dress\-Propagator (
@@ -43,28 +80,62 @@ virtual void \hyperlink{class_c___propagator_a47d173c63a0256ad71f41fd1cf873d4d}{
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_c___propagator_a4b82db59060878e794c3590ee3fbc3f1}
 Dress Propagator according to defined in derived class D\-S\-E scheme this is the function where all !!\-S\-C\-I\-E\-N\-C\-E!! of D\-S\-E happens 
 
-Implemented in \hyperlink{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}{C\-\_\-\-Quark}.
+Implemented in \hyperlink{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}{C\-\_\-\-Quark}, and \hyperlink{class_c___gluon_a44b5ce943df3ea75d258a68b1c82d865}{C\-\_\-\-Gluon}.
+
+\hypertarget{class_c___propagator_ae4c299d0b4ab2bf2b5c101153062949d}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!link\-To\-Kernel@{link\-To\-Kernel}}
+\index{link\-To\-Kernel@{link\-To\-Kernel}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{link\-To\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Propagator\-::link\-To\-Kernel (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-\_\-\-Abstract\-Kernel} $\ast$}]{\-\_\-\-Kernel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_ae4c299d0b4ab2bf2b5c101153062949d}
+
+
+Sets the class member Kernel pointer to one provided externally. 
+
+
+
+Reimplemented in \hyperlink{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}{C\-\_\-\-Quark}.
 
 \hypertarget{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!Propagator\-At\-Point@{Propagator\-At\-Point}}
 \index{Propagator\-At\-Point@{Propagator\-At\-Point}!C_Propagator@{C\-\_\-\-Propagator}}
-\subsubsection[{Propagator\-At\-Point}]{\setlength{\rightskip}{0pt plus 5cm}t\-\_\-cmplx\-Array1\-D C\-\_\-\-Propagator\-::\-Propagator\-At\-Point (
+\subsubsection[{Propagator\-At\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx\-Array1\-D} C\-\_\-\-Propagator\-::\-Propagator\-At\-Point (
 \begin{DoxyParamCaption}
-\item[{t\-\_\-cmplx}]{q}
+\item[{{\bf t\-\_\-cmplx}}]{q}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}
 Return the value of all possible for this kind of propagator dressing functions at point 
 
-Reimplemented in \hyperlink{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}{C\-\_\-\-Quark}.
+Reimplemented in \hyperlink{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}{C\-\_\-\-Quark}, and \hyperlink{class_c___gluon_abfa90c782397bcb81c98529d46dc081f}{C\-\_\-\-Gluon}.
 
-\hypertarget{class_c___propagator_a47d173c63a0256ad71f41fd1cf873d4d}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!Set\-Propagator\-On\-Path@{Set\-Propagator\-On\-Path}}
-\index{Set\-Propagator\-On\-Path@{Set\-Propagator\-On\-Path}!C_Propagator@{C\-\_\-\-Propagator}}
-\subsubsection[{Set\-Propagator\-On\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Propagator\-::\-Set\-Propagator\-On\-Path (
+\hypertarget{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!set\-Contour\-Apex@{set\-Contour\-Apex}}
+\index{set\-Contour\-Apex@{set\-Contour\-Apex}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{set\-Contour\-Apex}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Propagator\-::set\-Contour\-Apex (
 \begin{DoxyParamCaption}
-\item[{std\-::vector$<$ t\-\_\-cmplx\-Matrix $>$ \&}]{Amplitudes\-On\-Path, }
-\item[{t\-\_\-cmplx\-Array1\-D \&}]{Path}
+\item[{double}]{M2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_a47d173c63a0256ad71f41fd1cf873d4d}
-Save propagator dressing functions, evaluated on provided \char`\"{}\-Path\char`\"{}, in provided \char`\"{}\-Amplitude\-Storage\char`\"{} \hypertarget{class_c___propagator_a2efb521f2afd9ad94c07f62db1d03b8b}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!set\-To\-Initial\-State@{set\-To\-Initial\-State}}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}
+
+
+Sets the /f\$ -\/\{M$^\wedge$2\}\{4\} /f\$ for the contour. 
+
+
+
+Reimplemented in \hyperlink{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}{C\-\_\-\-Quark}.
+
+\hypertarget{class_c___propagator_a8f555dfead878b17db05cc679b7ce9aa}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!set\-Propagator\-On\-Path@{set\-Propagator\-On\-Path}}
+\index{set\-Propagator\-On\-Path@{set\-Propagator\-On\-Path}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{set\-Propagator\-On\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Propagator\-::set\-Propagator\-On\-Path (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-cmplx\-Array2\-D} \&}]{Amplitudes\-On\-Path, }
+\item[{{\bf t\-\_\-cmplx\-Array1\-D} \&}]{Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_a8f555dfead878b17db05cc679b7ce9aa}
+Save propagator dressing functions, evaluated on provided \char`\"{}\-Path\char`\"{}, in provided \char`\"{}\-Amplitude\-Storage\char`\"{} 
+
+Reimplemented in \hyperlink{class_c___quark_aed9615a25b9c0c4f898d92a2b4bd1154}{C\-\_\-\-Quark}.
+
+\hypertarget{class_c___propagator_a2efb521f2afd9ad94c07f62db1d03b8b}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!set\-To\-Initial\-State@{set\-To\-Initial\-State}}
 \index{set\-To\-Initial\-State@{set\-To\-Initial\-State}!C_Propagator@{C\-\_\-\-Propagator}}
 \subsubsection[{set\-To\-Initial\-State}]{\setlength{\rightskip}{0pt plus 5cm}virtual void C\-\_\-\-Propagator\-::set\-To\-Initial\-State (
 \begin{DoxyParamCaption}
@@ -75,9 +146,24 @@ Reset parameters to initial values
 
 Implemented in \hyperlink{class_c___quark_afe212ef0b9b354ce78670323f3110633}{C\-\_\-\-Quark}.
 
+\hypertarget{class_c___propagator_ad875936f27fc648f9681f5e18286425a}{\index{C\-\_\-\-Propagator@{C\-\_\-\-Propagator}!Z2\-Factor@{Z2\-Factor}}
+\index{Z2\-Factor@{Z2\-Factor}!C_Propagator@{C\-\_\-\-Propagator}}
+\subsubsection[{Z2\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx} C\-\_\-\-Propagator\-::\-Z2\-Factor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___propagator_ad875936f27fc648f9681f5e18286425a}
+
+
+Outputs the /f\$ Z\-\_\-2($^\wedge$2) /f\$ renormalization factor. 
+
+
+
+Reimplemented in \hyperlink{class_c___quark_a71b08f07b27da3df956536858238ec14}{C\-\_\-\-Quark}.
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-source/\-D\-S\-E/Propagator.\-hpp\item 
-source/\-D\-S\-E/Propagator.\-cpp\end{DoxyCompactItemize}
+source/\-D\-S\-E/\hyperlink{_propagator_8hpp}{Propagator.\-hpp}\item 
+source/\-D\-S\-E/\hyperlink{_propagator_8cpp}{Propagator.\-cpp}\end{DoxyCompactItemize}

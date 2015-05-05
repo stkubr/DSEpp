@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Quark_parameters.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_quark__parameters_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Quark_parameters.hpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jan 13, 2014</span></div>
@@ -100,25 +102,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_c___quark__parameters.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___quark__parameters.html">C_Quark_parameters</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> num_prop_steps, num_cutoff_steps, num_angle_steps;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">double</span> m0, mu, LimUk, LimDk, M2_contour, EffectiveCutoff, flag_LightOrHeavyQuark, Accuracy;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">bool</span> flag_loadPropagator;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> Print();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> ReadParameters(std::string &amp; _ParamPath);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> setDefault();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>Propagators {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___quark__parameters.html">   22</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_propagators_1_1_c___quark__parameters.html">C_Quark_parameters</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___quark__parameters.html#affc0025847d18cd7907bfd3fc3e6aa96">   24</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#affc0025847d18cd7907bfd3fc3e6aa96">num_prop_steps</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a7d16fd6166f2b9e4e90c8bdf6eab01ff">num_cutoff_steps</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a52715a17d78ff8f0380e3795295dd816">num_angle_steps</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___quark__parameters.html#a26f8c196a17781bacbf9f2b24c426825">   25</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a1665334a56749ee58452220290aae694">m0</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a26f8c196a17781bacbf9f2b24c426825">mu</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a2928d9cf5c595f3190b173c865e45c91">LimUk</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#aedc7338dfba95796f31a98437bbd29d1">LimDk</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a93fd31685a8a12b9b2c411e7e687d030">M2_contour</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a04245f8e588a449cd49d09f337e32fad">EffectiveCutoff</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a7d9cc09795420ea819e012ef48d20583">flag_LightOrHeavyQuark</a>, <a class="code" href="class_propagators_1_1_c___quark__parameters.html#afb2d331a18fc1908e1d5a9acebae04c5">Accuracy</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___quark__parameters.html#a8530ede81167c34614003315aa6c7063">   26</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a8530ede81167c34614003315aa6c7063">flag_loadPropagator</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUARK_PARAMETERS_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_c___quark__parameters_html"><div class="ttname"><a href="class_c___quark__parameters.html">C_Quark_parameters</a></div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:15</div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a51327f6c5d89e2ab511cf2f7e59428bc">Print</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#a9281fabcec668955ee7a2edfb1789b6b">ReadParameters</a>(std::string &amp;_ParamPath);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___quark__parameters.html#aa4d30bbbbfceeff0e5eac01f979139ea">setDefault</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUARK_PARAMETERS_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a2928d9cf5c595f3190b173c865e45c91"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a2928d9cf5c595f3190b173c865e45c91">Propagators::C_Quark_parameters::LimUk</a></div><div class="ttdeci">double LimUk</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a93fd31685a8a12b9b2c411e7e687d030"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a93fd31685a8a12b9b2c411e7e687d030">Propagators::C_Quark_parameters::M2_contour</a></div><div class="ttdeci">double M2_contour</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_affc0025847d18cd7907bfd3fc3e6aa96"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#affc0025847d18cd7907bfd3fc3e6aa96">Propagators::C_Quark_parameters::num_prop_steps</a></div><div class="ttdeci">int num_prop_steps</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:24</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a7d16fd6166f2b9e4e90c8bdf6eab01ff"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a7d16fd6166f2b9e4e90c8bdf6eab01ff">Propagators::C_Quark_parameters::num_cutoff_steps</a></div><div class="ttdeci">int num_cutoff_steps</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:24</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a26f8c196a17781bacbf9f2b24c426825"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a26f8c196a17781bacbf9f2b24c426825">Propagators::C_Quark_parameters::mu</a></div><div class="ttdeci">double mu</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a51327f6c5d89e2ab511cf2f7e59428bc"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a51327f6c5d89e2ab511cf2f7e59428bc">Propagators::C_Quark_parameters::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition:</b> Quark_parameters.cpp:12</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a52715a17d78ff8f0380e3795295dd816"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a52715a17d78ff8f0380e3795295dd816">Propagators::C_Quark_parameters::num_angle_steps</a></div><div class="ttdeci">int num_angle_steps</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:24</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a7d9cc09795420ea819e012ef48d20583"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a7d9cc09795420ea819e012ef48d20583">Propagators::C_Quark_parameters::flag_LightOrHeavyQuark</a></div><div class="ttdeci">double flag_LightOrHeavyQuark</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a8530ede81167c34614003315aa6c7063"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a8530ede81167c34614003315aa6c7063">Propagators::C_Quark_parameters::flag_loadPropagator</a></div><div class="ttdeci">bool flag_loadPropagator</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:26</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a1665334a56749ee58452220290aae694"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a1665334a56749ee58452220290aae694">Propagators::C_Quark_parameters::m0</a></div><div class="ttdeci">double m0</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_aedc7338dfba95796f31a98437bbd29d1"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#aedc7338dfba95796f31a98437bbd29d1">Propagators::C_Quark_parameters::LimDk</a></div><div class="ttdeci">double LimDk</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_afb2d331a18fc1908e1d5a9acebae04c5"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#afb2d331a18fc1908e1d5a9acebae04c5">Propagators::C_Quark_parameters::Accuracy</a></div><div class="ttdeci">double Accuracy</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a04245f8e588a449cd49d09f337e32fad"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a04245f8e588a449cd49d09f337e32fad">Propagators::C_Quark_parameters::EffectiveCutoff</a></div><div class="ttdeci">double EffectiveCutoff</div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:25</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html">Propagators::C_Quark_parameters</a></div><div class="ttdef"><b>Definition:</b> Quark_parameters.hpp:22</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_a9281fabcec668955ee7a2edfb1789b6b"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#a9281fabcec668955ee7a2edfb1789b6b">Propagators::C_Quark_parameters::ReadParameters</a></div><div class="ttdeci">void ReadParameters(std::string &amp;_ParamPath)</div><div class="ttdef"><b>Definition:</b> Quark_parameters.cpp:27</div></div>
+<div class="ttc" id="class_propagators_1_1_c___quark__parameters_html_aa4d30bbbbfceeff0e5eac01f979139ea"><div class="ttname"><a href="class_propagators_1_1_c___quark__parameters.html#aa4d30bbbbfceeff0e5eac01f979139ea">Propagators::C_Quark_parameters::setDefault</a></div><div class="ttdeci">void setDefault()</div><div class="ttdef"><b>Definition:</b> Quark_parameters.cpp:52</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

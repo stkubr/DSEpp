@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,60 +88,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">AbsDiagram.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../types.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___abs_diagram.html">C_AbsDiagram</a>{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordtype">string</span> name;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> ID;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">   11</a></span>&#160;    DiracGamma <a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>,Y;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">   14</a></span>&#160;    DiracGamma5 <a class="code" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a>;</div>
+<a href="_abs_diagram_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * AbsDiagram.hpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *      Author: stkubr</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef ABSDIAGRAM_HPP_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ABSDIAGRAM_HPP_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../types.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___abs_diagram.html">C_AbsDiagram</a>{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">   13</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">name</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">ID</a>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">   17</a></span>&#160;    DiracSigma <a class="code" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">   17</a></span>&#160;    DiracGamma <a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>,<a class="code" href="class_c___abs_diagram.html#a4eded4aff0f19920d9ec52e2f5c63abf">Y</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">   20</a></span>&#160;    MetricTensor <a class="code" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">   20</a></span>&#160;    DiracGamma5 <a class="code" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">   23</a></span>&#160;    t_cmplxDirac <a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">   23</a></span>&#160;    DiracSigma <a class="code" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    t_cmplxDirac Y5;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">double</span> pi;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">   26</a></span>&#160;    MetricTensor <a class="code" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">   29</a></span>&#160;    t_cmplx <a class="code" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_c___abs_diagram.html">C_AbsDiagram</a>(){</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a>=t_cmplx(0.0,1.0);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        pi=3.14159265358979;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>=(1.0/4.0*(<a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>*<a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        Y5=<a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>*<a class="code" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> SetNameID(<span class="keywordtype">string</span> _name, <span class="keywordtype">int</span> _ID){</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        name=_name;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        ID=_ID;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">//std::cout &lt;&lt; &quot;Object -&quot; &lt;&lt; &quot;  &quot; &lt;&lt; name &lt;&lt; &quot;  &quot; &lt;&lt; &quot;with ID -&quot; &lt;&lt; &quot;  &quot; &lt;&lt; ID &lt;&lt; &quot;  &quot; &lt;&lt; &quot;has been created.&quot; &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> GetNameID(){</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;This is object -&quot;</span> &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; name &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; <span class="stringliteral">&quot;with ID -&quot;</span> &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; ID  &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="ttc" id="class_c___abs_diagram_html_ac4646ab596ff13dd531f28f755d3dd4e"><div class="ttname"><a href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">C_AbsDiagram::SIG</a></div><div class="ttdeci">DiracSigma SIG</div><div class="ttdoc">Dirac sigma matrix . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:17</div></div>
-<div class="ttc" id="class_c___abs_diagram_html_a31794dd2c315f6bf18e2908d669ccc61"><div class="ttname"><a href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">C_AbsDiagram::_Y5</a></div><div class="ttdeci">DiracGamma5 _Y5</div><div class="ttdoc">Dirac gamma matrix . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:14</div></div>
-<div class="ttc" id="class_c___abs_diagram_html_aff57681049aaff10af1fd2a0151209b8"><div class="ttname"><a href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">C_AbsDiagram::I</a></div><div class="ttdeci">t_cmplxDirac I</div><div class="ttdoc">Unit matrix (4,4) in Dirac space. </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:23</div></div>
-<div class="ttc" id="class_c___abs_diagram_html_a4daaf1d6cbcb0aa0bc93417eb11b49a4"><div class="ttname"><a href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">C_AbsDiagram::g</a></div><div class="ttdeci">MetricTensor g</div><div class="ttdoc">Euclidean metric tensor . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:20</div></div>
-<div class="ttc" id="class_c___abs_diagram_html"><div class="ttname"><a href="class_c___abs_diagram.html">C_AbsDiagram</a></div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:5</div></div>
-<div class="ttc" id="class_c___abs_diagram_html_aa3cfb09af9c9e81fa1af3a78b5d667a7"><div class="ttname"><a href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">C_AbsDiagram::ii</a></div><div class="ttdeci">t_cmplx ii</div><div class="ttdoc">Imaginary unit. </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:29</div></div>
-<div class="ttc" id="class_c___abs_diagram_html_a958ffee1be22aa70a0e2eb9fa44f5784"><div class="ttname"><a href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">C_AbsDiagram::Z</a></div><div class="ttdeci">DiracGamma Z</div><div class="ttdoc">Dirac gamma matrices . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:11</div></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">   29</a></span>&#160;    <a class="code" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> <a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">   31</a></span>&#160;    <a class="code" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> <a class="code" href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">Y5</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">   32</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">pi</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">   35</a></span>&#160;    <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> <a class="code" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a4b5e3fe8526b18145f92283e34d0f908">   38</a></span>&#160;    <a class="code" href="class_c___abs_diagram.html#a4b5e3fe8526b18145f92283e34d0f908">C_AbsDiagram</a>(){</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a>=<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>(0.0,1.0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">pi</a>=3.14159265358979;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>=(1.0/4.0*(<a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>*<a class="code" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a>));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">Y5</a>=<a class="code" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a>*<a class="code" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a88baf4e9d29753417b7e65ef18f0b28f">   46</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___abs_diagram.html#a88baf4e9d29753417b7e65ef18f0b28f">SetNameID</a>(<span class="keywordtype">string</span> _name, <span class="keywordtype">int</span> _ID){</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">name</a>=_name;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">ID</a>=_ID;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//std::cout &lt;&lt; &quot;Object -&quot; &lt;&lt; &quot;  &quot; &lt;&lt; name &lt;&lt; &quot;  &quot; &lt;&lt; &quot;with ID -&quot; &lt;&lt; &quot;  &quot; &lt;&lt; ID &lt;&lt; &quot;  &quot; &lt;&lt; &quot;has been created.&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a5a52da1cfd635da06a6bfdd002e7f674">   52</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___abs_diagram.html#a5a52da1cfd635da06a6bfdd002e7f674">GetNameID</a>(){</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;This is object -&quot;</span> &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; <a class="code" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">name</a> &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; <span class="stringliteral">&quot;with ID -&quot;</span> &lt;&lt;<span class="stringliteral">&quot;  &quot;</span>&lt;&lt; <a class="code" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">ID</a>  &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c___abs_diagram.html#a0fdd41051f27b3a6d8bf4ae75914d830">   56</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_c___abs_diagram.html#a0fdd41051f27b3a6d8bf4ae75914d830">~C_AbsDiagram</a>(){}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ABSDIAGRAM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_c___abs_diagram_html_ac4646ab596ff13dd531f28f755d3dd4e"><div class="ttname"><a href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">C_AbsDiagram::SIG</a></div><div class="ttdeci">DiracSigma SIG</div><div class="ttdoc">Dirac sigma matrix . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:23</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a31794dd2c315f6bf18e2908d669ccc61"><div class="ttname"><a href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">C_AbsDiagram::_Y5</a></div><div class="ttdeci">DiracGamma5 _Y5</div><div class="ttdoc">Dirac gamma matrix . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:20</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a08de955405ee0344287b2eb5f6cb62b5"><div class="ttname"><a href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">C_AbsDiagram::ID</a></div><div class="ttdeci">int ID</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:14</div></div>
+<div class="ttc" id="types_8h_html_ae924474dbd8b75d3e13a2674c4a06787"><div class="ttname"><a href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a></div><div class="ttdeci">Matrix&lt; Tensor&lt; complex&lt; double &gt; &gt; &gt; t_cmplxDirac</div><div class="ttdoc">Composite object which is Dirac matrix and Lorentz tensor. </div><div class="ttdef"><b>Definition:</b> types.h:41</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a3e24081668fb3198fd043dd291fba4c5"><div class="ttname"><a href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">C_AbsDiagram::pi</a></div><div class="ttdeci">double pi</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:32</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_aff57681049aaff10af1fd2a0151209b8"><div class="ttname"><a href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">C_AbsDiagram::I</a></div><div class="ttdeci">t_cmplxDirac I</div><div class="ttdoc">Unit matrix (4,4) in Dirac space. </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:29</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a0fdd41051f27b3a6d8bf4ae75914d830"><div class="ttname"><a href="class_c___abs_diagram.html#a0fdd41051f27b3a6d8bf4ae75914d830">C_AbsDiagram::~C_AbsDiagram</a></div><div class="ttdeci">virtual ~C_AbsDiagram()</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:56</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a49ab5b499fd64c4a196349730d4beda3"><div class="ttname"><a href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">C_AbsDiagram::Y5</a></div><div class="ttdeci">t_cmplxDirac Y5</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:31</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a4daaf1d6cbcb0aa0bc93417eb11b49a4"><div class="ttname"><a href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">C_AbsDiagram::g</a></div><div class="ttdeci">MetricTensor g</div><div class="ttdoc">Euclidean metric tensor . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:26</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a88baf4e9d29753417b7e65ef18f0b28f"><div class="ttname"><a href="class_c___abs_diagram.html#a88baf4e9d29753417b7e65ef18f0b28f">C_AbsDiagram::SetNameID</a></div><div class="ttdeci">void SetNameID(string _name, int _ID)</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:46</div></div>
+<div class="ttc" id="class_c___abs_diagram_html"><div class="ttname"><a href="class_c___abs_diagram.html">C_AbsDiagram</a></div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:11</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a5a52da1cfd635da06a6bfdd002e7f674"><div class="ttname"><a href="class_c___abs_diagram.html#a5a52da1cfd635da06a6bfdd002e7f674">C_AbsDiagram::GetNameID</a></div><div class="ttdeci">void GetNameID()</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:52</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a919d23735a009dc5a78e02e01e1eb40b"><div class="ttname"><a href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">C_AbsDiagram::name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:13</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a4b5e3fe8526b18145f92283e34d0f908"><div class="ttname"><a href="class_c___abs_diagram.html#a4b5e3fe8526b18145f92283e34d0f908">C_AbsDiagram::C_AbsDiagram</a></div><div class="ttdeci">C_AbsDiagram()</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:38</div></div>
+<div class="ttc" id="types_8h_html_aa75ae339052372f671bb263e6a272e82"><div class="ttname"><a href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a></div><div class="ttdeci">std::complex&lt; double &gt; t_cmplx</div><div class="ttdef"><b>Definition:</b> types.h:23</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_aa3cfb09af9c9e81fa1af3a78b5d667a7"><div class="ttname"><a href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">C_AbsDiagram::ii</a></div><div class="ttdeci">t_cmplx ii</div><div class="ttdoc">Imaginary unit. </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:35</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a4eded4aff0f19920d9ec52e2f5c63abf"><div class="ttname"><a href="class_c___abs_diagram.html#a4eded4aff0f19920d9ec52e2f5c63abf">C_AbsDiagram::Y</a></div><div class="ttdeci">DiracGamma Y</div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:17</div></div>
+<div class="ttc" id="class_c___abs_diagram_html_a958ffee1be22aa70a0e2eb9fa44f5784"><div class="ttname"><a href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">C_AbsDiagram::Z</a></div><div class="ttdeci">DiracGamma Z</div><div class="ttdoc">Dirac gamma matrices . </div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

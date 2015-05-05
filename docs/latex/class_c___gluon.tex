@@ -1,6 +1,15 @@
 \hypertarget{class_c___gluon}{\section{C\-\_\-\-Gluon Class Reference}
 \label{class_c___gluon}\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}}
 }
+
+
+The Gluon model Although the gluon itself can posses its own D\-S\-E here we use an approximation\-: the effective gluon dressing function given by Maris-\/\-Tandy model. However any another model can be leaded from file.  
+
+
+
+
+{\ttfamily \#include $<$Gluon.\-hpp$>$}
+
 Inheritance diagram for C\-\_\-\-Gluon\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,34 +19,86 @@ Inheritance diagram for C\-\_\-\-Gluon\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c___gluon_a8f2d8414610472e70dde25b6365de533}{void {\bfseries Dress\-Propagator} ()}\label{class_c___gluon_a8f2d8414610472e70dde25b6365de533}
-
+void \hyperlink{class_c___gluon_a44b5ce943df3ea75d258a68b1c82d865}{dress\-Propagator} ()
 \item 
-\hypertarget{class_c___gluon_a963ed16ab5c3ecff611219e8cb3435be}{t\-\_\-cmplx\-Array1\-D {\bfseries get\-Prop\-At} (t\-\_\-cmplx k)}\label{class_c___gluon_a963ed16ab5c3ecff611219e8cb3435be}
-
-\item 
-\hypertarget{class_c___gluon_adbb88aaa18446b1d12f087f4cb759293}{t\-\_\-cmplx {\bfseries Gluon\-M\-T} (t\-\_\-cmplx k)}\label{class_c___gluon_adbb88aaa18446b1d12f087f4cb759293}
-
-\item 
-\hypertarget{class_c___gluon_a2a2f857431b7a3cb1142631d31507091}{void {\bfseries set\-M\-T\-Params} (double Lambda, double Etta)}\label{class_c___gluon_a2a2f857431b7a3cb1142631d31507091}
-
-\item 
-\hypertarget{class_c___gluon_a49abed49290d265cc25f1213cdb3f7a3}{t\-\_\-cmplx {\bfseries Gluon\-By\-Interpolation} (t\-\_\-cmplx k)}\label{class_c___gluon_a49abed49290d265cc25f1213cdb3f7a3}
-
-\end{DoxyCompactItemize}
+\hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \hyperlink{class_c___gluon_abfa90c782397bcb81c98529d46dc081f}{Propagator\-At\-Point} (\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} k)
+\begin{DoxyCompactList}\small\item\em Get value of Gluon at /f\$ k$^\wedge$2 /f\$. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___gluon_a2a2f857431b7a3cb1142631d31507091}{set\-M\-T\-Params} (double Lambda, double Etta)
+\begin{DoxyCompactList}\small\item\em Set manually Maris-\/\-Tandy gluon model parameters (redefined by Lambda and Etta) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c___gluon_aa6b6cb7bfb183bfae684fa6a840643ff}{static \hyperlink{class_c___gluon}{C\-\_\-\-Gluon} $\ast$ {\bfseries create\-Gluon} (Gluon\-\_\-\-I\-D id)}\label{class_c___gluon_aa6b6cb7bfb183bfae684fa6a840643ff}
-
-\item 
-\hypertarget{class_c___gluon_a1fa97ddd62ec8725c5c4d1c83aac3d5e}{static \hyperlink{class_c___gluon}{C\-\_\-\-Gluon} $\ast$ {\bfseries create\-Gluon} (Gluon\-\_\-\-I\-D id, std\-::string \&\-\_\-\-Interpolation\-Points\-Path)}\label{class_c___gluon_a1fa97ddd62ec8725c5c4d1c83aac3d5e}
-
+static \hyperlink{class_c___gluon}{C\-\_\-\-Gluon} $\ast$ \hyperlink{class_c___gluon_aa6b6cb7bfb183bfae684fa6a840643ff}{create\-Gluon} (\hyperlink{_gluon_8hpp_ac213626e6f11004cbe4bcd55fd546496}{Gluon\-\_\-\-I\-D} id)
+\begin{DoxyCompactList}\small\item\em Parametrized Factory Method function. \end{DoxyCompactList}\item 
+static \hyperlink{class_c___gluon}{C\-\_\-\-Gluon} $\ast$ \hyperlink{class_c___gluon_a1fa97ddd62ec8725c5c4d1c83aac3d5e}{create\-Gluon} (\hyperlink{_gluon_8hpp_ac213626e6f11004cbe4bcd55fd546496}{Gluon\-\_\-\-I\-D} id, std\-::string \&\-\_\-\-Interpolation\-Points\-Path)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Detailed Description}
+The Gluon model Although the gluon itself can posses its own D\-S\-E here we use an approximation\-: the effective gluon dressing function given by Maris-\/\-Tandy model. However any another model can be leaded from file. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c___gluon_aa6b6cb7bfb183bfae684fa6a840643ff}{\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}!create\-Gluon@{create\-Gluon}}
+\index{create\-Gluon@{create\-Gluon}!C_Gluon@{C\-\_\-\-Gluon}}
+\subsubsection[{create\-Gluon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Gluon} $\ast$ C\-\_\-\-Gluon\-::create\-Gluon (
+\begin{DoxyParamCaption}
+\item[{{\bf Gluon\-\_\-\-I\-D}}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c___gluon_aa6b6cb7bfb183bfae684fa6a840643ff}
+
+
+Parametrized Factory Method function. 
+
+\hypertarget{class_c___gluon_a1fa97ddd62ec8725c5c4d1c83aac3d5e}{\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}!create\-Gluon@{create\-Gluon}}
+\index{create\-Gluon@{create\-Gluon}!C_Gluon@{C\-\_\-\-Gluon}}
+\subsubsection[{create\-Gluon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Gluon} $\ast$ C\-\_\-\-Gluon\-::create\-Gluon (
+\begin{DoxyParamCaption}
+\item[{{\bf Gluon\-\_\-\-I\-D}}]{id, }
+\item[{std\-::string \&}]{\-\_\-\-Interpolation\-Points\-Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_c___gluon_a1fa97ddd62ec8725c5c4d1c83aac3d5e}
+\hypertarget{class_c___gluon_a44b5ce943df3ea75d258a68b1c82d865}{\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}!dress\-Propagator@{dress\-Propagator}}
+\index{dress\-Propagator@{dress\-Propagator}!C_Gluon@{C\-\_\-\-Gluon}}
+\subsubsection[{dress\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Gluon\-::dress\-Propagator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_c___gluon_a44b5ce943df3ea75d258a68b1c82d865}
+Dress Propagator according to defined in derived class D\-S\-E scheme this is the function where all !!\-S\-C\-I\-E\-N\-C\-E!! of D\-S\-E happens 
+
+Implements \hyperlink{class_c___propagator_a4b82db59060878e794c3590ee3fbc3f1}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___gluon_abfa90c782397bcb81c98529d46dc081f}{\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}!Propagator\-At\-Point@{Propagator\-At\-Point}}
+\index{Propagator\-At\-Point@{Propagator\-At\-Point}!C_Gluon@{C\-\_\-\-Gluon}}
+\subsubsection[{Propagator\-At\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx\-Array1\-D} C\-\_\-\-Gluon\-::\-Propagator\-At\-Point (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-cmplx}}]{k}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___gluon_abfa90c782397bcb81c98529d46dc081f}
+
+
+Get value of Gluon at /f\$ k$^\wedge$2 /f\$. 
+
+
+
+Reimplemented from \hyperlink{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___gluon_a2a2f857431b7a3cb1142631d31507091}{\index{C\-\_\-\-Gluon@{C\-\_\-\-Gluon}!set\-M\-T\-Params@{set\-M\-T\-Params}}
+\index{set\-M\-T\-Params@{set\-M\-T\-Params}!C_Gluon@{C\-\_\-\-Gluon}}
+\subsubsection[{set\-M\-T\-Params}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Gluon\-::set\-M\-T\-Params (
+\begin{DoxyParamCaption}
+\item[{double}]{Lambda, }
+\item[{double}]{Etta}
+\end{DoxyParamCaption}
+)}}\label{class_c___gluon_a2a2f857431b7a3cb1142631d31507091}
+
+
+Set manually Maris-\/\-Tandy gluon model parameters (redefined by Lambda and Etta) 
+
+
+
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-source/\-D\-S\-E/Gluon.\-hpp\item 
-source/\-D\-S\-E/Gluon.\-cpp\end{DoxyCompactItemize}
+source/\-D\-S\-E/\hyperlink{_gluon_8hpp}{Gluon.\-hpp}\item 
+source/\-D\-S\-E/\hyperlink{_gluon_8cpp}{Gluon.\-cpp}\end{DoxyCompactItemize}

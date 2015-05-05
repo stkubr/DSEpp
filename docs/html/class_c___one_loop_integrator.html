@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,69 +83,372 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_c___one_loop_integrator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">C_OneLoopIntegrator&lt; T_out, T_in, T_arg &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for C_OneLoopIntegrator&lt; T_out, T_in, T_arg &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_c___one_loop_integrator.png" usemap="#C_OneLoopIntegrator&lt; T_out, T_in, T_arg &gt;_map" alt=""/>
-  <map id="C_OneLoopIntegrator&lt; T_out, T_in, T_arg &gt;_map" name="C_OneLoopIntegrator&lt; T_out, T_in, T_arg &gt;_map">
-<area href="class_c___b_s_e___hadron___base.html" alt="C_BSE_Hadron_Base" shape="rect" coords="548,56,812,80"/>
-<area href="class_c___b_s_e___hadron___meson.html" alt="C_BSE_Hadron_Meson" shape="rect" coords="548,112,812,136"/>
-<area href="class_c___mesons___axial_vector.html" alt="C_Mesons_AxialVector" shape="rect" coords="0,168,264,192"/>
-<area href="class_c___mesons___pseudo_scalar.html" alt="C_Mesons_PseudoScalar" shape="rect" coords="274,168,538,192"/>
-<area href="class_c___mesons___scalar.html" alt="C_Mesons_Scalar" shape="rect" coords="548,168,812,192"/>
-<area href="class_c___mesons___tensor.html" alt="C_Mesons_Tensor" shape="rect" coords="822,168,1086,192"/>
-<area href="class_c___mesons___vector.html" alt="C_Mesons_Vector" shape="rect" coords="1096,168,1360,192"/>
-</map>
- </div></div>
+
+<p><code>#include &lt;<a class="el" href="_one_loop_integrator_8hpp_source.html">OneLoopIntegrator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e7c8284194da215e0f1a883ec97068f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5e7c8284194da215e0f1a883ec97068f"></a>
-T_out&#160;</td><td class="memItemRight" valign="bottom"><b>MultiDimInt2D_wo_nested</b> (std::function&lt; T_out(T_arg)&gt; *func_to_int, int numRows, int numCols)</td></tr>
-<tr class="separator:a5e7c8284194da215e0f1a883ec97068f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a2cec9d83b4f5a12b03abf7bd28ef9f72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a2cec9d83b4f5a12b03abf7bd28ef9f72">C_OneLoopIntegrator</a> ()</td></tr>
+<tr class="separator:a2cec9d83b4f5a12b03abf7bd28ef9f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe89ae625faf097b591fce467e9d1eb5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#afe89ae625faf097b591fce467e9d1eb5">~C_OneLoopIntegrator</a> ()</td></tr>
+<tr class="separator:afe89ae625faf097b591fce467e9d1eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd059711cbac033c88e1ab644ec3084"><td class="memItemLeft" align="right" valign="top">T_out&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a9dd059711cbac033c88e1ab644ec3084">calcIntegral3D</a> (std::function&lt; T_out(T_arg)&gt; *func_to_int, int numRows, int numCols)</td></tr>
+<tr class="separator:a9dd059711cbac033c88e1ab644ec3084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b35dcdd6f0f58d305bbaf53ba1afcd4"><td class="memItemLeft" align="right" valign="top">T_out&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a7b35dcdd6f0f58d305bbaf53ba1afcd4">calcIntegral2D</a> (std::function&lt; T_out(T_arg)&gt; *func_to_int, int numRows, int numCols)</td></tr>
+<tr class="separator:a7b35dcdd6f0f58d305bbaf53ba1afcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a196a8d045623e4af5d4bb9fca7c105bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a196a8d045623e4af5d4bb9fca7c105bb"></a>
-T_arg&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a196a8d045623e4af5d4bb9fca7c105bb">integrand_args</a></td></tr>
-<tr class="memdesc:a196a8d045623e4af5d4bb9fca7c105bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the variables over the loop integration is done, for example vector <img class="formulaInl" alt="$ (k,z,y,\phi) $" src="form_7.png"/> <br/></td></tr>
-<tr class="separator:a196a8d045623e4af5d4bb9fca7c105bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8066a37eaa0865bd484ffd18884abb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8066a37eaa0865bd484ffd18884abb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>numIntegDimentions</b></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aed8066a37eaa0865bd484ffd18884abb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#aed8066a37eaa0865bd484ffd18884abb">numIntegDimentions</a></td></tr>
 <tr class="separator:aed8066a37eaa0865bd484ffd18884abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47a4a2f9a811fb4cd92824ea6561d18b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47a4a2f9a811fb4cd92824ea6561d18b"></a>
-<a class="el" href="class_c___kinematics__1loop.html">C_Kinematics_1loop</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a47a4a2f9a811fb4cd92824ea6561d18b">Momenta</a></td></tr>
-<tr class="memdesc:a47a4a2f9a811fb4cd92824ea6561d18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the momenta 4-vectors associated with singe loop integration <br/></td></tr>
-<tr class="separator:a47a4a2f9a811fb4cd92824ea6561d18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af884706bf7461487cfb254d78b797e94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af884706bf7461487cfb254d78b797e94"></a>
-<a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>Integrator_momentum</b></td></tr>
+<tr class="memitem:af884706bf7461487cfb254d78b797e94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#af884706bf7461487cfb254d78b797e94">Integrator_momentum</a></td></tr>
 <tr class="separator:af884706bf7461487cfb254d78b797e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2826eadcd033a03808d645cd883acceb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2826eadcd033a03808d645cd883acceb"></a>
-<a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>Integrator_angle_Z</b></td></tr>
+<tr class="memitem:a2826eadcd033a03808d645cd883acceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a2826eadcd033a03808d645cd883acceb">Integrator_angle_Z</a></td></tr>
 <tr class="separator:a2826eadcd033a03808d645cd883acceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5770d28cb44d0ea9c3d331203ee84440"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5770d28cb44d0ea9c3d331203ee84440"></a>
-<a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>Integrator_angle_Y</b></td></tr>
+<tr class="memitem:a5770d28cb44d0ea9c3d331203ee84440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt; T_out, T_in &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a5770d28cb44d0ea9c3d331203ee84440">Integrator_angle_Y</a></td></tr>
 <tr class="separator:a5770d28cb44d0ea9c3d331203ee84440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c5871eec44be782114ba875d88488e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c5871eec44be782114ba875d88488e0"></a>
-std::function&lt; T_out(T_arg)&gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a1c5871eec44be782114ba875d88488e0">integrand</a></td></tr>
-<tr class="memdesc:a1c5871eec44be782114ba875d88488e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">function pointer to the integrand to be integrated <br/></td></tr>
-<tr class="separator:a1c5871eec44be782114ba875d88488e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ea7c4afee6c20ed50e6fa171a47dc3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a78ea7c4afee6c20ed50e6fa171a47dc3">threadloc_Integ_ctr</a></td></tr>
+<tr class="separator:a78ea7c4afee6c20ed50e6fa171a47dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7ddf02e8c2d913b2a38f6670e26ac3b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#af7ddf02e8c2d913b2a38f6670e26ac3b">threadloc_momentum_inx</a></td></tr>
+<tr class="separator:af7ddf02e8c2d913b2a38f6670e26ac3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196a8d045623e4af5d4bb9fca7c105bb"><td class="memItemLeft" align="right" valign="top">T_arg&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a196a8d045623e4af5d4bb9fca7c105bb">integrand_args</a></td></tr>
+<tr class="memdesc:a196a8d045623e4af5d4bb9fca7c105bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the variables over the loop integration is done, for example vector <img class="formulaInl" alt="$ (k,z,y,\phi) $" src="form_7.png"/>  <a href="#a196a8d045623e4af5d4bb9fca7c105bb">More...</a><br/></td></tr>
+<tr class="separator:a196a8d045623e4af5d4bb9fca7c105bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a767bf7500b35433779ed8b2fdb5b73a7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_c___kinematics__1loop.html">C_Kinematics_1loop</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___one_loop_integrator.html#a767bf7500b35433779ed8b2fdb5b73a7">threadloc_Momenta</a></td></tr>
+<tr class="memdesc:a767bf7500b35433779ed8b2fdb5b73a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the momenta 4-vectors associated with singe loop integration  <a href="#a767bf7500b35433779ed8b2fdb5b73a7">More...</a><br/></td></tr>
+<tr class="separator:a767bf7500b35433779ed8b2fdb5b73a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2cec9d83b4f5a12b03abf7bd28ef9f72"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::<a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afe89ae625faf097b591fce467e9d1eb5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::~<a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7b35dcdd6f0f58d305bbaf53ba1afcd4"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T_out <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::calcIntegral2D </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; T_out(T_arg)&gt; *&#160;</td>
+          <td class="paramname"><em>func_to_int</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numRows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numCols</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9dd059711cbac033c88e1ab644ec3084"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T_out <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::calcIntegral3D </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; T_out(T_arg)&gt; *&#160;</td>
+          <td class="paramname"><em>func_to_int</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numRows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numCols</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a196a8d045623e4af5d4bb9fca7c105bb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T_arg <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::integrand_args</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the variables over the loop integration is done, for example vector <img class="formulaInl" alt="$ (k,z,y,\phi) $" src="form_7.png"/> </p>
+
+</div>
+</div>
+<a class="anchor" id="a5770d28cb44d0ea9c3d331203ee84440"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt;T_out,T_in&gt;* <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::Integrator_angle_Y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2826eadcd033a03808d645cd883acceb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt;T_out,T_in&gt;* <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::Integrator_angle_Z</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af884706bf7461487cfb254d78b797e94"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c___integrator___line.html">C_Integrator_Line</a>&lt;T_out,T_in&gt;* <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::Integrator_momentum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aed8066a37eaa0865bd484ffd18884abb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::numIntegDimentions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a78ea7c4afee6c20ed50e6fa171a47dc3"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::threadloc_Integ_ctr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a767bf7500b35433779ed8b2fdb5b73a7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_c___kinematics__1loop.html">C_Kinematics_1loop</a>&gt; <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::threadloc_Momenta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the momenta 4-vectors associated with singe loop integration </p>
+
+</div>
+</div>
+<a class="anchor" id="af7ddf02e8c2d913b2a38f6670e26ac3b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T_out, typename T_in, typename T_arg&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; <a class="el" href="class_c___one_loop_integrator.html">C_OneLoopIntegrator</a>&lt; T_out, T_in, T_arg &gt;::threadloc_momentum_inx</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>source/NumLibs/<a class="el" href="_one_loop_integrator_8hpp_source.html">OneLoopIntegrator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:25 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

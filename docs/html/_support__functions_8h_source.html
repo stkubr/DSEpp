@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Support_functions.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_support__functions_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Support_functions.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jan 21, 2014</span></div>
@@ -97,19 +99,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SUPPORT_FUNCTIONS_H_</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> PrintLine(<span class="keywordtype">char</span> __c) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="_support__functions_8h.html#ad3fd501feb627ae825d9a0035eb14b6c">   13</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_support__functions_8h.html#ad3fd501feb627ae825d9a0035eb14b6c">PrintLine</a>(<span class="keywordtype">char</span> __c) {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 80; i++)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::cout &lt;&lt; __c;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> PrintSpaces(<span class="keywordtype">int</span> h) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_support__functions_8h.html#a56b19c9b0f3fa7dbd817c17ee5071393">   20</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_support__functions_8h.html#a56b19c9b0f3fa7dbd817c17ee5071393">PrintSpaces</a>(<span class="keywordtype">int</span> h) {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; h; i++)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">inline</span> t_cmplx Cheb_polinoms(t_cmplx x, <span class="keywordtype">int</span> order) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    t_cmplx U[order + 10];</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="_support__functions_8h.html#a25c610ee144436bed592c0d7a7f05f88">   25</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> <a class="code" href="_support__functions_8h.html#a25c610ee144436bed592c0d7a7f05f88">Cheb_polinoms</a>(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> x, <span class="keywordtype">int</span> order) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> U[order + 10];</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    U[0] = 1.0;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    U[1] = 2.0 * x;</div>
@@ -138,21 +140,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> Get_Time() {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="_support__functions_8h.html#a9f8aaa73d12a3f824db0028328d054d8">   55</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="_support__functions_8h.html#a9f8aaa73d12a3f824db0028328d054d8">Get_Time</a>() {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">double</span>) clock() / CLOCKS_PER_SEC;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> DebugLine(<span class="keywordtype">string</span> _word) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="_support__functions_8h.html#ac565f6bae3cd4b7b8ee16aa56256f64b">   59</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_support__functions_8h.html#ac565f6bae3cd4b7b8ee16aa56256f64b">DebugLine</a>(<span class="keywordtype">string</span> _word) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//#if DEBUG_MODE==1</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot; Debug Line at place - &quot;</span> &lt;&lt; _word &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//#endif</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SUPPORT_FUNCTIONS_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="_support__functions_8h_html_a9f8aaa73d12a3f824db0028328d054d8"><div class="ttname"><a href="_support__functions_8h.html#a9f8aaa73d12a3f824db0028328d054d8">Get_Time</a></div><div class="ttdeci">double Get_Time()</div><div class="ttdef"><b>Definition:</b> Support_functions.h:55</div></div>
+<div class="ttc" id="_support__functions_8h_html_a56b19c9b0f3fa7dbd817c17ee5071393"><div class="ttname"><a href="_support__functions_8h.html#a56b19c9b0f3fa7dbd817c17ee5071393">PrintSpaces</a></div><div class="ttdeci">void PrintSpaces(int h)</div><div class="ttdoc">Prints &quot;h&quot; spaces. </div><div class="ttdef"><b>Definition:</b> Support_functions.h:20</div></div>
+<div class="ttc" id="_support__functions_8h_html_a25c610ee144436bed592c0d7a7f05f88"><div class="ttname"><a href="_support__functions_8h.html#a25c610ee144436bed592c0d7a7f05f88">Cheb_polinoms</a></div><div class="ttdeci">t_cmplx Cheb_polinoms(t_cmplx x, int order)</div><div class="ttdef"><b>Definition:</b> Support_functions.h:25</div></div>
+<div class="ttc" id="types_8h_html_aa75ae339052372f671bb263e6a272e82"><div class="ttname"><a href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a></div><div class="ttdeci">std::complex&lt; double &gt; t_cmplx</div><div class="ttdef"><b>Definition:</b> types.h:23</div></div>
+<div class="ttc" id="_support__functions_8h_html_ad3fd501feb627ae825d9a0035eb14b6c"><div class="ttname"><a href="_support__functions_8h.html#ad3fd501feb627ae825d9a0035eb14b6c">PrintLine</a></div><div class="ttdeci">void PrintLine(char __c)</div><div class="ttdoc">Prints a line accross the screen. </div><div class="ttdef"><b>Definition:</b> Support_functions.h:13</div></div>
+<div class="ttc" id="_support__functions_8h_html_ac565f6bae3cd4b7b8ee16aa56256f64b"><div class="ttname"><a href="_support__functions_8h.html#ac565f6bae3cd4b7b8ee16aa56256f64b">DebugLine</a></div><div class="ttdeci">void DebugLine(string _word)</div><div class="ttdef"><b>Definition:</b> Support_functions.h:59</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:18 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

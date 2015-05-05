@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,150 +84,328 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_c___kernel___r_l-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">C_Kernel_RL Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_rainbow_ladder_kernel_8hpp_source.html">RainbowLadderKernel.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for C_Kernel_RL:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_c___kernel___r_l.png" usemap="#C_Kernel_RL_map" alt=""/>
   <map id="C_Kernel_RL_map" name="C_Kernel_RL_map">
-<area href="class_c___abstract_kernel.html" alt="C_AbstractKernel" shape="rect" coords="0,56,112,80"/>
-<area href="class_c___abs_diagram.html" alt="C_AbsDiagram" shape="rect" coords="0,0,112,24"/>
+<area href="class_c___two_quark_kernel.html" alt="C_TwoQuarkKernel" shape="rect" coords="0,112,123,136"/>
+<area href="class_c___abstract_kernel.html" title="The interface class for all possible scattering kernels. " alt="C_AbstractKernel" shape="rect" coords="0,56,123,80"/>
+<area href="class_c___abs_diagram.html" alt="C_AbsDiagram" shape="rect" coords="0,0,123,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a456dc18a4f961f9f3d8d1a51917eee8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a456dc18a4f961f9f3d8d1a51917eee8c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>info</b> ()</td></tr>
+<tr class="memitem:a456dc18a4f961f9f3d8d1a51917eee8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#a456dc18a4f961f9f3d8d1a51917eee8c">info</a> ()</td></tr>
 <tr class="separator:a456dc18a4f961f9f3d8d1a51917eee8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb7217ca0b629a6d28f460f27b0b3306"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb7217ca0b629a6d28f460f27b0b3306"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMediators</b> (t_cmplxVector &amp;k, t_cmplxVector &amp;p, t_cmplxVector &amp;P, std::vector&lt; t_cmplxTensor &gt; &amp;Mediators)</td></tr>
-<tr class="separator:abb7217ca0b629a6d28f460f27b0b3306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74a876dbb773d242c6264182c7949ca2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74a876dbb773d242c6264182c7949ca2"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><b>ElementKmatrix</b> (int t, int s, int r, int u, std::vector&lt; t_cmplxTensor &gt; &amp;Mediators)</td></tr>
-<tr class="separator:a74a876dbb773d242c6264182c7949ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_c___two_quark_kernel"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c___two_quark_kernel')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c___two_quark_kernel.html">C_TwoQuarkKernel</a></td></tr>
+<tr class="memitem:a5ffeab0f4038dc18b3a98407f4ae00b0 inherit pub_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a5ffeab0f4038dc18b3a98407f4ae00b0">setPropagators</a> (std::vector&lt; <a class="el" href="class_c___propagator.html">C_Propagator</a> * &gt; __Propagators)</td></tr>
+<tr class="separator:a5ffeab0f4038dc18b3a98407f4ae00b0 inherit pub_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ce4048e66e3a514657f3f7c03e96447 inherit pub_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a2ce4048e66e3a514657f3f7c03e96447">TraceKernelWithoutStoring</a> (<a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> &amp;Projector, <a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> &amp;WaveFunc, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;k, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;p, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;P, bool flag_reset_kernel)</td></tr>
+<tr class="memdesc:a2ce4048e66e3a514657f3f7c03e96447 inherit pub_methods_class_c___two_quark_kernel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a trace of Tr(Projector * Kernel * WaveFunction) at provided momenta.  <a href="#a2ce4048e66e3a514657f3f7c03e96447">More...</a><br/></td></tr>
+<tr class="separator:a2ce4048e66e3a514657f3f7c03e96447 inherit pub_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_c___abstract_kernel"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c___abstract_kernel')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c___abstract_kernel.html">C_AbstractKernel</a></td></tr>
-<tr class="memitem:af2656096f4bb6b293b7c6fd6b98e1852 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2656096f4bb6b293b7c6fd6b98e1852"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setExchangeID</b> (PS_type_ID exchange_id)</td></tr>
-<tr class="separator:af2656096f4bb6b293b7c6fd6b98e1852 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a732c7cfecc0f30cd585734b4a3b2f5d0 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a732c7cfecc0f30cd585734b4a3b2f5d0"></a>
-Kernel_ID&#160;</td><td class="memItemRight" valign="bottom"><b>KernelID</b> ()</td></tr>
-<tr class="separator:a732c7cfecc0f30cd585734b4a3b2f5d0 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f4d733129fb96fc6b3964c6b2ef696d inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f4d733129fb96fc6b3964c6b2ef696d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPropagators</b> (std::vector&lt; <a class="el" href="class_c___propagator.html">C_Propagator</a> * &gt; __Propagators)</td></tr>
-<tr class="separator:a7f4d733129fb96fc6b3964c6b2ef696d inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44d9413f79dcb3581f6f626dcaabda94 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44d9413f79dcb3581f6f626dcaabda94"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setConvolutionType</b> (int type)</td></tr>
+<tr class="memitem:a3ddf249443911202a298379b5f7f811e inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abstract_kernel.html#a3ddf249443911202a298379b5f7f811e">setMesonExchangeMass</a> (<a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> _M)</td></tr>
+<tr class="separator:a3ddf249443911202a298379b5f7f811e inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38570b2b3a495089cd0c75d295f187a6 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abstract_kernel.html#a38570b2b3a495089cd0c75d295f187a6">setExchangeID</a> (<a class="el" href="_abstract_kernel_8hpp.html#a7d489d4c6a933f94b90a630d2851e68d">PS_type_ID</a> exchange_id)</td></tr>
+<tr class="separator:a38570b2b3a495089cd0c75d295f187a6 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d9413f79dcb3581f6f626dcaabda94 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abstract_kernel.html#a44d9413f79dcb3581f6f626dcaabda94">setConvolutionType</a> (int type)</td></tr>
 <tr class="separator:a44d9413f79dcb3581f6f626dcaabda94 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0589cd3db4acff68cb08f7150bc3c994 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0589cd3db4acff68cb08f7150bc3c994"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><b>TraceKernelWithoutStoring</b> (t_cmplxDirac &amp;Projector, t_cmplxDirac &amp;WaveFunc, t_cmplxVector &amp;k, t_cmplxVector &amp;p, t_cmplxVector &amp;P, bool flag_reset_kernel)</td></tr>
-<tr class="separator:a0589cd3db4acff68cb08f7150bc3c994 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7b68da40937efab335f2f3dc85a0aac inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7b68da40937efab335f2f3dc85a0aac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setKMatrixThreadStorage</b> (t_cmplxVector &amp;k, t_cmplxVector &amp;p, t_cmplxVector &amp;P)</td></tr>
-<tr class="separator:af7b68da40937efab335f2f3dc85a0aac inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bc1d99206e76ab535e2b22c65587b66 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bc1d99206e76ab535e2b22c65587b66"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><b>takeInnerProduct</b> (t_cmplxTensor &amp;A, t_cmplxTensor &amp;B, int rank)</td></tr>
-<tr class="separator:a1bc1d99206e76ab535e2b22c65587b66 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f2a68781d4bcd8cb7e12f6ae149f22f inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f2a68781d4bcd8cb7e12f6ae149f22f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeKmatrix</b> (t_cmplxMatrix2D &amp;K_matrix)</td></tr>
-<tr class="separator:a2f2a68781d4bcd8cb7e12f6ae149f22f inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a46c6a478ff8c4cef966a011ddf4cc3 inherit pub_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a46c6a478ff8c4cef966a011ddf4cc3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setKmatrix</b> (t_cmplxMatrix2D &amp;K_matrix, std::vector&lt; t_cmplxTensor &gt; &amp;Mediators)</td></tr>
-<tr class="separator:a8a46c6a478ff8c4cef966a011ddf4cc3 inherit pub_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_c___abs_diagram"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_c___abs_diagram')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_c___abs_diagram.html">C_AbsDiagram</a></td></tr>
-<tr class="memitem:a88baf4e9d29753417b7e65ef18f0b28f inherit pub_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88baf4e9d29753417b7e65ef18f0b28f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNameID</b> (string _name, int _ID)</td></tr>
+<tr class="memitem:a88baf4e9d29753417b7e65ef18f0b28f inherit pub_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a88baf4e9d29753417b7e65ef18f0b28f">SetNameID</a> (string _name, int _ID)</td></tr>
 <tr class="separator:a88baf4e9d29753417b7e65ef18f0b28f inherit pub_methods_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a52da1cfd635da06a6bfdd002e7f674 inherit pub_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a52da1cfd635da06a6bfdd002e7f674"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>GetNameID</b> ()</td></tr>
+<tr class="memitem:a5a52da1cfd635da06a6bfdd002e7f674 inherit pub_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a5a52da1cfd635da06a6bfdd002e7f674">GetNameID</a> ()</td></tr>
 <tr class="separator:a5a52da1cfd635da06a6bfdd002e7f674 inherit pub_methods_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fdd41051f27b3a6d8bf4ae75914d830 inherit pub_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a0fdd41051f27b3a6d8bf4ae75914d830">~C_AbsDiagram</a> ()</td></tr>
+<tr class="separator:a0fdd41051f27b3a6d8bf4ae75914d830 inherit pub_methods_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aac0de569f84bb52bb886fc8e619311f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac0de569f84bb52bb886fc8e619311f5"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><b>Z2</b></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a408a220be8c7fe3b68ad3aacff037251"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#a408a220be8c7fe3b68ad3aacff037251">C_Kernel_RL</a> ()</td></tr>
+<tr class="separator:a408a220be8c7fe3b68ad3aacff037251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb7217ca0b629a6d28f460f27b0b3306"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#abb7217ca0b629a6d28f460f27b0b3306">setMediators</a> (<a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;k, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;p, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;P, std::vector&lt; <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &gt; &amp;Mediators)</td></tr>
+<tr class="separator:abb7217ca0b629a6d28f460f27b0b3306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a876dbb773d242c6264182c7949ca2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#a74a876dbb773d242c6264182c7949ca2">ElementKmatrix</a> (int t, int s, int r, int u, std::vector&lt; <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &gt; &amp;Mediators)</td></tr>
+<tr class="separator:a74a876dbb773d242c6264182c7949ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_c___two_quark_kernel"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_c___two_quark_kernel')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_c___two_quark_kernel.html">C_TwoQuarkKernel</a></td></tr>
+<tr class="memitem:a04b5a2a0366181c802d6bceb2c167213 inherit pro_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a04b5a2a0366181c802d6bceb2c167213">C_TwoQuarkKernel</a> ()</td></tr>
+<tr class="separator:a04b5a2a0366181c802d6bceb2c167213 inherit pro_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75ddc6de146acefaaa66fa1d258c626 inherit pro_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#ab75ddc6de146acefaaa66fa1d258c626">setKMatrixThreadStorage</a> (<a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;k, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;p, <a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;P)</td></tr>
+<tr class="separator:ab75ddc6de146acefaaa66fa1d258c626 inherit pro_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b79ece1c6cd01db6ff1eb8cac4f9291 inherit pro_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a5b79ece1c6cd01db6ff1eb8cac4f9291">takeInnerProduct</a> (<a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &amp;A, <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &amp;B, int rank)</td></tr>
+<tr class="separator:a5b79ece1c6cd01db6ff1eb8cac4f9291 inherit pro_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8664c9ffc7352760cb54e18fa18fcde7 inherit pro_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a8664c9ffc7352760cb54e18fa18fcde7">resizeKmatrix</a> (<a class="el" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a> &amp;K_matrix)</td></tr>
+<tr class="separator:a8664c9ffc7352760cb54e18fa18fcde7 inherit pro_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c32a817e137e39644328a73ad2945f inherit pro_methods_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a49c32a817e137e39644328a73ad2945f">setKmatrix</a> (<a class="el" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a> &amp;K_matrix, std::vector&lt; <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &gt; &amp;Mediators)</td></tr>
+<tr class="separator:a49c32a817e137e39644328a73ad2945f inherit pro_methods_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_c___abs_diagram"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_c___abs_diagram')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_c___abs_diagram.html">C_AbsDiagram</a></td></tr>
+<tr class="memitem:a4b5e3fe8526b18145f92283e34d0f908 inherit pro_methods_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4b5e3fe8526b18145f92283e34d0f908">C_AbsDiagram</a> ()</td></tr>
+<tr class="separator:a4b5e3fe8526b18145f92283e34d0f908 inherit pro_methods_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aac0de569f84bb52bb886fc8e619311f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#aac0de569f84bb52bb886fc8e619311f5">Z2</a></td></tr>
 <tr class="separator:aac0de569f84bb52bb886fc8e619311f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_c___abstract_kernel"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_c___abstract_kernel')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_c___abstract_kernel.html">C_AbstractKernel</a></td></tr>
-<tr class="memitem:a490aac141740e9ee3c4d2b0c0dcb77c7 inherit pub_attribs_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a490aac141740e9ee3c4d2b0c0dcb77c7"></a>
-<a class="el" href="class_c___dedic_mem___kernel.html">C_DedicMem_Kernel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Memory</b></td></tr>
-<tr class="separator:a490aac141740e9ee3c4d2b0c0dcb77c7 inherit pub_attribs_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_methods_class_c___abstract_kernel"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_c___abstract_kernel')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_c___abstract_kernel.html">C_AbstractKernel</a></td></tr>
-<tr class="memitem:a8e4523d9df8882a20b01e511d05815f0 inherit pub_static_methods_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e4523d9df8882a20b01e511d05815f0"></a>
-static <a class="el" href="class_c___abstract_kernel.html">C_AbstractKernel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createKernel</b> (Kernel_ID id)</td></tr>
-<tr class="separator:a8e4523d9df8882a20b01e511d05815f0 inherit pub_static_methods_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_c___abstract_kernel"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_c___abstract_kernel')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_c___abstract_kernel.html">C_AbstractKernel</a></td></tr>
-<tr class="memitem:aa60e6339b256ab24d835f35520df5052 inherit pro_attribs_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa60e6339b256ab24d835f35520df5052"></a>
-std::vector&lt; <a class="el" href="class_c___propagator.html">C_Propagator</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abstract_kernel.html#aa60e6339b256ab24d835f35520df5052">Propagators</a></td></tr>
-<tr class="memdesc:aa60e6339b256ab24d835f35520df5052 inherit pro_attribs_class_c___abstract_kernel"><td class="mdescLeft">&#160;</td><td class="mdescRight">vector of pointer to prapagator as two-body scattering mediators <br/></td></tr>
-<tr class="separator:aa60e6339b256ab24d835f35520df5052 inherit pro_attribs_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac115b60d8e20bd58262b92e403f0750 inherit pro_attribs_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac115b60d8e20bd58262b92e403f0750"></a>
-std::vector&lt; t_cmplxMatrix2D &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abstract_kernel.html#aac115b60d8e20bd58262b92e403f0750">threadloc_KMatrix</a></td></tr>
-<tr class="memdesc:aac115b60d8e20bd58262b92e403f0750 inherit pro_attribs_class_c___abstract_kernel"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO to include vector of general vertexes. <br/></td></tr>
-<tr class="separator:aac115b60d8e20bd58262b92e403f0750 inherit pro_attribs_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2752ba2a46e476d657e8199cf55c2b3c inherit pro_attribs_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2752ba2a46e476d657e8199cf55c2b3c"></a>
-Kernel_ID&#160;</td><td class="memItemRight" valign="bottom"><b>Kernel_type_ID</b></td></tr>
-<tr class="separator:a2752ba2a46e476d657e8199cf55c2b3c inherit pro_attribs_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20b072a954f3f1ec0cd78350f1871cf8 inherit pro_attribs_class_c___abstract_kernel"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20b072a954f3f1ec0cd78350f1871cf8"></a>
-PS_type_ID&#160;</td><td class="memItemRight" valign="bottom"><b>Exchange_type_ID</b></td></tr>
-<tr class="separator:a20b072a954f3f1ec0cd78350f1871cf8 inherit pro_attribs_class_c___abstract_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_c___two_quark_kernel"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_c___two_quark_kernel')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_c___two_quark_kernel.html">C_TwoQuarkKernel</a></td></tr>
+<tr class="memitem:a021729e6a56c4818555a7ddda7c79f89 inherit pro_attribs_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c___dedic_mem___kernel.html">C_DedicMem_Kernel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a021729e6a56c4818555a7ddda7c79f89">Memory</a></td></tr>
+<tr class="memdesc:a021729e6a56c4818555a7ddda7c79f89 inherit pro_attribs_class_c___two_quark_kernel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kernel's Memory handler class.  <a href="#a021729e6a56c4818555a7ddda7c79f89">More...</a><br/></td></tr>
+<tr class="separator:a021729e6a56c4818555a7ddda7c79f89 inherit pro_attribs_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcda5553981ae9244db94b2c0b0f350b inherit pro_attribs_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#abcda5553981ae9244db94b2c0b0f350b">threadloc_KMatrix</a></td></tr>
+<tr class="memdesc:abcda5553981ae9244db94b2c0b0f350b inherit pro_attribs_class_c___two_quark_kernel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread-local KMatrix storage.  <a href="#abcda5553981ae9244db94b2c0b0f350b">More...</a><br/></td></tr>
+<tr class="separator:abcda5553981ae9244db94b2c0b0f350b inherit pro_attribs_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17365470137a22dcec3e4110bad3e6bd inherit pro_attribs_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_c___propagator.html">C_Propagator</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a17365470137a22dcec3e4110bad3e6bd">Propagators</a></td></tr>
+<tr class="separator:a17365470137a22dcec3e4110bad3e6bd inherit pro_attribs_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc619e99361e5b09ba384ac5838fb7c inherit pro_attribs_class_c___two_quark_kernel"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_abstract_kernel_8hpp.html#acee766998fbe394072b4d2fe1eb50e62">Kernel_ID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___two_quark_kernel.html#a8cc619e99361e5b09ba384ac5838fb7c">Kernel_type_ID</a></td></tr>
+<tr class="separator:a8cc619e99361e5b09ba384ac5838fb7c inherit pro_attribs_class_c___two_quark_kernel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_c___abs_diagram"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_c___abs_diagram')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_c___abs_diagram.html">C_AbsDiagram</a></td></tr>
-<tr class="memitem:a919d23735a009dc5a78e02e01e1eb40b inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a919d23735a009dc5a78e02e01e1eb40b"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memitem:a919d23735a009dc5a78e02e01e1eb40b inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">name</a></td></tr>
 <tr class="separator:a919d23735a009dc5a78e02e01e1eb40b inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08de955405ee0344287b2eb5f6cb62b5 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08de955405ee0344287b2eb5f6cb62b5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
+<tr class="memitem:a08de955405ee0344287b2eb5f6cb62b5 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">ID</a></td></tr>
 <tr class="separator:a08de955405ee0344287b2eb5f6cb62b5 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a958ffee1be22aa70a0e2eb9fa44f5784 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a958ffee1be22aa70a0e2eb9fa44f5784"></a>
-DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a></td></tr>
-<tr class="memdesc:a958ffee1be22aa70a0e2eb9fa44f5784 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrices <img class="formulaInl" alt="$ \gamma_\mu $" src="form_3.png"/>. <br/></td></tr>
+<tr class="memitem:a958ffee1be22aa70a0e2eb9fa44f5784 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a></td></tr>
+<tr class="memdesc:a958ffee1be22aa70a0e2eb9fa44f5784 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrices <img class="formulaInl" alt="$ \gamma_\mu $" src="form_3.png"/>.  <a href="#a958ffee1be22aa70a0e2eb9fa44f5784">More...</a><br/></td></tr>
 <tr class="separator:a958ffee1be22aa70a0e2eb9fa44f5784 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eded4aff0f19920d9ec52e2f5c63abf inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eded4aff0f19920d9ec52e2f5c63abf"></a>
-DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><b>Y</b></td></tr>
+<tr class="memitem:a4eded4aff0f19920d9ec52e2f5c63abf inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4eded4aff0f19920d9ec52e2f5c63abf">Y</a></td></tr>
 <tr class="separator:a4eded4aff0f19920d9ec52e2f5c63abf inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31794dd2c315f6bf18e2908d669ccc61 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31794dd2c315f6bf18e2908d669ccc61"></a>
-DiracGamma5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a></td></tr>
-<tr class="memdesc:a31794dd2c315f6bf18e2908d669ccc61 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrix <img class="formulaInl" alt="$ \gamma_5 $" src="form_4.png"/>. <br/></td></tr>
+<tr class="memitem:a31794dd2c315f6bf18e2908d669ccc61 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">DiracGamma5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a></td></tr>
+<tr class="memdesc:a31794dd2c315f6bf18e2908d669ccc61 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrix <img class="formulaInl" alt="$ \gamma_5 $" src="form_4.png"/>.  <a href="#a31794dd2c315f6bf18e2908d669ccc61">More...</a><br/></td></tr>
 <tr class="separator:a31794dd2c315f6bf18e2908d669ccc61 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4646ab596ff13dd531f28f755d3dd4e inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4646ab596ff13dd531f28f755d3dd4e"></a>
-DiracSigma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a></td></tr>
-<tr class="memdesc:ac4646ab596ff13dd531f28f755d3dd4e inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac sigma matrix <img class="formulaInl" alt="$ \sigma_{\mu\nu} $" src="form_5.png"/>. <br/></td></tr>
+<tr class="memitem:ac4646ab596ff13dd531f28f755d3dd4e inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">DiracSigma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a></td></tr>
+<tr class="memdesc:ac4646ab596ff13dd531f28f755d3dd4e inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac sigma matrix <img class="formulaInl" alt="$ \sigma_{\mu\nu} $" src="form_5.png"/>.  <a href="#ac4646ab596ff13dd531f28f755d3dd4e">More...</a><br/></td></tr>
 <tr class="separator:ac4646ab596ff13dd531f28f755d3dd4e inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4daaf1d6cbcb0aa0bc93417eb11b49a4 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4daaf1d6cbcb0aa0bc93417eb11b49a4"></a>
-MetricTensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a></td></tr>
-<tr class="memdesc:a4daaf1d6cbcb0aa0bc93417eb11b49a4 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Euclidean metric tensor <img class="formulaInl" alt="$ g_{\mu\nu} $" src="form_6.png"/>. <br/></td></tr>
+<tr class="memitem:a4daaf1d6cbcb0aa0bc93417eb11b49a4 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">MetricTensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a></td></tr>
+<tr class="memdesc:a4daaf1d6cbcb0aa0bc93417eb11b49a4 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Euclidean metric tensor <img class="formulaInl" alt="$ g_{\mu\nu} $" src="form_6.png"/>.  <a href="#a4daaf1d6cbcb0aa0bc93417eb11b49a4">More...</a><br/></td></tr>
 <tr class="separator:a4daaf1d6cbcb0aa0bc93417eb11b49a4 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff57681049aaff10af1fd2a0151209b8 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff57681049aaff10af1fd2a0151209b8"></a>
-t_cmplxDirac&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a></td></tr>
-<tr class="memdesc:aff57681049aaff10af1fd2a0151209b8 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit matrix (4,4) in Dirac space. <br/></td></tr>
+<tr class="memitem:aff57681049aaff10af1fd2a0151209b8 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a></td></tr>
+<tr class="memdesc:aff57681049aaff10af1fd2a0151209b8 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit matrix (4,4) in Dirac space.  <a href="#aff57681049aaff10af1fd2a0151209b8">More...</a><br/></td></tr>
 <tr class="separator:aff57681049aaff10af1fd2a0151209b8 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49ab5b499fd64c4a196349730d4beda3 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49ab5b499fd64c4a196349730d4beda3"></a>
-t_cmplxDirac&#160;</td><td class="memItemRight" valign="bottom"><b>Y5</b></td></tr>
+<tr class="memitem:a49ab5b499fd64c4a196349730d4beda3 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">Y5</a></td></tr>
 <tr class="separator:a49ab5b499fd64c4a196349730d4beda3 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e24081668fb3198fd043dd291fba4c5 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e24081668fb3198fd043dd291fba4c5"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>pi</b></td></tr>
+<tr class="memitem:a3e24081668fb3198fd043dd291fba4c5 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">pi</a></td></tr>
 <tr class="separator:a3e24081668fb3198fd043dd291fba4c5 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3cfb09af9c9e81fa1af3a78b5d667a7 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3cfb09af9c9e81fa1af3a78b5d667a7"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a></td></tr>
-<tr class="memdesc:aa3cfb09af9c9e81fa1af3a78b5d667a7 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imaginary unit. <br/></td></tr>
+<tr class="memitem:aa3cfb09af9c9e81fa1af3a78b5d667a7 inherit pro_attribs_class_c___abs_diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a></td></tr>
+<tr class="memdesc:aa3cfb09af9c9e81fa1af3a78b5d667a7 inherit pro_attribs_class_c___abs_diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imaginary unit.  <a href="#aa3cfb09af9c9e81fa1af3a78b5d667a7">More...</a><br/></td></tr>
 <tr class="separator:aa3cfb09af9c9e81fa1af3a78b5d667a7 inherit pro_attribs_class_c___abs_diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a074055aa32e96a53d375bb490ea9895a"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___kernel___r_l.html#a074055aa32e96a53d375bb490ea9895a">C_Kernel_Factory</a></td></tr>
+<tr class="separator:a074055aa32e96a53d375bb490ea9895a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a408a220be8c7fe3b68ad3aacff037251"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">C_Kernel_RL::C_Kernel_RL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a74a876dbb773d242c6264182c7949ca2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> C_Kernel_RL::ElementKmatrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Mediators</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_c___two_quark_kernel.html#aece409a419564a66b16265178769c383">C_TwoQuarkKernel</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a456dc18a4f961f9f3d8d1a51917eee8c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_Kernel_RL::info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_c___abstract_kernel.html#a6a6510a5e44b78d22c6b1287121074c7">C_AbstractKernel</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abb7217ca0b629a6d28f460f27b0b3306"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_Kernel_RL::setMediators </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae8d0d77d0edff801ba45e425c85cf87d">t_cmplxVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>P</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="types_8h.html#a23430de2ae483000af45037b36fedba8">t_cmplxTensor</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Mediators</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_c___two_quark_kernel.html#a7ec61abc32e2309f4f47e10c4732c908">C_TwoQuarkKernel</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a074055aa32e96a53d375bb490ea9895a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_c___kernel___factory.html">C_Kernel_Factory</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aac0de569f84bb52bb886fc8e619311f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> C_Kernel_RL::Z2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>source/Kernel/<a class="el" href="_rainbow_ladder_kernel_8hpp_source.html">RainbowLadderKernel.hpp</a></li>
-<li>source/Kernel/RainbowLadderKernel.cpp</li>
+<li>source/Kernel/<a class="el" href="_rainbow_ladder_kernel_8cpp.html">RainbowLadderKernel.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:23 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 4 2015 18:35:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

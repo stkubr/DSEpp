@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['renormalizeprop',['renormalizeProp',['../class_c___quark.html#a5dc9671be863cde85f57705caaf11ee6',1,'C_Quark']]],
-  ['resizememory',['resizeMemory',['../class_c___quark.html#a569aee23f1aafca5fe383ad4341df8e8',1,'C_Quark']]]
+  ['hunt',['hunt',['../class_interpolation_1_1_c___base__interp.html#a80e761714d94b69b5cf5d48661d5db51',1,'Interpolation::C_Base_interp']]]
 ];

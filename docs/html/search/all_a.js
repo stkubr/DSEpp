@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['num_5famplitudes',['num_amplitudes',['../class_c___quark.html#a9b47aa812f3e3abf90acfb570ae51617',1,'C_Quark']]]
+  ['jsav',['jsav',['../class_interpolation_1_1_c___base__interp.html#a60fbf42616be3a5d6dda208ef7c936c2',1,'Interpolation::C_Base_interp']]]
 ];

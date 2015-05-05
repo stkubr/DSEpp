@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Propagator.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_propagator_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Propagator.hpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jan 21, 2014</span></div>
@@ -96,48 +98,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef PROPAGATOR_HPP_</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PROPAGATOR_HPP_</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../types.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../Abs/AbsDiagram.hpp&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span><a class="code" href="class_c___abstract_kernel.html">C_AbstractKernel</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../Kernel/AbstractKernel.hpp&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_c___propagator.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___propagator.html">C_Propagator</a>: <span class="keyword">public</span> <a class="code" href="class_c___abs_diagram.html">C_AbsDiagram</a>{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c___propagator.html#a4b82db59060878e794c3590ee3fbc3f1">dressPropagator</a>()=0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c___propagator.html#a2efb521f2afd9ad94c07f62db1d03b8b">setToInitialState</a>()=0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">virtual</span> t_cmplxArray1D <a class="code" href="class_c___propagator.html#a7bf057f408c2a30667fffea12d1375ba">PropagatorAtPoint</a>(t_cmplx q);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// TODO virtual t_cmplxDirac getTensorExpression(t_cmplxVector&amp; p);</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c___propagator.html#a47d173c63a0256ad71f41fd1cf873d4d">SetPropagatorOnPath</a>(std::vector&lt;t_cmplxMatrix&gt; &amp; AmplitudesOnPath, t_cmplxArray1D &amp; Path);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> t_cmplx DressingFactor();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setContourApex(<span class="keywordtype">double</span> M2);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">double</span> checkSum();</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespace_kernels.html">   11</a></span>&#160;<span class="keyword">namespace </span>Kernels{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">class </span><a class="code" href="class_kernels_1_1_c___abstract_kernel.html">C_AbstractKernel</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../types.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../Abs/AbsDiagram.hpp&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../Kernel/AbstractKernel.hpp&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>Propagators {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___propagator.html">   26</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_propagators_1_1_c___propagator.html">C_Propagator</a> : <span class="keyword">public</span> <a class="code" href="class_c___abs_diagram.html">C_AbsDiagram</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___propagator.html#a1027b42941f283b370fd2697d155c85a">dressPropagator</a>() = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___propagator.html#a8a655ddbfa98cad0f9276e26005d691a">setToInitialState</a>() = 0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a> <a class="code" href="class_propagators_1_1_c___propagator.html#a7bf057f408c2a30667fffea12d1375ba">PropagatorAtPoint</a>(<a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> q);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___propagator.html#a8f555dfead878b17db05cc679b7ce9aa">setPropagatorOnPath</a>(<a class="code" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a> &amp;AmplitudesOnPath, <a class="code" href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a> &amp;Path);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> linkToKernel(<a class="code" href="class_c___abstract_kernel.html">C_AbstractKernel</a> *_K);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_c___propagator.html">C_Propagator</a>() {}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PROPAGATOR_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_c___propagator_html_a47d173c63a0256ad71f41fd1cf873d4d"><div class="ttname"><a href="class_c___propagator.html#a47d173c63a0256ad71f41fd1cf873d4d">C_Propagator::SetPropagatorOnPath</a></div><div class="ttdeci">virtual void SetPropagatorOnPath(std::vector&lt; t_cmplxMatrix &gt; &amp;AmplitudesOnPath, t_cmplxArray1D &amp;Path)</div><div class="ttdef"><b>Definition:</b> Propagator.cpp:16</div></div>
-<div class="ttc" id="class_c___propagator_html_a4b82db59060878e794c3590ee3fbc3f1"><div class="ttname"><a href="class_c___propagator.html#a4b82db59060878e794c3590ee3fbc3f1">C_Propagator::dressPropagator</a></div><div class="ttdeci">virtual void dressPropagator()=0</div></div>
-<div class="ttc" id="class_c___abstract_kernel_html"><div class="ttname"><a href="class_c___abstract_kernel.html">C_AbstractKernel</a></div><div class="ttdef"><b>Definition:</b> AbstractKernel.hpp:28</div></div>
-<div class="ttc" id="class_c___propagator_html"><div class="ttname"><a href="class_c___propagator.html">C_Propagator</a></div><div class="ttdef"><b>Definition:</b> Propagator.hpp:17</div></div>
-<div class="ttc" id="class_c___propagator_html_a2efb521f2afd9ad94c07f62db1d03b8b"><div class="ttname"><a href="class_c___propagator.html#a2efb521f2afd9ad94c07f62db1d03b8b">C_Propagator::setToInitialState</a></div><div class="ttdeci">virtual void setToInitialState()=0</div></div>
-<div class="ttc" id="class_c___abs_diagram_html"><div class="ttname"><a href="class_c___abs_diagram.html">C_AbsDiagram</a></div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:5</div></div>
-<div class="ttc" id="class_c___propagator_html_a7bf057f408c2a30667fffea12d1375ba"><div class="ttname"><a href="class_c___propagator.html#a7bf057f408c2a30667fffea12d1375ba">C_Propagator::PropagatorAtPoint</a></div><div class="ttdeci">virtual t_cmplxArray1D PropagatorAtPoint(t_cmplx q)</div><div class="ttdef"><b>Definition:</b> Propagator.cpp:9</div></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> <a class="code" href="class_propagators_1_1_c___propagator.html#ad875936f27fc648f9681f5e18286425a">Z2Factor</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___propagator.html#ac607b22d1dbb5c947606182b36acab54">setContourApex</a>(<span class="keywordtype">double</span> M2);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="class_propagators_1_1_c___propagator.html#a6b49ff6bc2a98001966e987dc7d9230a">checkSum</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_propagators_1_1_c___propagator.html#aae404251529b351a4e4278521bf19432">linkToKernel</a>(<a class="code" href="class_kernels_1_1_c___abstract_kernel.html">Kernels::C_AbstractKernel</a> *_Kernel);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_propagators_1_1_c___propagator.html#a578735b74354ab2eedf25b74cba47c9a">   61</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_propagators_1_1_c___propagator.html#a578735b74354ab2eedf25b74cba47c9a">~C_Propagator</a>() { }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PROPAGATOR_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="types_8h_html_aab52f79903881ec15d289b3dbfb102fd"><div class="ttname"><a href="types_8h.html#aab52f79903881ec15d289b3dbfb102fd">t_cmplxArray1D</a></div><div class="ttdeci">std::vector&lt; t_cmplx &gt; t_cmplxArray1D</div><div class="ttdef"><b>Definition:</b> types.h:52</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_ac607b22d1dbb5c947606182b36acab54"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#ac607b22d1dbb5c947606182b36acab54">Propagators::C_Propagator::setContourApex</a></div><div class="ttdeci">virtual void setContourApex(double M2)</div><div class="ttdoc">Sets the /f$ -{M^2}{4} /f$ for the contour. </div><div class="ttdef"><b>Definition:</b> Propagator.cpp:31</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a6b49ff6bc2a98001966e987dc7d9230a"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a6b49ff6bc2a98001966e987dc7d9230a">Propagators::C_Propagator::checkSum</a></div><div class="ttdeci">virtual double checkSum()</div><div class="ttdoc">Gets sum A and B at 100 points. Used for unit tests. </div><div class="ttdef"><b>Definition:</b> Propagator.cpp:36</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_aae404251529b351a4e4278521bf19432"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#aae404251529b351a4e4278521bf19432">Propagators::C_Propagator::linkToKernel</a></div><div class="ttdeci">virtual void linkToKernel(Kernels::C_AbstractKernel *_Kernel)</div><div class="ttdoc">Sets the class member Kernel pointer to one provided externally. </div><div class="ttdef"><b>Definition:</b> Propagator.cpp:43</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a1027b42941f283b370fd2697d155c85a"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a1027b42941f283b370fd2697d155c85a">Propagators::C_Propagator::dressPropagator</a></div><div class="ttdeci">virtual void dressPropagator()=0</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a7bf057f408c2a30667fffea12d1375ba"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a7bf057f408c2a30667fffea12d1375ba">Propagators::C_Propagator::PropagatorAtPoint</a></div><div class="ttdeci">virtual t_cmplxArray1D PropagatorAtPoint(t_cmplx q)</div><div class="ttdef"><b>Definition:</b> Propagator.cpp:11</div></div>
+<div class="ttc" id="class_kernels_1_1_c___abstract_kernel_html"><div class="ttname"><a href="class_kernels_1_1_c___abstract_kernel.html">Kernels::C_AbstractKernel</a></div><div class="ttdoc">The interface class for all possible scattering kernels. </div><div class="ttdef"><b>Definition:</b> AbstractKernel.hpp:38</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a8a655ddbfa98cad0f9276e26005d691a"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a8a655ddbfa98cad0f9276e26005d691a">Propagators::C_Propagator::setToInitialState</a></div><div class="ttdeci">virtual void setToInitialState()=0</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a578735b74354ab2eedf25b74cba47c9a"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a578735b74354ab2eedf25b74cba47c9a">Propagators::C_Propagator::~C_Propagator</a></div><div class="ttdeci">virtual ~C_Propagator()</div><div class="ttdef"><b>Definition:</b> Propagator.hpp:61</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html">Propagators::C_Propagator</a></div><div class="ttdoc">The interface class for all propagators: quarks, gluons or ghosts. </div><div class="ttdef"><b>Definition:</b> Propagator.hpp:26</div></div>
+<div class="ttc" id="class_c___abs_diagram_html"><div class="ttname"><a href="class_c___abs_diagram.html">C_AbsDiagram</a></div><div class="ttdef"><b>Definition:</b> AbsDiagram.hpp:11</div></div>
+<div class="ttc" id="types_8h_html_a4db8c78f1689c3a957b2866daaae58f2"><div class="ttname"><a href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray1D &gt; t_cmplxArray2D</div><div class="ttdef"><b>Definition:</b> types.h:53</div></div>
+<div class="ttc" id="types_8h_html_aa75ae339052372f671bb263e6a272e82"><div class="ttname"><a href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a></div><div class="ttdeci">std::complex&lt; double &gt; t_cmplx</div><div class="ttdef"><b>Definition:</b> types.h:23</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_ad875936f27fc648f9681f5e18286425a"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#ad875936f27fc648f9681f5e18286425a">Propagators::C_Propagator::Z2Factor</a></div><div class="ttdeci">virtual t_cmplx Z2Factor()</div><div class="ttdoc">Outputs the /f$ Z_2(^2) /f$ renormalization factor. </div><div class="ttdef"><b>Definition:</b> Propagator.cpp:24</div></div>
+<div class="ttc" id="class_propagators_1_1_c___propagator_html_a8f555dfead878b17db05cc679b7ce9aa"><div class="ttname"><a href="class_propagators_1_1_c___propagator.html#a8f555dfead878b17db05cc679b7ce9aa">Propagators::C_Propagator::setPropagatorOnPath</a></div><div class="ttdeci">virtual void setPropagatorOnPath(t_cmplxArray2D &amp;AmplitudesOnPath, t_cmplxArray1D &amp;Path)</div><div class="ttdef"><b>Definition:</b> Propagator.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

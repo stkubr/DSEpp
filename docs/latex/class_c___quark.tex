@@ -3,6 +3,11 @@
 }
 
 
+The Quark Dyson-\/\-Schwinger equations in general form.  
+
+
+
+
 {\ttfamily \#include $<$Quark.\-hpp$>$}
 
 Inheritance diagram for C\-\_\-\-Quark\-:\begin{figure}[H]
@@ -11,149 +16,128 @@ Inheritance diagram for C\-\_\-\-Quark\-:\begin{figure}[H]
 \includegraphics[height=0.957265cm]{class_c___quark}
 \end{center}
 \end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}{dress\-Propagator} ()
+\begin{DoxyCompactList}\small\item\em Dress the Propagator. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_afe212ef0b9b354ce78670323f3110633}{set\-To\-Initial\-State} ()
+\begin{DoxyCompactList}\small\item\em Set quark's state to initial (bare) \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}{link\-To\-Kernel} (\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$\-\_\-\-K)
+\begin{DoxyCompactList}\small\item\em Sets the class member Kernel pointer to one provided externally. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} \hyperlink{class_c___quark_a71b08f07b27da3df956536858238ec14}{Z2\-Factor} ()
+\begin{DoxyCompactList}\small\item\em Outputs the /f\$ Z\-\_\-2($^\wedge$2) /f\$ renormalization factor. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}{set\-Contour\-Apex} (double M2)
+\begin{DoxyCompactList}\small\item\em Sets the /f\$ -\/\{M$^\wedge$2\}\{4\} /f\$ for the contour. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \hyperlink{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}{Propagator\-At\-Point} (\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} q)
+\begin{DoxyCompactList}\small\item\em Calculation A,B,M,Sigma\-\_\-\-V,Sigma\-\_\-\-S dressing functions at point inside the contour. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_aed9615a25b9c0c4f898d92a2b4bd1154}{set\-Propagator\-On\-Path} (\hyperlink{types_8h_a4db8c78f1689c3a957b2866daaae58f2}{t\-\_\-cmplx\-Array2\-D} \&Amplitudes, \hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \&Path)
+\begin{DoxyCompactList}\small\item\em Saves Quark's A and B function on provided \char`\"{}\-Path\char`\"{} in provided \char`\"{}\-Amplutude\-Storage\char`\"{}. \end{DoxyCompactList}\item 
+double \hyperlink{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}{check\-Sum} ()
+\begin{DoxyCompactList}\small\item\em Gets sum A and B at 100 points. Used for unit tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_c___quark_a7ceb205746e82ecf1c792ec9f11c037a}{C\-\_\-\-Quark} ()
-\item 
-\hyperlink{class_c___quark_a49f6931861a7144c7215abdbcfba0b7d}{$\sim$\-C\-\_\-\-Quark} ()
-\item 
-\hypertarget{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}{void {\bfseries link\-To\-Kernel} (\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$\-\_\-\-K)}\label{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}
-
-\item 
-\hypertarget{class_c___quark_a8705085256b1afed49a029e7566be3a6}{void {\bfseries read\-Quark\-Parameters} (string \&\-\_\-\-Param\-Path)}\label{class_c___quark_a8705085256b1afed49a029e7566be3a6}
-
-\item 
-\hypertarget{class_c___quark_a08c1d6a09388082de04c981e8106caa1}{t\-\_\-cmplx {\bfseries Dressing\-Factor} ()}\label{class_c___quark_a08c1d6a09388082de04c981e8106caa1}
-
-\item 
-\hypertarget{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}{void {\bfseries set\-Contour\-Apex} (double M2)}\label{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}
-
-\item 
-void \hyperlink{class_c___quark_afe212ef0b9b354ce78670323f3110633}{set\-To\-Initial\-State} ()
+\begin{DoxyCompactList}\small\item\em The constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_c___quark_a49f6931861a7144c7215abdbcfba0b7d}{$\sim$\-C\-\_\-\-Quark} ()
+\begin{DoxyCompactList}\small\item\em The destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_a8705085256b1afed49a029e7566be3a6}{read\-Quark\-Parameters} (string \&\-\_\-\-Param\-Path)
 \item 
 void \hyperlink{class_c___quark_aff74305e3c468db6ec6cbd63e04fff9a}{initializate\-Integrators} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Create Integrators and get the integration points and weights. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a569aee23f1aafca5fe383ad4341df8e8}{resize\-Memory} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Resize the dedicated memory storages for the contour and the grid according to loaded \char`\"{}params\char`\"{}. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a56f87c010401c5cd211cdd3edd53b2a0}{set\-Contour} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Set Contour in complex plane. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_aa5f4509e09ec22aae258b25dbf1cb328}{set\-Grid} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Set Grid in complex plane. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a9bd2e345fa3034850454c5eae8ca585a}{set\-Initial\-Aand\-B} ()
-\item 
-t\-\_\-cmplx\-Array1\-D \hyperlink{class_c___quark_a80d1fb9d4107a67eae72c87e3653e7ef}{Propagator\-On\-Point} (t\-\_\-cmplx coordin)
-\item 
+\begin{DoxyCompactList}\small\item\em Initial guesses for A and B dressing functions. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} \hyperlink{class_c___quark_a80d1fb9d4107a67eae72c87e3653e7ef}{Propagator\-On\-Point} (\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} coordin)
+\begin{DoxyCompactList}\small\item\em Evaluate Cauchy integral on contour, at certain point. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_aed45d2fb4598cbb55b3fef5edcc6e826}{calc\-Prop\-On\-Grid} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Evaluate Cauchy integral on contour, obtain Propagator on grid. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_abade7bfefe26cdb91a1d8a8583879fff}{calc\-Prop\-On\-Contour} ()
-\item 
-void \hyperlink{class_c___quark_a3aa1d8e442cd1e051ed8e1deb37868e0}{set\-Kinematic} (t\-\_\-cmplx\-Vector \&k, t\-\_\-cmplx\-Vector \&p, t\-\_\-cmplx x, t\-\_\-cmplx y, t\-\_\-cmplx z)
-\item 
-t\-\_\-cmplx\-Matrix \hyperlink{class_c___quark_a9f6b8538c2c1b9af29a5c063b26ec7d8}{Integrand\-\_\-numerical} (t\-\_\-cmplx\-Array1\-D values)
-\item 
-t\-\_\-cmplx\-Array1\-D \hyperlink{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}{Propagator\-At\-Point} (t\-\_\-cmplx q)
-\item 
+\begin{DoxyCompactList}\small\item\em Evaluate D\-S\-E integral on grid, obtain Propagator on contour. \end{DoxyCompactList}\item 
+void \hyperlink{class_c___quark_a3aa1d8e442cd1e051ed8e1deb37868e0}{set\-Kinematic} (\hyperlink{types_8h_ae8d0d77d0edff801ba45e425c85cf87d}{t\-\_\-cmplx\-Vector} \&k, \hyperlink{types_8h_ae8d0d77d0edff801ba45e425c85cf87d}{t\-\_\-cmplx\-Vector} \&p, \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} x, \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} y, \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} z)
+\begin{DoxyCompactList}\small\item\em Set k and p vectors for the Numerical Integrand. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a24d30fabb53c3b88ffb2af3ce415e9df}{t\-\_\-cmplx\-Matrix} \hyperlink{class_c___quark_a9f6b8538c2c1b9af29a5c063b26ec7d8}{Integrand\-\_\-numerical} (\hyperlink{types_8h_aab52f79903881ec15d289b3dbfb102fd}{t\-\_\-cmplx\-Array1\-D} values)
+\begin{DoxyCompactList}\small\item\em Numerical form of the Integrand (avaible for general Kernel) \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a6e76c6b1d863858beed18f1c0d9e41d1}{calc\-Propagator} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Calculate consequently Grid and Contour until converge. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a5dc9671be863cde85f57705caaf11ee6}{renormalize\-Prop} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Apply renormalization. \end{DoxyCompactList}\item 
 double \hyperlink{class_c___quark_ae755b4cd41dd4ce1a6dfd1c432d01bd1}{check\-Convergence} (double previous\-\_\-checksum)
-\item 
-void \hyperlink{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}{dress\-Propagator} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Check convergence. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_af6aebddc61fe85aaf454e459d3de6283}{draw\-On\-Real\-Axis} (int s)
-\item 
+\begin{DoxyCompactList}\small\item\em Draw Propagator at real line. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a53d6cb2219f3a6deb67e6ba85aba8f92}{save\-Propagator} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Write Propagator to file. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_afff9ac6d9f21b6d3656c1a0e380f9327}{load\-Propagator} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Read Propagator from file. \end{DoxyCompactList}\item 
 void \hyperlink{class_c___quark_a998f5c9e3ee4920aae7f86e2b1e0c179}{export\-Propagator} ()
-\item 
-void \hyperlink{class_c___quark_aa1a0d2d4817feb9a53ee3d14754586d7}{set\-Propagator\-On\-Path} (std\-::vector$<$ t\-\_\-cmplx\-Matrix $>$ \&Amplitudes, t\-\_\-cmplx\-Array1\-D \&Path)
-\item 
-double \hyperlink{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}{check\-Sum} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}{\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$ \hyperlink{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}{Kernel}}\label{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}
-
+\hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$ \hyperlink{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}{Kernel}
 \begin{DoxyCompactList}\small\item\em two-\/body scattering Kernel \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}{\hyperlink{class_c___dedic_mem___quark}{C\-\_\-\-Dedic\-Mem\-\_\-\-Quark} $\ast$ \hyperlink{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}{Memory}}\label{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}
-
+\hyperlink{class_c___dedic_mem___quark}{C\-\_\-\-Dedic\-Mem\-\_\-\-Quark} $\ast$ \hyperlink{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}{Memory}
 \begin{DoxyCompactList}\small\item\em quark's Memory handler class, contains the contour and the grid at which quark D\-S\-E evaluated \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}{string \hyperlink{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}{Save\-Prop\-Path}}\label{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}
-
+string \hyperlink{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}{Save\-Prop\-Path}
 \begin{DoxyCompactList}\small\item\em path to file to store the calculated propagator \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}{int \hyperlink{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}{num\-\_\-amplitudes}}\label{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}
-
+int \hyperlink{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}{num\-\_\-amplitudes}
 \begin{DoxyCompactList}\small\item\em number of projected out amplitudes (quark has two, A and B) \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}{\hyperlink{class_c___quark__parameters}{C\-\_\-\-Quark\-\_\-parameters} \hyperlink{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}{params}}\label{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}
-
+\hyperlink{class_c___quark__parameters}{C\-\_\-\-Quark\-\_\-parameters} \hyperlink{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}{params}
 \begin{DoxyCompactList}\small\item\em contains all params the quark D\-S\-E need to have \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}{std\-::function$<$ t\-\_\-cmplx(t\-\_\-cmplx, \\*
-t\-\_\-cmplx)$>$ \hyperlink{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}{Cauchy\-Integraton\-Weight\-\_\-lambda}}\label{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}
-
+std\-::function$<$ \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx}(\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx}, \\*
+\hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx})$>$ \hyperlink{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}{Cauchy\-Integraton\-Weight\-\_\-lambda}
 \begin{DoxyCompactList}\small\item\em defines the Cauchy integral measure \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}{\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}\\*
-$<$ t\-\_\-cmplx\-Matrix, double $>$ $\ast$ \hyperlink{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}{Integrator\-\_\-momentum\-\_\-cutoff}}\label{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}
-
+\hyperlink{class_c___integrator___line}{C\-\_\-\-Integrator\-\_\-\-Line}\\*
+$<$ \hyperlink{types_8h_a24d30fabb53c3b88ffb2af3ce415e9df}{t\-\_\-cmplx\-Matrix}, double $>$ $\ast$ \hyperlink{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}{Integrator\-\_\-momentum\-\_\-cutoff}
 \begin{DoxyCompactList}\small\item\em Line Integrator for the cutoff part of parabolic contour. \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_aaa4541680e33e880aa95591e9df3be44}{\hyperlink{class_c___integrator___path}{C\-\_\-\-Integrator\-\_\-\-Path}$<$ t\-\_\-cmplx, \\*
-t\-\_\-cmplx\-Array2\-D, t\-\_\-cmplx $>$ $\ast$ \hyperlink{class_c___quark_aaa4541680e33e880aa95591e9df3be44}{Integrator\-\_\-cauchy}}\label{class_c___quark_aaa4541680e33e880aa95591e9df3be44}
-
+\hyperlink{class_c___integrator___path}{C\-\_\-\-Integrator\-\_\-\-Path}$<$ \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx}, \\*
+\hyperlink{types_8h_a4db8c78f1689c3a957b2866daaae58f2}{t\-\_\-cmplx\-Array2\-D}, \hyperlink{types_8h_aa75ae339052372f671bb263e6a272e82}{t\-\_\-cmplx} $>$ $\ast$ \hyperlink{class_c___quark_aaa4541680e33e880aa95591e9df3be44}{Integrator\-\_\-cauchy}
 \begin{DoxyCompactList}\small\item\em Path Integrator for the complete contour. \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}{t\-\_\-d\-Array1\-D \hyperlink{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}{zz\-\_\-radial}}\label{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}{zz\-\_\-radial}
 \begin{DoxyCompactList}\small\item\em zz are the integration nodes, w are the weights \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a0b5346b639ac43652861f2210a73676b}{t\-\_\-d\-Array1\-D {\bfseries w\-\_\-radial}}\label{class_c___quark_a0b5346b639ac43652861f2210a73676b}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_a0b5346b639ac43652861f2210a73676b}{w\-\_\-radial}
 \item 
-\hypertarget{class_c___quark_a30161deac15ede23a568a44bb34f7f71}{t\-\_\-d\-Array1\-D {\bfseries zz\-\_\-cutoff}}\label{class_c___quark_a30161deac15ede23a568a44bb34f7f71}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_a30161deac15ede23a568a44bb34f7f71}{zz\-\_\-cutoff}
 \item 
-\hypertarget{class_c___quark_a79b610a65184ef9c49ee0f3947154dd2}{t\-\_\-d\-Array1\-D {\bfseries w\-\_\-cutoff}}\label{class_c___quark_a79b610a65184ef9c49ee0f3947154dd2}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_a79b610a65184ef9c49ee0f3947154dd2}{w\-\_\-cutoff}
 \item 
-\hypertarget{class_c___quark_ae52242e8abf3bb67f88ca271960eeab4}{t\-\_\-d\-Array1\-D {\bfseries zz\-\_\-angle}}\label{class_c___quark_ae52242e8abf3bb67f88ca271960eeab4}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_ae52242e8abf3bb67f88ca271960eeab4}{zz\-\_\-angle}
 \item 
-\hypertarget{class_c___quark_a5a5d2e8dd42a3990344fce6be1667ca4}{t\-\_\-d\-Array1\-D {\bfseries w\-\_\-angle}}\label{class_c___quark_a5a5d2e8dd42a3990344fce6be1667ca4}
-
+\hyperlink{types_8h_a7572e8a35cd6501ce959f177307310a4}{t\-\_\-d\-Array1\-D} \hyperlink{class_c___quark_a5a5d2e8dd42a3990344fce6be1667ca4}{w\-\_\-angle}
 \item 
-\hypertarget{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}{double \hyperlink{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}{kinematic\-Factor}}\label{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}
-
+double \hyperlink{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}{kinematic\-Factor}
 \begin{DoxyCompactList}\small\item\em just a momentum volume factor \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}{double \hyperlink{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}{B\-\_\-renorm}}\label{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}
-
+double \hyperlink{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}{B\-\_\-renorm}
 \begin{DoxyCompactList}\small\item\em Renormalization constants. \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_aaa7b2b26853f8405c2b9b293d2c18a64}{double {\bfseries B\-\_\-mu}}\label{class_c___quark_aaa7b2b26853f8405c2b9b293d2c18a64}
-
+double \hyperlink{class_c___quark_aaa7b2b26853f8405c2b9b293d2c18a64}{B\-\_\-mu}
 \item 
-\hypertarget{class_c___quark_ac5de0438d1b19d8a7f7509efff53b978}{double {\bfseries A\-\_\-renorm}}\label{class_c___quark_ac5de0438d1b19d8a7f7509efff53b978}
-
+double \hyperlink{class_c___quark_ac5de0438d1b19d8a7f7509efff53b978}{A\-\_\-renorm}
 \item 
-\hypertarget{class_c___quark_ae05f046433b0143198cf37dd0294236c}{double {\bfseries Z2}}\label{class_c___quark_ae05f046433b0143198cf37dd0294236c}
-
+double \hyperlink{class_c___quark_ae05f046433b0143198cf37dd0294236c}{Z2}
 \item 
-\hypertarget{class_c___quark_a16276524396db70cf500004e4732b62e}{vector$<$ int $>$ \hyperlink{class_c___quark_a16276524396db70cf500004e4732b62e}{threadloc\-\_\-p\-\_\-momenta\-\_\-inx}}\label{class_c___quark_a16276524396db70cf500004e4732b62e}
-
+vector$<$ int $>$ \hyperlink{class_c___quark_a16276524396db70cf500004e4732b62e}{threadloc\-\_\-p\-\_\-momenta\-\_\-inx}
 \begin{DoxyCompactList}\small\item\em thread-\/local storages of indexes \end{DoxyCompactList}\item 
-\hypertarget{class_c___quark_a96dfb638401816915fc1728cb4587f2a}{vector$<$ int $>$ {\bfseries threadloc\-\_\-integr\-\_\-inx}}\label{class_c___quark_a96dfb638401816915fc1728cb4587f2a}
-
+vector$<$ int $>$ \hyperlink{class_c___quark_a96dfb638401816915fc1728cb4587f2a}{threadloc\-\_\-integr\-\_\-inx}
 \item 
-\hypertarget{class_c___quark_a88da2d4e54ff2d0194691e9ebf0313cc}{bool {\bfseries flag\-\_\-dressed}}\label{class_c___quark_a88da2d4e54ff2d0194691e9ebf0313cc}
-
+bool \hyperlink{class_c___quark_a88da2d4e54ff2d0194691e9ebf0313cc}{flag\-\_\-dressed}
 \item 
-\hypertarget{class_c___quark_ab74616977c12b63b1bb3937656b2a580}{bool {\bfseries flag\-\_\-renormalization}}\label{class_c___quark_ab74616977c12b63b1bb3937656b2a580}
-
+bool \hyperlink{class_c___quark_ab74616977c12b63b1bb3937656b2a580}{flag\-\_\-renormalization}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-\hyperlink{_quark_8hpp_source}{Quark.\-hpp} Author\-: stkubr 
+The Quark Dyson-\/\-Schwinger equations in general form. 
+
+It uses iterative Power Method to obtain the solutions of the equations the only input into equations is two-\/quark scattering kernel, provided by \hyperlink{class_c___abstract_kernel}{C\-\_\-\-Abstract\-Kernel} $\ast$ Kernel pointer through \hyperlink{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}{link\-To\-Kernel()}
+
+\hyperlink{class_c___quark__parameters}{C\-\_\-\-Quark\-\_\-parameters} params define the technicalities like\-: the number of integration points and etc. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_c___quark_a7ceb205746e82ecf1c792ec9f11c037a}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!C\-\_\-\-Quark@{C\-\_\-\-Quark}}
@@ -163,13 +147,21 @@ t\-\_\-cmplx\-Array2\-D, t\-\_\-cmplx $>$ $\ast$ \hyperlink{class_c___quark_aaa4
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a7ceb205746e82ecf1c792ec9f11c037a}
+
+
+The constructor. 
+
 the constructor \hypertarget{class_c___quark_a49f6931861a7144c7215abdbcfba0b7d}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!$\sim$\-C\-\_\-\-Quark@{$\sim$\-C\-\_\-\-Quark}}
 \index{$\sim$\-C\-\_\-\-Quark@{$\sim$\-C\-\_\-\-Quark}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{$\sim$\-C\-\_\-\-Quark}]{\setlength{\rightskip}{0pt plus 5cm}C\-\_\-\-Quark\-::$\sim$\-C\-\_\-\-Quark (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a49f6931861a7144c7215abdbcfba0b7d}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___quark_a49f6931861a7144c7215abdbcfba0b7d}
+
+
+The destructor. 
+
 the destructor 
 
 \subsection{Member Function Documentation}
@@ -180,6 +172,10 @@ the destructor
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a6e76c6b1d863858beed18f1c0d9e41d1}
+
+
+Calculate consequently Grid and Contour until converge. 
+
 Calculate consequently Grid and Contour until converge \hypertarget{class_c___quark_abade7bfefe26cdb91a1d8a8583879fff}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!calc\-Prop\-On\-Contour@{calc\-Prop\-On\-Contour}}
 \index{calc\-Prop\-On\-Contour@{calc\-Prop\-On\-Contour}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{calc\-Prop\-On\-Contour}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::calc\-Prop\-On\-Contour (
@@ -187,6 +183,10 @@ Calculate consequently Grid and Contour until converge \hypertarget{class_c___qu
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_abade7bfefe26cdb91a1d8a8583879fff}
+
+
+Evaluate D\-S\-E integral on grid, obtain Propagator on contour. 
+
 Obtains quark propagator on the contour by evaluating D\-S\-E integral equations on the grid \hypertarget{class_c___quark_aed45d2fb4598cbb55b3fef5edcc6e826}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!calc\-Prop\-On\-Grid@{calc\-Prop\-On\-Grid}}
 \index{calc\-Prop\-On\-Grid@{calc\-Prop\-On\-Grid}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{calc\-Prop\-On\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::calc\-Prop\-On\-Grid (
@@ -194,6 +194,10 @@ Obtains quark propagator on the contour by evaluating D\-S\-E integral equations
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aed45d2fb4598cbb55b3fef5edcc6e826}
+
+
+Evaluate Cauchy integral on contour, obtain Propagator on grid. 
+
 Obtains quark propagator on the grid by evaluating Cauchy integral on the contour \hypertarget{class_c___quark_ae755b4cd41dd4ce1a6dfd1c432d01bd1}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!check\-Convergence@{check\-Convergence}}
 \index{check\-Convergence@{check\-Convergence}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{check\-Convergence}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::check\-Convergence (
@@ -201,16 +205,24 @@ Obtains quark propagator on the grid by evaluating Cauchy integral on the contou
 \item[{double}]{previous\-\_\-checksum}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ae755b4cd41dd4ce1a6dfd1c432d01bd1}
+
+
+Check convergence. 
+
 Check convergence calculates the difference between current checksum and previous iteration \hypertarget{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!check\-Sum@{check\-Sum}}
 \index{check\-Sum@{check\-Sum}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{check\-Sum}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::check\-Sum (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_a044cb5ab7b63cca9d4d18792634f5bf1}
+
+
+Gets sum A and B at 100 points. Used for unit tests. 
+
 Calculates sum A $\ast$ B functions at 100 points. 
 
-Reimplemented from \hyperlink{class_c___propagator}{C\-\_\-\-Propagator}.
+Reimplemented from \hyperlink{class_c___propagator_a6b49ff6bc2a98001966e987dc7d9230a}{C\-\_\-\-Propagator}.
 
 \hypertarget{class_c___quark_af6aebddc61fe85aaf454e459d3de6283}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!draw\-On\-Real\-Axis@{draw\-On\-Real\-Axis}}
 \index{draw\-On\-Real\-Axis@{draw\-On\-Real\-Axis}!C_Quark@{C\-\_\-\-Quark}}
@@ -219,13 +231,21 @@ Reimplemented from \hyperlink{class_c___propagator}{C\-\_\-\-Propagator}.
 \item[{int}]{s}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_af6aebddc61fe85aaf454e459d3de6283}
+
+
+Draw Propagator at real line. 
+
 Draw Propagator at real line \hypertarget{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!dress\-Propagator@{dress\-Propagator}}
 \index{dress\-Propagator@{dress\-Propagator}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{dress\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::dress\-Propagator (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_a9ab0f782b3d722eea50544e1101c00c5}
+
+
+Dress the Propagator. 
+
 Dress Propagator meaning to solve the quark D\-S\-E iteratively 
 
 Implements \hyperlink{class_c___propagator_a4b82db59060878e794c3590ee3fbc3f1}{C\-\_\-\-Propagator}.
@@ -244,45 +264,91 @@ Export Propagator to file (exports all what is needed to perform Cauchy integrat
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aff74305e3c468db6ec6cbd63e04fff9a}
+
+
+Create Integrators and get the integration points and weights. 
+
 Create Integrators and get the integration points and weights out of them \hypertarget{class_c___quark_a9f6b8538c2c1b9af29a5c063b26ec7d8}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Integrand\-\_\-numerical@{Integrand\-\_\-numerical}}
 \index{Integrand\-\_\-numerical@{Integrand\-\_\-numerical}!C_Quark@{C\-\_\-\-Quark}}
-\subsubsection[{Integrand\-\_\-numerical}]{\setlength{\rightskip}{0pt plus 5cm}t\-\_\-cmplx\-Matrix C\-\_\-\-Quark\-::\-Integrand\-\_\-numerical (
+\subsubsection[{Integrand\-\_\-numerical}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx\-Matrix} C\-\_\-\-Quark\-::\-Integrand\-\_\-numerical (
 \begin{DoxyParamCaption}
-\item[{t\-\_\-cmplx\-Array1\-D}]{integ\-Variables}
+\item[{{\bf t\-\_\-cmplx\-Array1\-D}}]{integ\-Variables}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a9f6b8538c2c1b9af29a5c063b26ec7d8}
-Numerical form of the Integrand for quark D\-S\-E (suitable for general Kernel) \hypertarget{class_c___quark_afff9ac6d9f21b6d3656c1a0e380f9327}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!load\-Propagator@{load\-Propagator}}
+
+
+Numerical form of the Integrand (avaible for general Kernel) 
+
+Numerical form of the Integrand for quark D\-S\-E (suitable for general Kernel) \hypertarget{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!link\-To\-Kernel@{link\-To\-Kernel}}
+\index{link\-To\-Kernel@{link\-To\-Kernel}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{link\-To\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::link\-To\-Kernel (
+\begin{DoxyParamCaption}
+\item[{{\bf C\-\_\-\-Abstract\-Kernel} $\ast$}]{\-\_\-\-K}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_aea358bb9c82c6e62d99c69893cc35cf9}
+
+
+Sets the class member Kernel pointer to one provided externally. 
+
+
+
+Reimplemented from \hyperlink{class_c___propagator_ae4c299d0b4ab2bf2b5c101153062949d}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___quark_afff9ac6d9f21b6d3656c1a0e380f9327}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!load\-Propagator@{load\-Propagator}}
 \index{load\-Propagator@{load\-Propagator}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{load\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::load\-Propagator (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_afff9ac6d9f21b6d3656c1a0e380f9327}
+
+
+Read Propagator from file. 
+
 Read Propagator from file \hypertarget{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Propagator\-At\-Point@{Propagator\-At\-Point}}
 \index{Propagator\-At\-Point@{Propagator\-At\-Point}!C_Quark@{C\-\_\-\-Quark}}
-\subsubsection[{Propagator\-At\-Point}]{\setlength{\rightskip}{0pt plus 5cm}t\-\_\-cmplx\-Array1\-D C\-\_\-\-Quark\-::\-Propagator\-At\-Point (
+\subsubsection[{Propagator\-At\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx\-Array1\-D} C\-\_\-\-Quark\-::\-Propagator\-At\-Point (
 \begin{DoxyParamCaption}
-\item[{t\-\_\-cmplx}]{q}
+\item[{{\bf t\-\_\-cmplx}}]{q}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_a3d1f0eafbded04e910a6576e6a9a079a}
+
+
+Calculation A,B,M,Sigma\-\_\-\-V,Sigma\-\_\-\-S dressing functions at point inside the contour. 
+
 Calculation A,B,M,Sigma\-\_\-\-V,Sigma\-\_\-\-S at point inside a contour 
 
 Reimplemented from \hyperlink{class_c___propagator_a7bf057f408c2a30667fffea12d1375ba}{C\-\_\-\-Propagator}.
 
 \hypertarget{class_c___quark_a80d1fb9d4107a67eae72c87e3653e7ef}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Propagator\-On\-Point@{Propagator\-On\-Point}}
 \index{Propagator\-On\-Point@{Propagator\-On\-Point}!C_Quark@{C\-\_\-\-Quark}}
-\subsubsection[{Propagator\-On\-Point}]{\setlength{\rightskip}{0pt plus 5cm}t\-\_\-cmplx\-Array1\-D C\-\_\-\-Quark\-::\-Propagator\-On\-Point (
+\subsubsection[{Propagator\-On\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx\-Array1\-D} C\-\_\-\-Quark\-::\-Propagator\-On\-Point (
 \begin{DoxyParamCaption}
-\item[{t\-\_\-cmplx}]{coordin}
+\item[{{\bf t\-\_\-cmplx}}]{coordin}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a80d1fb9d4107a67eae72c87e3653e7ef}
-Returns the values A and B at point in complex plane by evaluating Cauchy integral on contour \hypertarget{class_c___quark_a5dc9671be863cde85f57705caaf11ee6}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!renormalize\-Prop@{renormalize\-Prop}}
+
+
+Evaluate Cauchy integral on contour, at certain point. 
+
+Returns the values A and B at point in complex plane by evaluating Cauchy integral on contour \hypertarget{class_c___quark_a8705085256b1afed49a029e7566be3a6}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!read\-Quark\-Parameters@{read\-Quark\-Parameters}}
+\index{read\-Quark\-Parameters@{read\-Quark\-Parameters}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{read\-Quark\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::read\-Quark\-Parameters (
+\begin{DoxyParamCaption}
+\item[{string \&}]{\-\_\-\-Param\-Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a8705085256b1afed49a029e7566be3a6}
+\hypertarget{class_c___quark_a5dc9671be863cde85f57705caaf11ee6}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!renormalize\-Prop@{renormalize\-Prop}}
 \index{renormalize\-Prop@{renormalize\-Prop}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{renormalize\-Prop}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::renormalize\-Prop (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a5dc9671be863cde85f57705caaf11ee6}
+
+
+Apply renormalization. 
+
 Renormalize A and B quark dressing functions at point params.\-mu \hypertarget{class_c___quark_a569aee23f1aafca5fe383ad4341df8e8}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!resize\-Memory@{resize\-Memory}}
 \index{resize\-Memory@{resize\-Memory}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{resize\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::resize\-Memory (
@@ -290,6 +356,10 @@ Renormalize A and B quark dressing functions at point params.\-mu \hypertarget{c
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a569aee23f1aafca5fe383ad4341df8e8}
+
+
+Resize the dedicated memory storages for the contour and the grid according to loaded \char`\"{}params\char`\"{}. 
+
 Resize the dedicated memory storages for the contour and the grid according to loaded \char`\"{}params\char`\"{} \hypertarget{class_c___quark_a53d6cb2219f3a6deb67e6ba85aba8f92}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!save\-Propagator@{save\-Propagator}}
 \index{save\-Propagator@{save\-Propagator}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{save\-Propagator}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::save\-Propagator (
@@ -297,6 +367,10 @@ Resize the dedicated memory storages for the contour and the grid according to l
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a53d6cb2219f3a6deb67e6ba85aba8f92}
+
+
+Write Propagator to file. 
+
 Write Propagator to file \hypertarget{class_c___quark_a56f87c010401c5cd211cdd3edd53b2a0}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Contour@{set\-Contour}}
 \index{set\-Contour@{set\-Contour}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-Contour}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Contour (
@@ -304,13 +378,36 @@ Write Propagator to file \hypertarget{class_c___quark_a56f87c010401c5cd211cdd3ed
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a56f87c010401c5cd211cdd3edd53b2a0}
-Set Contour in complex plane the contour is a parabola along real axis with an apex (-\/params.\-M2\-\_\-contour,0), cutted at \char`\"{}params.\-Lim\-Uk\char`\"{} in U\-V. \hypertarget{class_c___quark_aa5f4509e09ec22aae258b25dbf1cb328}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Grid@{set\-Grid}}
+
+
+Set Contour in complex plane. 
+
+Set Contour in complex plane the contour is a parabola along real axis with an apex (-\/params.\-M2\-\_\-contour,0), cutted at \char`\"{}params.\-Lim\-Uk\char`\"{} in U\-V. \hypertarget{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Contour\-Apex@{set\-Contour\-Apex}}
+\index{set\-Contour\-Apex@{set\-Contour\-Apex}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{set\-Contour\-Apex}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Contour\-Apex (
+\begin{DoxyParamCaption}
+\item[{double}]{M2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_a1065f0f828e3d7766c8c04f83277d77b}
+
+
+Sets the /f\$ -\/\{M$^\wedge$2\}\{4\} /f\$ for the contour. 
+
+
+
+Reimplemented from \hyperlink{class_c___propagator_ac607b22d1dbb5c947606182b36acab54}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___quark_aa5f4509e09ec22aae258b25dbf1cb328}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Grid@{set\-Grid}}
 \index{set\-Grid@{set\-Grid}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Grid (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aa5f4509e09ec22aae258b25dbf1cb328}
+
+
+Set Grid in complex plane. 
+
 Set Grid in complex plane equation for the grid is (p -\/ k)$^\wedge$2, where p$^\wedge$2 in the contour and k is integration momentum in D\-S\-E \hypertarget{class_c___quark_a9bd2e345fa3034850454c5eae8ca585a}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Initial\-Aand\-B@{set\-Initial\-Aand\-B}}
 \index{set\-Initial\-Aand\-B@{set\-Initial\-Aand\-B}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-Initial\-Aand\-B}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Initial\-Aand\-B (
@@ -318,39 +415,194 @@ Set Grid in complex plane equation for the grid is (p -\/ k)$^\wedge$2, where p$
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a9bd2e345fa3034850454c5eae8ca585a}
+
+
+Initial guesses for A and B dressing functions. 
+
 Initial guesses for A and B \hypertarget{class_c___quark_a3aa1d8e442cd1e051ed8e1deb37868e0}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Kinematic@{set\-Kinematic}}
 \index{set\-Kinematic@{set\-Kinematic}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-Kinematic}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Kinematic (
 \begin{DoxyParamCaption}
-\item[{t\-\_\-cmplx\-Vector \&}]{k, }
-\item[{t\-\_\-cmplx\-Vector \&}]{p, }
-\item[{t\-\_\-cmplx}]{x, }
-\item[{t\-\_\-cmplx}]{y, }
-\item[{t\-\_\-cmplx}]{z}
+\item[{{\bf t\-\_\-cmplx\-Vector} \&}]{k, }
+\item[{{\bf t\-\_\-cmplx\-Vector} \&}]{p, }
+\item[{{\bf t\-\_\-cmplx}}]{x, }
+\item[{{\bf t\-\_\-cmplx}}]{y, }
+\item[{{\bf t\-\_\-cmplx}}]{z}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a3aa1d8e442cd1e051ed8e1deb37868e0}
-Set k and p 4-\/vectors for the Integrand \hypertarget{class_c___quark_aa1a0d2d4817feb9a53ee3d14754586d7}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Propagator\-On\-Path@{set\-Propagator\-On\-Path}}
+
+
+Set k and p vectors for the Numerical Integrand. 
+
+Set k and p 4-\/vectors for the Integrand \hypertarget{class_c___quark_aed9615a25b9c0c4f898d92a2b4bd1154}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-Propagator\-On\-Path@{set\-Propagator\-On\-Path}}
 \index{set\-Propagator\-On\-Path@{set\-Propagator\-On\-Path}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-Propagator\-On\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-Propagator\-On\-Path (
 \begin{DoxyParamCaption}
-\item[{std\-::vector$<$ t\-\_\-cmplx\-Matrix $>$ \&}]{Amplitude\-Storage, }
-\item[{t\-\_\-cmplx\-Array1\-D \&}]{Path}
+\item[{{\bf t\-\_\-cmplx\-Array2\-D} \&}]{Amplitude\-Storage, }
+\item[{{\bf t\-\_\-cmplx\-Array1\-D} \&}]{Path}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aa1a0d2d4817feb9a53ee3d14754586d7}
-Saves Quark's A and B functions evaluated on provided \char`\"{}\-Path\char`\"{} in provided \char`\"{}\-Amplitude\-Storage\char`\"{} \hypertarget{class_c___quark_afe212ef0b9b354ce78670323f3110633}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-To\-Initial\-State@{set\-To\-Initial\-State}}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_aed9615a25b9c0c4f898d92a2b4bd1154}
+
+
+Saves Quark's A and B function on provided \char`\"{}\-Path\char`\"{} in provided \char`\"{}\-Amplutude\-Storage\char`\"{}. 
+
+Saves Quark's A and B functions evaluated on provided \char`\"{}\-Path\char`\"{} in provided \char`\"{}\-Amplitude\-Storage\char`\"{} 
+
+Reimplemented from \hyperlink{class_c___propagator_a8f555dfead878b17db05cc679b7ce9aa}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___quark_afe212ef0b9b354ce78670323f3110633}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!set\-To\-Initial\-State@{set\-To\-Initial\-State}}
 \index{set\-To\-Initial\-State@{set\-To\-Initial\-State}!C_Quark@{C\-\_\-\-Quark}}
 \subsubsection[{set\-To\-Initial\-State}]{\setlength{\rightskip}{0pt plus 5cm}void C\-\_\-\-Quark\-::set\-To\-Initial\-State (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_c___quark_afe212ef0b9b354ce78670323f3110633}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_afe212ef0b9b354ce78670323f3110633}
+
+
+Set quark's state to initial (bare) 
+
 Reset parameters to initial values 
 
 Implements \hyperlink{class_c___propagator_a2efb521f2afd9ad94c07f62db1d03b8b}{C\-\_\-\-Propagator}.
+
+\hypertarget{class_c___quark_a71b08f07b27da3df956536858238ec14}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Z2\-Factor@{Z2\-Factor}}
+\index{Z2\-Factor@{Z2\-Factor}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Z2\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-cmplx} C\-\_\-\-Quark\-::\-Z2\-Factor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_c___quark_a71b08f07b27da3df956536858238ec14}
+
+
+Outputs the /f\$ Z\-\_\-2($^\wedge$2) /f\$ renormalization factor. 
+
+
+
+Reimplemented from \hyperlink{class_c___propagator_ad875936f27fc648f9681f5e18286425a}{C\-\_\-\-Propagator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c___quark_ac5de0438d1b19d8a7f7509efff53b978}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!A\-\_\-renorm@{A\-\_\-renorm}}
+\index{A\-\_\-renorm@{A\-\_\-renorm}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{A\-\_\-renorm}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::\-A\-\_\-renorm\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ac5de0438d1b19d8a7f7509efff53b978}
+\hypertarget{class_c___quark_aaa7b2b26853f8405c2b9b293d2c18a64}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!B\-\_\-mu@{B\-\_\-mu}}
+\index{B\-\_\-mu@{B\-\_\-mu}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{B\-\_\-mu}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::\-B\-\_\-mu\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aaa7b2b26853f8405c2b9b293d2c18a64}
+\hypertarget{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!B\-\_\-renorm@{B\-\_\-renorm}}
+\index{B\-\_\-renorm@{B\-\_\-renorm}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{B\-\_\-renorm}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::\-B\-\_\-renorm\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a3bcdcd4f5f0e106f159542b782044b31}
+
+
+Renormalization constants. 
+
+\hypertarget{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Cauchy\-Integraton\-Weight\-\_\-lambda@{Cauchy\-Integraton\-Weight\-\_\-lambda}}
+\index{Cauchy\-Integraton\-Weight\-\_\-lambda@{Cauchy\-Integraton\-Weight\-\_\-lambda}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Cauchy\-Integraton\-Weight\-\_\-lambda}]{\setlength{\rightskip}{0pt plus 5cm}std\-::function$<${\bf t\-\_\-cmplx}({\bf t\-\_\-cmplx}, {\bf t\-\_\-cmplx})$>$ C\-\_\-\-Quark\-::\-Cauchy\-Integraton\-Weight\-\_\-lambda\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a1dbb8f78522434bceefdb7b42aa1c96c}
+
+
+defines the Cauchy integral measure 
+
+\hypertarget{class_c___quark_a88da2d4e54ff2d0194691e9ebf0313cc}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!flag\-\_\-dressed@{flag\-\_\-dressed}}
+\index{flag\-\_\-dressed@{flag\-\_\-dressed}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{flag\-\_\-dressed}]{\setlength{\rightskip}{0pt plus 5cm}bool C\-\_\-\-Quark\-::flag\-\_\-dressed\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a88da2d4e54ff2d0194691e9ebf0313cc}
+\hypertarget{class_c___quark_ab74616977c12b63b1bb3937656b2a580}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!flag\-\_\-renormalization@{flag\-\_\-renormalization}}
+\index{flag\-\_\-renormalization@{flag\-\_\-renormalization}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{flag\-\_\-renormalization}]{\setlength{\rightskip}{0pt plus 5cm}bool C\-\_\-\-Quark\-::flag\-\_\-renormalization\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ab74616977c12b63b1bb3937656b2a580}
+\hypertarget{class_c___quark_aaa4541680e33e880aa95591e9df3be44}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Integrator\-\_\-cauchy@{Integrator\-\_\-cauchy}}
+\index{Integrator\-\_\-cauchy@{Integrator\-\_\-cauchy}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Integrator\-\_\-cauchy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Integrator\-\_\-\-Path}$<${\bf t\-\_\-cmplx}, {\bf t\-\_\-cmplx\-Array2\-D}, {\bf t\-\_\-cmplx}$>$$\ast$ C\-\_\-\-Quark\-::\-Integrator\-\_\-cauchy\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aaa4541680e33e880aa95591e9df3be44}
+
+
+Path Integrator for the complete contour. 
+
+\hypertarget{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Integrator\-\_\-momentum\-\_\-cutoff@{Integrator\-\_\-momentum\-\_\-cutoff}}
+\index{Integrator\-\_\-momentum\-\_\-cutoff@{Integrator\-\_\-momentum\-\_\-cutoff}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Integrator\-\_\-momentum\-\_\-cutoff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Integrator\-\_\-\-Line}$<${\bf t\-\_\-cmplx\-Matrix}, double$>$$\ast$ C\-\_\-\-Quark\-::\-Integrator\-\_\-momentum\-\_\-cutoff\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a551a3fc5de8f8b4d8bcb2502b503df41}
+
+
+Line Integrator for the cutoff part of parabolic contour. 
+
+\hypertarget{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Kernel@{Kernel}}
+\index{Kernel@{Kernel}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Kernel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Abstract\-Kernel}$\ast$ C\-\_\-\-Quark\-::\-Kernel\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a825f0f4638fa87322db6af8335d6f05b}
+
+
+two-\/body scattering Kernel 
+
+\hypertarget{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!kinematic\-Factor@{kinematic\-Factor}}
+\index{kinematic\-Factor@{kinematic\-Factor}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{kinematic\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::kinematic\-Factor\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ad668099da3ad48b3adf1c2df771cb62c}
+
+
+just a momentum volume factor 
+
+\hypertarget{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Memory@{Memory}}
+\index{Memory@{Memory}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Memory}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Dedic\-Mem\-\_\-\-Quark}$\ast$ C\-\_\-\-Quark\-::\-Memory\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a9eb8b047110e9217c8dc615c9938566c}
+
+
+quark's Memory handler class, contains the contour and the grid at which quark D\-S\-E evaluated 
+
+\hypertarget{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!num\-\_\-amplitudes@{num\-\_\-amplitudes}}
+\index{num\-\_\-amplitudes@{num\-\_\-amplitudes}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{num\-\_\-amplitudes}]{\setlength{\rightskip}{0pt plus 5cm}int C\-\_\-\-Quark\-::num\-\_\-amplitudes\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a9b47aa812f3e3abf90acfb570ae51617}
+
+
+number of projected out amplitudes (quark has two, A and B) 
+
+\hypertarget{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!params@{params}}
+\index{params@{params}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-\_\-\-Quark\-\_\-parameters} C\-\_\-\-Quark\-::params\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_aa973622070edbcb2e2e8bf12425a4277}
+
+
+contains all params the quark D\-S\-E need to have 
+
+\hypertarget{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Save\-Prop\-Path@{Save\-Prop\-Path}}
+\index{Save\-Prop\-Path@{Save\-Prop\-Path}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Save\-Prop\-Path}]{\setlength{\rightskip}{0pt plus 5cm}string C\-\_\-\-Quark\-::\-Save\-Prop\-Path\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a6658a59e332c14057398ba12ad2eb36b}
+
+
+path to file to store the calculated propagator 
+
+\hypertarget{class_c___quark_a96dfb638401816915fc1728cb4587f2a}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!threadloc\-\_\-integr\-\_\-inx@{threadloc\-\_\-integr\-\_\-inx}}
+\index{threadloc\-\_\-integr\-\_\-inx@{threadloc\-\_\-integr\-\_\-inx}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{threadloc\-\_\-integr\-\_\-inx}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ C\-\_\-\-Quark\-::threadloc\-\_\-integr\-\_\-inx\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a96dfb638401816915fc1728cb4587f2a}
+\hypertarget{class_c___quark_a16276524396db70cf500004e4732b62e}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!threadloc\-\_\-p\-\_\-momenta\-\_\-inx@{threadloc\-\_\-p\-\_\-momenta\-\_\-inx}}
+\index{threadloc\-\_\-p\-\_\-momenta\-\_\-inx@{threadloc\-\_\-p\-\_\-momenta\-\_\-inx}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{threadloc\-\_\-p\-\_\-momenta\-\_\-inx}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ C\-\_\-\-Quark\-::threadloc\-\_\-p\-\_\-momenta\-\_\-inx\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a16276524396db70cf500004e4732b62e}
+
+
+thread-\/local storages of indexes 
+
+\hypertarget{class_c___quark_a5a5d2e8dd42a3990344fce6be1667ca4}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!w\-\_\-angle@{w\-\_\-angle}}
+\index{w\-\_\-angle@{w\-\_\-angle}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{w\-\_\-angle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::w\-\_\-angle\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a5a5d2e8dd42a3990344fce6be1667ca4}
+\hypertarget{class_c___quark_a79b610a65184ef9c49ee0f3947154dd2}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!w\-\_\-cutoff@{w\-\_\-cutoff}}
+\index{w\-\_\-cutoff@{w\-\_\-cutoff}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{w\-\_\-cutoff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::w\-\_\-cutoff\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a79b610a65184ef9c49ee0f3947154dd2}
+\hypertarget{class_c___quark_a0b5346b639ac43652861f2210a73676b}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!w\-\_\-radial@{w\-\_\-radial}}
+\index{w\-\_\-radial@{w\-\_\-radial}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{w\-\_\-radial}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::w\-\_\-radial\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a0b5346b639ac43652861f2210a73676b}
+\hypertarget{class_c___quark_ae05f046433b0143198cf37dd0294236c}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!Z2@{Z2}}
+\index{Z2@{Z2}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{Z2}]{\setlength{\rightskip}{0pt plus 5cm}double C\-\_\-\-Quark\-::\-Z2\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ae05f046433b0143198cf37dd0294236c}
+\hypertarget{class_c___quark_ae52242e8abf3bb67f88ca271960eeab4}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!zz\-\_\-angle@{zz\-\_\-angle}}
+\index{zz\-\_\-angle@{zz\-\_\-angle}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{zz\-\_\-angle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::zz\-\_\-angle\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_ae52242e8abf3bb67f88ca271960eeab4}
+\hypertarget{class_c___quark_a30161deac15ede23a568a44bb34f7f71}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!zz\-\_\-cutoff@{zz\-\_\-cutoff}}
+\index{zz\-\_\-cutoff@{zz\-\_\-cutoff}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{zz\-\_\-cutoff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::zz\-\_\-cutoff\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a30161deac15ede23a568a44bb34f7f71}
+\hypertarget{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}{\index{C\-\_\-\-Quark@{C\-\_\-\-Quark}!zz\-\_\-radial@{zz\-\_\-radial}}
+\index{zz\-\_\-radial@{zz\-\_\-radial}!C_Quark@{C\-\_\-\-Quark}}
+\subsubsection[{zz\-\_\-radial}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-d\-Array1\-D} C\-\_\-\-Quark\-::zz\-\_\-radial\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_c___quark_a6e1d141d7f38aba34e48fd51f4da95de}
+
+
+zz are the integration nodes, w are the weights 
 
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-source/\-D\-S\-E/Quark.\-hpp\item 
-source/\-D\-S\-E/Quark.\-cpp\end{DoxyCompactItemize}
+source/\-D\-S\-E/\hyperlink{_quark_8hpp}{Quark.\-hpp}\item 
+source/\-D\-S\-E/\hyperlink{_quark_8cpp}{Quark.\-cpp}\end{DoxyCompactItemize}

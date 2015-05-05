@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -67,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DedicMem.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="_dedic_mem_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * DedicMem.hpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jan 21, 2014</span></div>
@@ -104,23 +106,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___abs.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a>{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> info() = 0;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a>() {}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___abs.html#a058cad18bf5cbc3e4d20272e41158f86">info</a>() = 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___abs.html#ad29a5d2938c8e4cd709ba5ede7a116cc">   20</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_c___dedic_mem___abs.html#ad29a5d2938c8e4cd709ba5ede7a116cc">~C_DedicMem_Abs</a>() {}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___quark.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___dedic_mem___quark.html">C_DedicMem_Quark</a>: <span class="keyword">public</span> <a class="code" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a> {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    t_cmplxArray3D S_grid;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    t_cmplxArray2D S_cont;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___quark.html#abb615a8d4eb2c5844634ac810197ad61">   25</a></span>&#160;    <a class="code" href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a> <a class="code" href="class_c___dedic_mem___quark.html#abb615a8d4eb2c5844634ac810197ad61">S_grid</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___quark.html#a211eb01b6fb3e276987b2a99899d18b6">   26</a></span>&#160;    <a class="code" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a> <a class="code" href="class_c___dedic_mem___quark.html#a211eb01b6fb3e276987b2a99899d18b6">S_cont</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> resizeGrid(<span class="keywordtype">int</span> amps_num, <span class="keywordtype">int</span> exter_num, <span class="keywordtype">int</span> inter_num);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> resizeContour(<span class="keywordtype">int</span> amps_num, <span class="keywordtype">int</span> cont_num);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___quark.html#af9870170bb87b11db976c64fa2ff87bb">resizeGrid</a>(<span class="keywordtype">int</span> amps_num, <span class="keywordtype">int</span> exter_num, <span class="keywordtype">int</span> inter_num);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___quark.html#af25f857d41fa0b568af4a11218580729">resizeContour</a>(<span class="keywordtype">int</span> amps_num, <span class="keywordtype">int</span> cont_num);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> RemoveGrid();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> RemoveContour();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___quark.html#a868c98c7d5930a7fd0b4314d79092581">RemoveGrid</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___quark.html#aa2c1bd42ef41a11746d8ab96dcc70e75">RemoveContour</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> info();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___quark.html#a7252d680bbd53e5c9a183fa49117d2e3">info</a>();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___kernel.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___dedic_mem___kernel.html">C_DedicMem_Kernel</a>: <span class="keyword">public</span> <a class="code" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a> {</div>
@@ -129,69 +131,102 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;t_cmplxMatrix2D &gt; K_Matrix_Storage;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    t_cmplxArray4D VertexDressings;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> info();</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___kernel.html#a1b2fcfb12ebf53baed1105d05c61f5fb">   44</a></span>&#160;    <a class="code" href="types_8h.html#a71e866ee00a3173697327849014bce9b">t_cmplxArray4D</a> <a class="code" href="class_c___dedic_mem___kernel.html#a1b2fcfb12ebf53baed1105d05c61f5fb">VertexDressings</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___kernel.html#aa51b1668792ba7e0f843b2d03deb5819">info</a>();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> ResizeKstorage(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___kernel.html#a53112d51dde01d8b4bd8f48ccce36a91">ResizeKstorage</a>(<span class="keywordtype">int</span> i);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> SetKmatrixAt(<span class="keywordtype">int</span> i ,t_cmplxMatrix2D * _K);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___kernel.html#ac2013ecffb5dab674a568ef256f5a3f8">SetKmatrixAt</a>(<span class="keywordtype">int</span> i ,<a class="code" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a> * _K);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> EraseKstorage();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___kernel.html#ae8436015627826c00ef38c038ef829f8">EraseKstorage</a>();</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    t_cmplxMatrix2D * GetKmatrixAt(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a> * <a class="code" href="class_c___dedic_mem___kernel.html#aa95a927579efd2c095634e813c0db40f">GetKmatrixAt</a>(<span class="keywordtype">int</span> i);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___b_s_e.html">   57</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c___dedic_mem___b_s_e.html">C_DedicMem_BSE</a>: <span class="keyword">public</span> <a class="code" href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a> {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::vector&lt; std::vector &lt;t_cmplxDirac&gt; &gt; AmpStorage;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    Eigen::MatrixXcf EVMatrix;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    t_cmplxArray2D CauchyContour;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    t_cmplxArray3D CauchyGrid;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___b_s_e.html#a532449af372b4823ec11c1bac16a39f6">   60</a></span>&#160;    std::vector&lt; std::vector &lt;t_cmplxDirac&gt; &gt; <a class="code" href="class_c___dedic_mem___b_s_e.html#a532449af372b4823ec11c1bac16a39f6">AmpStorage</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___b_s_e.html#a5f0de44c8872d59b5db86058088e040e">   61</a></span>&#160;    Eigen::MatrixXcf <a class="code" href="class_c___dedic_mem___b_s_e.html#a5f0de44c8872d59b5db86058088e040e">EVMatrix</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___b_s_e.html#adcbf7c4206df13acafeab297bc039f29">   62</a></span>&#160;    <a class="code" href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a> <a class="code" href="class_c___dedic_mem___b_s_e.html#adcbf7c4206df13acafeab297bc039f29">CauchyContour</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_c___dedic_mem___b_s_e.html#a0d11282e491e4762101a83d7e80e5733">   63</a></span>&#160;    <a class="code" href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a> <a class="code" href="class_c___dedic_mem___b_s_e.html#a0d11282e491e4762101a83d7e80e5733">CauchyGrid</a>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// AmpStorage Manipulation</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> resizeAmpStorage(<span class="keywordtype">int</span> amps, <span class="keywordtype">int</span> points);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#ad6928f35d1bb6dc0a9e7896cb435de77">resizeAmpStorage</a>(<span class="keywordtype">int</span> amps, <span class="keywordtype">int</span> points);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> setAmpStorage(<span class="keywordtype">int</span> amp, <span class="keywordtype">int</span> point, t_cmplxDirac * Amp);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#ae0fc9faee6bf0212366e272929d05299">setAmpStorage</a>(<span class="keywordtype">int</span> amp, <span class="keywordtype">int</span> point, <a class="code" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> * Amp);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    t_cmplxDirac getAmpStorage(<span class="keywordtype">int</span> amp, <span class="keywordtype">int</span> point);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> <a class="code" href="class_c___dedic_mem___b_s_e.html#a1e45518a37fafeb43d866fdf8b60dbd6">getAmpStorage</a>(<span class="keywordtype">int</span> amp, <span class="keywordtype">int</span> point);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> clearAmpStorage();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a832e259d5897e9b274d529979d92d08f">clearAmpStorage</a>();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">//EVMatrix Manipulation</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> ResizeEVMatrix(<span class="keywordtype">int</span> num_rad, <span class="keywordtype">int</span> num_angle, <span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_chebs);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a4e6c97cc94e185ccb93b4b83a6caa986">ResizeEVMatrix</a>(<span class="keywordtype">int</span> num_rad, <span class="keywordtype">int</span> num_angle, <span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_chebs);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">//BSE_onCauchy Contour ang Grid Manipulation</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> resizeBSEContour(<span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_points);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a77dd95cd06387357599deb84c8a1b5f3">resizeBSEContour</a>(<span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_points);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> resizeBSEGrid(<span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_ex, <span class="keywordtype">int</span> num_in);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a1acb22de1a69296a075dc76a066c1cff">resizeBSEGrid</a>(<span class="keywordtype">int</span> num_amplitudes, <span class="keywordtype">int</span> num_ex, <span class="keywordtype">int</span> num_in);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> clearCauchyGrid();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a8eb9828cf1137c08d65e9c531f57dd87">clearCauchyGrid</a>();</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//----------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> info();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c___dedic_mem___b_s_e.html#a7db75e75c587b9a25e937bb77ee399d7">info</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* DEDICMEM_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_af9870170bb87b11db976c64fa2ff87bb"><div class="ttname"><a href="class_c___dedic_mem___quark.html#af9870170bb87b11db976c64fa2ff87bb">C_DedicMem_Quark::resizeGrid</a></div><div class="ttdeci">void resizeGrid(int amps_num, int exter_num, int inter_num)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:11</div></div>
+<div class="ttc" id="class_c___dedic_mem___abs_html_ad29a5d2938c8e4cd709ba5ede7a116cc"><div class="ttname"><a href="class_c___dedic_mem___abs.html#ad29a5d2938c8e4cd709ba5ede7a116cc">C_DedicMem_Abs::~C_DedicMem_Abs</a></div><div class="ttdeci">virtual ~C_DedicMem_Abs()</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:20</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a1acb22de1a69296a075dc76a066c1cff"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a1acb22de1a69296a075dc76a066c1cff">C_DedicMem_BSE::resizeBSEGrid</a></div><div class="ttdeci">void resizeBSEGrid(int num_amplitudes, int num_ex, int num_in)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:90</div></div>
+<div class="ttc" id="types_8h_html_a13088102853997a3c148dfe29c372f85"><div class="ttname"><a href="types_8h.html#a13088102853997a3c148dfe29c372f85">t_cmplxArray3D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray2D &gt; t_cmplxArray3D</div><div class="ttdef"><b>Definition:</b> types.h:54</div></div>
+<div class="ttc" id="types_8h_html_ae924474dbd8b75d3e13a2674c4a06787"><div class="ttname"><a href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a></div><div class="ttdeci">Matrix&lt; Tensor&lt; complex&lt; double &gt; &gt; &gt; t_cmplxDirac</div><div class="ttdoc">Composite object which is Dirac matrix and Lorentz tensor. </div><div class="ttdef"><b>Definition:</b> types.h:41</div></div>
 <div class="ttc" id="class_c___dedic_mem___kernel_html"><div class="ttname"><a href="class_c___dedic_mem___kernel.html">C_DedicMem_Kernel</a></div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:38</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_a211eb01b6fb3e276987b2a99899d18b6"><div class="ttname"><a href="class_c___dedic_mem___quark.html#a211eb01b6fb3e276987b2a99899d18b6">C_DedicMem_Quark::S_cont</a></div><div class="ttdeci">t_cmplxArray2D S_cont</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:26</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_aa51b1668792ba7e0f843b2d03deb5819"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#aa51b1668792ba7e0f843b2d03deb5819">C_DedicMem_Kernel::info</a></div><div class="ttdeci">void info()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:36</div></div>
+<div class="ttc" id="types_8h_html_a71e866ee00a3173697327849014bce9b"><div class="ttname"><a href="types_8h.html#a71e866ee00a3173697327849014bce9b">t_cmplxArray4D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray3D &gt; t_cmplxArray4D</div><div class="ttdef"><b>Definition:</b> types.h:55</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_adcbf7c4206df13acafeab297bc039f29"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#adcbf7c4206df13acafeab297bc039f29">C_DedicMem_BSE::CauchyContour</a></div><div class="ttdeci">t_cmplxArray2D CauchyContour</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:62</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_a1b2fcfb12ebf53baed1105d05c61f5fb"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#a1b2fcfb12ebf53baed1105d05c61f5fb">C_DedicMem_Kernel::VertexDressings</a></div><div class="ttdeci">t_cmplxArray4D VertexDressings</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:44</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_ae0fc9faee6bf0212366e272929d05299"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#ae0fc9faee6bf0212366e272929d05299">C_DedicMem_BSE::setAmpStorage</a></div><div class="ttdeci">void setAmpStorage(int amp, int point, t_cmplxDirac *Amp)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:63</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_ac2013ecffb5dab674a568ef256f5a3f8"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#ac2013ecffb5dab674a568ef256f5a3f8">C_DedicMem_Kernel::SetKmatrixAt</a></div><div class="ttdeci">void SetKmatrixAt(int i, t_cmplxMatrix2D *_K)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:44</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_a868c98c7d5930a7fd0b4314d79092581"><div class="ttname"><a href="class_c___dedic_mem___quark.html#a868c98c7d5930a7fd0b4314d79092581">C_DedicMem_Quark::RemoveGrid</a></div><div class="ttdeci">void RemoveGrid()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:19</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a8eb9828cf1137c08d65e9c531f57dd87"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a8eb9828cf1137c08d65e9c531f57dd87">C_DedicMem_BSE::clearCauchyGrid</a></div><div class="ttdeci">void clearCauchyGrid()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:94</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_ae8436015627826c00ef38c038ef829f8"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#ae8436015627826c00ef38c038ef829f8">C_DedicMem_Kernel::EraseKstorage</a></div><div class="ttdeci">void EraseKstorage()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:48</div></div>
 <div class="ttc" id="class_c___dedic_mem___b_s_e_html"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html">C_DedicMem_BSE</a></div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:57</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_aa95a927579efd2c095634e813c0db40f"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#aa95a927579efd2c095634e813c0db40f">C_DedicMem_Kernel::GetKmatrixAt</a></div><div class="ttdeci">t_cmplxMatrix2D * GetKmatrixAt(int i)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:52</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_af25f857d41fa0b568af4a11218580729"><div class="ttname"><a href="class_c___dedic_mem___quark.html#af25f857d41fa0b568af4a11218580729">C_DedicMem_Quark::resizeContour</a></div><div class="ttdeci">void resizeContour(int amps_num, int cont_num)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:15</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a5f0de44c8872d59b5db86058088e040e"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a5f0de44c8872d59b5db86058088e040e">C_DedicMem_BSE::EVMatrix</a></div><div class="ttdeci">Eigen::MatrixXcf EVMatrix</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:61</div></div>
 <div class="ttc" id="class_c___dedic_mem___abs_html"><div class="ttname"><a href="class_c___dedic_mem___abs.html">C_DedicMem_Abs</a></div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:16</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a77dd95cd06387357599deb84c8a1b5f3"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a77dd95cd06387357599deb84c8a1b5f3">C_DedicMem_BSE::resizeBSEContour</a></div><div class="ttdeci">void resizeBSEContour(int num_amplitudes, int num_points)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:86</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a832e259d5897e9b274d529979d92d08f"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a832e259d5897e9b274d529979d92d08f">C_DedicMem_BSE::clearAmpStorage</a></div><div class="ttdeci">void clearAmpStorage()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:71</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a7db75e75c587b9a25e937bb77ee399d7"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a7db75e75c587b9a25e937bb77ee399d7">C_DedicMem_BSE::info</a></div><div class="ttdeci">void info()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:100</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a0d11282e491e4762101a83d7e80e5733"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a0d11282e491e4762101a83d7e80e5733">C_DedicMem_BSE::CauchyGrid</a></div><div class="ttdeci">t_cmplxArray3D CauchyGrid</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:63</div></div>
+<div class="ttc" id="types_8h_html_a4db8c78f1689c3a957b2866daaae58f2"><div class="ttname"><a href="types_8h.html#a4db8c78f1689c3a957b2866daaae58f2">t_cmplxArray2D</a></div><div class="ttdeci">std::vector&lt; t_cmplxArray1D &gt; t_cmplxArray2D</div><div class="ttdef"><b>Definition:</b> types.h:53</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_abb615a8d4eb2c5844634ac810197ad61"><div class="ttname"><a href="class_c___dedic_mem___quark.html#abb615a8d4eb2c5844634ac810197ad61">C_DedicMem_Quark::S_grid</a></div><div class="ttdeci">t_cmplxArray3D S_grid</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:25</div></div>
+<div class="ttc" id="types_8h_html_ab0ebabce2061a9cbb83363a282add98f"><div class="ttname"><a href="types_8h.html#ab0ebabce2061a9cbb83363a282add98f">t_cmplxMatrix2D</a></div><div class="ttdeci">Matrix&lt; t_cmplxMatrix &gt; t_cmplxMatrix2D</div><div class="ttdef"><b>Definition:</b> types.h:46</div></div>
+<div class="ttc" id="class_c___dedic_mem___abs_html_a058cad18bf5cbc3e4d20272e41158f86"><div class="ttname"><a href="class_c___dedic_mem___abs.html#a058cad18bf5cbc3e4d20272e41158f86">C_DedicMem_Abs::info</a></div><div class="ttdeci">virtual void info()=0</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a532449af372b4823ec11c1bac16a39f6"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a532449af372b4823ec11c1bac16a39f6">C_DedicMem_BSE::AmpStorage</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; t_cmplxDirac &gt; &gt; AmpStorage</div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:60</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_aa2c1bd42ef41a11746d8ab96dcc70e75"><div class="ttname"><a href="class_c___dedic_mem___quark.html#aa2c1bd42ef41a11746d8ab96dcc70e75">C_DedicMem_Quark::RemoveContour</a></div><div class="ttdeci">void RemoveContour()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:24</div></div>
+<div class="ttc" id="class_c___dedic_mem___quark_html_a7252d680bbd53e5c9a183fa49117d2e3"><div class="ttname"><a href="class_c___dedic_mem___quark.html#a7252d680bbd53e5c9a183fa49117d2e3">C_DedicMem_Quark::info</a></div><div class="ttdeci">void info()</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:29</div></div>
 <div class="ttc" id="class_c___dedic_mem___quark_html"><div class="ttname"><a href="class_c___dedic_mem___quark.html">C_DedicMem_Quark</a></div><div class="ttdef"><b>Definition:</b> DedicMem.hpp:23</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a4e6c97cc94e185ccb93b4b83a6caa986"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a4e6c97cc94e185ccb93b4b83a6caa986">C_DedicMem_BSE::ResizeEVMatrix</a></div><div class="ttdeci">void ResizeEVMatrix(int num_rad, int num_angle, int num_amplitudes, int num_chebs)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:79</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_ad6928f35d1bb6dc0a9e7896cb435de77"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#ad6928f35d1bb6dc0a9e7896cb435de77">C_DedicMem_BSE::resizeAmpStorage</a></div><div class="ttdeci">void resizeAmpStorage(int amps, int points)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:59</div></div>
+<div class="ttc" id="class_c___dedic_mem___kernel_html_a53112d51dde01d8b4bd8f48ccce36a91"><div class="ttname"><a href="class_c___dedic_mem___kernel.html#a53112d51dde01d8b4bd8f48ccce36a91">C_DedicMem_Kernel::ResizeKstorage</a></div><div class="ttdeci">void ResizeKstorage(int i)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:40</div></div>
+<div class="ttc" id="class_c___dedic_mem___b_s_e_html_a1e45518a37fafeb43d866fdf8b60dbd6"><div class="ttname"><a href="class_c___dedic_mem___b_s_e.html#a1e45518a37fafeb43d866fdf8b60dbd6">C_DedicMem_BSE::getAmpStorage</a></div><div class="ttdeci">t_cmplxDirac getAmpStorage(int amp, int point)</div><div class="ttdef"><b>Definition:</b> DedicMem.cpp:67</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

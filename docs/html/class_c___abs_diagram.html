@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,100 +84,430 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_c___abs_diagram-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">C_AbsDiagram Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_abs_diagram_8hpp_source.html">AbsDiagram.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for C_AbsDiagram:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_c___abs_diagram.png" usemap="#C_AbsDiagram_map" alt=""/>
   <map id="C_AbsDiagram_map" name="C_AbsDiagram_map">
-<area href="class_c___abstract_kernel.html" alt="C_AbstractKernel" shape="rect" coords="84,56,242,80"/>
-<area href="class_c___abs_vertex.html" alt="C_AbsVertex" shape="rect" coords="336,56,494,80"/>
-<area href="class_c___propagator.html" alt="C_Propagator" shape="rect" coords="714,56,872,80"/>
-<area href="class_c___kernel___r_l.html" alt="C_Kernel_RL" shape="rect" coords="0,112,158,136"/>
-<area href="class_c___kernel___r_l___p_s.html" alt="C_Kernel_RL_PS" shape="rect" coords="168,112,326,136"/>
-<area href="class_c___b_s_e___base.html" alt="C_BSE_Base" shape="rect" coords="336,112,494,136"/>
-<area href="class_c___gluon.html" alt="C_Gluon" shape="rect" coords="504,112,662,136"/>
-<area href="class_c___quark.html" alt="C_Quark" shape="rect" coords="924,112,1082,136"/>
-<area href="class_c___b_s_e___hadron___base.html" alt="C_BSE_Hadron_Base" shape="rect" coords="336,168,494,192"/>
-<area href="class_c___bottom___quark.html" alt="C_Bottom_Quark" shape="rect" coords="504,168,662,192"/>
-<area href="class_c___charm___quark.html" alt="C_Charm_Quark" shape="rect" coords="672,168,830,192"/>
-<area href="class_c___down___quark.html" alt="C_Down_Quark" shape="rect" coords="840,168,998,192"/>
-<area href="class_c___strange___quark.html" alt="C_Strange_Quark" shape="rect" coords="1008,168,1166,192"/>
-<area href="class_c___test___quark.html" title="Specific type for unit testing - all quark parameters are default. " alt="C_Test_Quark" shape="rect" coords="1176,168,1334,192"/>
-<area href="class_c___up___quark.html" alt="C_Up_Quark" shape="rect" coords="1344,168,1502,192"/>
-<area href="class_c___b_s_e___hadron___meson.html" alt="C_BSE_Hadron_Meson" shape="rect" coords="336,224,494,248"/>
-<area href="class_c___mesons___axial_vector.html" alt="C_Mesons_AxialVector" shape="rect" coords="0,280,158,304"/>
-<area href="class_c___mesons___pseudo_scalar.html" alt="C_Mesons_PseudoScalar" shape="rect" coords="168,280,326,304"/>
-<area href="class_c___mesons___scalar.html" alt="C_Mesons_Scalar" shape="rect" coords="336,280,494,304"/>
-<area href="class_c___mesons___tensor.html" alt="C_Mesons_Tensor" shape="rect" coords="504,280,662,304"/>
-<area href="class_c___mesons___vector.html" alt="C_Mesons_Vector" shape="rect" coords="672,280,830,304"/>
+<area href="class_b_s_e_1_1_c___b_s_e.html" title="The interface class for all BSEs: two-body (mesons) or more. " alt="BSE::C_BSE" shape="rect" coords="0,56,189,80"/>
+<area href="class_kernels_1_1_c___abstract_kernel.html" title="The interface class for all possible scattering kernels. " alt="Kernels::C_AbstractKernel" shape="rect" coords="199,56,388,80"/>
+<area href="class_propagators_1_1_c___propagator.html" title="The interface class for all propagators: quarks, gluons or ghosts. " alt="Propagators::C_Propagator" shape="rect" coords="497,56,686,80"/>
+<area href="class_b_s_e_1_1_c___b_s_e___two_body.html" title="Two-quark Bethe-Salpeter Equations. " alt="BSE::C_BSE_TwoBody" shape="rect" coords="0,112,189,136"/>
+<area href="class_kernels_1_1_c___two_quark_kernel.html" title="The two-quark abstract scattering Kernel. " alt="Kernels::C_TwoQuarkKernel" shape="rect" coords="199,112,388,136"/>
+<area href="class_propagators_1_1_c___gluon.html" title="The Gluon model Although the gluon itself can posses its own DSE here we use an approximation: the ef..." alt="Propagators::C_Gluon" shape="rect" coords="398,112,587,136"/>
+<area href="class_propagators_1_1_c___quark.html" title="The Quark Dyson-Schwinger equations in general form. " alt="Propagators::C_Quark" shape="rect" coords="597,112,786,136"/>
+<area href="class_b_s_e_1_1_c___b_s_e___matrix.html" title="Two-quark Bethe-Salpeter Equations. " alt="BSE::C_BSE_Matrix" shape="rect" coords="0,168,189,192"/>
+<area href="class_kernels_1_1_c___kernel___r_l.html" title="The Rainbow-Ladder scattering Kernel. " alt="Kernels::C_Kernel_RL" shape="rect" coords="398,168,587,192"/>
+<area href="class_kernels_1_1_c___kernel___r_l___p_s.html" title="The Rainbow-Ladder + Pion exchange scattering Kernel. " alt="Kernels::C_Kernel_RL_PS" shape="rect" coords="398,224,587,248"/>
+<area href="class_propagators_1_1_c___bottom___quark.html" alt="Propagators::C_Bottom_Quark" shape="rect" coords="796,168,985,192"/>
+<area href="class_propagators_1_1_c___charm___quark.html" alt="Propagators::C_Charm_Quark" shape="rect" coords="796,224,985,248"/>
+<area href="class_propagators_1_1_c___down___quark.html" alt="Propagators::C_Down_Quark" shape="rect" coords="796,280,985,304"/>
+<area href="class_propagators_1_1_c___strange___quark.html" alt="Propagators::C_Strange_Quark" shape="rect" coords="796,336,985,360"/>
+<area href="class_propagators_1_1_c___test___quark.html" title="Specific quark type for unit testing - all quark parameters are default. " alt="Propagators::C_Test_Quark" shape="rect" coords="796,392,985,416"/>
+<area href="class_propagators_1_1_c___up___quark.html" alt="Propagators::C_Up_Quark" shape="rect" coords="796,448,985,472"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a88baf4e9d29753417b7e65ef18f0b28f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88baf4e9d29753417b7e65ef18f0b28f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNameID</b> (string _name, int _ID)</td></tr>
+<tr class="memitem:a88baf4e9d29753417b7e65ef18f0b28f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a88baf4e9d29753417b7e65ef18f0b28f">SetNameID</a> (string _name, int _ID)</td></tr>
 <tr class="separator:a88baf4e9d29753417b7e65ef18f0b28f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a52da1cfd635da06a6bfdd002e7f674"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a52da1cfd635da06a6bfdd002e7f674"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>GetNameID</b> ()</td></tr>
+<tr class="memitem:a5a52da1cfd635da06a6bfdd002e7f674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a5a52da1cfd635da06a6bfdd002e7f674">GetNameID</a> ()</td></tr>
 <tr class="separator:a5a52da1cfd635da06a6bfdd002e7f674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fdd41051f27b3a6d8bf4ae75914d830"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a0fdd41051f27b3a6d8bf4ae75914d830">~C_AbsDiagram</a> ()</td></tr>
+<tr class="separator:a0fdd41051f27b3a6d8bf4ae75914d830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a4b5e3fe8526b18145f92283e34d0f908"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4b5e3fe8526b18145f92283e34d0f908">C_AbsDiagram</a> ()</td></tr>
+<tr class="separator:a4b5e3fe8526b18145f92283e34d0f908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a919d23735a009dc5a78e02e01e1eb40b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a919d23735a009dc5a78e02e01e1eb40b"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memitem:a919d23735a009dc5a78e02e01e1eb40b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a919d23735a009dc5a78e02e01e1eb40b">name</a></td></tr>
 <tr class="separator:a919d23735a009dc5a78e02e01e1eb40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08de955405ee0344287b2eb5f6cb62b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08de955405ee0344287b2eb5f6cb62b5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
+<tr class="memitem:a08de955405ee0344287b2eb5f6cb62b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a08de955405ee0344287b2eb5f6cb62b5">ID</a></td></tr>
 <tr class="separator:a08de955405ee0344287b2eb5f6cb62b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a958ffee1be22aa70a0e2eb9fa44f5784"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a958ffee1be22aa70a0e2eb9fa44f5784"></a>
-DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a></td></tr>
-<tr class="memdesc:a958ffee1be22aa70a0e2eb9fa44f5784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrices <img class="formulaInl" alt="$ \gamma_\mu $" src="form_3.png"/>. <br/></td></tr>
+<tr class="memitem:a958ffee1be22aa70a0e2eb9fa44f5784"><td class="memItemLeft" align="right" valign="top">DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a958ffee1be22aa70a0e2eb9fa44f5784">Z</a></td></tr>
+<tr class="memdesc:a958ffee1be22aa70a0e2eb9fa44f5784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrices <img class="formulaInl" alt="$ \gamma_\mu $" src="form_3.png"/>.  <a href="#a958ffee1be22aa70a0e2eb9fa44f5784">More...</a><br/></td></tr>
 <tr class="separator:a958ffee1be22aa70a0e2eb9fa44f5784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eded4aff0f19920d9ec52e2f5c63abf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eded4aff0f19920d9ec52e2f5c63abf"></a>
-DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><b>Y</b></td></tr>
+<tr class="memitem:a4eded4aff0f19920d9ec52e2f5c63abf"><td class="memItemLeft" align="right" valign="top">DiracGamma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4eded4aff0f19920d9ec52e2f5c63abf">Y</a></td></tr>
 <tr class="separator:a4eded4aff0f19920d9ec52e2f5c63abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31794dd2c315f6bf18e2908d669ccc61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31794dd2c315f6bf18e2908d669ccc61"></a>
-DiracGamma5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a></td></tr>
-<tr class="memdesc:a31794dd2c315f6bf18e2908d669ccc61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrix <img class="formulaInl" alt="$ \gamma_5 $" src="form_4.png"/>. <br/></td></tr>
+<tr class="memitem:a31794dd2c315f6bf18e2908d669ccc61"><td class="memItemLeft" align="right" valign="top">DiracGamma5&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a31794dd2c315f6bf18e2908d669ccc61">_Y5</a></td></tr>
+<tr class="memdesc:a31794dd2c315f6bf18e2908d669ccc61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac gamma matrix <img class="formulaInl" alt="$ \gamma_5 $" src="form_4.png"/>.  <a href="#a31794dd2c315f6bf18e2908d669ccc61">More...</a><br/></td></tr>
 <tr class="separator:a31794dd2c315f6bf18e2908d669ccc61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4646ab596ff13dd531f28f755d3dd4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4646ab596ff13dd531f28f755d3dd4e"></a>
-DiracSigma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a></td></tr>
-<tr class="memdesc:ac4646ab596ff13dd531f28f755d3dd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac sigma matrix <img class="formulaInl" alt="$ \sigma_{\mu\nu} $" src="form_5.png"/>. <br/></td></tr>
+<tr class="memitem:ac4646ab596ff13dd531f28f755d3dd4e"><td class="memItemLeft" align="right" valign="top">DiracSigma&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#ac4646ab596ff13dd531f28f755d3dd4e">SIG</a></td></tr>
+<tr class="memdesc:ac4646ab596ff13dd531f28f755d3dd4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirac sigma matrix <img class="formulaInl" alt="$ \sigma_{\mu\nu} $" src="form_5.png"/>.  <a href="#ac4646ab596ff13dd531f28f755d3dd4e">More...</a><br/></td></tr>
 <tr class="separator:ac4646ab596ff13dd531f28f755d3dd4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4daaf1d6cbcb0aa0bc93417eb11b49a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4daaf1d6cbcb0aa0bc93417eb11b49a4"></a>
-MetricTensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a></td></tr>
-<tr class="memdesc:a4daaf1d6cbcb0aa0bc93417eb11b49a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Euclidean metric tensor <img class="formulaInl" alt="$ g_{\mu\nu} $" src="form_6.png"/>. <br/></td></tr>
+<tr class="memitem:a4daaf1d6cbcb0aa0bc93417eb11b49a4"><td class="memItemLeft" align="right" valign="top">MetricTensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a4daaf1d6cbcb0aa0bc93417eb11b49a4">g</a></td></tr>
+<tr class="memdesc:a4daaf1d6cbcb0aa0bc93417eb11b49a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Euclidean metric tensor <img class="formulaInl" alt="$ g_{\mu\nu} $" src="form_6.png"/>.  <a href="#a4daaf1d6cbcb0aa0bc93417eb11b49a4">More...</a><br/></td></tr>
 <tr class="separator:a4daaf1d6cbcb0aa0bc93417eb11b49a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff57681049aaff10af1fd2a0151209b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff57681049aaff10af1fd2a0151209b8"></a>
-t_cmplxDirac&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a></td></tr>
-<tr class="memdesc:aff57681049aaff10af1fd2a0151209b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit matrix (4,4) in Dirac space. <br/></td></tr>
+<tr class="memitem:aff57681049aaff10af1fd2a0151209b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aff57681049aaff10af1fd2a0151209b8">I</a></td></tr>
+<tr class="memdesc:aff57681049aaff10af1fd2a0151209b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit matrix (4,4) in Dirac space.  <a href="#aff57681049aaff10af1fd2a0151209b8">More...</a><br/></td></tr>
 <tr class="separator:aff57681049aaff10af1fd2a0151209b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49ab5b499fd64c4a196349730d4beda3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49ab5b499fd64c4a196349730d4beda3"></a>
-t_cmplxDirac&#160;</td><td class="memItemRight" valign="bottom"><b>Y5</b></td></tr>
+<tr class="memitem:a49ab5b499fd64c4a196349730d4beda3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a49ab5b499fd64c4a196349730d4beda3">Y5</a></td></tr>
 <tr class="separator:a49ab5b499fd64c4a196349730d4beda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e24081668fb3198fd043dd291fba4c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e24081668fb3198fd043dd291fba4c5"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>pi</b></td></tr>
+<tr class="memitem:a3e24081668fb3198fd043dd291fba4c5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#a3e24081668fb3198fd043dd291fba4c5">pi</a></td></tr>
 <tr class="separator:a3e24081668fb3198fd043dd291fba4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3cfb09af9c9e81fa1af3a78b5d667a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3cfb09af9c9e81fa1af3a78b5d667a7"></a>
-t_cmplx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a></td></tr>
-<tr class="memdesc:aa3cfb09af9c9e81fa1af3a78b5d667a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imaginary unit. <br/></td></tr>
+<tr class="memitem:aa3cfb09af9c9e81fa1af3a78b5d667a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c___abs_diagram.html#aa3cfb09af9c9e81fa1af3a78b5d667a7">ii</a></td></tr>
+<tr class="memdesc:aa3cfb09af9c9e81fa1af3a78b5d667a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imaginary unit.  <a href="#aa3cfb09af9c9e81fa1af3a78b5d667a7">More...</a><br/></td></tr>
 <tr class="separator:aa3cfb09af9c9e81fa1af3a78b5d667a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4b5e3fe8526b18145f92283e34d0f908"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">C_AbsDiagram::C_AbsDiagram </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0fdd41051f27b3a6d8bf4ae75914d830"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual C_AbsDiagram::~C_AbsDiagram </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a5a52da1cfd635da06a6bfdd002e7f674"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_AbsDiagram::GetNameID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a88baf4e9d29753417b7e65ef18f0b28f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void C_AbsDiagram::SetNameID </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_ID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a31794dd2c315f6bf18e2908d669ccc61"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DiracGamma5 C_AbsDiagram::_Y5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dirac gamma matrix <img class="formulaInl" alt="$ \gamma_5 $" src="form_4.png"/>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4daaf1d6cbcb0aa0bc93417eb11b49a4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MetricTensor C_AbsDiagram::g</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Euclidean metric tensor <img class="formulaInl" alt="$ g_{\mu\nu} $" src="form_6.png"/>. </p>
+
+</div>
+</div>
+<a class="anchor" id="aff57681049aaff10af1fd2a0151209b8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> C_AbsDiagram::I</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unit matrix (4,4) in Dirac space. </p>
+
+</div>
+</div>
+<a class="anchor" id="a08de955405ee0344287b2eb5f6cb62b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int C_AbsDiagram::ID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa3cfb09af9c9e81fa1af3a78b5d667a7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#aa75ae339052372f671bb263e6a272e82">t_cmplx</a> C_AbsDiagram::ii</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Imaginary unit. </p>
+
+</div>
+</div>
+<a class="anchor" id="a919d23735a009dc5a78e02e01e1eb40b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string C_AbsDiagram::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3e24081668fb3198fd043dd291fba4c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double C_AbsDiagram::pi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac4646ab596ff13dd531f28f755d3dd4e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DiracSigma C_AbsDiagram::SIG</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dirac sigma matrix <img class="formulaInl" alt="$ \sigma_{\mu\nu} $" src="form_5.png"/>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4eded4aff0f19920d9ec52e2f5c63abf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DiracGamma C_AbsDiagram::Y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a49ab5b499fd64c4a196349730d4beda3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae924474dbd8b75d3e13a2674c4a06787">t_cmplxDirac</a> C_AbsDiagram::Y5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a958ffee1be22aa70a0e2eb9fa44f5784"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DiracGamma C_AbsDiagram::Z</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dirac gamma matrices <img class="formulaInl" alt="$ \gamma_\mu $" src="form_3.png"/>. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>source/Abs/<a class="el" href="_abs_diagram_8hpp_source.html">AbsDiagram.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 9 2015 14:18:21 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 5 2015 16:50:24 for DSEpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
